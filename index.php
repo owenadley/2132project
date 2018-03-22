@@ -8,6 +8,11 @@ echo 'Hello world from Cloud9!';
 
 $conn = pg_connect("host=ec2-54-243-210-70.compute-1.amazonaws.com dbname=d88e4kacmh5m8a user=xhgocwtwpvuyuh password=1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5");
 
+if (!$conn) {
+  echo "An error occurred.\n";
+  exit;
+}
+
 $test = pg_query($conn, "CREATE TABLE food (name varchar(255))");
 $test2 = pg_query($conn, "INSERT INTO food (name) VALUES (pizza)");
 
