@@ -11,6 +11,8 @@ $conn = pg_connect("host=ec2-54-243-210-70.compute-1.amazonaws.com dbname=d88e4k
 if (!$conn) {
   echo "An error occurred.\n";
   exit;
+} else {
+    echo 'Connected';
 }
 
 $test = pg_query($conn, "CREATE TABLE food (name varchar(255))");
