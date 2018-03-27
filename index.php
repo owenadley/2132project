@@ -1,9 +1,7 @@
 <html><body>
 <?php
 
-echo "Hello world from Cloud9! \n";
-
-#==================== CONNECTION ========================
+#==================== CONNECTION =========================
 # Extract connection from db URL
 function pg_connection_string_from_database_url() {
   extract(parse_url($_ENV["postgres://xhgocwtwpvuyuh:1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d88e4kacmh5m8a
@@ -30,9 +28,10 @@ if (!pg_num_rows($result)) {
   print "Tables in your database:\n";
   while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
 }
-#==================== / CONNECTION ========================
+#==================== / CONNECTION =======================
 
 
+#==================== TEST QUERIES AND RETRIEVAL =========
 $test = pg_query($conn, "CREATE TABLE food (name varchar(255))");
 $test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
 
@@ -48,6 +47,24 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in food';
 }
+#==================== / TEST QUERIES AND RETRIEVAL =======
+
+
+#==================== CREATE TABLES ======================
+
+$raterTable = pg_query($conn, 
+"CREATE TABLE Rater (
+UserID NOT NULL PRIMARY KEY,
+email varchar(255),
+name varchar(255),
+join-date DATE,
+type varchar(255),
+reputation int
+")
+
+
+#==================== / CREATE TABLES =====================
+
 
 ?>
 </body>
