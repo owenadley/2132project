@@ -107,6 +107,11 @@ URL varchar
 # the address, and so on. Note that RestaurantID is the foreign key. This design assumes that the
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
 
+$locationTable = pg_query($conn, 
+"CREATE TABLE Location (
+LocationID varchar(255) PRIMARY KEY,
+RestaurantID varchar(255),
+");
 
 
 
