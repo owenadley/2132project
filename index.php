@@ -53,10 +53,10 @@ if ($row = pg_fetch_row($result)) {
 #==================== CREATE TABLES ======================
 
 # Rater Table:
-#The join‐date is used to show when this rater first joined the website. The name field corresponds to
-#an alias such as SuperSizeMe. Type refers to the type of rater (blog, online, food critic) and
-#reputation takes a value between 1 and 5. The value of this field is based on the number of people
-#who found this rater’s opinion helpful, and the default value is 1 (lowest).
+# The join‐date is used to show when this rater first joined the website. The name field corresponds to
+# an alias such as SuperSizeMe. Type refers to the type of rater (blog, online, food critic) and
+# reputation takes a value between 1 and 5. The value of this field is based on the number of people
+# who found this rater’s opinion helpful, and the default value is 1 (lowest).
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE Rater (
@@ -69,9 +69,9 @@ reputation int CHECK (reputation >= 1 AND reputation =< 5) DEFAULT 1
 ");
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
-#The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
-#comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
-#that UserID and RestaurantID are foreign keys.
+# The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
+# comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
+# that UserID and RestaurantID are foreign keys.
 
 $ratingTable = pg_query($conn, 
 "CREATE TABLE Rating (
@@ -89,9 +89,9 @@ FOREIGN KEY (UserID, RestaurantID)
 ");
 
 # Restaurant: (RestaurantID, Name, Type, URL, …)
-#This relation contains general information about a restaurant and is useful in the case where a
-#restaurant chain has many locations. The type attribute contains details about the cuisine, such as
-#Italian, Indian, Middle Eastern, and so on.
+# This relation contains general information about a restaurant and is useful in the case where a
+# restaurant chain has many locations. The type attribute contains details about the cuisine, such as
+# Italian, Indian, Middle Eastern, and so on.
 
 $restaurantTable = pg_query($conn, 
 "CREATE TABLE Restaurant (
@@ -110,11 +110,45 @@ URL varchar
 $locationTable = pg_query($conn, 
 "CREATE TABLE Location (
 LocationID varchar(255) PRIMARY KEY,
+first-open-date DATE, 
+manager-name varchar(255),
+phone-number varchar(15),
+street-address varchar(255),
+hour-open TIME, 
+hour-close TIME,
 RestaurantID varchar(255),
+FOREIGN KEY (RestaurantID)
 ");
 
+# MenuItem(ItemID, name, type, category, description, price, …, RestaurantID)_
+# Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
+# type (food or beverage). RestaurantID is the foreign key.
 
+$menuItemTable = pg_query($conn, 
+"CREATE TABLE MenuItem (
+ItemID varchar(255) PRIMARY KEY,
+name varchar(255),
+type varchar(8) CHECK (type IN ('starter', 'menu', 'desert')),
+category varchar(7) CHECK (category IN ('food', 'beverage')),
+description text,
+price decimal(12,2),
+RestaurantID varchar(255),
+FOREIGN KEY (RestaurantID)
+");
 
+# RatingItem(UserID, Date, ItemID, rating, comment, ….)
+# A rater may explicitly select the menu item, and add a specific rating between 1 (low) to 5 (high)
+# and a free text comment. All menu items should be selected from a list.
+
+$ratingItemTable = pg_query($conn, 
+"CREATE TABLE RatingItem (
+UserID NOT NULL varchar(255),
+Date NOT NULL DATE,
+ItemID varchar(255),
+rating int CHECK (rating >= 1 AND rating =< 5), 
+comment text,
+PRIMARY KEY (UserID, Date, ItemID)
+");
 
 #==================== / CREATE TABLES =====================
 
