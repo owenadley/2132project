@@ -152,6 +152,22 @@ PRIMARY KEY (UserID, Date, ItemID)
 
 #==================== / CREATE TABLES =====================
 
+$insertRaterTable = pg_query($conn, 
+"COPY Rater(UserID,email,name,join-date,type,reputation)
+FROM '/Rater.csv' DELIMITER ',' CSV HEADER
+");
+
+# Testing insertion of values from csv file
+$print = pg_query($conn, "SELECT * FROM Rater");
+print "<pre>\n";
+if (!pg_num_rows($print)) {
+  print("Connection is working, but database is empty.\n");
+} else {
+  print "More Tables in your database:\n";
+  while ($row = pg_fetch_row($print)) { print("- $row[0]\n"); }
+}
+
+
 
 ?>
 </body>
