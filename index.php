@@ -154,7 +154,7 @@ PRIMARY KEY (UserID, Date, ItemID)
 
 $insertRaterTable = pg_query($conn, 
 "COPY Rater(UserID,email,name,join-date,type,reputation)
-FROM '/Rater.csv' DELIMITER ',' CSV HEADER
+FROM '/Rater.txt' DELIMITER ',' CSV HEADER
 ");
 
 # Testing insertion of values from csv file
