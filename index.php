@@ -165,11 +165,16 @@ VALUES (JD!,jd@email.com,Jane Doe,3/30/2018,blog)
 # Testing insertion of values from csv file
 $print = pg_query($conn, "SELECT * FROM Rater");
 print "<pre>\n";
-if (!pg_num_rows($print)) {
-  print("Connection is working, but database is empty.\n");
+if (!$print) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+if ($row = pg_fetch_row($print)) {
+  echo "UserID: $row[0]";
+  echo "<br />\n";
 } else {
-  print "More Tables in your database:\n";
-  while ($row = pg_fetch_row($print)) { print("- $row[0]\n"); }
+  echo 'No records in food';
 }
 
 
