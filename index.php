@@ -163,7 +163,7 @@ VALUES (JD!,jd@email.com,Jane Doe,3/30/2018,blog)
 ");
 
 # Testing insertion of values from csv file
-$print = pg_query($conn, "SELECT * FROM Rater");
+$print = pg_query($conn, "SELECT UserID FROM Rater");
 print "<pre>\n";
 if (!$print) {
   echo "An error occurred.\n";
