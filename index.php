@@ -157,6 +157,11 @@ $insertRaterTable = pg_query($conn,
 FROM '/Rater.txt' DELIMITER ',' CSV HEADER
 ");
 
+$insertValueRaterTable = pg_query($conn, 
+"INSERT INTO Rater(UserID,email,name,join-date,type,reputation)
+VALUES (JD!,jd@email.com,Jane Doe,3/30/2018,blog)
+");
+
 # Testing insertion of values from csv file
 $print = pg_query($conn, "SELECT * FROM Rater");
 print "<pre>\n";
