@@ -66,7 +66,7 @@ name varchar(255),
 joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation >= 1 AND reputation =< 5) DEFAULT 1
-");
+)");
 
 print "<pre>\n";
 if (!$raterTable) {
@@ -92,7 +92,7 @@ RestaurantID varchar(255),
 CHECK (Date, Price, Food, Mood, Staff >= 1 AND Date, Price, Food, Mood, Staff =< 5)
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID, RestaurantID)
-");
+)");
 
 # Restaurant: (RestaurantID, Name, Type, URL, …)
 # This relation contains general information about a restaurant and is useful in the case where a
@@ -105,7 +105,7 @@ RestaurantID varchar(255) PRIMARY KEY,
 Name varchar(255),
 Type varchar(255).
 URL varchar
-");
+)");
 
 # Location: (LocationID, first‐open‐date, manager‐name, phone‐number, street‐address,
 # hour‐open, hour‐close , …, RestaurantID)
@@ -124,7 +124,7 @@ hour-open TIME,
 hour-close TIME,
 RestaurantID varchar(255),
 FOREIGN KEY (RestaurantID)
-");
+)");
 
 # MenuItem(ItemID, name, type, category, description, price, …, RestaurantID)_
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
@@ -140,7 +140,7 @@ description text,
 price decimal(12,2),
 RestaurantID varchar(255),
 FOREIGN KEY (RestaurantID)
-");
+)");
 
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
 # A rater may explicitly select the menu item, and add a specific rating between 1 (low) to 5 (high)
@@ -154,7 +154,7 @@ ItemID varchar(255),
 rating int CHECK (rating >= 1 AND rating =< 5), 
 comment text,
 PRIMARY KEY (UserID, Date, ItemID)
-");
+)");
 
 #==================== / CREATE TABLES =====================
 
