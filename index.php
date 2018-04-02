@@ -33,7 +33,7 @@ if (!pg_num_rows($result)) {
 
 #==================== TEST QUERIES AND RETRIEVAL =========
 $test = pg_query($conn, "CREATE TABLE IF NOT EXISTS food (name varchar(255))");
-$test2 = pg_query($conn, "INSERT INTO IF NOT EXISTS food (name) VALUES ('pizza')");
+$test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
 
 $result = pg_query($conn, "SELECT name FROM food");
 if (!$result) {
@@ -67,7 +67,6 @@ joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1
 )");
-
 print "<pre>\n";
 if (!$raterTable) {
   echo "Creating raterTable is not working. \n";
@@ -96,6 +95,15 @@ CHECK (Date, Price, Food, Mood, Staff >= 1 AND Date, Price, Food, Mood, Staff =<
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID, RestaurantID)
 )");
+print "<pre>\n";
+if (!$ratingTable) {
+  echo "Creating ratingTable is not working. \n";
+  exit;
+}
+else{
+  echo 'Rating Table exists';
+}
+
 
 # Restaurant: (RestaurantID, Name, Type, URL, …)
 # This relation contains general information about a restaurant and is useful in the case where a
@@ -109,6 +117,14 @@ Name varchar(255),
 Type varchar(255).
 URL varchar
 )");
+print "<pre>\n";
+if (!$restaurantTable) {
+  echo "Creating restaurantTable is not working. \n";
+  exit;
+}
+else{
+  echo 'Restaurant Table exists';
+}
 
 # Location: (LocationID, first‐open‐date, manager‐name, phone‐number, street‐address,
 # hour‐open, hour‐close , …, RestaurantID)
@@ -128,6 +144,14 @@ hour-close TIME,
 RestaurantID varchar(255),
 FOREIGN KEY (RestaurantID)
 )");
+print "<pre>\n";
+if (!$locationTable) {
+  echo "Creating locationTable is not working. \n";
+  exit;
+}
+else{
+  echo 'Location Table exists';
+}
 
 # MenuItem(ItemID, name, type, category, description, price, …, RestaurantID)_
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
@@ -144,6 +168,14 @@ price decimal(12,2),
 RestaurantID varchar(255),
 FOREIGN KEY (RestaurantID)
 )");
+print "<pre>\n";
+if (!$menuItemTable) {
+  echo "Creating menuItemTable is not working. \n";
+  exit;
+}
+else{
+  echo 'MenuItem Table exists';
+}
 
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
 # A rater may explicitly select the menu item, and add a specific rating between 1 (low) to 5 (high)
@@ -151,19 +183,27 @@ FOREIGN KEY (RestaurantID)
 
 $ratingItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS RatingItem (
-UserID NOT NULL varchar(255),
-Date NOT NULL DATE,
+UserID varchar(255) NOT NULL,
+Date DATE NOT NULL,
 ItemID varchar(255),
 rating int CHECK (rating >= 1 AND rating =< 5), 
 comment text,
 PRIMARY KEY (UserID, Date, ItemID)
 )");
+print "<pre>\n";
+if (!$ratingItemTable) {
+  echo "Creating ratingItemTable is not working. \n";
+  exit;
+}
+else{
+  echo 'RatingItem Table exists';
+}
 
 #==================== / CREATE TABLES =====================
 
 #==================== INSERT INTO TABLES =====================
 
-if (($handle = fopen("/Rater.csv", "r")) !== FALSE) {
+if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
     $sql = pg_query("INSERT INTO Rater (UserID, email, name, join-date, type, reputation) VALUES
                 (
