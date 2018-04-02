@@ -68,6 +68,12 @@ type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation >= 1 AND reputation =< 5) DEFAULT 1
 ");
 
+print "<pre>\n";
+if (!$raterTable) {
+  echo "Creating raterTable is not working. \n";
+  exit;
+}
+
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
 # comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
@@ -181,7 +187,11 @@ if (($handle = fopen("/Rater.csv", "r")) !== FALSE) {
 
 # Testing insertion of values from csv file
 $result = pg_query($conn, "SELECT * FROM Rater");
-
+print "<pre>\n";
+if (!$result) {
+  echo "It's not working! \n";
+  exit;
+}
 
 $arr = pg_fetch_all($result);
 print_r($arr);
