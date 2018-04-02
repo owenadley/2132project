@@ -182,11 +182,7 @@ if (($handle = fopen("/Rater.csv", "r")) !== FALSE) {
 # Testing insertion of values from csv file
 $result = pg_query($conn, "SELECT * FROM Rater");
 
-print "<pre>\n";
-if (!$result) {
-  echo "It's not working \n";
-  exit;
-}
+
 $arr = pg_fetch_all($result);
 print_r($arr);
 
