@@ -85,13 +85,12 @@ $ratingTable = pg_query($conn,
 "CREATE TABLE IF NOT EXISTS Rating (
 UserID varchar(255) NOT NULL,
 Date DATE NOT NULL,
-Price int,
-Food int,
-Mood int,
-Staff int,
+Price int CHECK (Price BETWEEN 1 AND 5),
+Food int CHECK (Food BETWEEN 1 AND 5),
+Mood int CHECK (Mood BETWEEN 1 AND 5),
+Staff int CHECK (Staff BETWEEN 1 AND 5),
 Comments text,
 RestaurantID varchar(255),
-CHECK (Price, Food, Mood, Staff BETWEEN 1 AND 5),
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID, RestaurantID)
 )");
