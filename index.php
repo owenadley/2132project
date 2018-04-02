@@ -60,7 +60,7 @@ if ($row = pg_fetch_row($result)) {
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE Rater (
-UserID NOT NULL PRIMARY KEY varchar(255),
+UserID NOTNULL PRIMARY KEY varchar(255),
 email varchar(255),
 name varchar(255),
 join-date DATE,
