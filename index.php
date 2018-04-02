@@ -63,7 +63,7 @@ $raterTable = pg_query($conn,
 UserID NOTNULL PRIMARY KEY varchar(255),
 email varchar(255),
 name varchar(255),
-join-date DATE,
+joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation >= 1 AND reputation =< 5) DEFAULT 1
 ");
