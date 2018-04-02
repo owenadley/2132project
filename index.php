@@ -91,7 +91,7 @@ Mood int,
 Staff int,
 Comments text,
 RestaurantID varchar(255),
-CHECK (Price, Food, Mood, Staff BETWEEN 1 AND 5).
+CHECK (Price, Food, Mood, Staff BETWEEN 1 AND 5),
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID, RestaurantID)
 )");
