@@ -184,7 +184,7 @@ $result = pg_query($conn, "SELECT * FROM Rater");
 
 print "<pre>\n";
 if (!$result) {
-  echo "An error occurred.\n";
+  echo "It's not working \n";
   exit;
 }
 $arr = pg_fetch_all($result);
