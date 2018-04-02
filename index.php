@@ -32,8 +32,8 @@ if (!pg_num_rows($result)) {
 
 
 #==================== TEST QUERIES AND RETRIEVAL =========
-$test = pg_query($conn, "CREATE TABLE food (name varchar(255))");
-$test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
+$test = pg_query($conn, "CREATE TABLE IF NOT EXISTS food (name varchar(255))");
+$test2 = pg_query($conn, "INSERT INTO IF NOT EXISTS food (name) VALUES ('pizza')");
 
 $result = pg_query($conn, "SELECT name FROM food");
 if (!$result) {
@@ -59,7 +59,7 @@ if ($row = pg_fetch_row($result)) {
 # who found this rater’s opinion helpful, and the default value is 1 (lowest).
 
 $raterTable = pg_query($conn, 
-"CREATE TABLE Rater (
+"CREATE TABLE IF NOT EXISTS Rater (
 UserID varchar(255) NOT NULL PRIMARY KEY,
 email varchar(255),
 name varchar(255),
@@ -73,6 +73,9 @@ if (!$raterTable) {
   echo "Creating raterTable is not working. \n";
   exit;
 }
+else{
+  echo 'Rater Table exists';
+}
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
@@ -80,7 +83,7 @@ if (!$raterTable) {
 # that UserID and RestaurantID are foreign keys.
 
 $ratingTable = pg_query($conn, 
-"CREATE TABLE Rating (
+"CREATE TABLE IF NOT EXISTS Rating (
 UserID varchar(255) NOT NULL,
 Date DATE NOT NULL,
 Price int,  
@@ -100,7 +103,7 @@ FOREIGN KEY (UserID, RestaurantID)
 # Italian, Indian, Middle Eastern, and so on.
 
 $restaurantTable = pg_query($conn, 
-"CREATE TABLE Restaurant (
+"CREATE TABLE IF NOT EXISTS Restaurant (
 RestaurantID varchar(255) PRIMARY KEY,
 Name varchar(255),
 Type varchar(255).
@@ -114,7 +117,7 @@ URL varchar
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
 
 $locationTable = pg_query($conn, 
-"CREATE TABLE Location (
+"CREATE TABLE IF NOT EXISTS Location (
 LocationID varchar(255) PRIMARY KEY,
 first-open-date DATE, 
 manager-name varchar(255),
@@ -131,7 +134,7 @@ FOREIGN KEY (RestaurantID)
 # type (food or beverage). RestaurantID is the foreign key.
 
 $menuItemTable = pg_query($conn, 
-"CREATE TABLE MenuItem (
+"CREATE TABLE IF NOT EXISTS MenuItem (
 ItemID varchar(255) PRIMARY KEY,
 name varchar(255),
 type varchar(8) CHECK (type IN ('starter', 'menu', 'desert')),
@@ -147,7 +150,7 @@ FOREIGN KEY (RestaurantID)
 # and a free text comment. All menu items should be selected from a list.
 
 $ratingItemTable = pg_query($conn, 
-"CREATE TABLE RatingItem (
+"CREATE TABLE IF NOT EXISTS RatingItem (
 UserID NOT NULL varchar(255),
 Date NOT NULL DATE,
 ItemID varchar(255),
