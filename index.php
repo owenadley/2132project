@@ -152,31 +152,46 @@ PRIMARY KEY (UserID, Date, ItemID)
 
 #==================== / CREATE TABLES =====================
 
-$insertRaterTable = pg_query($conn, 
-"COPY Rater(UserID,email,name,join-date,type,reputation)
-FROM '/Rater.txt' DELIMITER ',' CSV HEADER
-");
+#==================== INSERT INTO TABLES =====================
 
-$insertValueRaterTable = pg_query($conn, 
-"INSERT INTO Rater(UserID,email,name,join-date,type,reputation)
-VALUES (JD!,jd@email.com,Jane Doe,3/30/2018,blog)
-");
+if (($handle = fopen("/Rater.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO Rater (UserID, email, name, join-date, type, reputation) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."'
+                )
+            ");
+        }
+    }
+  fclose($handle);
+
+#$insertRaterTable = pg_query($conn, 
+#"\copy Rater(UserID,email,name,join-date,type,reputation)
+#FROM '/Rater.csv' DELIMITER ',' CSV HEADER");
+
+#$insertValueRaterTable = pg_query($conn, 
+#"INSERT INTO Rater(UserID,email,name,join-date,type,reputation)
+#VALUES (JD!,jd@email.com,Jane Doe,3/30/2018,blog)
+#");
 
 # Testing insertion of values from csv file
 $print = pg_query($conn, "SELECT UserID FROM Rater");
+
 print "<pre>\n";
 if (!$print) {
   echo "An error occurred.\n";
   exit;
 }
+$arr = pg_fetch_all($print);
+print_r($arr);
 
-if ($row = pg_fetch_row($print)) {
-  echo "UserID: $row[0]";
-  echo "<br />\n";
-} else {
-  echo 'No records in food';
-}
 
+#==================== / INSERT INTO TABLES =====================
 
 
 ?>
