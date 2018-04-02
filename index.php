@@ -180,14 +180,14 @@ if (($handle = fopen("/Rater.csv", "r")) !== FALSE) {
 #");
 
 # Testing insertion of values from csv file
-$print = pg_query($conn, "SELECT UserID FROM Rater");
+$result = pg_query($conn, "SELECT * FROM Rater");
 
 print "<pre>\n";
-if (!$print) {
+if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-$arr = pg_fetch_all($print);
+$arr = pg_fetch_all($result);
 print_r($arr);
 
 
