@@ -92,7 +92,8 @@ Staff int CHECK (Staff BETWEEN 1 AND 5),
 Comments varchar(255),
 RestaurantID varchar(255),
 PRIMARY KEY (UserID, Date), 
-FOREIGN KEY (UserID) references Rater
+FOREIGN KEY (UserID) references Rater, 
+FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
 if (!$ratingTable) {
@@ -113,8 +114,8 @@ $restaurantTable = pg_query($conn,
 "CREATE TABLE IF NOT EXISTS Restaurant (
 RestaurantID varchar(255) PRIMARY KEY,
 Name varchar(255),
-Type varchar(255).
-URL varchar
+Type varchar(255),
+URL varchar(255)
 )");
 print "<pre>\n";
 if (!$restaurantTable) {
@@ -141,7 +142,7 @@ street-address varchar(255),
 hour-open TIME, 
 hour-close TIME,
 RestaurantID varchar(255),
-FOREIGN KEY (RestaurantID)
+FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
 if (!$locationTable) {
@@ -165,7 +166,7 @@ category varchar(7) CHECK (category IN ('food', 'beverage')),
 description text,
 price decimal(12,2),
 RestaurantID varchar(255),
-FOREIGN KEY (RestaurantID)
+FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
 if (!$menuItemTable) {
