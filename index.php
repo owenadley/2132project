@@ -135,12 +135,12 @@ else{
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
 LocationID varchar(255) PRIMARY KEY,
-first-open-date DATE, 
-manager-name varchar(255),
-phone-number varchar(15),
-street-address varchar(255),
-hour-open TIME, 
-hour-close TIME,
+firstOpenDdate DATE, 
+managerName varchar(255),
+phoneNumber varchar(15),
+streetAddress varchar(255),
+hourOpen TIME, 
+hourClose TIME,
 RestaurantID varchar(255),
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
