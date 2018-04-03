@@ -203,6 +203,7 @@ else{
 
 #==================== INSERT INTO TABLES =====================
 
+#Rater 
 if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
     $sql = pg_query("INSERT INTO Rater (UserID, email, name, joindate, type, reputation) VALUES
@@ -218,6 +219,26 @@ if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
         }
     }
   fclose($handle);
+
+
+#Restaurants
+if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO Restaurant (RestaurantID, Name, Type, URL) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."'
+                )
+            ");
+        }
+    }
+  fclose($handle);
+
+
 
 #$insertRaterTable = pg_query($conn, 
 #"\copy Rater(UserID,email,name,join-date,type,reputation)
@@ -241,6 +262,31 @@ print_r($arr);
 
 
 #==================== / INSERT INTO TABLES =====================
+
+
+
+#==================== / QUERIES =====================
+
+#Resturaunts and Menus
+#Display all the information about a user‐specified restaurant. That is, the user should select the
+#name of the restaurant from a list, and the information as contained in the restaurant and
+#location tables should then displayed on the screen.
+
+#user defined restraunt chosen from UI
+$resturauntselect = "Wendys";
+
+$result = pg_query($conn, "SELECT * FROM restaurant WHERE name = '.$resturauntselect.'");
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt:";
+  echo "$row[0]";
+  echo "<br />\n";
+} else {
+  echo 'No records in food';
+}
 
 
 ?>
