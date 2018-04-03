@@ -291,7 +291,7 @@ if ($row = pg_fetch_row($test4)) {
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
 
-$result = pg_query($conn, "SELECT * FROM restaurant WHERE name = '.$resturauntselect.'");
+$result = pg_query($conn, "SELECT * FROM restaurant WHERE name = $resturauntselect");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
