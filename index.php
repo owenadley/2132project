@@ -272,6 +272,9 @@ print_r($arr);
 #name of the restaurant from a list, and the information as contained in the restaurant and
 #location tables should then displayed on the screen.
 
+
+$test3 = pg_query($conn, "INSERT INTO restaurant (id, name, type, URL) VALUES ('1, Wendys, American, www.wendys.com')");
+
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
 
