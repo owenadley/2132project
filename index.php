@@ -339,6 +339,30 @@ if ($row = pg_fetch_row($result)) {
   echo 'No records in menu items';
 }
 
+
+#For each user‐specified category of restaurant, list the manager names together with the date
+#that the locations have opened. The user should be able to select the category (e.g. Italian or
+#Thai) from a list.
+
+$categoryselect = "American";
+
+$result = pg_query($conn, "SELECT L.managerName, L.firstOpenDdate FROM Location L, Restaurant R WHERE R.type = '$categoryselect' AND L.restaurantID = R.RestaurantID");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt: \n";
+  
+  echo "Manager: $row[0] \n";
+  echo "Open Date: $row[1] \n";
+ 
+  
+  echo "<br />\n";
+} else {
+  echo 'No records in menu items';
+}
 ?>
 </body>
 </html>
