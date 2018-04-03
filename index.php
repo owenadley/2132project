@@ -374,7 +374,7 @@ $result = pg_query($conn,
 "SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
 FROM Restaurant R, Location L, MenuItem M 
 WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND M.RestaurantID = R.RestaurantID
-GROUP BY R.URL");
+GROUP BY R.URL, L.ManagerName, M.name");
 
 if (!$result) {
   echo "An error occurred.\n";
