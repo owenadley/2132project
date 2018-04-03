@@ -1,4 +1,4 @@
-﻿UserID,email,name,join-date,type,reputation
+UserID,email,name,joindate,type,reputation
 JD!,jd@email.com,Jane Doe,3/30/2018,blog,
 js,js@email.com,John Smith,3/30/2018,online,2
 jdoedoe,jdoe@email.com,John Doe,3/30/2018,food critic,3

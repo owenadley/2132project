@@ -205,7 +205,7 @@ else{
 
 if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    $sql = pg_query("INSERT INTO Rater (UserID, email, name, join-date, type, reputation) VALUES
+    $sql = pg_query("INSERT INTO Rater (UserID, email, name, joindate, type, reputation) VALUES
                 (
                     '".addslashes($data[0])."',
                     '".addslashes($data[1])."',
