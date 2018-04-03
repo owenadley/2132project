@@ -272,16 +272,13 @@ print_r($arr);
 #name of the restaurant from a list, and the information as contained in the restaurant and
 #location tables should then displayed on the screen.
 
-
+#Some test entries used for queries
 $test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
-$test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'test', 'test', 'test', '3:40', '3:40', '1')");
-
+$test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
 
 
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
-
-$result1 = pg_query($conn, "SELECT * FROM Location L");
 
 $result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
 
@@ -291,26 +288,24 @@ if (!$result) {
 }
 if ($row = pg_fetch_row($result)) {
   echo "resturaunt:";
-  echo "$row[0]";
-  echo "$row[1]";
-  echo "$row[2]";
-  echo "$row[3]";
-  echo "$row[4]";
-  echo "$row[5]";  
+  
+  echo "Restaurant Id: $row[0]";
+  echo "Name: $row[1]";
+  echo "Type: $row[2]";
+  echo "URL: $row[3]";
+  echo "Location ID: $row[4]";
+  echo "Open Date: $row[5]";  
+  echo "Manager Name: $row[6]";  
+  echo "Phone Number: $row[7]";  
+  echo "Street Address: $row[5]";  
+  echo "Opens: $row[6]";  
+  echo "Closes: $row[7]";  
+  
   echo "<br />\n";
 } else {
   echo 'No records in resturaunts';
 }
-if ($row = pg_fetch_row($result1)) {
-  echo "resturaunt:";
-  echo "$row[0]";
-  echo "$row[1]";
-  echo "$row[2]";
-  echo "$row[3]";
-  echo "<br />\n";
-} else {
-  echo 'No records in location';
-}
+
 
 ?>
 </body>
