@@ -285,7 +285,7 @@ if ($row = pg_fetch_row($result)) {
   echo "$row[0]";
   echo "<br />\n";
 } else {
-  echo 'No records in food';
+  echo 'No records in resturaunts';
 }
 
 
