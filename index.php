@@ -92,7 +92,7 @@ Staff int CHECK (Staff BETWEEN 1 AND 5),
 Comments varchar(255),
 RestaurantID varchar(255),
 PRIMARY KEY (UserID, Date), 
-FOREIGN KEY (UserID, RestaurantID)
+FOREIGN KEY (UserID) references Rater
 )");
 print "<pre>\n";
 if (!$ratingTable) {
