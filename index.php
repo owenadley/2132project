@@ -274,24 +274,13 @@ print_r($arr);
 
 
 $test3 = pg_query($conn, "INSERT INTO restaurant (name, type, URL) VALUES ('Wendys', 'American', 'www.wendys.com')");
-$test4 = pg_query($conn, "SELECT * FROM restaurant");
-
-if ($row = pg_fetch_row($test4)) {
-  echo "resturaunt:";
-  echo "$row[0]";
-  echo "$row[1]";
-  echo "$row[2]";
-  echo "$row[3]";
-  echo "<br />\n";
-} else {
-  echo 'No records in resturaunts';
-}
 
 
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
 
-$result = pg_query($conn, "SELECT * FROM restaurant WHERE name = '$resturauntselect'");
+$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
+
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -299,6 +288,9 @@ if (!$result) {
 if ($row = pg_fetch_row($result)) {
   echo "resturaunt:";
   echo "$row[0]";
+  echo "$row[1]";
+  echo "$row[2]";
+  echo "$row[3]";
   echo "<br />\n";
 } else {
   echo 'No records in resturaunts';
