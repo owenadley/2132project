@@ -394,6 +394,29 @@ if ($row = pg_fetch_row($result)) {
 }
 
 
+#For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
+#or desert), list the average prices of menu items for each category.
+$typeSelect = "American";
+$categorySelect = "main";
+
+$result = pg_query($conn, 
+"SELECT AVG(M.Price) 
+FROM MenuItem M, Restaurant R
+WHERE R.type = '$typeSelect' AND M.Category = '$categorySelect'");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt: \n";
+  
+  echo "Average Price: $row[0] \n";
+
+  echo "<br />\n";
+} else {
+  echo 'No records in menu items';
+}
 
 ?>
 </body>
