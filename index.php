@@ -268,14 +268,16 @@ print_r($arr);
 #==================== / QUERIES =====================
 
 #Resturaunts and Menus
-#Display all the information about a user‐specified restaurant. That is, the user should select the
-#name of the restaurant from a list, and the information as contained in the restaurant and
-#location tables should then displayed on the screen.
 
 #Some test entries used for queries
 $test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
 $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
+$test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
 
+
+#Display all the information about a user‐specified restaurant. That is, the user should select the
+#name of the restaurant from a list, and the information as contained in the restaurant and
+#location tables should then displayed on the screen.
 
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
@@ -287,25 +289,58 @@ if (!$result) {
   exit;
 }
 if ($row = pg_fetch_row($result)) {
-  echo "resturaunt:";
+  echo "resturaunt: \n";
   
-  echo "Restaurant Id: $row[0]";
-  echo "Name: $row[1]";
-  echo "Type: $row[2]";
-  echo "URL: $row[3]";
-  echo "Location ID: $row[4]";
-  echo "Open Date: $row[5]";  
-  echo "Manager Name: $row[6]";  
-  echo "Phone Number: $row[7]";  
-  echo "Street Address: $row[5]";  
-  echo "Opens: $row[6]";  
-  echo "Closes: $row[7]";  
+  echo "Restaurant Id: $row[0] \n";
+  echo "Name: $row[1] \n";
+  echo "Type: $row[2] \n";
+  echo "URL: $row[3] \n";
+  echo "Location ID: $row[4] \n";
+  echo "Open Date: $row[5] \n";  
+  echo "Manager Name: $row[6] \n";  
+  echo "Phone Number: $row[7] \n";  
+  echo "Street Address: $row[5] \n";  
+  echo "Opens: $row[6] \n";  
+  echo "Closes: $row[7] \n";  
   
   echo "<br />\n";
 } else {
   echo 'No records in resturaunts';
 }
 
+
+#Display the full menu of a specific restaurant. That is, the user should select the name of the
+#restaurant from a list, and all menu items, together with their prices, should be displayed on the
+#screen. The menu should be displayed based on menu item categories.
+
+#user defined restraunt chosen from UI
+$resturauntselect = "Wendys";
+
+$result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt: \n";
+  
+  echo "Restaurant Id: $row[0] \n";
+  echo "Name: $row[1] \n";
+  echo "Type: $row[2] \n";
+  echo "URL: $row[3] \n";
+  echo "Location ID: $row[4] \n";
+  echo "Open Date: $row[5] \n";  
+  echo "Manager Name: $row[6] \n";  
+  echo "Phone Number: $row[7] \n";  
+  echo "Street Address: $row[5] \n";  
+  echo "Opens: $row[6] \n";  
+  echo "Closes: $row[7] \n";  
+  
+  echo "<br />\n";
+} else {
+  echo 'No records in menu items';
+}
 
 ?>
 </body>
