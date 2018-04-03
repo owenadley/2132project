@@ -186,7 +186,7 @@ $ratingItemTable = pg_query($conn,
 UserID varchar(255) NOT NULL,
 Date DATE NOT NULL,
 ItemID varchar(255),
-rating int CHECK (rating >= 1 AND rating =< 5), 
+rating int CHECK (rating BETWEEN 1 AND 5), 
 comment text,
 PRIMARY KEY (UserID, Date, ItemID)
 )");
