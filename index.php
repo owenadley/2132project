@@ -273,7 +273,7 @@ print_r($arr);
 #location tables should then displayed on the screen.
 
 
-$test3 = pg_query($conn, "INSERT INTO restaurant (name, type, URL) VALUES ('Wendys', 'American', 'www.wendys.com')");
+$test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', Wendys', 'American', 'www.wendys.com')");
 $test4 = pg_query($conn, "INSERT INTO Location (firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose) VALUES ('2001-04-25', 'test', 'test', 'test', '3:40', '3:40')");
 
 
@@ -283,7 +283,7 @@ $resturauntselect = "Wendys";
 
 $result1 = pg_query($conn, "SELECT * FROM Location L");
 
-$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.RestaurantID = L.RestaurantID AND R.name = '$resturauntselect'");
+$result = pg_query($conn, "SELECT * FROM restaurant R WHERE R.name = '$resturauntselect'");
 
 if (!$result) {
   echo "An error occurred.\n";
