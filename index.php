@@ -279,6 +279,9 @@ $test4 = pg_query($conn, "SELECT * FROM restaurant");
 if ($row = pg_fetch_row($test4)) {
   echo "resturaunt:";
   echo "$row[0]";
+  echo "$row[1]";
+  echo "$row[2]";
+  echo "$row[3]";
   echo "<br />\n";
 } else {
   echo 'No records in resturaunts';
