@@ -283,7 +283,7 @@ $resturauntselect = "Wendys";
 
 $result1 = pg_query($conn, "SELECT * FROM Location L");
 
-$result = pg_query($conn, "SELECT * FROM restaurant R WHERE R.name = '$resturauntselect'");
+$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
 
 if (!$result) {
   echo "An error occurred.\n";
