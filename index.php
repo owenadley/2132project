@@ -273,8 +273,8 @@ print_r($arr);
 #location tables should then displayed on the screen.
 
 
-$test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', Wendys', 'American', 'www.wendys.com')");
-$test4 = pg_query($conn, "INSERT INTO Location (firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose) VALUES ('2001-04-25', 'test', 'test', 'test', '3:40', '3:40')");
+$test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
+$test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', 2001-04-25', 'test', 'test', 'test', '3:40', '3:40', '1')");
 
 
 
@@ -307,7 +307,7 @@ if ($row = pg_fetch_row($result1)) {
   echo "$row[3]";
   echo "<br />\n";
 } else {
-  echo 'No records in resturaunts';
+  echo 'No records in location';
 }
 
 ?>
