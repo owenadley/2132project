@@ -299,9 +299,9 @@ if ($row = pg_fetch_row($result)) {
   echo "Open Date: $row[5] \n";  
   echo "Manager Name: $row[6] \n";  
   echo "Phone Number: $row[7] \n";  
-  echo "Street Address: $row[5] \n";  
-  echo "Opens: $row[6] \n";  
-  echo "Closes: $row[7] \n";  
+  echo "Street Address: $row[8] \n";  
+  echo "Opens: $row[9] \n";  
+  echo "Closes: $row[10] \n";  
   
   echo "<br />\n";
 } else {
@@ -325,17 +325,14 @@ if (!$result) {
 if ($row = pg_fetch_row($result)) {
   echo "resturaunt: \n";
   
-  echo "Restaurant Id: $row[0] \n";
+  echo "Item Id: $row[0] \n";
   echo "Name: $row[1] \n";
   echo "Type: $row[2] \n";
-  echo "URL: $row[3] \n";
-  echo "Location ID: $row[4] \n";
-  echo "Open Date: $row[5] \n";  
-  echo "Manager Name: $row[6] \n";  
-  echo "Phone Number: $row[7] \n";  
-  echo "Street Address: $row[5] \n";  
-  echo "Opens: $row[6] \n";  
-  echo "Closes: $row[7] \n";  
+  echo "Category: $row[3] \n";
+  echo "Description: $row[4] \n";
+  echo "Price: $row[5] \n";  
+  echo "Resturaunt ID: $row[6] \n";  
+ 
   
   echo "<br />\n";
 } else {
