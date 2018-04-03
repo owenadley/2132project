@@ -279,7 +279,7 @@ $test3 = pg_query($conn, "INSERT INTO restaurant (name, type, URL) VALUES ('Wend
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
 
-$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
+$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect'");
 
 if (!$result) {
   echo "An error occurred.\n";
