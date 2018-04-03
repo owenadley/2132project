@@ -273,8 +273,8 @@ print_r($arr);
 #location tables should then displayed on the screen.
 
 
-$test3 = pg_query($conn, "INSERT INTO restaurant (RestaurantID, name, type, URL) VALUES ('Wendys', 'American', 'www.wendys.com')");
-$test4 = pg_query($conn, "SELECT * FROM restraunt");
+$test3 = pg_query($conn, "INSERT INTO restaurant (name, type, URL) VALUES ('Wendys', 'American', 'www.wendys.com')");
+$test4 = pg_query($conn, "SELECT * FROM restaurant");
 
 if ($row = pg_fetch_row($test4)) {
   echo "resturaunt:";
