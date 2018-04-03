@@ -274,10 +274,14 @@ print_r($arr);
 
 
 $test3 = pg_query($conn, "INSERT INTO restaurant (name, type, URL) VALUES ('Wendys', 'American', 'www.wendys.com')");
+$test4 = pg_query($conn, "INSERT INTO Location (firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose) VALUES ('2001-04-25', 'test', 'test', 'test', '3:40', '3:40')");
+
 
 
 #user defined restraunt chosen from UI
 $resturauntselect = "Wendys";
+
+$result1 = pg_query($conn, "SELECT * FROM Location L");
 
 $result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.RestaurantID = L.RestaurantID AND R.name = '$resturauntselect'");
 
@@ -295,7 +299,16 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in resturaunts';
 }
-
+if ($row = pg_fetch_row($result1)) {
+  echo "resturaunt:";
+  echo "$row[0]";
+  echo "$row[1]";
+  echo "$row[2]";
+  echo "$row[3]";
+  echo "<br />\n";
+} else {
+  echo 'No records in resturaunts';
+}
 
 ?>
 </body>
