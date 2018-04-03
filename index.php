@@ -363,6 +363,37 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in menu items';
 }
+
+#Given a user‐specified restaurant, find the name of the most expensive menu item. List this
+#information together with the name of manager, the opening hours, and the URL of the
+#restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
+
+$resturauntselect = "Wendys";
+
+$result = pg_query($conn, 
+"SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
+FROM Restaurant R, Location L, MenuItem M 
+WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND M.RestaurantID = R.RestaurantID");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt: \n";
+  
+  echo "URL: $row[0] \n";
+  echo "Manager Name: $row[1] \n";
+  echo "Open Hour: $row[2] \n";
+  echo "Menu Item: $row[3] \n";
+  echo "Price: $row[4] \n";
+  echo "<br />\n";
+} else {
+  echo 'No records in menu items';
+}
+
+
+
 ?>
 </body>
 </html>
