@@ -89,7 +89,7 @@ Price int CHECK (Price BETWEEN 1 AND 5),
 Food int CHECK (Food BETWEEN 1 AND 5),
 Mood int CHECK (Mood BETWEEN 1 AND 5),
 Staff int CHECK (Staff BETWEEN 1 AND 5),
-Comments text,
+Comments varchar(255),
 RestaurantID varchar(255),
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID, RestaurantID)
