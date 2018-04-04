@@ -569,8 +569,9 @@ $typeSelect = "American";
 
 $result = pg_query($conn,
 "SELECT R.name, Ra.name
-FROM Restaurant R, Rater Ra
-WHERE R.type = '$typeSelect AND ");
+FROM Restaurant R, Rater Ra, Rating
+WHERE R.type = '$typeSelect AND Rating.food = (SELECT MAX (Rating.food) FROM Rating)
+GROUP BY R.name");
 
 
 
