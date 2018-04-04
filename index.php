@@ -273,7 +273,7 @@ $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, mana
 $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('1', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!')");
 
-
+  
 
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
@@ -443,8 +443,7 @@ if ($row = pg_fetch_row($result)) {
 #Ratings of Resturaunts
 #Find the total number of rating for each restaurant, for each rater. That is, the data should be
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
-$result = pg_query($conn,
-"SELECT "
+
 
 
 ?>
