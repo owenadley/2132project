@@ -448,7 +448,8 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,"SELECT name FROM restaurant");
-
+$arr = pg_fetch_all($result);
+print_r($arr);
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -457,9 +458,8 @@ if ($row = pg_fetch_row($result)) {
   echo "resturaunt: \n";
   
   echo "Restaurant Name: $row[0] \n";
-  echo "# of Ratings: $row[1] \n";
+  echo "Restaurant Name: $row[1] \n";
   
-  echo "Restaurant Name: $row[2] \n";
   echo "# of Ratings: $row[3] \n";
   
   echo "<br />\n";
