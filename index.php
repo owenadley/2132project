@@ -463,8 +463,15 @@ if ($row = pg_fetch_row($result)) {
   echo "Restaurant Name: $row[0] \n";
   echo "Restaurant Name: $row[1] \n";
   
-  echo "# of Ratings: $row[3] \n";
-  
+  echo " $row[2] \n";
+  echo " $row[3] \n";
+  echo " $row[4] \n";
+  echo " $row[5] \n";
+  echo " $row[6] \n";
+  echo " $row[7] \n";
+  echo " $row[8] \n";
+  echo " $row[9] \n";
+  echo " $row[10] \n";
   echo "<br />\n";
 } else {
   echo 'No records in menu items';
