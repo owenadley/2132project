@@ -220,7 +220,6 @@ if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
     }
   fclose($handle);
 
-
 #Restaurants
 if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -230,6 +229,44 @@ if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
                     '".addslashes($data[1])."',
                     '".addslashes($data[2])."',
                     '".addslashes($data[3])."'
+                )
+            ");
+        }
+    }
+  fclose($handle);
+
+#Location
+if (($handle = fopen("/app/Location.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO Location (LocationID, firstOpenDate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."',
+                    '".addslashes($data[6])."',
+                    '".addslashes($data[7])."'
+                )
+            ");
+        }
+    }
+  fclose($handle);
+  
+#Rating
+if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO Rating (UserID,	Date,	Price,	Food,	Mood,	Staff,	Comments, RestaurantID) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."',
+                    '".addslashes($data[6])."',
+                    '".addslashes($data[7])."'
                 )
             ");
         }
@@ -459,8 +496,8 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
-  echo " $row[count] \n";
+  echo "Restaurant: $row[name] \n";
+  echo "# Of Reviews: $row[count] \n";
 }
 
 
