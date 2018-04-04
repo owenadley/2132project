@@ -463,7 +463,7 @@ print_r($arr);
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
-  echo " $row[totalRating] \n";
+  echo " $row[count] \n";
 }
 
 
