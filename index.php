@@ -458,12 +458,34 @@ if (!$result) {
   exit;
 }
 
-$arr = pg_fetch_all($result);
-print_r($arr);
-
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
   echo " $row[count] \n";
+}
+
+
+
+# need to verify date comparison in this next query
+
+#Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
+#food.
+$userID= "js";
+
+$result = pg_query($conn,
+"SELECT R.name, R.phoneNumber, R.type
+FROM Restaurant R
+WHERE NOT EXISTS (SELECT * FROM Restaurant R, Rating Re WHERE (Ra.Date >= '01-01-2015' OR Ra.Date <= '12-31-2015'))
+");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+  echo " $row[phoneNumber] \n";
+  echo " $row[type] \n";
 }
 
 
