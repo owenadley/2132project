@@ -448,7 +448,7 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT name
+"SELECT COUNT(name)
 FROM Restaurant");
 
 if (!$result) {
