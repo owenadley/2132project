@@ -568,13 +568,27 @@ AND (SELECT * FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
 $typeSelect = "American";
 
 $result = pg_query($conn,
-"SELECT R.name, Ra.name
+"SELECT R.name, Ra.name, MAX(Ra.food)
 FROM Restaurant R, Rater Ra, Rating
 WHERE R.type = '$typeSelect' AND Rating.food = (SELECT MAX (Rating.food) FROM Rating)
 GROUP BY R.name");
 
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
 
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+  echo " $row[name] \n";
+  echo " $row[food] \n";  
+
+  
+}
+
+
+  echo " \n";
 
 ?>
 </body>
