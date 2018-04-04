@@ -448,9 +448,8 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT Re.name
-FROM Restaurant Re
-GROUP by Re.name");
+"SELECT name
+FROM Restaurant");
 
 if (!$result) {
   echo "An error occurred.\n";
