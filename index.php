@@ -447,39 +447,22 @@ if ($row = pg_fetch_row($result)) {
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
 $userID= "js";
 
-$result = pg_query($conn,"SELECT name FROM restaurant");
-
-$arr = pg_fetch_all($result);
-print_r($arr);
-
-while($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
-}
-
+$result = pg_query($conn,
+"SELECT Re.name, COUNT(R.RestaurantID)
+FROM restaurant Re, Rating R
+WHERE R.RestaurantID = Re.RestaurantID AND R.UserID = '$userID'
+GROUP By Re.name");
 
 if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "Restaurant Name: $row[0] \n";
-  echo "Restaurant Name: $row[1] \n";
-  
-  echo " $row[2] \n";
-  echo " $row[3] \n";
-  echo " $row[4] \n";
-  echo " $row[5] \n";
-  echo " $row[6] \n";
-  echo " $row[7] \n";
-  echo " $row[8] \n";
-  echo " $row[9] \n";
-  echo " $row[10] \n";
-  echo "<br />\n";
-} else {
-  echo 'No records in menu items';
+
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
 }
+
+
 
 ?>
 </body>
