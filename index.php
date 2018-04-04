@@ -566,11 +566,14 @@ AND (SELECT * FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
 #(Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 
 $typeSelect = "American";
+$userID= "js";
 
 $result = pg_query($conn,
-"SELECT R.name, Ra.name, MAX(Ra.food)
+"SELECT R.name, Ra.name, MAX(Rating.food)
 FROM Restaurant R, Rater Ra, Rating
-WHERE R.type = '$typeSelect' AND Rating.food = (SELECT MAX (Rating.food) FROM Rating)
+WHERE R.type = '$typeSelect' 
+AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
+AND Rating.userID = '$userID';
 GROUP BY R.name");
 
 
