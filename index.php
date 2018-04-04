@@ -458,6 +458,9 @@ if (!$result) {
   exit;
 }
 
+$arr = pg_fetch_all($result);
+print_r($arr);
+
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
   echo " $row[totalRating] \n";
