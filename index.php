@@ -269,9 +269,12 @@ print_r($arr);
 
 #Some test entries used for queries
 $test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
+$test6 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('2', 'Milestones', 'American', 'www.milestones.com')");
+
 $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
 $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
+$test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '2')");
 
 
 
@@ -442,11 +445,12 @@ if ($row = pg_fetch_row($result)) {
 #Ratings of Resturaunts
 #Find the total number of rating for each restaurant, for each rater. That is, the data should be
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
+$userID= "js";
 
 $result = pg_query($conn,
 "SELECT Re.name, Count(R.RestaurantID)
 FROM Rating R, Restaurant Re
-WHERE R.RestaurantID = Re.RestaurantID
+WHERE R.RestaurantID = Re.RestaurantID AND R.userID = '$userID'
 GROUP by Re.name");
 
 if (!$result) {
@@ -458,6 +462,9 @@ if ($row = pg_fetch_row($result)) {
   
   echo "Restaurant Name: $row[0] \n";
   echo "# of Ratings: $row[1] \n";
+  
+  echo "Restaurant Name: $row[2] \n";
+  echo "# of Ratings: $row[3] \n";
   
   echo "<br />\n";
 } else {
