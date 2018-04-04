@@ -573,7 +573,7 @@ $result = pg_query($conn,
 FROM Restaurant R, Rater Ra, Rating
 WHERE R.type = '$typeSelect' 
 AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
-AND Rating.userID = '$userID';
+AND Rating.userID = '$userID'
 GROUP BY R.name");
 
 
