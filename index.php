@@ -552,7 +552,7 @@ while ($row = pg_fetch_assoc($result)) {
 #than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
 #any rater of your choice.)
 
-$userIDSelect = "voldy"
+$userIDSelect = "voldy";
 
 $result = pg_query($conn, 
 "SELECT R.name, RL.firstOpenDate
