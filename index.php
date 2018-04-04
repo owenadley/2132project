@@ -447,10 +447,14 @@ if ($row = pg_fetch_row($result)) {
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
 $userID= "js";
 
-$result = pg_query($conn,"SELECT * FROM restaurant");
+$result = pg_query($conn,"SELECT name FROM restaurant");
 
 $arr = pg_fetch_all($result);
 print_r($arr);
+
+while($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+}
 
 
 if (!$result) {
