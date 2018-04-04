@@ -89,7 +89,7 @@ Price int CHECK (Price BETWEEN 1 AND 5),
 Food int CHECK (Food BETWEEN 1 AND 5),
 Mood int CHECK (Mood BETWEEN 1 AND 5),
 Staff int CHECK (Staff BETWEEN 1 AND 5),
-Comments varchar(255),
+Comments text,
 RestaurantID varchar(255) NOT NULL,
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID) references Rater, 
@@ -153,7 +153,7 @@ else{
   echo 'Location Table exists';
 }
 
-# MenuItem(ItemID, name, type, category, description, price, …, RestaurantID)_
+# MenuItem(ItemID, name, type, category, category, price, …, RestaurantID)_
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
 # type (food or beverage). RestaurantID is the foreign key.
 
@@ -273,6 +273,24 @@ if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
     }
   fclose($handle);
 
+  
+#MenuItems
+if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO MenuItem (ItemID,	name,	type,	category,	description,	price, RestaurantID) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."',
+                    '".addslashes($data[6])."'
+                )
+            ");
+        }
+    }
+  fclose($handle);
 
 
 #$insertRaterTable = pg_query($conn, 
@@ -525,6 +543,35 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[phoneNumber] \n";
   echo " $row[type] \n";
 }
+
+
+  echo " \n";
+  
+  
+#Find the names and opening dates of the restaurants that obtained Staff rating that is lower
+#than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
+#any rater of your choice.)
+
+$userIDSelect = "voldy"
+
+$result = pg_query($conn, 
+"SELECT R.name, RL.firstOpenDate
+FROM Restaurant R, LocationRL
+WHERE RL.RestaurantID = R.RestaurantID 
+AND (SELECT * FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
+
+
+#List the details of the Type Y restaurants that obtained the highest Food rating. 
+#Display the restaurant name together with the name(s) of the rater(s) who gave these ratings. 
+#(Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
+
+$typeSelect = "American";
+
+$result = pg_query($conn,
+"SELECT R.name, Ra.name
+FROM Restaurant R, Rater Ra
+WHERE R.type = '$typeSelect AND ");
+
 
 
 
