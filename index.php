@@ -448,9 +448,8 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT Re.name, Count(R.RestaurantID)
-FROM Rating R, Restaurant Re
-WHERE R.RestaurantID = Re.RestaurantID AND R.userID = '$userID'
+"SELECT Re.name
+FROM Restaurant Re
 GROUP by Re.name");
 
 if (!$result) {
