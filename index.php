@@ -448,7 +448,7 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT Re.name, COUNT(R.RestaurantID) AS totalRating
+"SELECT Re.name, COUNT(R.RestaurantID)
 FROM restaurant Re, Rating R
 WHERE R.RestaurantID = Re.RestaurantID AND R.UserID = '$userID'
 GROUP By Re.name");
