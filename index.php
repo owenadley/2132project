@@ -472,9 +472,10 @@ while ($row = pg_fetch_assoc($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT R.name, R.phoneNumber, R.type
-FROM Restaurant R
-WHERE NOT EXISTS (SELECT * FROM Restaurant R, Rating Re WHERE (Ra.Date >= '01-01-2015' OR Ra.Date <= '12-31-2015'))
+"SELECT R.name, R.type, L.phoneNumber
+FROM Restaurant R, Location L
+WHERE L.RestaurantID = R.RestaurantID 
+AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
 ");
 
 if (!$result) {
