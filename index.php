@@ -447,9 +447,7 @@ if ($row = pg_fetch_row($result)) {
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
 $userID= "js";
 
-$result = pg_query($conn,
-"SELECT COUNT(name)
-FROM Restaurant");
+$result = pg_query($conn,"SELECT name FROM restaurant");
 
 if (!$result) {
   echo "An error occurred.\n";
