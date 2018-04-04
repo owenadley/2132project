@@ -273,31 +273,6 @@ $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, mana
 $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 
-  $result = pg_query($conn, "SELECT * FROM Rating");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "Restaurant Id: $row[0] \n";
-  echo "Name: $row[1] \n";
-  echo "Type: $row[2] \n";
-  echo "URL: $row[3] \n";
-  echo "Location ID: $row[4] \n";
-  echo "Open Date: $row[5] \n";  
-  echo "Manager Name: $row[6] \n";  
-  echo "Phone Number: $row[7] \n";  
-  echo "Street Address: $row[8] \n";  
-  echo "Opens: $row[9] \n";  
-  echo "Closes: $row[10] \n";  
-  
-  echo "<br />\n";
-} else {
-  echo "No records in rating \n";
-}
 
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
@@ -468,7 +443,26 @@ if ($row = pg_fetch_row($result)) {
 #Find the total number of rating for each restaurant, for each rater. That is, the data should be
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
 
+$result = pg_query($conn,
+"SELECT Re.name, Count(R.RestaurantID)
+FROM Rating R, Restaurant Re
+WHERE R.RestaurantID = Re.RestaurantID
+GROUP by Re.name");
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+if ($row = pg_fetch_row($result)) {
+  echo "resturaunt: \n";
+  
+  echo "Restaurant Name: $row[0] \n";
+  echo "# of Ratings: $row[1] \n";
+  
+  echo "<br />\n";
+} else {
+  echo 'No records in menu items';
+}
 
 ?>
 </body>
