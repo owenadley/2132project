@@ -248,7 +248,7 @@ if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
 #");
 
 # Testing insertion of values from csv file
-$result = pg_query($conn, "SELECT * FROM Resturaunt");
+$result = pg_query($conn, "SELECT * FROM Restaurant");
 print "<pre>\n";
 if (!$result) {
   echo "It's not working! \n";
