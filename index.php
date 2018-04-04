@@ -574,7 +574,7 @@ FROM Restaurant R, Rater Ra, Rating
 WHERE R.type = '$typeSelect' 
 AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
 AND Rating.userID = '$userID'
-GROUP BY R.name");
+GROUP BY R.name, Ra.name");
 
 
 if (!$result) {
