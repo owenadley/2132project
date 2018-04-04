@@ -558,7 +558,7 @@ $result = pg_query($conn,
 "SELECT R.name, RL.firstOpenDate
 FROM Restaurant R, LocationRL
 WHERE RL.RestaurantID = R.RestaurantID 
-AND (SELECT * FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
+AND R.RestaurantID = (SELECT RestaurantID FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
 
 
 #List the details of the Type Y restaurants that obtained the highest Food rating. 
@@ -581,10 +581,12 @@ if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
+$arr = pg_fetch_all($result);
+print_r($arr);
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
-  echo " $row[name] \n";
+
   echo " $row[food] \n";  
 
   
