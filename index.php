@@ -90,7 +90,7 @@ Food int CHECK (Food BETWEEN 1 AND 5),
 Mood int CHECK (Mood BETWEEN 1 AND 5),
 Staff int CHECK (Staff BETWEEN 1 AND 5),
 Comments varchar(255),
-RestaurantID varchar(255),
+RestaurantID varchar(255) NOT NULL,
 PRIMARY KEY (UserID, Date), 
 FOREIGN KEY (UserID) references Rater, 
 FOREIGN KEY (RestaurantID) references Restaurant
@@ -112,7 +112,7 @@ else{
 
 $restaurantTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Restaurant (
-RestaurantID varchar(255) PRIMARY KEY,
+RestaurantID varchar(255) PRIMARY KEY NOT NULL,
 Name varchar(255),
 Type varchar(255),
 URL varchar(255)
@@ -134,14 +134,14 @@ else{
 
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
-LocationID varchar(255) PRIMARY KEY,
-firstOpenDdate DATE, 
+LocationID varchar(255) PRIMARY KEY NOT NULL,
+firstOpenDate DATE, 
 managerName varchar(255),
 phoneNumber varchar(15),
 streetAddress varchar(255),
 hourOpen TIME, 
 hourClose TIME,
-RestaurantID varchar(255),
+RestaurantID varchar(255) NOT NULL,
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
@@ -159,13 +159,13 @@ else{
 
 $menuItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS MenuItem (
-ItemID varchar(255) PRIMARY KEY,
+ItemID varchar(255) PRIMARY KEY NOT NULL,
 name varchar(255),
 type varchar(8) CHECK (type IN ('starter', 'menu', 'desert')),
 category varchar(7) CHECK (category IN ('food', 'beverage')),
 description text,
 price decimal(12,2),
-RestaurantID varchar(255),
+RestaurantID varchar(255) NOT NULL,
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
@@ -185,7 +185,7 @@ $ratingItemTable = pg_query($conn,
 "CREATE TABLE IF NOT EXISTS RatingItem (
 UserID varchar(255) NOT NULL,
 Date DATE NOT NULL,
-ItemID varchar(255),
+ItemID varchar(255) NOT NULL,
 rating int CHECK (rating BETWEEN 1 AND 5), 
 comment text,
 PRIMARY KEY (UserID, Date, ItemID)
@@ -229,9 +229,7 @@ if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
                     '".addslashes($data[0])."',
                     '".addslashes($data[1])."',
                     '".addslashes($data[2])."',
-                    '".addslashes($data[3])."',
-                    '".addslashes($data[4])."',
-                    '".addslashes($data[5])."'
+                    '".addslashes($data[3])."'
                 )
             ");
         }
@@ -250,7 +248,7 @@ if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
 #");
 
 # Testing insertion of values from csv file
-$result = pg_query($conn, "SELECT * FROM Rater");
+$result = pg_query($conn, "SELECT * FROM Resturaunts");
 print "<pre>\n";
 if (!$result) {
   echo "It's not working! \n";
@@ -273,6 +271,9 @@ print_r($arr);
 $test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
 $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
 $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
+$test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('1', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!')");
+
+
 
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
@@ -309,6 +310,9 @@ if ($row = pg_fetch_row($result)) {
 }
 
 
+
+
+
 #Display the full menu of a specific restaurant. That is, the user should select the name of the
 #restaurant from a list, and all menu items, together with their prices, should be displayed on the
 #screen. The menu should be displayed based on menu item categories.
@@ -340,6 +344,10 @@ if ($row = pg_fetch_row($result)) {
 }
 
 
+
+
+
+
 #For each user‐specified category of restaurant, list the manager names together with the date
 #that the locations have opened. The user should be able to select the category (e.g. Italian or
 #Thai) from a list.
@@ -363,6 +371,11 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in menu items';
 }
+
+
+
+
+
 
 #Given a user‐specified restaurant, find the name of the most expensive menu item. List this
 #information together with the name of manager, the opening hours, and the URL of the
@@ -394,6 +407,11 @@ if ($row = pg_fetch_row($result)) {
 }
 
 
+
+
+
+
+
 #For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 #or desert), list the average prices of menu items for each category.
 $typeSelect = "American";
@@ -417,6 +435,17 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in menu items';
 }
+
+
+
+
+
+#Ratings of Resturaunts
+#Find the total number of rating for each restaurant, for each rater. That is, the data should be
+#grouped by the restaurant, the specific raters and the numeric ratings they have received.
+$result = pg_query($conn,
+"SELECT "
+
 
 ?>
 </body>
