@@ -448,7 +448,7 @@ if ($row = pg_fetch_row($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT Re.name, COUNT(R.RestaurantID)
+"SELECT Re.name, COUNT(R.RestaurantID) AS totalRating
 FROM restaurant Re, Rating R
 WHERE R.RestaurantID = Re.RestaurantID AND R.UserID = '$userID'
 GROUP By Re.name");
@@ -460,6 +460,7 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
+  echo " $row[totalRating] \n";
 }
 
 
