@@ -271,7 +271,7 @@ print_r($arr);
 $test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
 $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDdate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
 $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, description, price, RestaurantID) VALUES ('1', 'Burger', 'menu', 'food', 'AAA Beef Burger', 20, '1')");
-$test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('1', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
+$test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 
   $result = pg_query($conn, "SELECT * FROM Rating");
 
@@ -296,7 +296,7 @@ if ($row = pg_fetch_row($result)) {
   
   echo "<br />\n";
 } else {
-  echo 'No records in rating';
+  echo "No records in rating \n";
 }
 
 
