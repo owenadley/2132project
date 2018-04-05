@@ -132,6 +132,9 @@ else{
 # the address, and so on. Note that RestaurantID is the foreign key. This design assumes that the
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
 
+$delTable = pg_query($conn, 
+"DROP TABLE Location");
+
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
 LocationID varchar(255) PRIMARY KEY NOT NULL,
