@@ -697,14 +697,18 @@ while ($row = pg_fetch_assoc($result)) {
 #the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
 $resturauntselect = "3 brothers";
 
-$result = pg_query($conn,
+$result1 = pg_query($conn,
 "SELECT Res.name, Ra.name AS ratername, Ra.reputation, M.name, M.price, R.comments, COUNT(*)
 FROM Rating R, Rater Ra, Restaurant Res, MenuItem M
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name, Ra.reputation, M.name, M.price, R.comments
-HAVING COUNT(*) > (SELECT AVG(avcount) FROM 
+
+ ");
+
+$result = pg_query($conn,
+" (SELECT AVG(avcount) FROM 
                     (SELECT COUNT(*) AS avcount 
                     FROM Rating R, Rater Ra, Restaurant Res 
                     WHERE R.userID = Ra.userID
@@ -713,23 +717,12 @@ HAVING COUNT(*) > (SELECT AVG(avcount) FROM
                     GROUP BY Res.name, Ra.name, Ra.reputation, M.name, M.price, R.comments
                     ) As avcounts
                   )
- ");
-
-/*$result = pg_query($conn,
-"  SELECT AVG(avcount) FROM (
-  SELECT COUNT(*) AS avcount 
-      FROM Rating R, Rater Ra, Restaurant Res 
-      WHERE R.userID = Ra.userID
-      AND Res.name = '$resturauntselect'
-      AND R.RestaurantID = Res.RestaurantID
-      GROUP BY Res.name, Ra.name
-  ) As avcounts
-  ");*/
+  ");
 
 $arr = pg_fetch_all($result);
 print_r($arr);
-#$arr = pg_fetch_all($result1);
-#print_r($arr);
+$arr = pg_fetch_all($result1);
+print_r($arr);
 if (!$result) {
   echo "An errr occurred.\n";
   exit;
