@@ -708,7 +708,7 @@ GROUP By Res.name, Ra.name
 
 $result = pg_query($conn,
 "  
-  SELECT COUNT(*) AS avcount 
+  SELECT Res.name, COUNT(*) AS avcount 
       FROM Rating R, Rater Ra, Restaurant Res 
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
