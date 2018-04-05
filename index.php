@@ -527,7 +527,7 @@ while ($row = pg_fetch_assoc($result)) {
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT R.name, R.type, L.phoneNumber
+"SELECT R.Name, R.Type, L.phoneNumber
 FROM Restaurant R, Location L
 WHERE L.RestaurantID = R.RestaurantID 
 AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
@@ -555,10 +555,11 @@ while ($row = pg_fetch_assoc($result)) {
 $userIDSelect = "voldy";
 
 $result = pg_query($conn, 
-"SELECT R.name, RL.firstOpenDate
+"SELECT R.Name, RL.firstOpenDate
 FROM Restaurant R, LocationRL
 WHERE RL.RestaurantID = R.RestaurantID 
-AND R.RestaurantID = (SELECT RestaurantID FROM Rating Ra WHERE ($userIDSelect.Staff >  .Staff ) ");
+AND R.RestaurantID = (SELECT RestaurantID FROM Rating Ra WHERE ($userIDSelect. >  *.Staff )) 
+ORDER BY RL.firstOpenDate, R.name ASC");
 
 
 #List the details of the Type Y restaurants that obtained the highest Food rating. 
@@ -569,7 +570,7 @@ $typeSelect = "American";
 $userID= "js";
 
 $result = pg_query($conn,
-"SELECT R.name, Ra.name, MAX(Rating.food)
+"SELECT R.Name As RestaurantName, Ra.name, MAX(Rating.food)
 FROM Restaurant R, Rater Ra, Rating
 WHERE R.type = '$typeSelect' 
 AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
@@ -589,8 +590,31 @@ while ($row = pg_fetch_assoc($result)) {
 
   echo " $row[food] \n";  
 
-  
 }
+
+#Provide a query to determine whether Type Y restaurants are “more popular” than other
+#restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
+#Yes, this query is open to your own interpretation!
+# Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
+  
+  
+#Raters and their ratings
+
+#Find the names, join‐date and reputations of the raters that give the highest overall rating, in
+#terms of the Food and the Mood of restaurants. Display this information together with the
+#names of the restaurant and the dates the ratings were done.
+
+$result = pg_query($conn, 
+"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
+FROM Rater Ra, Restaurant R, Rating Rat
+WHERE AVG(MAX(Rat.Food) + MAX(Rat.Mood))
+");
+
+
+
+
+
+
 
 
   echo " \n";
