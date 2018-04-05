@@ -581,7 +581,7 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
-  echo " My query: \n"
+  echo " My query: \n";
   echo " $row[name] \n";
   echo " $row[firstOpenDate] \n";
 }
