@@ -705,7 +705,7 @@ AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID");
 
 if (!$result) {
-  echo "An error occurred.\n";
+  echo "An errr occurred.\n";
   exit;
 }
 
