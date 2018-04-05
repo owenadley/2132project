@@ -574,6 +574,15 @@ WHERE $userIDSelect=Rat.UserID
         WHERE Rat.RestaurantID=Rest.RestaurantID))
 ORDER BY RL.firstOpenDate, R.name ASC");
 
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+  echo " $row[firstOpenDate] \n";
+}
+
+
+  echo " \n";
+  echo " \n";
+
 
 
 
@@ -609,16 +618,17 @@ while ($row = pg_fetch_assoc($result)) {
 #restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 #Yes, this query is open to your own interpretation!
 # Which way do you think we can do it: Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
-# " names of resturaunts of type Y who's average rating is greater than the average rating of all resturaunts of selected type Y "
+
+# names of resturaunts of type Y whos average rating is greater than the average of other types "
 $typeSelect = "American";
 
 $result = pg_query($conn,
 "SELECT R.name
-FROM Restaurant R, Rating Ra 
-WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
-AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra)
-GROUP By R.name
-");
+ FROM Restaurant R, Rating Ra
+ WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
+ AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
+ (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Resturaunt R WHERE R.type != '$typeSelect')
+ GROUP By R.name");
 
 if (!$result) {
   echo "An error occurred.\n";
@@ -627,11 +637,10 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
- 
 }
 
   echo " \n";
-    echo " \n";
+  echo " \n";
   
   
 #Raters and their ratings
@@ -641,9 +650,9 @@ while ($row = pg_fetch_assoc($result)) {
 #names of the restaurant and the dates the ratings were done.
 
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG(MAX(Rat.Food) + MAX(Rat.Mood))
+"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2)
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE Rating.userID
+WHERE Rating.userID = (SELECT Ra.userID AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2))
 ");
 
 
