@@ -613,9 +613,9 @@ while ($row = pg_fetch_assoc($result)) {
 $typeSelect = "American";
 
 $result = pg_query($conn,
-"SELECT R.name
+"SELECT R.name, AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 AS avgRating
 FROM Restaurant R, Rating Ra WHERE 
-AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 = 
+avgRating = 
 (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra
 WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.type = '$typeSelect')) ");
 
