@@ -573,7 +573,7 @@ WHERE Rat.UserID = '$userIDSelect'
       AND Rat.Staff>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID))
-ORDER BY RL.firstOpenDate, R.name ASC");
+ORDER BY RL.firstOpenDate, Rest.name ASC");
 
 if (!$result) {
   echo "An error occurred.\n";
