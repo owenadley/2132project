@@ -703,7 +703,7 @@ FROM Rating R, Rater Ra, Restaurant Res, MenuItem M
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
-GROUP By Res.name, Ra.name
+GROUP By Res.name, Ra.name, Ra.reputation, M.name, M.price, R.comments
 HAVING COUNT(*) > (SELECT AVG(avcount) FROM 
                     (SELECT COUNT(*) AS avcount 
                     FROM Rating R, Rater Ra, Restaurant Res 
