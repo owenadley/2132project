@@ -555,13 +555,7 @@ while ($row = pg_fetch_assoc($result)) {
 $userIDSelect = "voldy";
 
 $result = pg_query($conn, 
-"SELECT R.Name, RL.firstOpenDate
-FROM Restaurant R, Location RL
-WHERE Rating 
-AND R.RestaurantID = (SELECT RestaurantID FROM Rating Ra WHERE ($userIDSelect. >  *.Staff )) 
-ORDER BY RL.firstOpenDate, R.name ASC");
-
-/*SELECT Rest.Name, RL.firstOpenDate
+"SELECT Rest.Name, RL.firstOpenDate
 FROM Rating Rat
 LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
 LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
@@ -577,7 +571,8 @@ WHERE $userIDSelect=Rat.UserID
         WHERE Rat.RestaurantID=Rest.RestaurantID)
       AND Rat.Staff>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID))*/
+        WHERE Rat.RestaurantID=Rest.RestaurantID))
+ORDER BY RL.firstOpenDate, R.name ASC");
 
 
 
@@ -621,7 +616,7 @@ $result = pg_query($conn,
 "SELECT R.name
 FROM Restaurant R, Rating Ra
 WHERE 
-(SELECT AVG(RatingR) FROM (VALUES (Ra.price), (Ra.food), (Ra.mood), Ra.staff)) V(RatingR) AS avRating 
+(SELECT AVG(RatingR) FROM (VALUES (Ra.price), (Ra.food), (Ra.mood), (Ra.staff)) V(RatingR) AS avRating 
 WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.syle = '$typeSelect')) ");
 
 if (!$result) {
