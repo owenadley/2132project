@@ -698,12 +698,19 @@ while ($row = pg_fetch_assoc($result)) {
 $resturauntselect = "3 brothers";
 
 $result = pg_query($conn,
-"SELECT Res.name, Ra.name AS ratername, COUNT(*), AVG(count(*))
+"SELECT Res.name, Ra.name AS ratername, COUNT(*) 
 FROM Rating R, Rater Ra, Restaurant Res
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
-AND count > avg
+AND count > 
+  (SELECT AVG(count) FROM 
+    ( SELECT COUNT(*) AS avcount FROM Rating R, Rater Ra, Restaurant Res 
+      WHERE R.userID = Ra.userID
+      AND Res.name = '$resturauntselect'
+      AND R.RestaurantID = Res.RestaurantID
+    )
+  )
 GROUP By Res.name, Ra.name");
 
 if (!$result) {
