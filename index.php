@@ -705,12 +705,12 @@ AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name
 HAVING COUNT(*) >   
-  (SELECT AVG(count) FROM 
+  (SELECT AVG(avcount) FROM 
     ( SELECT COUNT(*) AS avcount FROM Rating R, Rater Ra, Restaurant Res 
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
-    ) As avcount
+    ) As avcounts
   ) ");
 
 if (!$result) {
