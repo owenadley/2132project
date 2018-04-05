@@ -698,7 +698,7 @@ while ($row = pg_fetch_assoc($result)) {
 $resturauntselect = "3 brothers";
 
 $result = pg_query($conn,
-"SELECT Res.name, Ra.name AS ratername, COUNT(*) 
+"SELECT Res.name, Ra.name AS ratername, COUNT(*) As count
 FROM Rating R, Rater Ra, Restaurant Res
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
