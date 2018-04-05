@@ -132,8 +132,6 @@ else{
 # the address, and so on. Note that RestaurantID is the foreign key. This design assumes that the
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
 
-$delTable = pg_query($conn, 
-"DROP TABLE Location");
 
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
@@ -562,7 +560,7 @@ $result = pg_query($conn,
 FROM Rating Rat
 LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
 LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
-WHERE $userIDSelect=Rat.UserID
+WHERE Rat.UserID = '$userIDSelect'
       AND (Rat.Price>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID)
