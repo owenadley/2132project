@@ -716,7 +716,8 @@ HAVING COUNT(*) >
 $result = pg_query($conn,
 "  
   SELECT AVG(avcount) FROM 
-    ( SELECT COUNT(*) AS avcount FROM Rating R, Rater Ra, Restaurant Res 
+    ( SELECT COUNT(*) AS avcount 
+      FROM Rating R, Rater Ra, Restaurant Res 
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
@@ -729,9 +730,10 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
+  echo " $row[avcounts] \n";
   echo " $row[ratername] \n";
   echo " $row[count] \n";
+  
 }
 
   echo " \n";
