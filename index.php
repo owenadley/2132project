@@ -695,10 +695,28 @@ while ($row = pg_fetch_assoc($result)) {
 #Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 #the most frequently. Display this information together with their comments and the names and prices of                                         
 #the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
+$resturauntselect = "3 brothers";
+
 $result = pg_query($conn,
-"SELECT R.name, Ra.comment,  ");
+"SELECT COUNT(*)
+FROM Rating R, Rater Ra, Restaurant Res
+WHERE R.userID = Ra.userID
+AND Res.name = '$resturauntselect'
+AND R.RestaurantID = Res.RestaurantID");
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
 
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[count] \n";
+
+  
+}
+
+  echo " \n";
+  echo " \n";
 
 #Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name
 #called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more 
