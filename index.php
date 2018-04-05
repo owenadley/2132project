@@ -657,14 +657,14 @@ echo " \n";
 #names of the restaurant and the dates the ratings were done.
 
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2)
+"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2))
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
       AND Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2) 
+                      WHERE ((SELECT AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2)) 
                               FROM Rating Rat 
                               LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
-                      >= AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2)))
+                      >= AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2))))
 ");
 
 if (!$result) {
