@@ -614,7 +614,8 @@ $typeSelect = "American";
 
 $result = pg_query($conn,
 "SELECT R.name, AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 AS avgrating
-FROM Restaurant R, Rating Ra WHERE 
+FROM Restaurant R, Rating Ra 
+HAVING
 avgrating = 
 (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra
 WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.type = '$typeSelect')) ");
