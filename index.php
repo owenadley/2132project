@@ -710,7 +710,7 @@ HAVING COUNT(*) > (SELECT AVG(avcount) FROM
                     WHERE R.userID = Ra.userID
                       AND Res.name = '$resturauntselect'
                       AND R.RestaurantID = Res.RestaurantID
-                    GROUP BY Res.name, Ra.name
+                    GROUP BY Res.name, Ra.name, Ra.reputation, M.name, M.price, R.comments
                     ) As avcounts
                   )
  ");
