@@ -702,7 +702,8 @@ $result = pg_query($conn,
 FROM Rating R, Rater Ra, Restaurant Res
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
-AND R.RestaurantID = Res.RestaurantID");
+AND R.RestaurantID = Res.RestaurantID
+GROUP By Res.name, Ra.name");
 
 if (!$result) {
   echo "An errr occurred.\n";
