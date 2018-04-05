@@ -697,7 +697,7 @@ while ($row = pg_fetch_assoc($result)) {
 #the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
 $resturauntselect = "3 brothers";
 
-$result1 = pg_query($conn,
+$result = pg_query($conn,
 "SELECT Res.name, Ra.name AS ratername, COUNT(*)
 FROM Rating R, Rater Ra, Restaurant Res
 WHERE R.userID = Ra.userID
