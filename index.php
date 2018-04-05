@@ -616,7 +616,7 @@ $result = pg_query($conn,
 "SELECT R.name
 FROM Restaurant R, Rating Ra
 WHERE 
-(SELECT AVG(Ra.price + Ra.food + Ra.mood) / 3 FROM Rating Ra AS AverageRating 
+(SELECT AVG(Ra.price + Ra.food + Ra.mood) / 3 FROM Rating Ra
 WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.syle = '$typeSelect')) ");
 
 if (!$result) {
