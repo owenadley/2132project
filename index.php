@@ -710,7 +710,7 @@ HAVING COUNT(*) >
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
-    ) As counts
+    ) As avcount
   ) ");
 
 if (!$result) {
