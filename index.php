@@ -704,7 +704,7 @@ WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name
-WHERE COUNT(*) > SELECT AVG(avcount) FROM (
+HAVING COUNT(*) > SELECT AVG(avcount) FROM (
                     SELECT COUNT(*) AS avcount 
                     FROM Rating R, Rater Ra, Restaurant Res 
                     WHERE R.userID = Ra.userID
