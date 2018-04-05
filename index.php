@@ -707,13 +707,14 @@ GROUP By Res.name, Ra.name
  ");
 
 $result = pg_query($conn,
-"  
-  SELECT Res.name, COUNT(*) AS avcount 
+"  SELECT AVG(avcount) FROM (
+  SELECT COUNT(*) AS avcount 
       FROM Rating R, Rater Ra, Restaurant Res 
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
       GROUP BY Res.name, Ra.name
+  ) As avcounts
   ");
 
 $arr = pg_fetch_all($result);
