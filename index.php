@@ -616,8 +616,8 @@ $result = pg_query($conn,
 "SELECT R.name
 FROM Restaurant R, Rating Ra 
 WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
+AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4
 GROUP By R.name
-HAVING (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4
 ");
 
 if (!$result) {
