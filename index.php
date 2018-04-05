@@ -713,7 +713,7 @@ $result = pg_query($conn,
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
-      GROUP BY Res.name
+      GROUP BY Res.name, Ra.name
   ");
 
 $arr = pg_fetch_all($result);
