@@ -724,6 +724,8 @@ $result = pg_query($conn,
     ) As avcounts
   ");
 
+$arr = pg_fetch_all($result);
+print_r($arr);
 if (!$result) {
   echo "An errr occurred.\n";
   exit;
