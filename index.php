@@ -704,9 +704,17 @@ WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name
+WHERE COUNT(*) >  SELECT AVG(avcount) FROM (
+                    SELECT COUNT(*) AS avcount 
+                    FROM Rating R, Rater Ra, Restaurant Res 
+                    WHERE R.userID = Ra.userID
+                      AND Res.name = '$resturauntselect'
+                      AND R.RestaurantID = Res.RestaurantID
+                    GROUP BY Res.name, Ra.name
+                  ) As avcounts
  ");
 
-$result = pg_query($conn,
+/*$result = pg_query($conn,
 "  SELECT AVG(avcount) FROM (
   SELECT COUNT(*) AS avcount 
       FROM Rating R, Rater Ra, Restaurant Res 
@@ -715,12 +723,12 @@ $result = pg_query($conn,
       AND R.RestaurantID = Res.RestaurantID
       GROUP BY Res.name, Ra.name
   ) As avcounts
-  ");
+  ");*/
 
 $arr = pg_fetch_all($result);
 print_r($arr);
-$arr = pg_fetch_all($result1);
-print_r($arr);
+#$arr = pg_fetch_all($result1);
+#print_r($arr);
 if (!$result) {
   echo "An errr occurred.\n";
   exit;
