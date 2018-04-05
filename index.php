@@ -704,14 +704,15 @@ WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name
-HAVING COUNT(*) > SELECT AVG(avcount) FROM (
-                    SELECT COUNT(*) AS avcount 
+HAVING COUNT(*) > (SELECT AVG(avcount) FROM 
+                    (SELECT COUNT(*) AS avcount 
                     FROM Rating R, Rater Ra, Restaurant Res 
                     WHERE R.userID = Ra.userID
                       AND Res.name = '$resturauntselect'
                       AND R.RestaurantID = Res.RestaurantID
                     GROUP BY Res.name, Ra.name
-                  ) As avcounts
+                    ) As avcounts
+                  )
  ");
 
 /*$result = pg_query($conn,
