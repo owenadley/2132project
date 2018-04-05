@@ -709,7 +709,7 @@ AND count >
       WHERE R.userID = Ra.userID
       AND Res.name = '$resturauntselect'
       AND R.RestaurantID = Res.RestaurantID
-    )
+    ) As counts
   )
 GROUP By Res.name, Ra.name");
 
