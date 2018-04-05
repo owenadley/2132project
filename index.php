@@ -545,6 +545,7 @@ while ($row = pg_fetch_assoc($result)) {
 
 
   echo " \n";
+  echo " \n";
   
   
 #Find the names and opening dates of the restaurants that obtained Staff rating that is lower
@@ -600,8 +601,9 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[restaurantname] \n";  
   echo " $row[max] \n";  
 }
-
-
+  echo " \n";
+  echo " \n";
+  
 #Provide a query to determine whether Type Y restaurants are “more popular” than other
 #restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 #Yes, this query is open to your own interpretation!
@@ -626,7 +628,9 @@ while ($row = pg_fetch_assoc($result)) {
  
 }
 
-
+  echo " \n";
+    echo " \n";
+  
   
 #Raters and their ratings
 
