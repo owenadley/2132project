@@ -524,7 +524,6 @@ while ($row = pg_fetch_assoc($result)) {
 
 #Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
 #food.
-$userID= "js";
 
 $result = pg_query($conn,
 "SELECT R.Name, R.Type, L.phoneNumber
@@ -556,10 +555,30 @@ $userIDSelect = "voldy";
 
 $result = pg_query($conn, 
 "SELECT R.Name, RL.firstOpenDate
-FROM Restaurant R, LocationRL
-WHERE RL.RestaurantID = R.RestaurantID 
+FROM Restaurant R, Location RL
+WHERE Rating 
 AND R.RestaurantID = (SELECT RestaurantID FROM Rating Ra WHERE ($userIDSelect. >  *.Staff )) 
 ORDER BY RL.firstOpenDate, R.name ASC");
+
+SELECT Rest.Name, RL.firstOpenDate
+FROM Rating Rat
+LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
+LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
+WHERE $userIDSelect=Rat.UserID
+      AND (Rat.Price>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID)
+      AND Rat.Mood>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID)
+      AND Rat.Food>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID)
+      AND Rat.Staff>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID))
+
+
 
 
 #List the details of the Type Y restaurants that obtained the highest Food rating. 
@@ -577,26 +596,43 @@ AND Rating.food = (SELECT MAX (Rating.food) FROM Rating)
 AND Rating.userID = '$userID'
 GROUP BY R.name, Ra.name");
 
-
 if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-$arr = pg_fetch_all($result);
-print_r($arr);
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
   echo " $row[restaurantname] \n";  
   echo " $row[max] \n";  
-
 }
+
 
 #Provide a query to determine whether Type Y restaurants are “more popular” than other
 #restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 #Yes, this query is open to your own interpretation!
-# Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
-  
+# Which way do you think we can do it: Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
+# " names of resturaunts of type Y who's average rating is greater than the average rating of all resturaunts of selected type Y "
+$typeSelect = "American";
+
+$result = pg_query($conn,
+"SELECT R.name
+FROM Restaurant R, Rating Ra
+WHERE 
+(SELECT AVG(RatingR) FROM (VALUES (Ra.price, Ra.food, Ra.mood, Ra.staff)) AS avRating 
+WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.syle = '$typeSelect')) ");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+ 
+}
+
+
   
 #Raters and their ratings
 
@@ -605,11 +641,16 @@ while ($row = pg_fetch_assoc($result)) {
 #names of the restaurant and the dates the ratings were done.
 
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
+"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG(MAX(Rat.Food) + MAX(Rat.Mood))
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE AVG(MAX(Rat.Food) + MAX(Rat.Mood))
+WHERE Rating.userID
 ");
 
+
+
+#Find the names and reputations of the raters that give the highest overall rating, in terms of the
+#Food or the Mood of restaurants. Display this information together with the names of the
+#restaurant and the dates the ratings were done.
 
 
 
