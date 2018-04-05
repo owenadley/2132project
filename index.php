@@ -574,6 +574,11 @@ WHERE $userIDSelect=Rat.UserID
         WHERE Rat.RestaurantID=Rest.RestaurantID))
 ORDER BY RL.firstOpenDate, R.name ASC");
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
   echo " $row[firstOpenDate] \n";
@@ -629,7 +634,7 @@ $result = pg_query($conn,
  AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
  (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
  GROUP By R.name");
-
+ 
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -639,8 +644,8 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
 }
 
-  echo " \n";
-  echo " \n";
+echo " \n";
+echo " \n";
   
   
 #Raters and their ratings
@@ -652,9 +657,30 @@ while ($row = pg_fetch_assoc($result)) {
 $result = pg_query($conn, 
 "SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2)
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE Rating.userID = (SELECT Ra.userID AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2))
+WHERE R.RestaurantID = Rat.restaurantID 
+      AND Ra.userID = (SELECT Rat.userID FROM Rating Rat 
+                      WHERE ((SELECT AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2) 
+                              FROM Rating Rat 
+                              LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
+                      >= AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2)))
 ");
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+  echo " $row[joindate] \n";
+  echo " $row[reputation] \n";
+  echo " $row[Name] \n";
+  echo " $row[Date] \n";
+  
+}
+
+  echo " \n";
+  echo " \n";
 
 
 #Find the names and reputations of the raters that give the highest overall rating, in terms of the
@@ -664,8 +690,25 @@ WHERE Rating.userID = (SELECT Ra.userID AVG((MAX(Rat.Food) + MAX(Rat.Mood))/2))
 
 
 
+#Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
+#the most frequently. Display this information together with their comments and the names and prices of                                         
+#the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
+$result = pg_query($conn,
+"SELECT R.name, Ra.comment,  ");
 
 
+
+#Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name
+#called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more 
+#than one rater with this name).
+
+
+
+
+#Find the names, types and emails of the raters that provide the most diverse ratings. 
+#Display this information together with the restaurants names and the ratings. 
+#For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 
+#January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
   echo " \n";
 
