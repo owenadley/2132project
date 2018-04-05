@@ -713,6 +713,16 @@ HAVING COUNT(*) >
     ) As avcounts
   ) ");
 
+$result = pg_query($conn,
+"  
+  SELECT AVG(avcount) FROM 
+    ( SELECT COUNT(*) AS avcount FROM Rating R, Rater Ra, Restaurant Res 
+      WHERE R.userID = Ra.userID
+      AND Res.name = '$resturauntselect'
+      AND R.RestaurantID = Res.RestaurantID
+    ) As avcounts
+  ");
+
 if (!$result) {
   echo "An errr occurred.\n";
   exit;
