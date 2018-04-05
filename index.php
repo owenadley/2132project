@@ -614,10 +614,9 @@ $typeSelect = "American";
 
 $result = pg_query($conn,
 "SELECT R.name
-FROM Restaurant R, Rating Ra
-WHERE 
+FROM Restaurant R, Rating Ra WHERE 
 (SELECT AVG(Ra.price + Ra.food + Ra.mood) / 3 FROM Rating Ra
-WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.style = '$typeSelect')) ");
+WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.type = '$typeSelect')) ");
 
 if (!$result) {
   echo "An error occurred.\n";
