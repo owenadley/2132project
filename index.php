@@ -587,7 +587,7 @@ print_r($arr);
 
 while ($row = pg_fetch_assoc($result)) {
   echo " $row[name] \n";
-  echo " $row[RestaurantName] \n";  
+  echo " $row[restaurantname] \n";  
   echo " $row[max] \n";  
 
 }
