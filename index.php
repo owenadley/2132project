@@ -703,6 +703,7 @@ FROM Rating R, Rater Ra, Restaurant Res, MenuItem M
 WHERE R.userID = Ra.userID
 AND Res.name = '$resturauntselect'
 AND R.RestaurantID = Res.RestaurantID
+AND M.restaurantID = Res.RestaurantID
 GROUP By Res.name, Ra.name, Ra.reputation
 
  ");
