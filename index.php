@@ -617,7 +617,7 @@ $result = pg_query($conn,
 FROM Restaurant R, Rating Ra
 WHERE 
 (SELECT AVG(Ra.price + Ra.food + Ra.mood) / 3 FROM Rating Ra
-WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.syle = '$typeSelect')) ");
+WHERE Ra.RestaurantID = (SELECT R.RestaurantID FROM Restaurant R WHERE R.style = '$typeSelect')) ");
 
 if (!$result) {
   echo "An error occurred.\n";
