@@ -109,7 +109,16 @@ if (!pg_num_rows($result)) {
 <!--        <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
           
-          
+          <?php
+          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R");
+
+          while ($row = pg_fetch_assoc($result)) {
+            echo "$row[type]";
+            echo "<div class='col-md-2' style='background-image: url(img/$row[type])'>
+                    <p>$row[type]</p>
+                  </div>";
+          }
+          ?>
           
         </div>-->
         
