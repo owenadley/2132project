@@ -561,18 +561,18 @@ FROM Rating Rat
 LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
 LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
 WHERE Rat.UserID = '$userIDSelect'
-      AND (Rat.Price>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID)
-      AND Rat.Mood>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID)
-      AND Rat.Food>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID)
-      AND Rat.Staff>( SELECT AVG(Rat.Staff)
+      AND ((Rat.Price>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID))
+      AND (Rat.Mood>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID))
+      AND (Rat.Food>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID))
+      AND (Rat.Staff>( SELECT AVG(Rat.Staff)
+        FROM Rating Rat, Restaurant Rest
+        WHERE Rat.RestaurantID=Rest.RestaurantID)))
 ORDER BY RL.firstOpenDate, Rest.name ASC");
 
 if (!$result) {
