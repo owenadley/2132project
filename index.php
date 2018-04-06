@@ -81,12 +81,12 @@ if (!pg_num_rows($result)) {
         <div class='core-home-topRated'>
           
           <div class="autoplay" id='slider'>
-              <div class='featBook'><a href='bookPage.html'><img class='bookHover' src='img/1.png'></a></div>
-              <div class='featBook'><a href='bookPage2.html'><img class='bookHover' src='img/2.png'></a></div>
-              <div class='featBook'><a href='bookPage3.html'><img class='bookHover' src='img/3.png'></a></div>
-              <div class='featBook'><a href='bookPage4.html'><img class='bookHover' src='img/4.png'></a></div>
-              <div class='featBook'><a href='bookPage5.html'><img class='bookHover' src='img/5.png'></a></div>
-              <div class='featBook'><a href='bookPage6.html'><img class='bookHover' src='img/6.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage.html'><img src='img/1.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage2.html'><img  src='img/2.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage3.html'><img src='img/3.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage4.html'><img class='bookHover' src='img/4.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage5.html'><img class='bookHover' src='img/5.png'></a></div>
+              <div class='featResturaunt'><a href='bookPage6.html'><img class='bookHover' src='img/6.png'></a></div>
           </div>
           
         </div>
@@ -101,6 +101,7 @@ if (!pg_num_rows($result)) {
 <hr>
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript" src="frontend/js.js"></script>
 
 <?php
 #=================== / FRONT END =============================
@@ -595,7 +596,7 @@ FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
-                      WHERE (Rat.Food+Rat.Mood) >= 8))
+                      WHERE (Rat.Food+Rat.Mood) >= 8)
 ");
 
 if (!$result) {
