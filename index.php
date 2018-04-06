@@ -106,7 +106,7 @@ if (!pg_num_rows($result)) {
           
         </div>
         
-<!--        <div class='core-home-types'>
+        <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
           
           <?php
@@ -120,7 +120,7 @@ if (!pg_num_rows($result)) {
           }
           ?>
           
-        </div>-->
+        </div>
         
     </div>
   </div>
