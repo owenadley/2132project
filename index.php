@@ -41,6 +41,8 @@ if (!pg_num_rows($result)) {
   
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="frontend/style.css">  
 </head>
 
@@ -73,8 +75,21 @@ if (!pg_num_rows($result)) {
       
     </div>
     <div class='col-md-9'>
-      <div class='core-panels'>
+      <div class='core-home'>
         <h2>Ottawa Resturaunts</h2>
+        
+        <div class='core-home-topRated'>
+          
+          <div class="autoplay" id='slider'>
+              <div class='featBook'><a href='bookPage.html'><img class='bookHover' src='img/1.png'></a></div>
+              <div class='featBook'><a href='bookPage2.html'><img class='bookHover' src='img/2.png'></a></div>
+              <div class='featBook'><a href='bookPage3.html'><img class='bookHover' src='img/3.png'></a></div>
+              <div class='featBook'><a href='bookPage4.html'><img class='bookHover' src='img/4.png'></a></div>
+              <div class='featBook'><a href='bookPage5.html'><img class='bookHover' src='img/5.png'></a></div>
+              <div class='featBook'><a href='bookPage6.html'><img class='bookHover' src='img/6.png'></a></div>
+          </div>
+          
+        </div>
         
     </div>
   </div>
@@ -85,6 +100,7 @@ if (!pg_num_rows($result)) {
 <p>Bottom of Page</p>
 <hr>
 
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 
 <?php
 #=================== / FRONT END =============================
@@ -579,10 +595,7 @@ FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT (Rat.Food+Rat.Mood) 
-                              FROM Rating Rat 
-                              LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
-                      >= 8))
+                      WHERE (Rat.Food+Rat.Mood) >= 8))
 ");
 
 if (!$result) {
