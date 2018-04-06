@@ -44,7 +44,7 @@ if (!pg_num_rows($result)) {
 </head>
 
 <div class='header'>
-  <h3 id='headerTitle'>2132 Databases Project</h3>
+  <h3 id='headerTitle'>2132 Foods</h3>
 </div>
 
 <div class='core-content'>
@@ -57,16 +57,16 @@ if (!pg_num_rows($result)) {
       
       <div class='sidemenu'>
         <div class='sidemenu-option'>
+          <p class='nopad sidemenu'>Home</p>
+        </div>
+        <div class='sidemenu-option'>
           <p class='nopad sidemenu'>Resturaunts Nearby</p>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenu'>My Resturaunts</p>
+          <p class='nopad sidemenu'>Browse Resturaunts</p>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenu'>Resturaunts By Style:</p>
-        </div>
-        <div class='sidemenu-option'>
-          <p class='nopad sidemenu'>Option 4</p>
+          <p class='nopad sidemenu'>Resturaunt Queries</p>
         </div>
       </div>
       
@@ -689,6 +689,7 @@ $result = pg_query($conn,
 "SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
+      AND  
       AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
                       WHERE (SELECT AVG(Rat.Food) 
                               FROM Rating Rat 
