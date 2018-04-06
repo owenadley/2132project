@@ -627,16 +627,16 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
       AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG(SELECT MAX(Rat.Food) FROM Rating Rat) 
+                      WHERE ((SELECT AVG(Rat.Food)) 
                               FROM Rating Rat 
                               LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
-                      >= AVG(SELECT MAX(Rat.Food) FROM Rating Rat)) 
+                      >= AVG(Rat.Food) 
                       OR 
                       (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG(SELECT MAX(Rat.Mood) FROM Rating Rat) 
+                      WHERE ((SELECT AVG(Rat.Mood) 
                               FROM Rating Rat 
                               LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
-                      >= AVG(SELECT MAX(Rat.Mood) FROM Rating Rat)) 
+                      >= AVG(Rat.Mood) 
 ");
 
 if (!$result) {
@@ -645,6 +645,7 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
+  echo "My query: \n";
   echo " $row[name] \n";
   echo " $row[reputation] \n";
   echo " $row[Name] \n";
