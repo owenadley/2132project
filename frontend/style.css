@@ -27,10 +27,10 @@ h3#headerTitle {
     margin-top: 5px;
     text-align: center;
     padding: 20px;
- 
     transition: .2s all;
 }
 .sidemenu-option:hover {
+    background-color: #f5f6fa;
     border-left: 3px solid #ff6348;
     cursor: pointer;
 }

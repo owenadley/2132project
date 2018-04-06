@@ -61,7 +61,7 @@ if (!pg_num_rows($result)) {
           <p class='nopad sidemenup'>Home</p>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenup'>Resturaunts Nearby</p>
+          <a href='queries.php'><p class='nopad sidemenup'>Resturaunts Nearby</p></a>
         </div>
         <div class='sidemenu-option'>
           <p class='nopad sidemenup'>Browse Resturaunts</p>
@@ -74,84 +74,7 @@ if (!pg_num_rows($result)) {
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
-        <div class='row'>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 1a</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 1b</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 1c</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 1d</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 1e</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 2f</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 2g</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 2h</p>
-            </div>
-          </div> 
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 2i</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 2j</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 3k</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 3l</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 3m</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 3n</p>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='panel'>
-              <p>Query 3o</p>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 
