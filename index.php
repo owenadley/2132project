@@ -556,7 +556,7 @@ while ($row = pg_fetch_assoc($result)) {
 $userIDSelect = "voldy";
 
 $result = pg_query($conn, 
-"SELECT Rest.Name, RL.firstOpenDate
+"SELECT Rest.Name, RL.firstOpenDate AS date
 FROM Rating Rat
 LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
 LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
@@ -655,7 +655,7 @@ echo " \n";
 #Find the names, join‐date and reputations of the raters that give the highest overall rating, in
 #terms of the Food and the Mood of restaurants. Display this information together with the
 #names of the restaurant and the dates the ratings were done.
-
+/*
 $result = pg_query($conn, 
 "SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2))
 FROM Rater Ra, Restaurant R, Rating Rat
@@ -680,7 +680,7 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[Date] \n";
   
 }
-
+*/
   echo " \n";
   echo " \n";
 
@@ -689,7 +689,38 @@ while ($row = pg_fetch_assoc($result)) {
 #Food or the Mood of restaurants. Display this information together with the names of the
 #restaurant and the dates the ratings were done.
 
+$result = pg_query($conn, 
+"SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
+FROM Rater Ra, Restaurant R, Rating Rat
+WHERE R.RestaurantID = Rat.restaurantID 
+      AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
+                      WHERE ((SELECT AVG(SELECT MAX(Rat.Food) FROM Rating Rat) 
+                              FROM Rating Rat 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
+                      >= AVG(SELECT MAX(Rat.Food) FROM Rating Rat)) 
+                      OR 
+                      (SELECT Rat.userID FROM Rating Rat 
+                      WHERE ((SELECT AVG(SELECT MAX(Rat.Mood) FROM Rating Rat) 
+                              FROM Rating Rat 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
+                      >= AVG(SELECT MAX(Rat.Mood) FROM Rating Rat)) 
+");
 
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+while ($row = pg_fetch_assoc($result)) {
+  echo " $row[name] \n";
+  echo " $row[reputation] \n";
+  echo " $row[Name] \n";
+  echo " $row[Date] \n";
+  
+}
+
+  echo " \n";
+  echo " \n";
 
 
 #Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
