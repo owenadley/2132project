@@ -655,7 +655,7 @@ echo " \n";
 #Find the names, join‐date and reputations of the raters that give the highest overall rating, in
 #terms of the Food and the Mood of restaurants. Display this information together with the
 #names of the restaurant and the dates the ratings were done.
-/*
+
 $result = pg_query($conn, 
 "SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2))
 FROM Rater Ra, Restaurant R, Rating Rat
@@ -679,7 +679,7 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[Name] \n";
   echo " $row[Date] \n";
   
-}*/
+}
 
   echo " \n";
   echo " \n";
