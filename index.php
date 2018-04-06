@@ -591,7 +591,7 @@ echo " \n";
 
 
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
+"SELECT DISTINCT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
