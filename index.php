@@ -81,12 +81,12 @@ if (!pg_num_rows($result)) {
         <div class='core-home-topRated'>
           
           <div class="autoplay" id='slider'>
-              <div class='featResturaunt'><a href='bookPage.html'><img src='img/1.png'></a></div>
-              <div class='featResturaunt'><a href='bookPage2.html'><img  src='img/2.png'></a></div>
-              <div class='featResturaunt'><a href='bookPage3.html'><img src='img/3.png'></a></div>
-              <div class='featResturaunt'><a href='bookPage4.html'><img class='bookHover' src='img/4.png'></a></div>
-              <div class='featResturaunt'><a href='bookPage5.html'><img class='bookHover' src='img/5.png'></a></div>
-              <div class='featResturaunt'><a href='bookPage6.html'><img class='bookHover' src='img/6.png'></a></div>
+              <div class='featResturaunt'><a href=''>test<img src='img/1.png'></a></div>
+              <div class='featResturaunt'><a href=''>test2<img src='img/2.png'></a></div>
+              <div class='featResturaunt'><a href=''>test3<img src='img/3.png'></a></div>
+              <div class='featResturaunt'><a href=''>test4<img src='img/4.png'></a></div>
+              <div class='featResturaunt'><a href=''>test5<img src='img/5.png'></a></div>
+              <div class='featResturaunt'><a href=''>test6<img src='img/6.png'></a></div>
           </div>
           
         </div>
