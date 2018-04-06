@@ -644,16 +644,20 @@ echo " \n";
 #Find the names, join‐date and reputations of the raters that give the highest overall rating, in
 #terms of the Food and the Mood of restaurants. Display this information together with the
 #names of the restaurant and the dates the ratings were done.
-/*
+
+#Assuming that the highest overall ratings for both means anything equal and more than 8 out of 10
+
+
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date, AVG((Rat.Food + Rat.Mood)/2)
+"SELECT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE R.RestaurantID = Rat.restaurantID 
+WHERE R.RestaurantID = Rat.restaurantID
+      AND Ra.userID = Rat.userID
       AND Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG((((SELECT Rat.Food FROM Rating Rat)+(SELECT Rat.Mood FROM Rating Rat))/2))) 
+                      WHERE ((SELECT (Rat.Food+Rat.Mood)) 
                               FROM Rating Rat 
                               LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
-                      >= AVG((Rat.Food + Rat.Mood)/2))
+                      >= 8)
 ");
 
 if (!$result) {
@@ -662,6 +666,7 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
+  echo "My query \n";
   echo " $row[name] \n";
   echo " $row[joindate] \n";
   echo " $row[reputation] \n";
@@ -669,7 +674,7 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[Date] \n";
   
 }
-*/
+
   echo " \n";
   echo " \n";
 
@@ -677,6 +682,8 @@ while ($row = pg_fetch_assoc($result)) {
 #Find the names and reputations of the raters that give the highest overall rating, in terms of the
 #Food or the Mood of restaurants. Display this information together with the names of the
 #restaurant and the dates the ratings were done.
+
+#Assuming that the highest overall ratings for each means anything equal and more than 4 out of 5
 
 $result = pg_query($conn, 
 "SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
