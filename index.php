@@ -74,27 +74,32 @@ if (!pg_num_rows($result)) {
     <div class='col-md-12'>
       <div class='core-panels'>
         <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 4</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
+            <div class='panel'>
+              <p>Query 4</p>
+            </div>
+          </div> 
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 4</p>
             </div>
