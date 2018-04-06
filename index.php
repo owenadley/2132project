@@ -16,7 +16,7 @@ if (!$conn) {
   echo "An error occurred.\n";
   exit;
 } else {
-    echo 'Connected';
+    #echo 'Connected';
 }
 
 # Testing connection
@@ -33,30 +33,6 @@ if (!pg_num_rows($result)) {
 
 
 
-#==================== TEST QUERIES AND RETRIEVAL =========
-$test = pg_query($conn, "CREATE TABLE IF NOT EXISTS food (name varchar(255))");
-$test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
-
-$result = pg_query($conn, "SELECT name FROM food");
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-if ($row = pg_fetch_row($result)) {
-  echo "Food: $row[0]";
-  echo "<br />\n";
-} else {
-  echo 'No records in food';
-}
-#==================== / TEST QUERIES AND RETRIEVAL =======
-
-
-
-
-#==================== CREATE TABLES ======================
-include 'createTables.php';
-#==================== / CREATE TABLES =====================
 
 
 
@@ -88,9 +64,29 @@ include 'createTables.php';
 
 
 
+#==================== TEST QUERIES AND RETRIEVAL =========
+$test = pg_query($conn, "CREATE TABLE IF NOT EXISTS food (name varchar(255))");
+$test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
+
+$result = pg_query($conn, "SELECT name FROM food");
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+if ($row = pg_fetch_row($result)) {
+  echo "Food: $row[0]";
+  echo "<br />\n";
+} else {
+  echo 'No records in food';
+}
+#==================== / TEST QUERIES AND RETRIEVAL =======
 
 
 
+#==================== CREATE TABLES ======================
+include 'createTables.php';
+#==================== / CREATE TABLES =====================
 
 
 
