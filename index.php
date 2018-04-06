@@ -653,7 +653,7 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
-      AND Ra.userID = (SELECT Rat.userID FROM Rating Rat 
+      AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
                       WHERE ((SELECT (Rat.Food+Rat.Mood) 
                               FROM Rating Rat 
                               LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
