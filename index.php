@@ -713,15 +713,12 @@ HAVING COUNT(*) > (SELECT AVG(avcount) FROM
                     GROUP BY Res.name, Ra.name
                     ) As avcounts
                   )
-INNER JOIN MenuItem m
-ON m.RestaurantID = res.RestaurantID
- ");
 
+ ");
 
 $arr = pg_fetch_all($result);
 print_r($arr);
-#$arr = pg_fetch_all($result1);
-#print_r($arr);
+
 if (!$result) {
   echo "An errr occurred.\n";
   exit;
@@ -749,6 +746,26 @@ while ($row = pg_fetch_assoc($result)) {
 #For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 
 #January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
+$result = pg_query($conn,
+"SELECT ra.name, ra.email
+FROM Rater ra
+INNER JOIN Rating rt
+ON rt.UserID = ra.UserID
+WHERE (rt.Price+rt.Food+rt.Mood+rt.Staff) < (SELECT r.Price+r.Food+r.Mood+r.Staff
+FROM Rater rg
+INNER JOIN Rating r
+ON r.UserID = rg.UserID
+WHERE rg.name = 'John');");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+
+while ($row = pg_fetch_assoc($result)) {
+  echo "Restaurant: $row[name] \n";
+  echo "# Of Reviews: $row[count] \n";
+}
   echo " \n";
 
 ?>
