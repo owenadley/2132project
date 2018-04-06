@@ -32,9 +32,6 @@ if (!pg_num_rows($result)) {
 
 
 
-
-
-
 #=================== FRONT END ===============================
 ?>
 <head>
@@ -47,12 +44,40 @@ if (!pg_num_rows($result)) {
 </head>
 
 <div class='header'>
-  <h3 id='headerTitle'>db Project</h3>
-  
+  <h3 id='headerTitle'>2132 Databases Project</h3>
 </div>
 
+<div class='core-content'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class='sidemenu'>
+        <div class='sidemenu-option'>
+          
+        </div>
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class='core-panels'>
+        <div class='row'>
+          <div class='col-md-3'>
+            <p>Query 1</p>
+          </div>
+          <div class='col-md-3'>
+            <p>Query 2</p>
+          </div> 
+          <div class='col-md-3'>
+            <p>Query 3</p>
+          </div> 
+          <div class='col-md-3'>
+            <p>Query 4</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
 
-
+  
+</div>
 
 
 
