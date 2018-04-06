@@ -14,6 +14,9 @@ h3#headerTitle {
     
     height: auto;
 }
+.nopad {
+    padding: 0px;
+}
 .sidemenu-option {
     margin-top: 5px;
     text-align: center;
@@ -24,6 +27,11 @@ h3#headerTitle {
 }
 .sidemenu-option:hover {
     border: 3px solid #ff7675;
+    cursor: pointer;
+}
+
+p.sidemenu {
+    font-weight: bold;
 }
 
 .core-content {

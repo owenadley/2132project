@@ -57,16 +57,16 @@ if (!pg_num_rows($result)) {
       
       <div class='sidemenu'>
         <div class='sidemenu-option'>
-          <p>Resturaunts Nearby</p>
+          <p class='nopad sidemenu'>Resturaunts Nearby</p>
         </div>
         <div class='sidemenu-option'>
-          <p>My Resturaunts</p>
+          <p class='nopad sidemenu'>My Resturaunts</p>
         </div>
         <div class='sidemenu-option'>
-          <p>Resturaunts By Style:</p>
+          <p class='nopad sidemenu'>Resturaunts By Style:</p>
         </div>
         <div class='sidemenu-option'>
-          <p>Option 4</p>
+          <p class='nopad sidemenu'>Option 4</p>
         </div>
       </div>
       
