@@ -71,7 +71,7 @@ if (!pg_num_rows($result)) {
       </div>
       
     </div>
-    
+    <div class='col-md-9'>
       <div class='core-panels'>
         <div class='row'>
           <div class='col-md-3'>
@@ -151,7 +151,7 @@ if (!pg_num_rows($result)) {
           </div>
         </div>
       </div>
-    
+    </div>
   </div>
 
   
