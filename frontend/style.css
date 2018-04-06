@@ -31,11 +31,11 @@ h3#headerTitle {
     transition: .2s all;
 }
 .sidemenu-option:hover {
-    border: 3px solid #ff7675;
+    border-bottom: 3px solid #ff6348;
     cursor: pointer;
 }
 
-p.sidemenu {
+p.sidemenup {
     font-weight: bold;
 }
 
