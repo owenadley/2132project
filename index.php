@@ -79,6 +79,7 @@ if (!pg_num_rows($result)) {
         <h2>Ottawa Resturaunts</h2>
         
         <div class='core-home-topRated'>
+          <p id='core-home-subheader'>Top Rated Resturaunts</p>
           <div class="autoplay" id='slider'>
             
             <!--Script to retrieve and populate popular resturaunts on home page display-->       
@@ -90,8 +91,7 @@ if (!pg_num_rows($result)) {
             GROUP By R.name, R.type
             HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 3
             ");
-            $arr = pg_fetch_all($result);
-print_r($arr);
+
             if (!$result) {
               echo "An error occurred.\n";
               exit;
