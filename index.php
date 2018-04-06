@@ -79,14 +79,25 @@ if (!pg_num_rows($result)) {
         <h2>Ottawa Resturaunts</h2>
         
         <div class='core-home-topRated'>
-          
           <div class="autoplay" id='slider'>
-              <div class='featResturaunt'><a href=''>test<img src='img/1.png'></a></div>
-              <div class='featResturaunt'><a href=''>test2<img src='img/2.png'></a></div>
-              <div class='featResturaunt'><a href=''>test3<img src='img/3.png'></a></div>
-              <div class='featResturaunt'><a href=''>test4<img src='img/4.png'></a></div>
-              <div class='featResturaunt'><a href=''>test5<img src='img/5.png'></a></div>
-              <div class='featResturaunt'><a href=''>test6<img src='img/6.png'></a></div>
+            
+            /*Script to retrieve and populate popular resturaunts on home page display */          
+            <?php
+            $result = pg_query($conn,
+            "SELECT R.Name, R.Type, AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4
+            FROM Restaurant R, Rating Ra
+            WHERE Ra.RestaurantID = R.RestaurantID 
+            HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 4.5
+            ");
+            if (!$result) {
+              echo "An error occurred.\n";
+              exit;
+            }
+            while ($row = pg_fetch_assoc($result)) {
+              echo "<div class='featResturaunt'><a href=''>$row[name]<img src='img/1.png'></a></div>";
+            }
+            ?>
+
           </div>
           
         </div>
