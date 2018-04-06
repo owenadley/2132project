@@ -31,7 +31,7 @@ h3#headerTitle {
     transition: .2s all;
 }
 .sidemenu-option:hover {
-    border-bottom: 3px solid #ff6348;
+    border-right: 3px solid #ff6348;
     cursor: pointer;
 }
 
