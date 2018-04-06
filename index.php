@@ -52,7 +52,16 @@ if (!pg_num_rows($result)) {
     <div class='col-md-3'>
       <div class='sidemenu'>
         <div class='sidemenu-option'>
-          
+          <p>Option 1</p>
+        </div>
+        <div class='sidemenu-option'>
+          <p>Option 2</p>
+        </div>
+        <div class='sidemenu-option'>
+          <p>Option 3</p>
+        </div>
+        <div class='sidemenu-option'>
+          <p>Option 4</p>
         </div>
       </div>
     </div>
@@ -60,16 +69,24 @@ if (!pg_num_rows($result)) {
       <div class='core-panels'>
         <div class='row'>
           <div class='col-md-3'>
-            <p>Query 1</p>
+            <div class='panel'>
+              <p>Query 1</p>
+            </div>
           </div>
           <div class='col-md-3'>
-            <p>Query 2</p>
+            <div class='panel'>
+              <p>Query 2</p>
+            </div>
           </div> 
           <div class='col-md-3'>
-            <p>Query 3</p>
+            <div class='panel'>
+              <p>Query 3</p>
+            </div>
           </div> 
           <div class='col-md-3'>
-            <p>Query 4</p>
+            <div class='panel'>
+              <p>Query 4</p>
+            </div>
           </div> 
         </div>
       </div>
@@ -79,6 +96,8 @@ if (!pg_num_rows($result)) {
   
 </div>
 
+<p>Bottom of Page</p>
+<hr>
 
 
 <?php

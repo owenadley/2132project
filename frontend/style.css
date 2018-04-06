@@ -1,6 +1,27 @@
 .header {
     background-color: red;
+    margin: 0 auto;
+    text-align: center;
 }
 h3#headerTitle {
     color: black;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.sidemenu {
+    height: auto;
+}
+.sidemenu-option {
+    height: 200px;
+    background-color: #fab1a0;
+}
+
+.core-panels {
+    
+}
+.panel {
+    height: 300px;
+    background-color: #74b9ff;
 }
