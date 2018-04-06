@@ -81,12 +81,13 @@ if (!pg_num_rows($result)) {
         <div class='core-home-topRated'>
           <div class="autoplay" id='slider'>
             
-            /*Script to retrieve and populate popular resturaunts on home page display */          
+            <!--Script to retrieve and populate popular resturaunts on home page display-->       
             <?php
             $result = pg_query($conn,
             "SELECT R.Name, R.Type, AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4
             FROM Restaurant R, Rating Ra
             WHERE Ra.RestaurantID = R.RestaurantID 
+            GROUP By R.name, R.type
             HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 4.5
             ");
             if (!$result) {
