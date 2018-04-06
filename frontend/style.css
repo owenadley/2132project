@@ -11,9 +11,11 @@ h3#headerTitle {
 }
 
 .sidemenu {
+    
     height: auto;
 }
 .sidemenu-option {
+    margin-top: 5px;
     margin: 0 auto;
     text-align: center;
     height: 80px;
