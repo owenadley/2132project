@@ -64,6 +64,10 @@ p.sidemenup {
 }
 
 /*HOME PAGE*/
+.core-home-topRated {
+    margin: 20px 20px;
+}
 .featResturaunt {
-    
+    margin: 0 auto;
+    text-align: center;
 }
