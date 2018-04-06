@@ -111,9 +111,10 @@ if (!pg_num_rows($result)) {
           
           <?php
           $result = pg_query($conn, "SELECT DISTINCT R.type FROM Resturaunt R");
+
           while ($row = pg_fetch_assoc($result)) {
-            echo "<div class='col-md-2' style='background-image: url(img/$row[name])>
-                    <p>$row[name]</p>
+            echo "<div class='col-md-2' style='background-image: url(img/$row[type])>
+                    <p>$row[type]</p>
                   </div>";
           }
           ?>
