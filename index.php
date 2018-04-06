@@ -738,6 +738,23 @@ while ($row = pg_fetch_assoc($result)) {
 #called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more 
 #than one rater with this name).
 
+$result = pg_query($conn,
+"SELECT Ra.name, Ra.email, AVG(R.food, R.mood, R.price, R.staff)/4
+FROM Rater Ra, Rating Rater
+WHERE R.userID = Ra.userID
+HAVING AVG(R.food, R.mood, R.price, R.staff)/4 < ( SELECT AVG(");
+
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
+$arr = pg_fetch_all($result);
+print_r($arr);
+while ($row = pg_fetch_assoc($result)) {
+  echo "Restaurant: $row[name] \n";
+  echo "# Of Reviews: $row[count] \n";
+}
+  echo " \n";
 
 
 
@@ -747,15 +764,7 @@ while ($row = pg_fetch_assoc($result)) {
 #January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
 $result = pg_query($conn,
-"SELECT Ra.name, Ra.email
-FROM Rater Ra
-INNER JOIN Rating rt
-ON rt.UserID = ra.UserID
-WHERE (rt.Price+rt.Food+rt.Mood+rt.Staff) < (SELECT r.Price+r.Food+r.Mood+r.Staff
-FROM Rater rg
-INNER JOIN Rating r
-ON r.UserID = rg.UserID
-WHERE rg.name = 'John');");
+"");
 
 if (!$result) {
   echo "An error occurred.\n";
