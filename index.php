@@ -713,18 +713,10 @@ HAVING COUNT(*) > (SELECT AVG(avcount) FROM
                     GROUP BY Res.name, Ra.name
                     ) As avcounts
                   )
+INNER JOIN MenuItem m
+ON m.RestaurantID = res.RestaurantID
  ");
 
-/*$result = pg_query($conn,
-"  SELECT AVG(avcount) FROM (
-  SELECT COUNT(*) AS avcount 
-      FROM Rating R, Rater Ra, Restaurant Res 
-      WHERE R.userID = Ra.userID
-      AND Res.name = '$resturauntselect'
-      AND R.RestaurantID = Res.RestaurantID
-      GROUP BY Res.name, Ra.name
-  ) As avcounts
-  ");*/
 
 $arr = pg_fetch_all($result);
 print_r($arr);
