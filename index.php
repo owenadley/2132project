@@ -747,8 +747,8 @@ while ($row = pg_fetch_assoc($result)) {
 #January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
 $result = pg_query($conn,
-"SELECT ra.name, ra.email
-FROM Rater ra
+"SELECT Ra.name, Ra.email
+FROM Rater Ra
 INNER JOIN Rating rt
 ON rt.UserID = ra.UserID
 WHERE (rt.Price+rt.Food+rt.Mood+rt.Staff) < (SELECT r.Price+r.Food+r.Mood+r.Staff
@@ -761,7 +761,8 @@ if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-
+$arr = pg_fetch_all($result);
+print_r($arr);
 while ($row = pg_fetch_assoc($result)) {
   echo "Restaurant: $row[name] \n";
   echo "# Of Reviews: $row[count] \n";
