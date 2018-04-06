@@ -105,6 +105,8 @@ if (!pg_num_rows($result)) {
           
         </div>
         
+        <div class=''
+        
     </div>
   </div>
 
