@@ -14,7 +14,9 @@ h3#headerTitle {
     height: auto;
 }
 .sidemenu-option {
-    height: 200px;
+    margin: 0 auto;
+    text-align: center;
+    height: 80px;
     background-color: #fab1a0;
 }
 
@@ -22,6 +24,8 @@ h3#headerTitle {
     
 }
 .panel {
-    height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    height: 200px;
     background-color: #74b9ff;
 }
