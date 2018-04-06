@@ -100,6 +100,8 @@ if (!pg_num_rows($result)) {
 <p>Bottom of Page</p>
 <hr>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 <script type="text/javascript" src="frontend/js.js"></script>
 
