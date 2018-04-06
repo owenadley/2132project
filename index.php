@@ -97,7 +97,7 @@ if (!pg_num_rows($result)) {
               exit;
             }
             while ($row = pg_fetch_assoc($result)) {
-              echo "<div class='featResturaunt'><a href=''>$row[name]<img src='img/1.png'></a></div>";
+              echo "<div class='featResturaunt'><a href=''>$row[name]<img src='img/$row[type].png'></a></div>";
             }
             ?>
 
