@@ -52,26 +52,26 @@ if (!pg_num_rows($result)) {
   <br>
   
   <div class='row'>
-    <!--
+   
     <div class='col-md-3'>
       
       <div class='sidemenu'>
         <div class='sidemenu-option'>
-          <p>Option 1</p>
+          <p>Resturaunts Nearby</p>
         </div>
         <div class='sidemenu-option'>
-          <p>Option 2</p>
+          <p>My Resturaunts</p>
         </div>
         <div class='sidemenu-option'>
-          <p>Option 3</p>
+          <p>Resturaunts By Style:</p>
         </div>
         <div class='sidemenu-option'>
           <p>Option 4</p>
         </div>
-      </div>-->
+      </div>
       
     </div>
-    <div class='col-md-offset-1'>
+    
       <div class='core-panels'>
         <div class='row'>
           <div class='col-md-3'>
@@ -151,7 +151,7 @@ if (!pg_num_rows($result)) {
           </div>
         </div>
       </div>
-    </div>
+    
   </div>
 
   
