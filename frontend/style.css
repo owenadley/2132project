@@ -29,6 +29,16 @@ h3#headerTitle {
     padding: 20px;
     transition: .2s all;
 }
+.sidemenu-option a {
+    border: 0;
+    text-decoration: none;
+    color: black;
+}
+.sidemenu-option a:hover {
+    border: 0;
+    text-decoration: none;
+    color: black;
+}
 .sidemenu-option:hover {
     background-color: #f5f6fa;
     border-left: 3px solid #ff6348;
