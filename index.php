@@ -48,6 +48,7 @@ if (!pg_num_rows($result)) {
 
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
+  
 </div>
 
 <div class='core-content'>
@@ -105,7 +106,19 @@ if (!pg_num_rows($result)) {
           
         </div>
         
-        <div class=''
+        <div class='core-home-types'>
+          <p id='core-home-subheader'>Resturaunts By Cuisine</p>
+          
+          <?php
+          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Resturaunt R");
+          while ($row = pg_fetch_assoc($result)) {
+            echo "<div class='col-md-2' style='background-image: url(img/$row[name])>
+                    <p>$row[name]</p>
+                  </div>"
+          }
+          ?>
+          
+        </div>
         
     </div>
   </div>
@@ -159,14 +172,15 @@ include 'createTables.php';
 #Rater 
 if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    $sql = pg_query("INSERT INTO Rater (UserID, email, name, joindate, type, reputation) VALUES
+    $sql = pg_query("INSERT INTO Rater (UserID, email, name, joindate, type, reputation, password) VALUES
                 (
                     '".addslashes($data[0])."',
                     '".addslashes($data[1])."',
                     '".addslashes($data[2])."',
                     '".addslashes($data[3])."',
                     '".addslashes($data[4])."',
-                    '".addslashes($data[5])."'
+                    '".addslashes($data[5])."',
+                    '".addslashes($data[6])."',
                 )
             ");
         }
