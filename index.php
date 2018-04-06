@@ -627,16 +627,16 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
       AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG(Rat.Food)) 
+                      WHERE (SELECT AVG(Rat.Food) 
                               FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
-                      >= AVG(Rat.Food) 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
+                      >= AVG(Rat.Food)) 
                       OR 
                       (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG(Rat.Mood) 
+                      WHERE (SELECT AVG(Rat.Mood) 
                               FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID) 
-                      >= AVG(Rat.Mood) 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
+                      >= AVG(Rat.Mood)))
 ");
 
 if (!$result) {
