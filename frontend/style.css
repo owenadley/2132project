@@ -18,8 +18,13 @@ h3#headerTitle {
     margin-top: 5px;
     margin: 0 auto;
     text-align: center;
-    height: 80px;
+    padding: 10px;
     background-color: #fab1a0;
+    border: 2px solid #ff7675;
+    transition: .2s all;
+}
+.sidemenu-option:hover {
+    border: 3px solid #ff7675;
 }
 
 .core-panels {
