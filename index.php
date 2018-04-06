@@ -74,7 +74,8 @@ if (!pg_num_rows($result)) {
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
-
+        <h2>Ottawa Resturaunts</h2>
+        
     </div>
   </div>
 

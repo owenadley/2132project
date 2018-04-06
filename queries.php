@@ -24,16 +24,16 @@
       
       <div class='sidemenu'>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenup'>Home</p>
+          <a href='index.php'><p class='nopad sidemenup'>Home</p></a>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenup'>Resturaunts Nearby</p>
+          <a href='resturaunts.php'><p class='nopad sidemenup'>Browse Resturaunts</p></a>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenup'>Browse Resturaunts</p>
+          <a href='userResturaunts.php'><p class='nopad sidemenup'>My Resturaunts</p></a>
         </div>
         <div class='sidemenu-option'>
-          <p class='nopad sidemenup'>Resturaunt Queries</p>
+          <a href='queries.php'><p class='nopad sidemenup'>Resturaunt Queries</p></a>
         </div>
       </div>
       
