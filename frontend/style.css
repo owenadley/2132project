@@ -1,8 +1,8 @@
 body {
- background-color: #f1f2f6;   
+ background-color: #fff;   
 }
 .header {
-    background-color: red;
+    background-color: #ff6348;
     margin: 0 auto;
     text-align: center;
 }
@@ -16,6 +16,8 @@ h3#headerTitle {
 .sidemenu {
     background-color: white;
     height: auto;
+    border-top: 2px solid #ff6348;
+    border-bottom: 2px solid #ff6348;
 }
 .nopad {
     padding: 0px;
