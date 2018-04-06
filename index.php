@@ -661,10 +661,10 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
       AND Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE ((SELECT AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2)) 
+                      WHERE ((SELECT AVG(((SELECT MAX(Rat.Food) FROM Rating Rat)+(SELECT MAX(Rat.Mood) FROM Rating Rat)/2))) 
                               FROM Rating Rat 
                               LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
-                      >= AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2))))
+                      >= AVG(((MAX(Rat.Food) + MAX(Rat.Mood))/2)))
 ");
 
 if (!$result) {
