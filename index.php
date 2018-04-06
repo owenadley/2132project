@@ -657,7 +657,7 @@ WHERE R.RestaurantID = Rat.restaurantID
                       WHERE ((SELECT (Rat.Food+Rat.Mood) 
                               FROM Rating Rat 
                               LEFT JOIN Rating Ra ON Ra.userID=Rat.userID) 
-                      >= 8)
+                      >= 8))
 ");
 
 if (!$result) {
