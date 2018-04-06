@@ -110,7 +110,7 @@ if (!pg_num_rows($result)) {
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
           
           <?php
-          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Resturaunt R");
+          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R");
 $arr = pg_fetch_all($result);
 print_r($arr);
           while ($row = pg_fetch_assoc($result)) {
