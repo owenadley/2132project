@@ -20,17 +20,15 @@ if (!$conn) {
 }
 
 # Testing connection
-$result = pg_query($conn, "SELECT relname FROM pg_stat_user_tables WHERE schemaname='public'");
+/*$result = pg_query($conn, "SELECT relname FROM pg_stat_user_tables WHERE schemaname='public'");
 print "<pre>\n";
 if (!pg_num_rows($result)) {
   print("Connection is working, but database is empty.\n");
 } else {
   print "Tables in your database:\n";
   while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
-}
+}*/
 #==================== / CONNECTION =======================
-
-
 
 
 
