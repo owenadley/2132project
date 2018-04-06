@@ -88,7 +88,7 @@ if (!pg_num_rows($result)) {
             FROM Restaurant R, Rating Ra
             WHERE Ra.RestaurantID = R.RestaurantID 
             GROUP By R.name, R.type
-            HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 3.5
+            HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 3
             ");
             $arr = pg_fetch_all($result);
 print_r($arr);
