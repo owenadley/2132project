@@ -564,13 +564,13 @@ WHERE Rat.UserID = '$userIDSelect'
       AND ((Rat.Price>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID))
-      AND (Rat.Mood>( SELECT AVG(Rat.Staff)
+      OR (Rat.Mood>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID))
-      AND (Rat.Food>( SELECT AVG(Rat.Staff)
+      OR (Rat.Food>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID))
-      AND (Rat.Staff>( SELECT AVG(Rat.Staff)
+      OR (Rat.Staff>( SELECT AVG(Rat.Staff)
         FROM Rating Rat, Restaurant Rest
         WHERE Rat.RestaurantID=Rest.RestaurantID)))
 GROUP BY RL.firstOpenDate, Rest.name");
