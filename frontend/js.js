@@ -5,3 +5,6 @@ $('.autoplay').slick({
   autoplaySpeed: 3000,
   dots: true,
 });
+
+function showQuery() {
+document.getElementById('queryDisplay').style.height = '600px';}

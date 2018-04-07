@@ -43,7 +43,7 @@
           <h3>Resturaunts and Menus</h3>
         <div class='row'>
           <div class='col-md-2'>
-            <div class='panel'>
+            <div class='panel' onclick='showQuery();'>
               <p>Query 1a</p>
             </div>
           </div>
@@ -126,6 +126,11 @@
             </div>
           </div>
         </div>
+      </div>
+      
+      <div id='queryDisplay' class='queryDisplay'>
+        
+        test
       </div>
     </div>
   </div>
