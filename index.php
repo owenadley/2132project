@@ -371,7 +371,7 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
 #");
 
 # Testing insertion of values from csv file
-$result = pg_query($conn, "SELECT * FROM Restaurant");
+/*$result = pg_query($conn, "SELECT * FROM Restaurant");
 print "<pre>\n";
 if (!$result) {
   echo "It's not working! \n";
@@ -379,7 +379,7 @@ if (!$result) {
 }
 
 $arr = pg_fetch_all($result);
-print_r($arr);
+print_r($arr);*/
 
 #==================== / INSERT INTO TABLES =====================
 
