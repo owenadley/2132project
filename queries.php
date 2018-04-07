@@ -187,23 +187,28 @@ restaurant name together with the name(s) of the rater(s) who gave these ratings
       
       
       <div id='queryDisplay3k' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         k : Find the names, join‐date and reputations of the raters that give the highest overall rating, in
 terms of the Food and the Mood of restaurants. Display this information together with the
 names of the restaurant and the dates the ratings were done.
       </div>
       <div id='queryDisplay3l' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         l : Find the names and reputations of the raters that give the highest overall rating, in terms of the
 Food or the Mood of restaurants. Display this information together with the names of the
 restaurant and the dates the ratings were done.
       </div> 
       <div id='queryDisplay3m' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
       </div>
       <div id='queryDisplay3n' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
       </div>
       <div id='queryDisplay3o' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div> 
         o : Find the names, types and emails of the raters that provide the most diverse ratings. Display this information together with the restaurants names and the ratings. For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
       </div>
     </div>
