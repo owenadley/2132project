@@ -39,7 +39,7 @@
       
     </div>
     <div class='col-md-9'>
-      <div class='core-userResturaunts.php'>
+      <div class='core-userResturaunts'>
         <h2>My Resturaunts</h2>
 
       </div>

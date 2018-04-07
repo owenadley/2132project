@@ -40,6 +40,7 @@
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
+        <h2>Resturaunt Queries</h2>
         <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
