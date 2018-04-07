@@ -28,13 +28,7 @@ if (!$raterTable) {
 else{
   #echo 'Rater Table exists';
 }
-if (!$drop) {
-  echo "drop raterTable is not working. \n";
-  exit;
-}
-else{
-  echo 'Rater Table dropped';
-}
+
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
