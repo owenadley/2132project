@@ -40,8 +40,9 @@
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
-        <h2>Resturaunt Queries</h2>
+
         <div class='row'>
+          <h2>Resturaunts and Menus</h2>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 1a</p>
@@ -67,6 +68,8 @@
               <p>Query 1e</p>
             </div>
           </div> 
+          <br>
+         <h2>Ratings Of Resturaunts</h2>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 2f</p>
@@ -92,6 +95,8 @@
               <p>Query 2j</p>
             </div>
           </div>
+          <br>
+          <h2>Raters and Their Ratings</h2>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 3k</p>
