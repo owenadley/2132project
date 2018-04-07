@@ -1,6 +1,8 @@
 <?php
     session_start();
-    
+header("Location: {$_SERVER['HTTP_REFERER']}");
+exit;
+
 function pg_connection_string_from_database_url() {
   extract(parse_url($_ENV["postgres://xhgocwtwpvuyuh:1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d88e4kacmh5m8a
 "]));
@@ -17,49 +19,7 @@ if (!$conn) {
     echo "connected";
 }
 
-/*<html><body>
-    
-<head>
-  <meta charset="UTF-8">
-  <meta author="Anushka Paliwal, Owen Adley">
-  <title>db2132 Project</title>
-  
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="frontend/style.css">  
-</head>
-    
-<div class='header'>
-  <h3 id='headerTitle'>2132 Foods</h3>
-</div>
-
-
-
-            <form id='login' role="form" method="post" action="" autocomplete="off">
-
-                <div class="form-group">
-                    <input name="username" id="username" placeholder="Enter user ID" required 
-                    autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <input name="email" id="email" placeholder="Enter email" required 
-                    autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <input name="password" id="password" placeholder="Enter password" required 
-                    autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <input name="repassword" id="repassword" placeholder="Re-enter password" required 
-                    autocomplete="off"/>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-6 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="5"></div>
-                </div>
-            </form>
-            
-</body></html> */       
+     
 
     
     $name = $_POST['name'];
@@ -86,8 +46,9 @@ if (!$conn) {
           echo "An error occurred in reg.\n";
           exit;
         }
+
         if ($row = pg_fetch_row($sqlCheckReg)) {
-          echo '$row[name]';
+          echo "$row[name]";
         
           echo "<br />\n";
         } else {
