@@ -9,7 +9,7 @@
 
 $drop = pg_query($conn, "DROP TABLE Rater");
 
-$raterTable = pg_query($conn, 
+/*$raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
 UserID varchar(255) NOT NULL PRIMARY KEY,
 email varchar(255),
@@ -18,7 +18,7 @@ joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1,
 password varchar(255)
-)");
+)");*/
 #print "<pre>\n";
 
 if (!$raterTable) {
@@ -28,7 +28,13 @@ if (!$raterTable) {
 else{
   #echo 'Rater Table exists';
 }
-
+if (!$drop) {
+  echo "drop raterTable is not working. \n";
+  exit;
+}
+else{
+  echo 'Rater Table dropped';
+}
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
