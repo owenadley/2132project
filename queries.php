@@ -38,7 +38,7 @@
       </div>
       
     </div>
-    <div class='col-md-offset-1 co-md-9'>
+    <div class='col-md-offset-1 col-md-9'>
       <div class='core-panels'>
           <h3>Resturaunts and Menus</h3>
         <div class='row'>
