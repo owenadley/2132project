@@ -9,7 +9,7 @@
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
-UserID varchar(255) NOT NULL AUTO_INCREMENT,
+UserID varchar(255) NOT NULL SERIAL,
 email varchar(255),
 name varchar(255),
 joindate DATE,
