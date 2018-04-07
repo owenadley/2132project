@@ -246,21 +246,22 @@ include 'createTables.php';
 
 
 #==================== TEST QUERIES AND RETRIEVAL =========
-$test = pg_query($conn, "CREATE TABLE IF NOT EXISTS food (name varchar(255))");
+$test = pg_query($conn, "SELECT * FROM Rater");
 $test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
 
-$result = pg_query($conn, "SELECT name FROM food");
+$result = pg_query($conn, "SELECT * FROM Rater");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
 
 if ($row = pg_fetch_row($result)) {
-  echo "Food: $row[0]";
-  echo "<br />\n";
+  $arr = pg_fetch_all($result);
+  print_r($arr);
 } else {
   echo 'No records in food';
 }
+
 #==================== / TEST QUERIES AND RETRIEVAL =======
 
 
