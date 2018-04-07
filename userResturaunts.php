@@ -39,53 +39,9 @@
       
     </div>
     <div class='col-md-9'>
-      <div class='core-home'>
-        <h2>Ottawa Resturaunts</h2>
-        
-        <div class='core-home-topRated'>
-          <p id='core-home-subheader'>Top Rated Resturaunts</p>
-          <div class="autoplay" id='slider'>
-            
-            <!--Script to retrieve and populate popular resturaunts on home page display-->       
-            <?php
-            $result = pg_query($conn,
-            "SELECT R.Name, R.Type, AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4
-            FROM Restaurant R, Rating Ra
-            WHERE Ra.RestaurantID = R.RestaurantID 
-            GROUP By R.name, R.type
-            HAVING AVG(Ra.mood + Ra.food + Ra.staff + Ra.price)/4 > 3
-            ");
+      <div class='core-userResturaunts.php'>
+        <h2>My Resturaunts</h2>
 
-            if (!$result) {
-              echo "An error occurred.\n";
-              exit;
-            }
-            while ($row = pg_fetch_assoc($result)) {
-              echo "<div class='featResturaunt'><a href=''><img src='img/$row[type].jpg'>$row[name]</a></div>";
-            }
-            ?>
-
-          </div>
-          
-        </div>
-        
-        <br><br><br><br>
-        
-        <div class='core-home-types'>
-          <p id='core-home-subheader'>Resturaunts By Cuisine</p>
-          <div class='row'>
-          <?php
-          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R");
-          
-          while ($row = pg_fetch_assoc($result)) {
-            echo "<div class='col-md-2' style='background-image: url(img/$row[type].jpg)'>
-                    <p class='featCuisinep'>$row[type]</p>
-                  </div>";
-          }
-          ?>
-          </div>
-        </div>
-        
       </div>
     </div>
   </div>
