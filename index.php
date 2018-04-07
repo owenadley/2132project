@@ -267,7 +267,6 @@ if ($row = pg_fetch_row($result)) {
 
 
 
-
 #==================== INSERT INTO TABLES =====================
 
 #Rater 
