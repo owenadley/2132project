@@ -43,14 +43,16 @@ if (!pg_num_rows($result)) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="frontend/style.css">  
+  <link rel="stylesheet" href="frontend/style.css">
+  <link rel="stylesheet" href="frontend/popup.css">  
+
 </head>
 
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
   <div class="container">
-  <div class="button">LOGIN | REGISTER</div>
+  <div class="button"><a id="modal_trigger" href="#modal">LOGIN | REGISTER</a></div>
   </div>
   
 </div>
