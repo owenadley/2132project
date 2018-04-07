@@ -38,31 +38,31 @@
       </div>
       
     </div>
-    <div class='col-md-9'>
+    <div class='col-md-offset-1 co-md-9'>
       <div class='core-panels'>
           <h3>Resturaunts and Menus</h3>
         <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1a</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1b</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1c</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1d</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 1e</p>
             </div>
@@ -71,27 +71,27 @@
         <br>
          <h3>Ratings Of Resturaunts</h3>
         <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2f</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2g</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2h</p>
             </div>
           </div> 
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2i</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 2j</p>
             </div>
@@ -100,27 +100,27 @@
         <br>
           <h3>Raters and Their Ratings</h3>        
         <div class='row'>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3k</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3l</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3m</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3n</p>
             </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-2'>
             <div class='panel'>
               <p>Query 3o</p>
             </div>
