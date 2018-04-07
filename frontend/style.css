@@ -154,5 +154,7 @@ p.sidemenup {
     top: 5px;
     right: 5px;
 }
-
+.queryExitIcon:hover {
+    cursor: pointer;
+}
 

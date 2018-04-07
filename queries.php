@@ -130,49 +130,58 @@
       </div>
       
       <div id='queryDisplay1a' class='queryDisplay'>
-      <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         a : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
       </div>
       <div id='queryDisplay1b' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         b : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
       </div> 
       <div id='queryDisplay1c' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         c : For each user‐specified category of restaurant, list the manager names together with the date
 that the locations have opened. The user should be able to select the category (e.g. Italian or
 Thai) from a list.
       </div>
       <div id='queryDisplay1d' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         d : Given a user‐specified restaurant, find the name of the most expensive menu item. List this
 information together with the name of manager, the opening hours, and the URL of the
 restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
       </div>
       <div id='queryDisplay1e' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         e : For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 or desert), list the average prices of menu items for each category.
       </div>
       
       <div id='queryDisplay2f' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         f : Find the total number of rating for each restaurant, for each rater. That is, the data should be
 grouped by the restaurant, the specific raters and the numeric ratings they have received.
       </div>
       <div id='queryDisplay2g' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         g : Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
 food.
       </div> 
       <div id='queryDisplay2h' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         h : Find the names and opening dates of the restaurants that obtained Staff rating that is lower
 than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
 any rater of your choice.)
       </div>
       <div id='queryDisplay2i' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
 restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
       </div>
       <div id='queryDisplay2j' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1a()'></i></div>
         j : Provide a query to determine whether Type Y restaurants are “more popular” than other restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.) Yes, this query is open to your own interpretation!
       </div>
       

@@ -729,8 +729,10 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
-      AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
-                      WHERE (Rat.Food+Rat.Mood) >= 8)
+      AND Ra.userID = Rat.userID
+      GROUP By Ra.userID, R.Name, Rat.Date
+      HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
+
 ");
 
 if (!$result) {
@@ -761,19 +763,10 @@ while ($row = pg_fetch_assoc($result)) {
 $result = pg_query($conn, 
 "SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE R.RestaurantID = Rat.restaurantID 
-      AND  
-      AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
-                      WHERE (SELECT AVG(Rat.Food) 
-                              FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
-                      >= AVG(Rat.Food)) 
-                      OR 
-                      (SELECT Rat.userID FROM Rating Rat 
-                      WHERE (SELECT AVG(Rat.Mood) 
-                              FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
-                      >= AVG(Rat.Mood)))
+WHERE AND Ra.userID = Rat.userID
+       GROUP By Ra.userID, R.Name, Rat.Date
+       HAVING ((Rat.Mood >= 4) OR (Rat.Food >=4))
+
 ");
 
 if (!$result) {
