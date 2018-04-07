@@ -54,6 +54,7 @@ if (!pg_num_rows($result)) {
   <div class='container'>
   <a class='button' id='modal_trigger'  onclick='pop();'>LOGIN | REGISTER</a>
   </div>
+</div>
   <!-- LOGIN AND REGISTER POPUP -->
   <div id='modal' class='popupContainer' style='display:none;'>
 				<header class='popupHeader'>
@@ -89,13 +90,13 @@ if (!pg_num_rows($result)) {
 
 						<!-- Username & Password Login form -->
 						<div class='user_login'>
-								<form>
-										<label>Email / Username</label>
-										<input type='text' />
+								<form id='login' role="form" method="post" action="./login.php" autocomplete="off">
+										<label>UserID</label>
+										<input type='text' required/>
 										<br />
 
 										<label>Password</label>
-										<input type='password' />
+										<input type='password' required/>
 										<br />
 
 										<div class='checkbox'>
@@ -114,17 +115,21 @@ if (!pg_num_rows($result)) {
 
 						<!-- Register Form -->
 						<div class='user_register'>
-								<form>
+								<form id='register' role="form" method="post" action="" autocomplete="off">
 										<label>Full Name</label>
-										<input type='text' />
+										<input type='text' required />
 										<br />
 
 										<label>Email Address</label>
-										<input type='email' />
+										<input type='email' required/>
 										<br />
 
 										<label>Password</label>
-										<input type='password' />
+										<input type='password' required/>
+										<br />
+										
+										<label>Re-enter Password</label>
+										<input type='password' required/>
 										<br />
 
 										<div class='checkbox'>
@@ -139,8 +144,7 @@ if (!pg_num_rows($result)) {
 								</form>
 						</div>
 				</section>
-		</div>
-</div>
+	</div>
 
 <div class='core-content'>
   
