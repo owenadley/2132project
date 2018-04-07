@@ -55,7 +55,7 @@ if (!pg_num_rows($result)) {
   <div class="button"><a id="modal_trigger" href="#modal">LOGIN | REGISTER</a></div>
   </div>
   
-</div>
+
 
 <!-- LOGIN AND REGISTER POPUP -->
 <div id="modal" class="popupContainer" style="display:none;">
@@ -143,7 +143,7 @@ if (!pg_num_rows($result)) {
 						</div>
 				</section>
 		</div>
-
+</div>
 
 <div class='core-content'>
   
