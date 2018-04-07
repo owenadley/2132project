@@ -6,7 +6,8 @@
 # an alias such as SuperSizeMe. Type refers to the type of rater (blog, online, food critic) and
 # reputation takes a value between 1 and 5. The value of this field is based on the number of people
 # who found this rater’s opinion helpful, and the default value is 1 (lowest).
-#$drop = pg_query($conn, "DROP TABLE Rater");
+
+$drop = pg_query($conn, "DROP TABLE Rater");
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
@@ -27,6 +28,10 @@ if (!$raterTable) {
 else{
   echo 'Rater Table exists';
 }
+
+$check = pg_query($conn, "DESCRIBE TABLE Rater");
+$arr = pg_fetch_all($check);
+print_r($arr);
 
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
