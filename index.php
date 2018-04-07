@@ -88,7 +88,7 @@ if (!pg_num_rows($result)) {
  
  								<div class='action_btns'>
  										<div class='one_half'><a onclick='log();' id='login_form' class='btn'>Login</a></div>
- 										<div class='one_half last'><a href='reg();' id='register_form' class='btn'>Sign up</a></div>
+ 										<div class='one_half last'><a onclick='reg();' id='register_form' class='btn'>Sign up</a></div>
  								</div>
  						</div>
  
@@ -109,7 +109,7 @@ if (!pg_num_rows($result)) {
  										</div>
  
  										<div class='action_btns'>
- 												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><a href='#' class='btn btn_red'>Login</a></div>
  										</div>
  								</form>
@@ -142,7 +142,7 @@ if (!pg_num_rows($result)) {
  										</div>
  
  										<div class='action_btns'>
- 												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><a href='#' class='btn btn_red'>Register</a></div>
  										</div>
  								</form>

@@ -101,8 +101,23 @@ function pop() {
 }
 function log() {
   $('#ulogin').fadeIn(1000);
+  	$('.social_login').hide();
+    $('.user_login').show();
+	return false;
 }
 function reg() {
   $('#uregister').fadeIn(1000);
+  	$('.social_login').hide();
+	$('.user_register').show();
+	$('.header_title').text('Register');
+	return false;
+}
+
+function back() {
+  	$('.user_login').hide();
+	$('.user_register').hide();
+	$('.social_login').show();
+	$('.header_title').text('Login');
+	return false;
 }
 
