@@ -57,7 +57,7 @@ include 'createTables.php';
   
   <?php
   if ($_SESSION['userID']) {
-    echo "Welcome: $_SESSION['userID']";
+    echo $_SESSION['userID'];
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
