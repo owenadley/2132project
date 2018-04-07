@@ -30,6 +30,9 @@ if (!pg_num_rows($result)) {
 }*/
 #==================== / CONNECTION =======================
 
+#==================== CREATE TABLES ======================
+include 'createTables.php';
+#==================== / CREATE TABLES =====================
 
 
 #=================== FRONT END ===============================
@@ -259,12 +262,6 @@ if ($row = pg_fetch_row($result)) {
   echo 'No records in food';
 }
 #==================== / TEST QUERIES AND RETRIEVAL =======
-
-
-
-#==================== CREATE TABLES ======================
-include 'createTables.php';
-#==================== / CREATE TABLES =====================
 
 
 

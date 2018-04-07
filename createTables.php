@@ -9,7 +9,7 @@
 
 $drop = pg_query($conn, "DROP TABLE Rater");
 
-/*$raterTable = pg_query($conn, 
+$raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
 UserID varchar(255) NOT NULL PRIMARY KEY,
 email varchar(255),
@@ -27,7 +27,7 @@ if (!$raterTable) {
 }
 else{
   echo 'Rater Table exists';
-}*/
+}
 
 $check = pg_query($conn, "SELECT * FROM Rater");
 $arr = pg_fetch_all($check);
