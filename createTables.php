@@ -19,7 +19,7 @@ type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1,
 password varchar(255)
 )");
-print "<pre>\n";
+#print "<pre>\n";
 
 if (!$raterTable) {
   #echo "Creating raterTable is not working. \n";
@@ -49,7 +49,7 @@ PRIMARY KEY (UserID, Date),
 FOREIGN KEY (UserID) references Rater, 
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
-print "<pre>\n";
+#print "<pre>\n";
 if (!$ratingTable) {
   #echo "Creating ratingTable is not working. \n";
   exit;
@@ -71,7 +71,7 @@ Name varchar(255),
 Type varchar(255),
 URL varchar(255)
 )");
-print "<pre>\n";
+#print "<pre>\n";
 if (!$restaurantTable) {
   #echo "Creating restaurantTable is not working. \n";
   exit;
@@ -99,7 +99,7 @@ hourClose TIME,
 RestaurantID varchar(255) NOT NULL,
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
-print "<pre>\n";
+#print "<pre>\n";
 if (!$locationTable) {
   #echo "Creating locationTable is not working. \n";
   exit;
@@ -123,7 +123,7 @@ price decimal(12,2),
 RestaurantID varchar(255) NOT NULL,
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
-print "<pre>\n";
+#print "<pre>\n";
 
 if (!$menuItemTable) {
   #echo "Creating menuItemTable is not working. \n";
@@ -146,7 +146,7 @@ rating int CHECK (rating BETWEEN 1 AND 5),
 comment text,
 PRIMARY KEY (UserID, Date, ItemID)
 )");
-print "<pre>\n";
+#print "<pre>\n";
 if (!$ratingItemTable) {
   #echo "Creating ratingItemTable is not working. \n";
   exit;
