@@ -54,9 +54,16 @@ include 'createTables.php';
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
-  <div class='container'>
-  <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
-  </div>
+  
+  <?php
+  if ($_SESSION['userID']) {
+    echo "Welcome: $_SESSION['userID']";
+  } else { 
+    echo "  <div class='container'>
+              <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
+            </div>";
+  }
+
   
 </div>
 
