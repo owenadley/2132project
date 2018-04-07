@@ -13,6 +13,8 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 if (!$conn) {
   echo "An error occurred.\n";
   exit;
+} else {
+    echo "connected";
 }
 
 /*<html><body>
