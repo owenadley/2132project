@@ -64,7 +64,7 @@ if (!$conn) {
         $pass = pg_escape_string($conn, $pass);
         $repass = pg_escape_string($conn, $repass);
 
-        $sqlRegister = pg_query($conn, "INSERT INTO Rater(email, name, password) VALUES ('$email', '$name', '$pass')");
+        $sqlRegister = pg_query($conn, "INSERT INTO Rater(userID, email, name, password) VALUES ('$email', '$email', '$name', '$pass')");
     
         if (!$sqlLogin) {
         echo "An error occurred.\n";

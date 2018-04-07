@@ -9,14 +9,13 @@
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
-UserID varchar(255) SERIAL NOT NULL,
+UserID varchar(255) NOT NULL PRIMARY KEY,
 email varchar(255),
 name varchar(255),
 joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1,
-password varchar(255),
-PRIMARY KEY (UserID)
+password varchar(255)
 )");
 print "<pre>\n";
 if (!$raterTable) {
