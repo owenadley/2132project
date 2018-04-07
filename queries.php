@@ -129,7 +129,6 @@
       </div>
       
       <div id='queryDisplay' class='queryDisplay'>
-        
         test
       </div>
     </div>

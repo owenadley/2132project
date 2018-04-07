@@ -120,12 +120,12 @@ p.sidemenup {
     background: #f7f7f7;
   }
   .button:hover {
-    cursor: pointer;
-    &:after {
+    cursor: pointer;}
+    .button:hover:after {
       width: 100%;
       left: 0;
             }  
-    }
+    
 
 
 
@@ -137,6 +137,8 @@ p.sidemenup {
     right: 100px;
     top: 100px;
     display: none;
+    width: 500px;
+    background-color: white;
 }
 
 
