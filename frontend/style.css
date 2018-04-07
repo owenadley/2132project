@@ -92,7 +92,7 @@ p.sidemenup {
   width: 60vw;
   max-width: 200px;
   margin: 0 auto;
-  min-height: 20vh;
+  min-height: 10vh;
 }
 .button {
   right: 5;
