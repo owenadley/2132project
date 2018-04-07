@@ -62,7 +62,7 @@ if (!$conn) {
     $userID = pg_escape_string($conn, $userID);
     $pass = pg_escape_string($conn, $pass);
     
-    $sqlLogin = pg_query($conn, "SELECT * FROM Rater WHERE UserID=$userID AND password=$pass");
+    $sqlLogin = pg_query($conn, "SELECT * FROM Rater As R WHERE R.UserID=$userID AND R.password=$pass");
     
     if (!$sqlLogin) {
     echo "An error occurred.\n";
