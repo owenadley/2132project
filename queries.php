@@ -40,9 +40,8 @@
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
-
-        <div class='row'>
           <h3>Resturaunts and Menus</h3><br>
+        <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 1a</p>
@@ -68,8 +67,9 @@
               <p>Query 1e</p>
             </div>
           </div> 
-          <br>
-         <h3>Ratings Of Resturaunts</h3><br>
+        </div>
+         <h3>Ratings Of Resturaunts</h3>        
+        <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 2f</p>
@@ -95,8 +95,9 @@
               <p>Query 2j</p>
             </div>
           </div>
-          <br>
-          <h3>Raters and Their Ratings</h3><br>
+        </div>
+          <h3>Raters and Their Ratings</h3>        
+        <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
               <p>Query 3k</p>
