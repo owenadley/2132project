@@ -7,5 +7,5 @@ $('.autoplay').slick({
 });
 
 function showQuery() {
-document.getElementById('queryDisplay').style.display = 'block';
+  $('queryDisplay').fadeIn(1000);
 }

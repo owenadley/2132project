@@ -49,6 +49,10 @@ if (!pg_num_rows($result)) {
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
+  <div class="container">
+  <div class="button">LOGIN | REGISTER</div>
+  </div>
+  
 </div>
 
 <div class='core-content'>
