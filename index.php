@@ -719,7 +719,7 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
-      GROUP By Ra.userID
+      GROUP By Ra.userID, R.Name, Rat.Date
             HAVING AVG(Rat.mood + Rat.food)/2 >= 4
 ");
 
