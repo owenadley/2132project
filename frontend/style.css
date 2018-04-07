@@ -90,4 +90,5 @@ p.sidemenup {
     height: 0px;
     position: absolute;
     left: 0;
+    display: none;
 }

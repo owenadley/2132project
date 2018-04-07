@@ -7,4 +7,5 @@ $('.autoplay').slick({
 });
 
 function showQuery() {
-document.getElementById('queryDisplay').style.height = '600px';}
+document.getElementById('queryDisplay').style.display = 'block';
+}
