@@ -49,6 +49,9 @@ function pop() {
 function showQuery1a() {
   $('#queryDisplay1a').fadeIn(1000);
 }
+function hideQuery1a() {
+  $('#queryDisplay1a').fadeOut(1000);
+}
 function showQuery1b() {
   $('#queryDisplay1b').fadeIn(1000);
 }
