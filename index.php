@@ -215,7 +215,7 @@ if (!pg_num_rows($result)) {
         
       </div>
     </div>
-  </div>
+  
   
   <a class="button" id="modal_trigger" href="#modal">LOGIN | REGISTER</a>
   <!-- LOGIN AND REGISTER POPUP -->
@@ -303,6 +303,9 @@ if (!pg_num_rows($result)) {
 								</form>
 						</div>
 				</section>
+		</div>
+		
+		
 		</div>
 </div>
 <p>Bottom of Page</p>
