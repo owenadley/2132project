@@ -108,7 +108,8 @@ p.sidemenup {
   position: relative;
   overflow:hidden;
   transition: .3s;
-  &:after {
+  }
+  .button:after {
     position: absolute;
     transition: .3s;
     content: '';
@@ -118,14 +119,14 @@ p.sidemenup {
     height: 3px;
     background: #f7f7f7;
   }
-  &:hover {
+  .button:hover {
     cursor: pointer;
     &:after {
       width: 100%;
       left: 0;
             }  
     }
-}
+
 
 
 
@@ -135,7 +136,7 @@ p.sidemenup {
     position: absolute;
     right: 100px;
     top: 100px;
-    visibility: hidden;
+    display: none;
 }
 
 
