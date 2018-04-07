@@ -22,16 +22,12 @@ password varchar(255)
 print "<pre>\n";
 
 if (!$raterTable) {
-  echo "Creating raterTable is not working. \n";
+  #echo "Creating raterTable is not working. \n";
   exit;
 }
 else{
-  echo 'Rater Table exists';
+  #echo 'Rater Table exists';
 }
-
-$check = pg_query($conn, "SELECT * FROM Rater");
-$arr = pg_fetch_all($check);
-print_r($arr);
 
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
@@ -55,11 +51,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
 if (!$ratingTable) {
-  echo "Creating ratingTable is not working. \n";
+  #echo "Creating ratingTable is not working. \n";
   exit;
 }
 else{
-  echo 'Rating Table exists';
+  #echo 'Rating Table exists';
 }
 
 
@@ -77,11 +73,11 @@ URL varchar(255)
 )");
 print "<pre>\n";
 if (!$restaurantTable) {
-  echo "Creating restaurantTable is not working. \n";
+  #echo "Creating restaurantTable is not working. \n";
   exit;
 }
 else{
-  echo 'Restaurant Table exists';
+  #echo 'Restaurant Table exists';
 }
 
 # Location: (LocationID, first‐open‐date, manager‐name, phone‐number, street‐address,
@@ -105,11 +101,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
 if (!$locationTable) {
-  echo "Creating locationTable is not working. \n";
+  #echo "Creating locationTable is not working. \n";
   exit;
 }
 else{
-  echo 'Location Table exists';
+  #echo 'Location Table exists';
 }
 
 # MenuItem(ItemID, name, type, category, category, price, …, RestaurantID)_
@@ -130,11 +126,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 print "<pre>\n";
 
 if (!$menuItemTable) {
-  echo "Creating menuItemTable is not working. \n";
+  #echo "Creating menuItemTable is not working. \n";
   exit;
 }
 else{
-  echo 'MenuItem Table exists';
+  #echo 'MenuItem Table exists';
 }
 
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
@@ -152,11 +148,11 @@ PRIMARY KEY (UserID, Date, ItemID)
 )");
 print "<pre>\n";
 if (!$ratingItemTable) {
-  echo "Creating ratingItemTable is not working. \n";
+  #echo "Creating ratingItemTable is not working. \n";
   exit;
 }
 else{
-  echo 'RatingItem Table exists';
+  #echo 'RatingItem Table exists';
 }
 
 #==================== / CREATE TABLES =====================
