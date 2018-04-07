@@ -51,8 +51,8 @@ if (!pg_num_rows($result)) {
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
-  <div class="container">
-  <div class="button">LOGIN | REGISTER</div>
+  <div class='container>
+  <div class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</div>
   </div>
   
 </div>
@@ -94,7 +94,7 @@ if (!pg_num_rows($result)) {
  
  						<!-- Username & Password Login form -->
  						<div class='user_login'>
-								<form id='login' role="form" method="post" action="./login.php" autocomplete="off">
+								<form id='login' role='form' method='post' action='./login.php' autocomplete='off'>
 										<label>UserID</label>
 										<input type='text' required/>
  										<br />

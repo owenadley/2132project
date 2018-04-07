@@ -133,7 +133,7 @@
         a : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
-      <i class="fas fa-times exitQuery"></i>
+      <div class='queryExitIcon'><i class="fas fa-times exitQuery"></i></div>
       </div>
       <div id='queryDisplay1b' class='queryDisplay'>
         b : Display all the information about a user‐specified restaurant. That is, the user should select the
