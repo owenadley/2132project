@@ -7,9 +7,9 @@
 # reputation takes a value between 1 and 5. The value of this field is based on the number of people
 # who found this rater’s opinion helpful, and the default value is 1 (lowest).
 
-$drop = pg_query($conn, "DROP TABLE Rater");
+$drop = pg_query($conn, "DROP TABLE Rater CASCADE");
 
-/*$raterTable = pg_query($conn, 
+$raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
 UserID varchar(255) NOT NULL PRIMARY KEY,
 email varchar(255),
@@ -18,7 +18,7 @@ joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
 reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1,
 password varchar(255)
-)");*/
+)");
 #print "<pre>\n";
 
 if (!$raterTable) {
