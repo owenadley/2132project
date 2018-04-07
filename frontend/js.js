@@ -99,4 +99,10 @@ $(function() {
 function pop() {
   $('#modal').fadeIn(1000);
 }
+function log() {
+  $('#ulogin').fadeIn(1000);
+}
+function reg() {
+  $('#uregister').fadeIn(1000);
+}
 

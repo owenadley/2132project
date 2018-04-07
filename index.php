@@ -87,8 +87,8 @@ if (!pg_num_rows($result)) {
  								</div>
  
  								<div class='action_btns'>
- 										<div class='one_half'><a href='#ulogin' id='login_form' class='btn'>Login</a></div>
- 										<div class='one_half last'><a href='#uregister' id='register_form' class='btn'>Sign up</a></div>
+ 										<div class='one_half'><a onclick='log();' id='login_form' class='btn'>Login</a></div>
+ 										<div class='one_half last'><a href='reg();' id='register_form' class='btn'>Sign up</a></div>
  								</div>
  						</div>
  
