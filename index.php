@@ -715,7 +715,7 @@ echo " \n";
 
 
 $result = pg_query($conn, 
-"SELECT DISTINCT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
+"SELECT DISTINCT Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
@@ -730,11 +730,11 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo "My query \n";
-  echo " $row[name] \n";
-  echo " $row[joindate] \n";
-  echo " $row[reputation] \n";
-  echo " $row[Name] \n";
-  echo " $row[Date] \n";
+  echo " $row[uname] \n";
+  echo " $row[jdate] \n";
+  echo " $row[rep] \n";
+  echo " $row[resname] \n";
+  echo " $row[date] \n";
   
 }
 
@@ -749,21 +749,12 @@ while ($row = pg_fetch_assoc($result)) {
 #Assuming that the highest overall ratings for each means anything equal and more than 4 out of 5
 
 $result = pg_query($conn, 
-"SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
+"SELECT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE R.RestaurantID = Rat.restaurantID 
-      AND  
-      AND  (SELECT Rat.userID FROM Rating Rat 
-                      WHERE (SELECT AVG(Rat.Food) 
-                              FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
-                      >= AVG(Rat.Food)) 
-                      OR 
-                      (SELECT Rat.userID FROM Rating Rat 
-                      WHERE (SELECT AVG(Rat.Mood) 
-                              FROM Rating Rat 
-                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
-                      >= AVG(Rat.Mood)))
+WHERE R.RestaurantID = Rat.restaurantID
+      AND Ra.userID = Rat.userID
+      GROUP By Ra.userID, R.Name, Rat.Date
+            HAVING (Rat.mood >= 4 OR Rat.food >=4)
 ");
 
 if (!$result) {
@@ -773,10 +764,10 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo "My query: \n";
-  echo " $row[name] \n";
-  echo " $row[reputation] \n";
-  echo " $row[Name] \n";
-  echo " $row[Date] \n";
+  echo " $row[uname] \n";
+  echo " $row[rep] \n";
+  echo " $row[resname] \n";
+  echo " $row[date] \n";
   
 }
 
