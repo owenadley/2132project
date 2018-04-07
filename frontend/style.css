@@ -142,6 +142,12 @@ p.sidemenup {
     width: 40%;
     background-color: white;
     border: 2px solid #ff6348;
+    padding: 20px;
+}
+.exitQuery {
+    position: absolute;
+    top: 2px;
+    right: 2px;
 }
 
 

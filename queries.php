@@ -44,7 +44,7 @@
         <div class='row'>
           <div class='col-md-2'>
             <div class='panel' onclick='showQuery1a();'>
-              <p>Query aa</p>
+              <p>Query 1a</p>
             </div>
           </div>
           <div class='col-md-2' onclick='showQuery1b();'>
@@ -132,6 +132,7 @@
         a : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
+      <i class="fas fa-times exitQuery"></i>
       </div>
       <div id='queryDisplay1b' class='queryDisplay'>
         b : Display all the information about a user‐specified restaurant. That is, the user should select the
@@ -154,36 +155,46 @@ or desert), list the average prices of menu items for each category.
       </div>
       
       <div id='queryDisplay2f' class='queryDisplay'>
-        test
+        f : Find the total number of rating for each restaurant, for each rater. That is, the data should be
+grouped by the restaurant, the specific raters and the numeric ratings they have received.
       </div>
       <div id='queryDisplay2g' class='queryDisplay'>
-        test
+        g : Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
+food.
       </div> 
       <div id='queryDisplay2h' class='queryDisplay'>
-        test
+        h : Find the names and opening dates of the restaurants that obtained Staff rating that is lower
+than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
+any rater of your choice.)
       </div>
       <div id='queryDisplay2i' class='queryDisplay'>
-        test
+        i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
+restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
       </div>
       <div id='queryDisplay2j' class='queryDisplay'>
-        test
+        j : Provide a query to determine whether Type Y restaurants are “more popular” than other restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.) Yes, this query is open to your own interpretation!
       </div>
       
       
       <div id='queryDisplay3k' class='queryDisplay'>
-        test
+        k : Find the names, join‐date and reputations of the raters that give the highest overall rating, in
+terms of the Food and the Mood of restaurants. Display this information together with the
+names of the restaurant and the dates the ratings were done.
       </div>
       <div id='queryDisplay3l' class='queryDisplay'>
-        test
+        l : Find the names and reputations of the raters that give the highest overall rating, in terms of the
+Food or the Mood of restaurants. Display this information together with the names of the
+restaurant and the dates the ratings were done.
       </div> 
       <div id='queryDisplay3m' class='queryDisplay'>
-        test
+        m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
+the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
       </div>
       <div id='queryDisplay3n' class='queryDisplay'>
-        test
+        n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
       </div>
       <div id='queryDisplay3o' class='queryDisplay'>
-        test
+        o : Find the names, types and emails of the raters that provide the most diverse ratings. Display this information together with the restaurants names and the ratings. For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
       </div>
     </div>
   </div>

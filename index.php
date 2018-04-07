@@ -43,108 +43,112 @@ if (!pg_num_rows($result)) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="frontend/style.css">
+  <link rel="stylesheet" href="frontend/style.css">  
   <link rel="stylesheet" href="frontend/popup.css">  
-
 
 </head>
 
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
-  <div class='container'>
-  <a class='button' id='modal_trigger'  onclick='pop();'>LOGIN | REGISTER</a>
+  
+  <div class="container">
+  <div class="button">LOGIN | REGISTER</div>
   </div>
+  
 </div>
-  <!-- LOGIN AND REGISTER POPUP -->
-  <div id='modal' class='popupContainer' style='display:none;'>
-				<header class='popupHeader'>
-						<span class='header_title'>Login</span>
-						<span class='modal_close'><i class='fa fa-times'></i></span>
-				</header>
 
-				<section class='popupBody'>
-						<!-- Social Login -->
-						<div class='social_login'>
-								<div class=''>
-										<a href='#' class='social_box fb'>
-												<span class='icon'><i class='fa fa-facebook'></i></span>
-												<span class='icon_title'>Connect with Facebook</span>
 
-										</a>
 
-										<a href='#' class='social_box google'>
-												<span class='icon'><i class='fa fa-google-plus'></i></span>
-												<span class='icon_title'>Connect with Google</span>
-										</a>
-								</div>
-
-								<div class='centeredText'>
-										<span>Or use your Email address</span>
-								</div>
-
-								<div class='action_btns'>
-										<div class='one_half'><a href='#' id='login_form' class='btn'>Login</a></div>
-										<div class='one_half last'><a href='#' id='register_form' class='btn'>Sign up</a></div>
-								</div>
-						</div>
-
-						<!-- Username & Password Login form -->
-						<div class='user_login'>
+<!-- LOGIN AND REGISTER POPUP -->
+   <div id='modal' class='popupContainer' style='display:none;'>
+ 				<header class='popupHeader'>
+ 						<span class='header_title'>Login</span>
+ 						<span class='modal_close'><i class='fa fa-times'></i></span>
+ 				</header>
+ 
+ 				<section class='popupBody'>
+ 						<!-- Social Login -->
+ 						<div class='social_login'>
+ 								<div class=''>
+ 										<a href='#' class='social_box fb'>
+ 												<span class='icon'><i class='fa fa-facebook'></i></span>
+ 												<span class='icon_title'>Connect with Facebook</span>
+ 
+ 										</a>
+ 
+ 										<a href='#' class='social_box google'>
+ 												<span class='icon'><i class='fa fa-google-plus'></i></span>
+ 												<span class='icon_title'>Connect with Google</span>
+ 										</a>
+ 								</div>
+ 
+ 								<div class='centeredText'>
+ 										<span>Or use your Email address</span>
+ 								</div>
+ 
+ 								<div class='action_btns'>
+ 										<div class='one_half'><a href='#' id='login_form' class='btn'>Login</a></div>
+ 										<div class='one_half last'><a href='#' id='register_form' class='btn'>Sign up</a></div>
+ 								</div>
+ 						</div>
+ 
+ 						<!-- Username & Password Login form -->
+ 						<div class='user_login'>
 								<form id='login' role="form" method="post" action="./login.php" autocomplete="off">
 										<label>UserID</label>
 										<input type='text' required/>
-										<br />
-
-										<label>Password</label>
+ 										<br />
+ 
+ 										<label>Password</label>
 										<input type='password' required/>
-										<br />
-
-										<div class='checkbox'>
-												<input id='remember' type='checkbox' />
-												<label for='remember'>Remember me on this computer</label>
-										</div>
-
-										<div class='action_btns'>
-												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
-												<div class='one_half last'><a href='#' class='btn btn_red'>Login</a></div>
-										</div>
-								</form>
-
-								<a href='#' class='forgot_password'>Forgot password?</a>
-						</div>
-
-						<!-- Register Form -->
-						<div class='user_register'>
+ 										<br />
+ 
+ 										<div class='checkbox'>
+ 												<input id='remember' type='checkbox' />
+ 												<label for='remember'>Remember me on this computer</label>
+ 										</div>
+ 
+ 										<div class='action_btns'>
+ 												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half last'><a href='#' class='btn btn_red'>Login</a></div>
+ 										</div>
+ 								</form>
+ 
+ 								<a href='#' class='forgot_password'>Forgot password?</a>
+ 						</div>
+ 
+ 						<!-- Register Form -->
+ 						<div class='user_register'>
 								<form id='register' role="form" method="post" action="" autocomplete="off">
-										<label>Full Name</label>
+ 										<label>Full Name</label>
 										<input type='text' required />
-										<br />
-
-										<label>Email Address</label>
+ 										<br />
+ 
+ 										<label>Email Address</label>
 										<input type='email' required/>
-										<br />
-
-										<label>Password</label>
+ 										<br />
+ 
+ 										<label>Password</label>
 										<input type='password' required/>
 										<br />
 										
 										<label>Re-enter Password</label>
 										<input type='password' required/>
-										<br />
-
-										<div class='checkbox'>
-												<input id='send_updates' type='checkbox' />
-												<label for='send_updates'>Send me occasional email updates</label>
-										</div>
-
-										<div class='action_btns'>
-												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
-												<div class='one_half last'><a href='#' class='btn btn_red'>Register</a></div>
-										</div>
-								</form>
-						</div>
-				</section>
-	</div>
+ 										<br />
+ 
+ 										<div class='checkbox'>
+ 												<input id='send_updates' type='checkbox' />
+ 												<label for='send_updates'>Send me occasional email updates</label>
+ 										</div>
+ 
+ 										<div class='action_btns'>
+ 												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half last'><a href='#' class='btn btn_red'>Register</a></div>
+ 										</div>
+ 								</form>
+ 						</div>
+ 				</section>
+		</div>
 
 <div class='core-content'>
   
@@ -220,7 +224,9 @@ if (!pg_num_rows($result)) {
         
       </div>
     </div>
-	</div>
+
+
+  </div>
 </div>
 <p>Bottom of Page</p>
 <hr>
@@ -719,12 +725,12 @@ echo " \n";
 
 
 $result = pg_query($conn, 
-"SELECT DISTINCT Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
+"SELECT DISTINCT Ra.name, Ra.joindate, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
-      GROUP By Ra.userID, R.Name, Rat.Date
-            HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
+      AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
+                      WHERE (Rat.Food+Rat.Mood) >= 8)
 ");
 
 if (!$result) {
@@ -734,11 +740,11 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo "My query \n";
-  echo " $row[uname] \n";
-  echo " $row[jdate] \n";
-  echo " $row[rep] \n";
-  echo " $row[resname] \n";
-  echo " $row[date] \n";
+  echo " $row[name] \n";
+  echo " $row[joindate] \n";
+  echo " $row[reputation] \n";
+  echo " $row[Name] \n";
+  echo " $row[Date] \n";
   
 }
 
@@ -753,12 +759,21 @@ while ($row = pg_fetch_assoc($result)) {
 #Assuming that the highest overall ratings for each means anything equal and more than 4 out of 5
 
 $result = pg_query($conn, 
-"SELECT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
+"SELECT Ra.name, Ra.reputation, R.Name, Rat.Date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE R.RestaurantID = Rat.restaurantID
-      AND Ra.userID = Rat.userID
-      GROUP By Ra.userID, R.Name, Rat.Date
-            HAVING ((Rat.Mood >= 4) OR (Rat.Food >=4))
+WHERE R.RestaurantID = Rat.restaurantID 
+      AND  
+      AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
+                      WHERE (SELECT AVG(Rat.Food) 
+                              FROM Rating Rat 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
+                      >= AVG(Rat.Food)) 
+                      OR 
+                      (SELECT Rat.userID FROM Rating Rat 
+                      WHERE (SELECT AVG(Rat.Mood) 
+                              FROM Rating Rat 
+                              LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
+                      >= AVG(Rat.Mood)))
 ");
 
 if (!$result) {
@@ -768,10 +783,10 @@ if (!$result) {
 
 while ($row = pg_fetch_assoc($result)) {
   echo "My query: \n";
-  echo " $row[uname] \n";
-  echo " $row[rep] \n";
-  echo " $row[resname] \n";
-  echo " $row[date] \n";
+  echo " $row[name] \n";
+  echo " $row[reputation] \n";
+  echo " $row[Name] \n";
+  echo " $row[Date] \n";
   
 }
 
