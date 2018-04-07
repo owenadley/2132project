@@ -720,7 +720,7 @@ FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       GROUP By Ra.userID
-            HAVING AVG(Ra.mood + Ra.food)/2 >= 4
+            HAVING AVG(Rat.mood + Rat.food)/2 >= 4
 ");
 
 if (!$result) {
