@@ -249,7 +249,7 @@ include 'createTables.php';
 $test = pg_query($conn, "SELECT * FROM Rater");
 $test2 = pg_query($conn, "INSERT INTO food (name) VALUES ('pizza')");
 
-$result = pg_query($conn, "SELECT * FROM Rater");
+/*$result = pg_query($conn, "SELECT * FROM Rater");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -260,7 +260,8 @@ if ($row = pg_fetch_row($result)) {
   print_r($arr);
 } else {
   echo 'No records in food';
-}
+}*/
+
 
 #==================== / TEST QUERIES AND RETRIEVAL =======
 
@@ -396,7 +397,18 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 
+$result = pg_query($conn, "SELECT * FROM Rater");
+if (!$result) {
+  echo "An error occurred.\n";
+  exit;
+}
 
+if ($row = pg_fetch_row($result)) {
+  $arr = pg_fetch_all($result);
+  print_r($arr);
+} else {
+  echo 'No records in food';
+}
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
 #name of the restaurant from a list, and the information as contained in the restaurant and
