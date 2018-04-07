@@ -724,7 +724,7 @@ FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       GROUP By Ra.userID, R.Name, Rat.Date
-            HAVING AVG(Rat.mood + Rat.food)/2 >= 4
+            HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
 ");
 
 if (!$result) {
@@ -758,7 +758,7 @@ FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       GROUP By Ra.userID, R.Name, Rat.Date
-            HAVING (Rat.mood >= 4 OR Rat.food >=4)
+            HAVING ((Rat.Mood >= 4) OR (Rat.Food >=4))
 ");
 
 if (!$result) {
