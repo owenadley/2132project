@@ -52,7 +52,7 @@ if (!pg_num_rows($result)) {
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
-  <a class='button' id='modal_trigger'  onclick='pop();'>LOGIN | REGISTER</a>
+  <a class='button' id='modal_trigger' href='#modal'>LOGIN | REGISTER</a>
   <!-- LOGIN AND REGISTER POPUP -->
   <div id='modal' class='popupContainer' style='display:none;'>
 				<header class='popupHeader'>
