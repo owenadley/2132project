@@ -116,7 +116,7 @@ if (!pg_num_rows($result)) {
           
           while ($row = pg_fetch_assoc($result)) {
             echo "<div class='col-md-2' style='background-image: url(img/$row[type].jpg)'>
-                    <p>$row[type]</p>
+                    <p class='featCuisinep'>$row[type]</p>
                   </div>";
           }
           ?>
