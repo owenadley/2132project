@@ -14,7 +14,8 @@ email varchar(255),
 name varchar(255),
 joindate DATE,
 type varchar(255) CHECK (type IN ('blog', 'online', 'food critic')),
-reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1
+reputation int CHECK (reputation BETWEEN 1 AND 5) DEFAULT 1,
+password varchar(255)
 )");
 print "<pre>\n";
 if (!$raterTable) {

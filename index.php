@@ -106,7 +106,7 @@ if (!pg_num_rows($result)) {
           
         </div>
         
-        <br><br><br><br><br><br>
+        <br><br><br><br>
         
         <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
@@ -123,12 +123,10 @@ if (!pg_num_rows($result)) {
           </div>
         </div>
         
+      </div>
     </div>
   </div>
-
-  
 </div>
-
 <p>Bottom of Page</p>
 <hr>
 
