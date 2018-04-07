@@ -177,9 +177,9 @@ a.btn_red {
 		margin-bottom: 5px;
 }
 
-.user_login input[type="text"],
-.user_login input[type="email"],
-.user_login input[type="password"] {
+.user_login input[type='text'],
+.user_login input[type='email'],
+.user_login input[type='password'] {
 		display: block;
 		width: 90%;
 		padding: 10px;
@@ -187,12 +187,12 @@ a.btn_red {
 		color: #666;
 }
 
-.user_login input[type="checkbox"] {
+.user_login input[type='checkbox'] {
 		float: left;
 		margin-right: 5px;
 }
 
-.user_login input[type="checkbox"]+label {
+.user_login input[type='checkbox']+label {
 		float: left;
 }
 
@@ -221,9 +221,9 @@ a.btn_red {
 		margin-bottom: 5px;
 }
 
-.user_register input[type="text"],
-.user_register input[type="email"],
-.user_register input[type="password"] {
+.user_register input[type='text'],
+.user_register input[type='email'],
+.user_register input[type='password'] {
 		display: block;
 		width: 90%;
 		padding: 10px;
@@ -231,12 +231,12 @@ a.btn_red {
 		color: #666;
 }
 
-.user_register input[type="checkbox"] {
+.user_register input[type='checkbox'] {
 		float: left;
 		margin-right: 5px;
 }
 
-.user_register input[type="checkbox"]+label {
+.user_register input[type='checkbox']+label {
 		float: left;
 }
 
