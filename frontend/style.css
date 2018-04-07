@@ -95,6 +95,8 @@ p.sidemenup {
   min-height: 100vh;
 }
 .button {
+  right: 5;
+  top: 2;
   color: #f7f7f7;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
