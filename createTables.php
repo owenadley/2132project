@@ -26,6 +26,11 @@ if (!$raterTable) {
 else{
   echo 'Rater Table exists';
 }
+$checkRater = pg_query($conn, "SELECT password FROM Rater");
+while ($row = pg_fetch_assoc($checkRater)) {
+  echo " $row[password] \n";
+}
+
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
