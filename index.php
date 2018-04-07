@@ -121,19 +121,19 @@ if (!pg_num_rows($result)) {
  						<div class='user_register' id='uregister'>
 								<form id='register' role="form" method="post" action="register.php" autocomplete="off">
  										<label>Full Name</label>
-										<input type='text' required />
+										<input name='name' type='text' required />
  										<br />
  
  										<label>Email Address</label>
-										<input type='email' required/>
+										<input name ='email' type='email' required/>
  										<br />
  
  										<label>Password</label>
-										<input type='password' required/>
+										<input name='password' type='password' required/>
 										<br />
 										
 										<label>Re-enter Password</label>
-										<input type='password' required/>
+										<input name='repassword' type='password' required/>
  										<br />
  
  										<div class='checkbox'>

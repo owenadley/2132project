@@ -8,7 +8,7 @@ if (!$conn) {
   exit;
 }
 
-<html><body>
+/*<html><body>
     
 <head>
   <meta charset="UTF-8">
@@ -50,33 +50,42 @@ if (!$conn) {
                 </div>
             </form>
             
-</body></html>        
+</body></html> */       
 
     
-    $userID = $_POST['username'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $repass = $_POST['repassword'];
 
     if ($pass == $repass){
-        $userID = pg_escape_string($conn, $userID);
+        $name = pg_escape_string($conn, $name);
         $email = pg_escape_string($conn, $email);
         $pass = pg_escape_string($conn, $pass);
         $repass = pg_escape_string($conn, $repass);
 
-        $sqlRegister = pg_query($conn, "INSERT INTO Rater(UserID, email, password) VALUES ('$userID', '$email', '$pass')");
+        $sqlRegister = pg_query($conn, "INSERT INTO Rater(email, name, password) VALUES ('$email', '$name', '$pass')");
     
         if (!$sqlLogin) {
         echo "An error occurred.\n";
         exit;
         }
 
-        while ($row = pg_fetch_assoc($sqlLogin)) {
-     
-      
+        $sqlCheckReg = pg_query($conn, "SELECT name FROM Rater WHERE name='Owen Adley'");
     
-    
+        if (!$sqlCheckReg) {
+          echo "An error occurred in reg.\n";
+          exit;
         }
+        if ($row = pg_fetch_row($sqlCheckReg)) {
+          echo "registration done: $row[name]";
+        
+          echo "<br />\n";
+        } else {
+          echo 'Could not complete registration';
+        }
+
+
     }
     
     

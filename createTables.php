@@ -9,7 +9,7 @@
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
-UserID varchar(255) NOT NULL PRIMARY KEY,
+UserID varchar(255) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 email varchar(255),
 name varchar(255),
 joindate DATE,
@@ -120,6 +120,7 @@ RestaurantID varchar(255) NOT NULL,
 FOREIGN KEY (RestaurantID) references Restaurant
 )");
 print "<pre>\n";
+
 if (!$menuItemTable) {
   echo "Creating menuItemTable is not working. \n";
   exit;
