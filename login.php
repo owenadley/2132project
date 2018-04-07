@@ -8,7 +8,7 @@ if (!$conn) {
   exit;
 }
 
-<html><body>
+/*<html><body>
     
 <head>
   <meta charset="UTF-8">
@@ -41,7 +41,7 @@ if (!$conn) {
 				</div>           
 			</form>
             
-</body></html>        
+</body></html>        */
 
     
     $userID = $_POST['username'];
