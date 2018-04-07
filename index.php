@@ -143,7 +143,7 @@ if (!pg_num_rows($result)) {
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><a href='#' class='btn btn_red'>Register</a></div>
+ 												<div class='one_half last'><a type='submit' href='#' class='btn btn_red'>Register</a></div>
  										</div>
  								</form>
  						</div>
