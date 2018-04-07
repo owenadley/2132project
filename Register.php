@@ -1,6 +1,7 @@
 <?php
-    session_start();
-header("Location: {$_SERVER['HTTP_REFERER']}");
+session_start();
+    
+header("Location: index.php");
 exit;
 
 function pg_connection_string_from_database_url() {

@@ -97,13 +97,13 @@ include 'createTables.php';
  
  						<!-- Username & Password Login form -->
  						<div class='user_login' id='ulogin'>
-								<form id='login' role='form' method='post' action='./login.php' autocomplete='off'>
-										<label>UserID</label>
-										<input type='text' required/>
+								<form id='login' role='form' method='post' action='login.php' autocomplete='off'>
+										<label>Email</label>
+										<input name='email' type='text' required/>
  										<br />
  
  										<label>Password</label>
-										<input type='password'required/>
+										<input name='password' type='password'required/>
  										<br />
  
  										<div class='checkbox'>
@@ -113,7 +113,7 @@ include 'createTables.php';
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><a href='#' class='btn btn_red'>Login</a></div>
+ 												<div class='one_half last'><input type='submit'><a href='#' class='btn btn_red'>Login</a></input></div>
  										</div>
  								</form>
  
