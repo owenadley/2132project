@@ -44,7 +44,7 @@
         <div class='row'>
           <div class='col-md-2'>
             <div class='panel' onclick='showQuery1a();'>
-              <p>Query 1a</p>
+              <p>Query aa</p>
             </div>
           </div>
           <div class='col-md-2' onclick='showQuery1b();'>
@@ -129,19 +129,28 @@
       </div>
       
       <div id='queryDisplay1a' class='queryDisplay'>
-        test
+        a : Display all the information about a user‐specified restaurant. That is, the user should select the
+name of the restaurant from a list, and the information as contained in the restaurant and
+location tables should then displayed on the screen.
       </div>
       <div id='queryDisplay1b' class='queryDisplay'>
-        test
+        b : Display all the information about a user‐specified restaurant. That is, the user should select the
+name of the restaurant from a list, and the information as contained in the restaurant and
+location tables should then displayed on the screen.
       </div> 
       <div id='queryDisplay1c' class='queryDisplay'>
-        test
+        c : For each user‐specified category of restaurant, list the manager names together with the date
+that the locations have opened. The user should be able to select the category (e.g. Italian or
+Thai) from a list.
       </div>
       <div id='queryDisplay1d' class='queryDisplay'>
-        test
+        d : Given a user‐specified restaurant, find the name of the most expensive menu item. List this
+information together with the name of manager, the opening hours, and the URL of the
+restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
       </div>
       <div id='queryDisplay1e' class='queryDisplay'>
-        test
+        e : For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
+or desert), list the average prices of menu items for each category.
       </div>
       
       <div id='queryDisplay2f' class='queryDisplay'>
