@@ -280,7 +280,7 @@ if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
                     '".addslashes($data[3])."',
                     '".addslashes($data[4])."',
                     '".addslashes($data[5])."',
-                    '".addslashes($data[6])."
+                    '".addslashes($data[6])."'
                 )
             ");
         }
