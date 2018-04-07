@@ -119,7 +119,7 @@ if (!pg_num_rows($result)) {
  
  						<!-- Register Form -->
  						<div class='user_register' id='uregister'>
-								<form id='register' role="form" method="post" action="register.php" autocomplete="off">
+								<form id='register' role="form" method="post" action="Register.php" autocomplete="off">
  										<label>Full Name</label>
 										<input name='name' type='text' required />
  										<br />
@@ -143,7 +143,7 @@ if (!pg_num_rows($result)) {
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><a type='submit' href='#' class='btn btn_red'>Register</a></div>
+ 												<div class='one_half last'><input type='submit'><a href='#' class='btn btn_red'>Register</a></input></div>
  										</div>
  								</form>
  						</div>
