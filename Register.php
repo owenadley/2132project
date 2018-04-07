@@ -76,8 +76,8 @@ if (!$conn) {
         $sqlRegister = pg_query($conn, "INSERT INTO Rater(userID, email, name, password) VALUES ('$email', '$email', '$name', '$pass')");
     
         if (!$sqlRegister) {
-        echo "An error occurred.\n";
-        exit;
+            echo "An error occurred.\n";
+            exit;
         }
 
         $sqlCheckReg = pg_query($conn, "SELECT name FROM Rater WHERE name='Owen Adley'");

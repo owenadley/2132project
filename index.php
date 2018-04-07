@@ -103,7 +103,7 @@ include 'createTables.php';
  										<br />
  
  										<label>Password</label>
-										<input type='password' required/>
+										<input type='password'required/>
  										<br />
  
  										<div class='checkbox'>
