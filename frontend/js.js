@@ -42,6 +42,10 @@ $(function() {
 		});
 });
 
+function pop() {
+  $('#modal').fadeIn(1000);
+}
+
 function showQuery1a() {
   $('#queryDisplay1a').fadeIn(1000);
 }

@@ -52,88 +52,88 @@ if (!pg_num_rows($result)) {
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
   
-  <a class="button" id="modal_trigger" href="#modal">LOGIN | REGISTER</a>
+  <a class='button' id='modal_trigger'  onclick='pop();'>LOGIN | REGISTER</a>
   <!-- LOGIN AND REGISTER POPUP -->
-  <div id="modal" class="popupContainer" style="display:none;">
-				<header class="popupHeader">
-						<span class="header_title">Login</span>
-						<span class="modal_close"><i class="fa fa-times"></i></span>
+  <div id='modal' class='popupContainer' style='display:none;'>
+				<header class='popupHeader'>
+						<span class='header_title'>Login</span>
+						<span class='modal_close'><i class='fa fa-times'></i></span>
 				</header>
 
-				<section class="popupBody">
+				<section class='popupBody'>
 						<!-- Social Login -->
-						<div class="social_login">
-								<div class="">
-										<a href="#" class="social_box fb">
-												<span class="icon"><i class="fa fa-facebook"></i></span>
-												<span class="icon_title">Connect with Facebook</span>
+						<div class='social_login'>
+								<div class=''>
+										<a href='#' class='social_box fb'>
+												<span class='icon'><i class='fa fa-facebook'></i></span>
+												<span class='icon_title'>Connect with Facebook</span>
 
 										</a>
 
-										<a href="#" class="social_box google">
-												<span class="icon"><i class="fa fa-google-plus"></i></span>
-												<span class="icon_title">Connect with Google</span>
+										<a href='#' class='social_box google'>
+												<span class='icon'><i class='fa fa-google-plus'></i></span>
+												<span class='icon_title'>Connect with Google</span>
 										</a>
 								</div>
 
-								<div class="centeredText">
+								<div class='centeredText'>
 										<span>Or use your Email address</span>
 								</div>
 
-								<div class="action_btns">
-										<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
-										<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+								<div class='action_btns'>
+										<div class='one_half'><a href='#' id='login_form' class='btn'>Login</a></div>
+										<div class='one_half last'><a href='#' id='register_form' class='btn'>Sign up</a></div>
 								</div>
 						</div>
 
 						<!-- Username & Password Login form -->
-						<div class="user_login">
+						<div class='user_login'>
 								<form>
 										<label>Email / Username</label>
-										<input type="text" />
+										<input type='text' />
 										<br />
 
 										<label>Password</label>
-										<input type="password" />
+										<input type='password' />
 										<br />
 
-										<div class="checkbox">
-												<input id="remember" type="checkbox" />
-												<label for="remember">Remember me on this computer</label>
+										<div class='checkbox'>
+												<input id='remember' type='checkbox' />
+												<label for='remember'>Remember me on this computer</label>
 										</div>
 
-										<div class="action_btns">
-												<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-												<div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+										<div class='action_btns'>
+												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+												<div class='one_half last'><a href='#' class='btn btn_red'>Login</a></div>
 										</div>
 								</form>
 
-								<a href="#" class="forgot_password">Forgot password?</a>
+								<a href='#' class='forgot_password'>Forgot password?</a>
 						</div>
 
 						<!-- Register Form -->
-						<div class="user_register">
+						<div class='user_register'>
 								<form>
 										<label>Full Name</label>
-										<input type="text" />
+										<input type='text' />
 										<br />
 
 										<label>Email Address</label>
-										<input type="email" />
+										<input type='email' />
 										<br />
 
 										<label>Password</label>
-										<input type="password" />
+										<input type='password' />
 										<br />
 
-										<div class="checkbox">
-												<input id="send_updates" type="checkbox" />
-												<label for="send_updates">Send me occasional email updates</label>
+										<div class='checkbox'>
+												<input id='send_updates' type='checkbox' />
+												<label for='send_updates'>Send me occasional email updates</label>
 										</div>
 
-										<div class="action_btns">
-												<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-												<div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+										<div class='action_btns'>
+												<div class='one_half'><a href='#' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+												<div class='one_half last'><a href='#' class='btn btn_red'>Register</a></div>
 										</div>
 								</form>
 						</div>
@@ -215,98 +215,7 @@ if (!pg_num_rows($result)) {
         
       </div>
     </div>
-  
-  
-  <a class="button" id="modal_trigger" href="#modal">LOGIN | REGISTER</a>
-  <!-- LOGIN AND REGISTER POPUP -->
-  <div id="modal" class="popupContainer" style="display:none;">
-				<header class="popupHeader">
-						<span class="header_title">Login</span>
-						<span class="modal_close"><i class="fa fa-times"></i></span>
-				</header>
-
-				<section class="popupBody">
-						<!-- Social Login -->
-						<div class="social_login">
-								<div class="">
-										<a href="#" class="social_box fb">
-												<span class="icon"><i class="fa fa-facebook"></i></span>
-												<span class="icon_title">Connect with Facebook</span>
-
-										</a>
-
-										<a href="#" class="social_box google">
-												<span class="icon"><i class="fa fa-google-plus"></i></span>
-												<span class="icon_title">Connect with Google</span>
-										</a>
-								</div>
-
-								<div class="centeredText">
-										<span>Or use your Email address</span>
-								</div>
-
-								<div class="action_btns">
-										<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
-										<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
-								</div>
-						</div>
-
-						<!-- Username & Password Login form -->
-						<div class="user_login">
-								<form>
-										<label>Email / Username</label>
-										<input type="text" />
-										<br />
-
-										<label>Password</label>
-										<input type="password" />
-										<br />
-
-										<div class="checkbox">
-												<input id="remember" type="checkbox" />
-												<label for="remember">Remember me on this computer</label>
-										</div>
-
-										<div class="action_btns">
-												<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-												<div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
-										</div>
-								</form>
-
-								<a href="#" class="forgot_password">Forgot password?</a>
-						</div>
-
-						<!-- Register Form -->
-						<div class="user_register">
-								<form>
-										<label>Full Name</label>
-										<input type="text" />
-										<br />
-
-										<label>Email Address</label>
-										<input type="email" />
-										<br />
-
-										<label>Password</label>
-										<input type="password" />
-										<br />
-
-										<div class="checkbox">
-												<input id="send_updates" type="checkbox" />
-												<label for="send_updates">Send me occasional email updates</label>
-										</div>
-
-										<div class="action_btns">
-												<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-												<div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
-										</div>
-								</form>
-						</div>
-				</section>
-		</div>
-		
-		
-		</div>
+	</div>
 </div>
 <p>Bottom of Page</p>
 <hr>
@@ -809,8 +718,8 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
-      AND Ra.userID = (SELECT DISTINCT Rat.userID FROM Rating Rat 
-                      WHERE (Rat.Food+Rat.Mood) >= 8)
+      GROUP By Ra.userID
+            HAVING AVG(Ra.mood + Ra.food)/2 >= 4
 ");
 
 if (!$result) {
@@ -843,7 +752,7 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID 
       AND  
-      AND (Ra.userID = (SELECT Rat.userID FROM Rating Rat 
+      AND  (SELECT Rat.userID FROM Rating Rat 
                       WHERE (SELECT AVG(Rat.Food) 
                               FROM Rating Rat 
                               LEFT JOIN Rater Ra ON Ra.userID=Rat.userID)
