@@ -16,44 +16,86 @@ function hideQuery1a() {
 function showQuery1b() {
   $('#queryDisplay1b').fadeIn(1000);
 }
+function hideQuery1b() {
+  $('#queryDisplay1b').fadeOut(1000);
+}
 function showQuery1c() {
   $('#queryDisplay1c').fadeIn(1000);
+}
+function hideQuery1c() {
+  $('#queryDisplay1c').fadeOut(1000);
 }
 function showQuery1d() {
   $('#queryDisplay1d').fadeIn(1000);
 }
+function hideQuery1d() {
+  $('#queryDisplay1d').fadeOut(1000);
+}
 function showQuery1e() {
   $('#queryDisplay1e').fadeIn(1000);
+}
+function hideQuery1e() {
+  $('#queryDisplay1e').fadeOut(1000);
 }
 function showQuery2f() {
   $('#queryDisplay2f').fadeIn(1000);
 }
+function hideQuery2f() {
+  $('#queryDisplay2f').fadeOut(1000);
+}
 function showQuery2g() {
   $('#queryDisplay2g').fadeIn(1000);
+}
+function hideQuery2g() {
+  $('#queryDisplay2g').fadeOut(1000);
 }
 function showQuery2h() {
   $('#queryDisplay2h').fadeIn(1000);
 }
+function hideQuery2h() {
+  $('#queryDisplay2h').fadeOut(1000);
+}
 function showQuery2i() {
   $('#queryDisplay2i').fadeIn(1000);
+}
+function hideQuery2i() {
+  $('#queryDisplay2i').fadeOut(1000);
 }
 function showQuery2j() {
   $('#queryDisplay2j').fadeIn(1000);
 }
+function hideQuery2j() {
+  $('#queryDisplay2j').fadeOut(1000);
+}
 function showQuery3k() {
   $('#queryDisplay3k').fadeIn(1000);
+}
+function hideQuery3k() {
+  $('#queryDisplay3k').fadeOut(1000);
 }
 function showQuery3l() {
   $('#queryDisplay3l').fadeIn(1000);
 }
+function hideQuery3l() {
+  $('#queryDisplay3l').fadeOut(1000);
+}
 function showQuery3m() {
   $('#queryDisplay3m').fadeIn(1000);
+}
+function hideQuery3m() {
+  $('#queryDisplay3m').fadeOut(1000);
 }
 function showQuery3n() {
   $('#queryDisplay3n').fadeIn(1000);
 }
+function hideQuery3n() {
+  $('#queryDisplay3n').fadeOut(1000);
+}
 function showQuery3o() {
   $('#queryDisplay3o').fadeIn(1000);
+}
+function hideQuery3o() {
+  $('#queryDisplay3o').fadeOut(1000);
 }
 
 

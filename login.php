@@ -27,7 +27,6 @@ if (!$conn) {
 
 
             <form id='login' role="form" method="post" action="" autocomplete="off">
-
                 <div class="form-group">
                     <input name="username" id="username" placeholder="Enter user ID" required 
                     autocomplete="off"/>
@@ -37,10 +36,10 @@ if (!$conn) {
                     autocomplete="off"/>
                 </div>
                 
-                <div class="row">
-                    <div class="col-xs-6 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="5"></div>
-                </div>
-            </form>
+<               div class="form-section btn-container">
+					<input type="submit" value="Login">
+				</div>           
+			</form>
             
 </body></html>        
 

@@ -25,8 +25,8 @@ h1 {
 		position: absolute;
 		width: 330px;
 		height: auto;
-		left: 45%;
-		top: 60px;
+		left: 50%;
+		top: 50%;
 		background: #FFF;
 		z-index: 999;
 }

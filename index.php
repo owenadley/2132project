@@ -119,7 +119,7 @@ if (!pg_num_rows($result)) {
  
  						<!-- Register Form -->
  						<div class='user_register' id='uregister'>
-								<form id='register' role="form" method="post" action="" autocomplete="off">
+								<form id='register' role="form" method="post" action="register.php" autocomplete="off">
  										<label>Full Name</label>
 										<input type='text' required />
  										<br />
