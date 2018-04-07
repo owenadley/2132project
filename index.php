@@ -280,11 +280,17 @@ if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
                     '".addslashes($data[3])."',
                     '".addslashes($data[4])."',
                     '".addslashes($data[5])."',
-                    '".addslashes($data[6])."',
+                    '".addslashes($data[6])."
                 )
             ");
         }
     }
+    if (!$sql) {
+      echo "cannot input rater entries";
+    } else {
+      echo "query is valid for raters";
+    }
+    
   fclose($handle);
 
 #Restaurants
@@ -406,7 +412,7 @@ if ($row = pg_fetch_row($result)) {
   $arr = pg_fetch_all($result);
   print_r($arr);
 } else {
-  echo 'No records in food';
+  echo 'No records in rater';
 }
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
