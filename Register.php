@@ -75,7 +75,7 @@ if (!$conn) {
 
         $sqlRegister = pg_query($conn, "INSERT INTO Rater(userID, email, name, password) VALUES ('$email', '$email', '$name', '$pass')");
     
-        if (!$sqlLogin) {
+        if (!$sqlRegister) {
         echo "An error occurred.\n";
         exit;
         }
