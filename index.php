@@ -87,13 +87,13 @@ if (!pg_num_rows($result)) {
  								</div>
  
  								<div class='action_btns'>
- 										<div class='one_half'><a href='#' id='login_form' class='btn'>Login</a></div>
- 										<div class='one_half last'><a href='#' id='register_form' class='btn'>Sign up</a></div>
+ 										<div class='one_half'><a href='#ulogin' id='login_form' class='btn'>Login</a></div>
+ 										<div class='one_half last'><a href='#uregister' id='register_form' class='btn'>Sign up</a></div>
  								</div>
  						</div>
  
  						<!-- Username & Password Login form -->
- 						<div class='user_login'>
+ 						<div class='user_login' id='ulogin'>
 								<form id='login' role='form' method='post' action='./login.php' autocomplete='off'>
 										<label>UserID</label>
 										<input type='text' required/>
@@ -118,7 +118,7 @@ if (!pg_num_rows($result)) {
  						</div>
  
  						<!-- Register Form -->
- 						<div class='user_register'>
+ 						<div class='user_register' id='uregister'>
 								<form id='register' role="form" method="post" action="" autocomplete="off">
  										<label>Full Name</label>
 										<input type='text' required />
