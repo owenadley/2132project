@@ -149,5 +149,10 @@ p.sidemenup {
     top: 2px;
     right: 2px;
 }
+.queryExitIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 
 
