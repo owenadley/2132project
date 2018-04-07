@@ -52,13 +52,9 @@ if (!pg_num_rows($result)) {
   <h3 id='headerTitle'>2132 Foods</h3>
   
   <div class="container">
-  <div class="button"><a id="modal_trigger" href="#modal">LOGIN | REGISTER</a></div>
-  </div>
-  
-
-
+  <a class="button" id="modal_trigger" href="#modal">LOGIN | REGISTER</a>
 <!-- LOGIN AND REGISTER POPUP -->
-<div id="modal" class="popupContainer" style="display:none;">
+  <div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
 						<span class="header_title">Login</span>
 						<span class="modal_close"><i class="fa fa-times"></i></span>
@@ -143,6 +139,7 @@ if (!pg_num_rows($result)) {
 						</div>
 				</section>
 		</div>
+		</<div>
 </div>
 
 <div class='core-content'>
