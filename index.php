@@ -62,7 +62,7 @@ include 'createTables.php';
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
             </div>";
-  }
+  }?>
 
   
 </div>
