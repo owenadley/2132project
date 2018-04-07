@@ -407,14 +407,14 @@ if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-echo "\n";
+echo "\n";echo "\n";
 if ($row = pg_fetch_row($result)) {
   $arr = pg_fetch_all($result);
   print_r($arr);
 } else {
   echo 'No records in rater';
 }
-echo "\n";
+echo "\n";echo "\n";
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
 #name of the restaurant from a list, and the information as contained in the restaurant and
