@@ -40,7 +40,7 @@
     </div>
     <div class='col-md-9'>
       <div class='core-panels'>
-          <h3>Resturaunts and Menus</h3><br>
+          <h3>Resturaunts and Menus</h3>
         <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
@@ -68,7 +68,8 @@
             </div>
           </div> 
         </div>
-         <h3>Ratings Of Resturaunts</h3>        
+        <br>
+         <h3>Ratings Of Resturaunts</h3>
         <div class='row'>
           <div class='col-md-3'>
             <div class='panel'>
@@ -96,6 +97,7 @@
             </div>
           </div>
         </div>
+        <br>
           <h3>Raters and Their Ratings</h3>        
         <div class='row'>
           <div class='col-md-3'>
