@@ -26,10 +26,9 @@ if (!$raterTable) {
 else{
   echo 'Rater Table exists';
 }
-$checkRater = pg_query($conn, "SELECT password FROM Rater");
-while ($row = pg_fetch_assoc($checkRater)) {
-  echo " $row[password] \n";
-}
+$checkRater = pg_query($conn, "SELECT password, name FROM Rater");
+$arr = pg_fetch_all($result);
+print_r($arr);
 
 
 # Rating: (UserID, Date, Price, Food, Mood, Staff, Comments, …., RestaurantID)
