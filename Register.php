@@ -87,7 +87,7 @@ if (!$conn) {
           exit;
         }
         if ($row = pg_fetch_row($sqlCheckReg)) {
-          echo "registration done: $row[name]";
+          echo '$row[name]';
         
           echo "<br />\n";
         } else {
