@@ -7,5 +7,5 @@ $('.autoplay').slick({
 });
 
 function showQuery() {
-  $('queryDisplay').fadeIn(1000);
+  $('.queryDisplay').fadeIn(1000);
 }
