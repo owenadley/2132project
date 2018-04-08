@@ -123,7 +123,13 @@ if (!pg_num_rows($result)) {
             </div>
           </div>
           
-          
+          <div id='modal' class='popupContainer' style='display:none;'>
+ 				<header class='popupHeader'>
+ 						<span class='header_title'>Login</span>
+ 						<span class='modal_close' onclick='unpop();'><i class='fa fa-times'></i></span>
+ 				</header>
+ 
+ 
  						<div class='addEntry' id='addEntryResturaunt'>
 								<form id='addResturaunt' role="form" method="post" action="addResturaunt.php" autocomplete="off">
  										<label>Resturaunt Name</label>
@@ -147,6 +153,7 @@ if (!pg_num_rows($result)) {
  										</div>
  								</form>
  						</div>
+ 					</div>
           
           
           
