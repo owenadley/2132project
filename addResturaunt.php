@@ -23,38 +23,40 @@ if (!$conn) {
      
 
     
-    $name = $_POST['name'];
-    $type = $_POST['type'];
-    $url = $_POST['url'];
+$name = $_POST['name'];
+$type = $_POST['type'];
+$url = $_POST['url'];
 
-    $name = pg_escape_string($conn, $name);
-    $type = pg_escape_string($conn, $type);
-    $url = pg_escape_string($conn, $url);
+$name = pg_escape_string($conn, $name);
+$type = pg_escape_string($conn, $type);
+$url = pg_escape_string($conn, $url);
 
-    $sqlAddResturaunt = pg_query($conn, "INSERT INTO Resturaunt(ResturauntID, name, type, url) VALUES ('$url', '$name', '$type', '$type', '$url')");
+$sqlAddResturaunt = pg_query($conn, "INSERT INTO Resturaunt(ResturauntID, name, type, url) VALUES ('$url', '$name', '$type', '$type', '$url')");
+
+if (!$sqlAddResturaunt) {
+    echo "An error occurred.\n";
+    exit;
+}
+
+$sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Resturaunt WHERE url='$url'");
+
+if (!$sqlCheckAddResturaunt) {
+  echo "An error occurred in reg.\n";
+  exit;
+}
+
+if ($row = pg_fetch_row($sqlCheckAddResturaunt)) {
+  echo "$row[name]";
+  echo "Resturaunt has been added.";
+  echo "<br />\n";
+  header("Location: index.php");
+  exit; 
+} else {
+  echo 'Could not complete registration';
+}
+
+
     
-        if (!$sqlAddResturaunt) {
-            echo "An error occurred.\n";
-            exit;
-        }
-
-        $sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Resturaunt WHERE url='$url'");
-    
-        if (!$sqlCheckAddResturaunt) {
-          echo "An error occurred in reg.\n";
-          exit;
-        }
-
-        if ($row = pg_fetch_row($sqlCheckAddResturaunt)) {
-          echo "$row[name]";
-          echo "Resturaunt has been added.";
-          echo "<br />\n";
-        } else {
-          echo 'Could not complete registration';
-        }
-
-
-    }
     
     
             
