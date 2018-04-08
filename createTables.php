@@ -109,19 +109,19 @@ else{
 # MenuItem(ItemID, name, type, category, category, price, …, RestaurantID)_
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
 # type (food or beverage). RestaurantID is the foreign key.
-$drop = pg_query($conn, "DROP TABLE MenuItem");
+/*$drop = pg_query($conn, "DROP TABLE MenuItem");
 if (!$drop) {
   echo "cannot drop table";
 } else {
   echo "dropped";
-}
+}*/
 
 $menuItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS MenuItem (
 ItemID varchar(255) PRIMARY KEY NOT NULL,
 name varchar(255),
 type varchar(8) CHECK (type IN ('Starter', 'Main', 'Desert')),
-category varchar(7) CHECK (category IN ('Food', 'Beverage')),
+category varchar(10) CHECK (category IN ('Food', 'Beverage')),
 description text,
 price decimal(12,2),
 RestaurantID varchar(255) NOT NULL,
