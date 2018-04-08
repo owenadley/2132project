@@ -36,7 +36,7 @@ if (!$sqlAddResturaunt) {
     exit;
 }
 
-$sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Resturaunt WHERE url='$url'");
+$sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Restaurant WHERE url='$url'");
 
 if (!$sqlCheckAddResturaunt) {
   echo "An error occurred in reg.\n";
