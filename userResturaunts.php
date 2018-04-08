@@ -127,7 +127,7 @@ if (!pg_num_rows($result)) {
           <div id='modal1' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
  					  	<span class='header_title'>Add Resturaunt</span>
- 						  <span class='modal_close' onclick='unpop();'><i class='fa fa-times'></i></span>
+ 						  <span class='modal_close' onclick='unpop1();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
             <section class='popupBody'>
