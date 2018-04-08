@@ -174,9 +174,9 @@ function popAddRestauraunt() {
   $('#addEntryResturaunt').fadeIn(1000);
 }
 function popAddMenuItem() {
-  $('#modal1').fadeIn(1000);
+  $('#modal2').fadeIn(1000);
   $('#addEntryMenuItem').fadeIn(1000);
 }
 function unpop1() {
-  $('#modal1').fadeOut(1000);
+  $('#modal2').fadeOut(1000);
 }
