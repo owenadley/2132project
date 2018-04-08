@@ -173,7 +173,7 @@ function popAddRestauraunt() {
   $('#modal1').fadeIn(1000);
   $('#addEntryResturaunt').fadeIn(1000);
 }
-function popMenuItem() {
+function popAddMenuItem() {
   $('#modal1').fadeIn(1000);
   $('#addEntryMenuItem').fadeIn(1000);
 }
