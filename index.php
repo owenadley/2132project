@@ -60,7 +60,7 @@ include 'createTables.php';
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
     echo "<div class='loggedIn'>Signed is as:<br>".$_SESSION['userid']."</div>";
-    echo "<div class='container'><form method='post' action'logout.php'><input type='submit' name='logout'/></form></div>";
+    echo "<div class='container logout'><form method='post' action='logout.php'><input type='submit' name='logout'/></form></div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
