@@ -73,14 +73,15 @@ if (!$conn) {
     
         $checkUserID = $row['UserID'];
         $checkPassword = $row['password'];
+        echo "here";
         
             if ($checkUserID==$userID && $checkPassword==$pass){
                 $_SESSION['authorized'] = true;
                 $_SESSION['success'] = 'Login Successful';
                 $_SESSION['userID'] = $checkUserID;
+                echo "lol";
                 header('Location: ./index.php');
                 exit;
-                echo "lol";
             }
     
     
