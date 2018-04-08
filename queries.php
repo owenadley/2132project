@@ -169,8 +169,8 @@ location tables should then displayed on the screen.
           
           <div class="container">
             <br/>
-            <table>
-              <tr>
+            <table class='tableD'>
+              <trclass='trD'>
                 <th>Restaurant ID</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -184,7 +184,7 @@ location tables should then displayed on the screen.
                 <th>Closing time</th>
               </tr>
               <?php while ($row = pg_fetch_assoc($result)): ?>
-              <tr>
+              <tr class='trD'>
                 <td><?php echo $row['RestaurantID']; ?></td>
                 <td><?php echo $row['Name']; ?></td>
                 <td><?php echo $row['Type']; ?></td>
@@ -219,8 +219,8 @@ screen. The menu should be displayed based on menu item categories.
             
             <div class="container">
               <br/>
-              <table>
-                <tr>
+              <table class='tableD'>
+                <tr class='trD'>
                   <th>Item ID</th>
                   <th>Name</th>
                   <th>Type</th>
@@ -230,7 +230,7 @@ screen. The menu should be displayed based on menu item categories.
                   <th>Restaurant ID</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
-                <tr>
+                <tr class='trD'>
                   <td><?php echo $row['ItemID']; ?></td>
                   <td><?php echo $row['name']; ?></td>
                   <td><?php echo $row['type']; ?></td>
