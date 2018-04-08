@@ -90,8 +90,8 @@ if (!$conn) {
             echo $_SESSION['userid'];
             echo "lol";
             
-            #header('Location: ./index.php');
-            #exit;
+            header('Location: ./index.php');
+            exit;
         }
     
     
