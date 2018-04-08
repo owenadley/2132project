@@ -1,3 +1,25 @@
+<?php
+    session_start();
+
+
+
+function pg_connection_string_from_database_url() {
+  extract(parse_url($_ENV["postgres://xhgocwtwpvuyuh:1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d88e4kacmh5m8a
+"]));
+  return "user=xhgocwtwpvuyuh password=1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5 host=ec2-54-243-210-70.compute-1.amazonaws.com dbname=d88e4kacmh5m8a" . substr($path, 1);
+}
+
+# Establish connection
+$conn = pg_connect(pg_connection_string_from_database_url());
+
+if (!$conn) {
+  echo "An error occurred.\n";
+  exit;
+} else {
+    echo "connected";
+} 
+?>
+
 <html><body>
     
 <head>
@@ -134,6 +156,51 @@
         a : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
+          <?php 
+            $resturauntselect = "Wendys";
+            $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
+                                       WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
+            
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+          
+          <div class="container">
+            <br/>
+            <table>
+              <tr>
+                <th>Restaurant ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>URL</th>
+                <th>Location ID</th>
+                <th>Opening Date</th>
+                <th>Manager Name</th>
+                <th>Phone Number</th>
+                <th>Street Address</th>
+                <th>Opening time</th>
+                <th>Closing time</th>
+              </tr>
+              <?php while ($row = pg_fetch_assoc($result)): ?>
+              <tr>
+                <td><?php echo $row['RestaurantID']; ?></td>
+                <td><?php echo $row['Name']; ?></td>
+                <td><?php echo $row['Type']; ?></td>
+                <td><?php echo $row['URL']; ?></td>
+                <td><?php echo $row['LocationID']; ?></td>
+                <td><?php echo $row['firstOpenDate']; ?></td>
+                <td><?php echo $row['managerName']; ?></td>
+                <td><?php echo $row['phoneNumber']; ?></td>
+                <td><?php echo $row['streetAddress']; ?></td>
+                <td><?php echo $row['hourOpen']; ?></td>
+                <td><?php echo $row['hourClose']; ?></td>
+              </tr>
+              <?php endwhile; ?>
+            </table>
+          </div>
+
       </div>
       <div id='queryDisplay1b' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1b()'></i></div>

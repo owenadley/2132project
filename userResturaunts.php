@@ -86,7 +86,7 @@ if (!pg_num_rows($result)) {
           <?php
           if ($_SESSION['addSuccess']) {
             echo "<div class='successNotify'><p>Your entry has been submitted.</p></div>";
-            #$_SESSION['addSuccess'] = false;
+            $_SESSION['addSuccess'] = false;
           }
         ?>
           
@@ -117,7 +117,7 @@ if (!pg_num_rows($result)) {
           <div class='row'>
             <div class='col-md-4'>
               <div class='selectEntry'>
-                <p class='nopad'>Resturaunt</p>
+                <p class='nopad'>Restauraunt</p>
               </div>
             </div>
             <div class='col-md-4'>
@@ -172,7 +172,60 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>
           
-          
+          <div id='modal1' class='popupContainer' style='display:none;'>
+ 				    <header class='popupHeader'>
+ 					  	<span class='header_title'>Add Menu Item</span>
+ 						  <span class='modal_close' onclick='unpop1();'><i class='fa fa-times'></i></span>
+ 				    </header>
+ 				    
+            <section class='popupBody'>
+              <div class='addEntry' id='addEntryMenuItem'>
+    								<form id='addMenuItem' role="form" method="post" action="addMenuItem.php" autocomplete="off">
+     										<label>Name</label>
+    										<input name='name' type='text' required />
+     										<br />
+     										
+     										<label>Type</label>
+     										<select name='type' required>
+     										  <option value='food'>Food</option>
+     										  <option value='beverage'>Beverage</option>
+     										</select>
+     										<br><br>
+     
+     										<label>Category</label>
+     										<select name='cat' required>
+     										  <option value='starter'>Starter</option>
+     										  <option value='main'>Main</option>
+     										  <option value='desert'>Desert</option>
+     										</select>
+     
+     										<label>Description</label>
+    										<input name='description' type='text' required/>
+    										<br />
+     
+     										<label>Price</label>
+    										<input name='price' type='number' required/>
+    										<br />
+     
+     										<label>Restauraunt</label>
+     										<select name='restauraunt' required>
+     										  
+     										  <?php
+     										  $getRestauraunts = $pg_query($conn, "SELECT RestaurauntID, Name FROM Restauraunt");
+     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
+     										    echo "<option value='$row['RestaurauntID']'>$row['Name']</option>";
+     										  }?>
+
+     										</select>
+    										<br />
+     
+     										<div class='action_btns'>
+     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
+     										</div>
+     								</form>
+     						</div>
+ 					  </section>
+ 				  </div>    
           
           
           
