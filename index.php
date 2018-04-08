@@ -56,6 +56,8 @@ include 'createTables.php';
   
   
   <?php
+  echo "lol";
+  echo $_SESSION['userid'];
   if ($_SESSION['userID']) {
     echo $_SESSION['userID'];
   } else { 
