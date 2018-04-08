@@ -29,7 +29,7 @@ $name = pg_escape_string($conn, $name);
 $type = pg_escape_string($conn, $type);
 $url = pg_escape_string($conn, $url);
 
-$sqlAddResturaunt = pg_query($conn, "INSERT INTO Resturaunt(ResturauntID, name, type, url) VALUES ('$url', '$name', '$type', '$type', '$url')");
+$sqlAddResturaunt = pg_query($conn, "INSERT INTO Restaurant(RestaurantID, name, type, url) VALUES ('$url', '$name', '$type', '$type', '$url')");
 
 if (!$sqlAddResturaunt) {
     echo "An error occurred.\n";
