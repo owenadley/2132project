@@ -142,6 +142,7 @@ include 'createTables.php';
 										<input name ='email' type='email' required/>
  										<br />
  										
+ 										<label>Type</label>
  										<select name='type' required>
  										  <option value='blog'>Blog</option>
  										  <option value='online'>Online</option>
@@ -164,7 +165,7 @@ include 'createTables.php';
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><input type='submit'><a href='#' class='btn btn_red'>Register</a></input></div>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red'><a href='#' class='btn btn_red'>Register</a></input></div>
  										</div>
  								</form>
  						</div>
