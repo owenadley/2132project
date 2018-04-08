@@ -74,7 +74,10 @@ if (!$conn) {
         $checkUserID = $row['UserID'];
         $checkPassword = $row['password'];
         echo "here";
-        
+        echo $checkUserID;
+        echo $userID;
+        echo $checkPassword;
+        echo $pass;
             if ($checkUserID==$userID && $checkPassword==$pass){
                 $_SESSION['authorized'] = true;
                 $_SESSION['success'] = 'Login Successful';
