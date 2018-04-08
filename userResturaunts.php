@@ -81,8 +81,9 @@ if (!pg_num_rows($result)) {
         if ($_SESSION['userid']) {
           echo "logged in";
         } else {
-          echo "You must be logged in to add your own resturaunts";
+          echo "You must be logged in to add your own resturaunts!";
         }
+        ?>
         
 
 
