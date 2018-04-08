@@ -383,11 +383,11 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
             ");
         }
     }
-    if (!$sql) {
+/*    if (!$sql) {
       echo "cannot input menuitems entries";
     } else {
       echo "query is valid for menuitems";
-    }
+    }*/
   fclose($handle);
 
 
@@ -446,7 +446,7 @@ echo "<br><br>";
 #location tables should then displayed on the screen.
 
 #user defined restraunt chosen from UI
-$resturauntselect = "Wendys";
+$resturauntselect = "Canal Ritz";
 
 $result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
 
