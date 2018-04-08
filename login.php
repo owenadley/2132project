@@ -89,8 +89,9 @@ if (!$conn) {
             $_SESSION['userID'] = $checkUserID;
             
             echo "lol";
-            header('Location: ./index.php');
-            exit;
+            
+            #header('Location: ./index.php');
+            #exit;
         }
     
     
