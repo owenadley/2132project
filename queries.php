@@ -170,7 +170,7 @@ location tables should then displayed on the screen.
           <div class="container">
             <br/>
             <table class='tableD'>
-              <trclass='trD'>
+              <tr class='trD'>
                 <th>Restaurant ID</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -220,24 +220,24 @@ screen. The menu should be displayed based on menu item categories.
             <div class="container">
               <br/>
               <table class='tableD'>
-                <tr class='trD'>
-                  <th>Item ID</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Category</th>
-                  <th>Description ID</th>
-                  <th>Price</th>
-                  <th>Restaurant ID</th>
+                <tr>
+                  <th class='trD'>Item ID</th>
+                  <th class='trD'>Name</th>
+                  <th class='trD'>Type</th>
+                  <th class='trD'>Category</th>
+                  <th class='trD'>Description ID</th>
+                  <th class='trD'>Price</th>
+                  <th class='trD'>Restaurant ID</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
-                  <td><?php echo $row['ItemID']; ?></td>
-                  <td><?php echo $row['name']; ?></td>
-                  <td><?php echo $row['type']; ?></td>
-                  <td><?php echo $row['category']; ?></td>
-                  <td><?php echo $row['description']; ?></td>
-                  <td><?php echo $row['price']; ?></td>
-                  <td><?php echo $row['RestaurantID']; ?></td>
+                  <td class='trD'><?php echo $row['ItemID']; ?></td>
+                  <td class='trD'><?php echo $row['name']; ?></td>
+                  <td class='trD'><?php echo $row['type']; ?></td>
+                  <td class='trD'><?php echo $row['category']; ?></td>
+                  <td class='trD'><?php echo $row['description']; ?></td>
+                  <td class='trD'><?php echo $row['price']; ?></td>
+                  <td class='trD'><?php echo $row['RestaurantID']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
