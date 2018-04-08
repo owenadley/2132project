@@ -176,9 +176,15 @@ p.sidemenup {
 
 
 /* USER RESTURAUNT PAGE */
-.selectNewEntry {
+.selectEntry {
     margin: 0 auto;
     text-align: center;
     border: 1px solid #FF5840;
+    transition: .2s all;
 }
-
+.selectEntry:hover {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #FF5840;
+    background-color: #FF5840;
+}

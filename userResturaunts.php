@@ -79,22 +79,46 @@ if (!pg_num_rows($result)) {
         
         <?php 
         if ($_SESSION['userid']) { ?>
-          <p>Here you can submit or alter information regarding Resturaunts, Menu Items and Resturaunt Raters.</p>
+          <p>Submit or alter information regarding Resturaunts, Menu Items and Resturaunt Raters</p>
+          <br>
+          
           <p>Submit New</p>
           <div class='row'>
             <div class='col-md-4'>
-              <div class='selectNewEntry'>
-                <p>Resturaunt</p>
+              <div class='selectEntry'>
+                <p class='nopad'>Resturaunt</p>
               </div>
             </div>
             <div class='col-md-4'>
-              <div class='selectNewEntry'>
-                <p>Menu Item</p>
+              <div class='selectEntry'>
+                <p class='nopad'>Menu Item</p>
               </div>
             </div>
             <div class='col-md-4'>
-              <div class='selectNewEntry'>
-                <p>Rater</p>
+              <div class='selectEntry'>
+                <p class='nopad'>Rater</p>
+              </div>
+            </div>
+          </div>
+          
+          <hr>
+          <br>
+          
+          <p>Delete Record</p>
+          <div class='row'>
+            <div class='col-md-4'>
+              <div class='selectEntry'>
+                <p class='nopad'>Resturaunt</p>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <div class='selectEntry'>
+                <p class='nopad'>Menu Item</p>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <div class='selectEntry'>
+                <p class='nopad'>Rater</p>
               </div>
             </div>
           </div>
