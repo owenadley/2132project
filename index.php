@@ -370,7 +370,7 @@ if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
 #MenuItems
 if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    $sql = pg_query("INSERT INTO MenuItem (ItemID,	name,	type,	category,	description,	price, RestaurantID) VALUES
+    $sql = pg_query("INSERT INTO MenuItem (ItemID,	name,	category,	type,	description,	price, RestaurantID) VALUES
                 (
                     '".addslashes($data[0])."',
                     '".addslashes($data[1])."',
