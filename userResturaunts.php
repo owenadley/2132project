@@ -86,7 +86,7 @@ if (!pg_num_rows($result)) {
           <div class='row'>
             <div class='col-md-4'>
               <div class='selectEntry'>
-                <p class='nopad'>Resturaunt</p>
+                <p class='nopad' onclick='popAddResturaunt();'>Resturaunt</p>
               </div>
             </div>
             <div class='col-md-4'>
@@ -122,6 +122,35 @@ if (!pg_num_rows($result)) {
               </div>
             </div>
           </div>
+          
+          
+ 						<div class='addEntry' id='addEntryResturaunt'>
+								<form id='addResturaunt' role="form" method="post" action="addResturaunt.php" autocomplete="off">
+ 										<label>Resturaunt Name</label>
+										<input name='name' type='text' required />
+ 										<br />
+ 										
+ 										<label>Resturaunt Type</label>
+ 										<select name='type' required>
+ 										  <option value='blog'>Blog</option>
+ 										  <option value='online'>Online</option>
+ 										  <option value='critic'>Food Critic</option>
+ 										</select>
+ 										<br />
+ 
+ 										<label>Resturaunt URL</label>
+										<input name='url' type='text' required/>
+										<br />
+ 
+ 										<div class='action_btns'>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red' value='Register'></input></div>
+ 										</div>
+ 								</form>
+ 						</div>
+          
+          
+          
+          
           
           
         <?php } else {

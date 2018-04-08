@@ -187,4 +187,36 @@ p.sidemenup {
     text-align: center;
     border: 1px solid #FF5840;
     background-color: #FF5840;
+    cursor: pointer;
+}
+.selectEntry p {
+    padding: 15px;
+}
+
+/* add entries pop up forms */
+/* User Register Form */
+
+.addEntry {
+		display: none;
+}
+
+.addEntry label {
+		display: block;
+		margin-bottom: 5px;
+}
+
+.addEntry input[type='text'],
+.addEntry input[type='email'],
+.addEntry input[type='password'] {
+		display: block;
+		width: 90%;
+		padding: 10px;
+		border: 1px solid #DDD;
+		color: #666;
+}
+
+.addEntry .checkbox {
+		margin-bottom: 10px;
+		clear: both;
+		overflow: hidden;
 }

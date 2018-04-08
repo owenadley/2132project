@@ -166,3 +166,9 @@ function back() {
 	return false;
 }
 
+
+
+/*Functions for adding user entries popups*/
+function popAddResturaunt() {
+  $('#addEntryResturaunt').fadeIn(1000);
+}
