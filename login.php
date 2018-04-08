@@ -86,7 +86,7 @@ if (!$conn) {
         if ($checkUserID==$userID && $checkPassword==$pass) {
             $_SESSION['authorized'] = true;
             $_SESSION['success'] = 'Login Successful';
-            $_SESSION['userID'] = $checkUserID;
+            $_SESSION['userid'] = $checkUserID;
             echo $_SESSION['userid'];
             echo "lol";
             
