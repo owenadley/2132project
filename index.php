@@ -456,7 +456,8 @@ if (!$result) {
 }
 while ($row = pg_fetch_assoc($result)) {
   echo "resturaunt: \n";
-  
+    $arr = pg_fetch_all($result);
+  print_r($arr);
   echo "Restaurant Id: $row[0] \n";
   echo "Name: $row[1] \n";
   echo "Type: $row[2] \n";
