@@ -124,11 +124,13 @@ if (!pg_num_rows($result)) {
             </div>
           </div>
           
+          
+        <section class='popupBody'>
           <div id='modal1' class='popupContainer' style='display:none;'>
- 				<header class='popupHeader'>
- 						<span class='header_title'>Login</span>
- 						<span class='modal_close' onclick='unpop();'><i class='fa fa-times'></i></span>
- 				</header>
+ 				    <header class='popupHeader'>
+ 					  	<span class='header_title'>Add Resturaunt</span>
+ 						  <span class='modal_close' onclick='unpop();'><i class='fa fa-times'></i></span>
+ 				    </header>
  
  
  						<div class='addEntry' id='addEntryResturaunt'>
@@ -155,6 +157,7 @@ if (!pg_num_rows($result)) {
  								</form>
  						</div>
  					</div>
+ 				</section>
           
           
           
