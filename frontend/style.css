@@ -220,3 +220,16 @@ p.sidemenup {
 		clear: both;
 		overflow: hidden;
 }
+
+
+.table {
+    		    font-family: arial, sans-serif;
+    		    border-collapse: collapse;
+    		    width: 60%;
+    
+}
+.td, .th {
+    		    border: 2px solid #dddddd;
+    		    text-align: center;
+    		    padding: 2px;
+}

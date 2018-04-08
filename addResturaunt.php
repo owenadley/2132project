@@ -47,6 +47,9 @@ if ($row = pg_fetch_row($sqlCheckAddResturaunt)) {
   echo "$row[name]";
   echo "Resturaunt has been added.";
   echo "<br />\n";
+  
+  header('Location: ./index.php');
+  exit;
 
 } else {
   echo 'Could not complete registration';
