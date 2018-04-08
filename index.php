@@ -365,12 +365,7 @@ if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
     }
   fclose($handle);
 
-$drop = pg_query($conn, "DROP TABLE MenuItem");
-if ($drop) {
-  echo "dropped";
-} else {
-  echo "not dropped";
-}
+
   
 #MenuItems
 if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
