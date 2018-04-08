@@ -241,6 +241,7 @@ p.sidemenup {
     font-weight: bold;
     font-size: 14px;
     background-color: #FF5840;
-    padding: 10px;
-    border-radius: 2px;
+    padding: 10px 30px;
+    border-radius: 6px;
+    width: max-content;
 }
