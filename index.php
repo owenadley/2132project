@@ -142,11 +142,12 @@ include 'createTables.php';
 										<input name ='email' type='email' required/>
  										<br />
  										
- 										<select name='type'>
+ 										<select name='type' required>
  										  <option value='blog'>Blog</option>
  										  <option value='online'>Online</option>
  										  <option value='critic'>Food Critic</option>
  										</select>
+ 										<br />
  
  										<label>Password</label>
 										<input name='password' type='password' required/>

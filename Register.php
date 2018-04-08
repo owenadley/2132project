@@ -32,10 +32,11 @@ if (!$conn) {
     if ($pass == $repass){
         $name = pg_escape_string($conn, $name);
         $email = pg_escape_string($conn, $email);
+        $type = pg_escape_string($conn, $type);
         $pass = pg_escape_string($conn, $pass);
         $repass = pg_escape_string($conn, $repass);
 
-        $sqlRegister = pg_query($conn, "INSERT INTO Rater(userID, email, name, password) VALUES ('$email', '$email', '$name', '$pass')");
+        $sqlRegister = pg_query($conn, "INSERT INTO Rater(userID, email, name, type, password) VALUES ('$email', '$email', '$name', '$type', '$pass')");
     
         if (!$sqlRegister) {
             echo "An error occurred.\n";
