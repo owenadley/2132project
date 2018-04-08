@@ -169,7 +169,7 @@ function back() {
 
 
 /*Functions for adding user entries popups*/
-function popAddResturaunt() {
+function popAddRestauraunt() {
   $('#modal1').fadeIn(1000);
   $('#addEntryResturaunt').fadeIn(1000);
 }

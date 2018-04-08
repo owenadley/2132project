@@ -95,7 +95,7 @@ if (!pg_num_rows($result)) {
           <div class='row'>
             <div class='col-md-4'>
               <div class='selectEntry'>
-                <p class='nopad' onclick='popAddResturaunt();'>Resturaunt</p>
+                <p class='nopad' onclick='popAddRestauraunt();'>Restauraunt</p>
               </div>
             </div>
             <div class='col-md-4'>
