@@ -78,7 +78,9 @@ p.sidemenup {
     top: 2px;
     background-color: #fff;
     border-radius: 2px;
+    font-weight: bold;
 }
+
 
 .core-home-topRated {
     margin: 20px 20px;
