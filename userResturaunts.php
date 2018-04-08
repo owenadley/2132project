@@ -78,9 +78,29 @@ if (!pg_num_rows($result)) {
         <h2>My Resturaunts</h2>
         
         <?php 
-        if ($_SESSION['userid']) {
-          echo "logged in";
-        } else {
+        if ($_SESSION['userid']) { ?>
+          <p>Here you can submit or alter information regarding Resturaunts, Menu Items and Resturaunt Raters.</p>
+          <p>Submit New</p>
+          <div class='row'>
+            <div class='col-md-4'>
+              <div class='selectNewEntry'>
+                <p>Resturaunt</p>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <div class='selectNewEntry'>
+                <p>Menu Item</p>
+              </div>
+            </div>
+            <div class='col-md-4'>
+              <div class='selectNewEntry'>
+                <p>Rater</p>
+              </div>
+            </div>
+          </div>
+          
+          
+        <?php } else {
           echo "You must be logged in to add your own resturaunts!";
         }
         ?>

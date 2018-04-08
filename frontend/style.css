@@ -173,3 +173,12 @@ p.sidemenup {
     cursor: pointer;
 }
 
+
+
+/* USER RESTURAUNT PAGE */
+.selectNewEntry {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #FF5840;
+}
+
