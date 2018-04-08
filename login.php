@@ -75,17 +75,22 @@ if (!$conn) {
         $checkPassword = $row['password'];
         echo "here";
         echo $checkUserID;
+        echo "<br>";
         echo $userID;
+        echo "<br>";
         echo $checkPassword;
+        echo "<br>";
         echo $pass;
-            if ($checkUserID==$userID && $checkPassword==$pass){
-                $_SESSION['authorized'] = true;
-                $_SESSION['success'] = 'Login Successful';
-                $_SESSION['userID'] = $checkUserID;
-                echo "lol";
-                header('Location: ./index.php');
-                exit;
-            }
+        
+        if ($checkUserID==$userID && $checkPassword==$pass){
+            $_SESSION['authorized'] = true;
+            $_SESSION['success'] = 'Login Successful';
+            $_SESSION['userID'] = $checkUserID;
+            
+            echo "lol";
+            header('Location: ./index.php');
+            exit;
+        }
     
     
     }
