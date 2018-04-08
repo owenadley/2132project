@@ -470,8 +470,6 @@ while ($row = pg_fetch_assoc($result)) {
   echo "Closes: $row[10] \n";  
   
   echo "<br />\n";
-} else {
-  echo 'No records in resturaunts';
 }
 
 
