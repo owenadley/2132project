@@ -458,17 +458,17 @@ while ($row = pg_fetch_assoc($result)) {
   echo "resturaunt: \n";
     $arr = pg_fetch_all($result);
   print_r($arr);
-  echo "Restaurant Id: $row[0] \n";
-  echo "Name: $row[1] \n";
-  echo "Type: $row[2] \n";
-  echo "URL: $row[3] \n";
-  echo "Location ID: $row[4] \n";
-  echo "Open Date: $row[5] \n";  
-  echo "Manager Name: $row[6] \n";  
-  echo "Phone Number: $row[7] \n";  
-  echo "Street Address: $row[8] \n";  
-  echo "Opens: $row[9] \n";  
-  echo "Closes: $row[10] \n";  
+  echo "Restaurant Id: $row[restaurauntID] \n";
+  echo "Name: $row[name] \n";
+  echo "Type: $row[type] \n";
+  echo "URL: $row[url] \n";
+  echo "Location ID: $row[locationid] \n";
+  echo "Open Date: $row[firstopendate] \n";  
+  echo "Manager Name: $row[managername] \n";  
+  echo "Phone Number: $row[phonenumber] \n";  
+  echo "Street Address: $row[streetaddress] \n";  
+  echo "Opens: $row[houropen] \n";  
+  echo "Closes: $row[hourclose] \n";  
   
   echo "<br />\n";
 }
