@@ -80,6 +80,11 @@ p.sidemenup {
     border-radius: 2px;
     font-weight: bold;
 }
+.userStatus {
+    display: absolute;
+    top: 3px;
+    right: 5px;
+}
 
 
 .core-home-topRated {
