@@ -80,6 +80,7 @@ if (!$conn) {
                 $_SESSION['userID'] = $checkUserID;
                 header('Location: ./index.php');
                 exit;
+                echo "lol";
             }
     
     
