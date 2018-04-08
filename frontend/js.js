@@ -141,6 +141,9 @@ $(function() {
 function pop() {
   $('#modal').fadeIn(1000);
 }
+function unpop() {
+  $('#modal').fadeOut(1000);
+}
 function log() {
   $('#ulogin').fadeIn(1000);
   	$('.social_login').hide();

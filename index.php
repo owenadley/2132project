@@ -57,16 +57,16 @@ include 'createTables.php';
   
   
   <?php
-  echo "lol";
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
-    echo "<div class='container'>Welcome: ".$_SESSION['userid']."</div>";
+    echo "<div class='loggedIn'>Welcome: ".$_SESSION['userid']."</div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
             </div>";
   }?>
 
+  
   
 </div>
 
@@ -76,7 +76,7 @@ include 'createTables.php';
    <div id='modal' class='popupContainer' style='display:none;'>
  				<header class='popupHeader'>
  						<span class='header_title'>Login</span>
- 						<span class='modal_close'><i class='fa fa-times'></i></span>
+ 						<span class='modal_close'><i onclick='unpop();' class='fa fa-times'></i></span>
  				</header>
  
  				<section class='popupBody'>
@@ -758,7 +758,7 @@ WHERE R.RestaurantID = Rat.restaurantID
       AND Ra.userID = Rat.userID
       GROUP By Ra.userID, R.Name, Rat.Date
       HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
-
+      LIMIT 10
 ");
 
 if (!$result) {
@@ -790,7 +790,8 @@ $result = pg_query($conn,
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE AND Ra.userID = Rat.userID
        GROUP By Ra.userID, R.Name, Rat.Date 
-       HAVING ((Rat.Mood >= 4) OR (Rat.Food >=4))
+       HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
+       LIMIT 10
 
 ");
 
