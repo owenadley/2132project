@@ -178,5 +178,8 @@ function popAddMenuItem() {
   $('#addEntryMenuItem').fadeIn(1000);
 }
 function unpop1() {
+  $('#modal1').fadeOut(1000);
+}
+function unpop2() {
   $('#modal2').fadeOut(1000);
 }
