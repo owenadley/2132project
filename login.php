@@ -87,7 +87,7 @@ if (!$conn) {
             $_SESSION['authorized'] = true;
             $_SESSION['success'] = 'Login Successful';
             $_SESSION['userID'] = $checkUserID;
-            
+            echo $_SESSION['userid'];
             echo "lol";
             
             #header('Location: ./index.php');
