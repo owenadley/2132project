@@ -212,9 +212,9 @@ if (!pg_num_rows($result)) {
      										  
 <?php
      										  $getRestauraunts = $pg_query($conn, "SELECT RestaurauntID, Name FROM Restauraunt");
-     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
+/*     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
      										    echo $row['Name'];
-     										  }
+     										  }*/
      									?>
 
      										</select>
