@@ -25,6 +25,7 @@ if (!$conn) {
     
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $type = $_POST['type'];
     $pass = $_POST['password'];
     $repass = $_POST['repassword'];
 
