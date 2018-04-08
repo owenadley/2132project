@@ -234,9 +234,13 @@ p.sidemenup {
     		    padding: 2px;
 }
 .successNotify {
-    background-color: #FF5840;
+
 }
 .successNotify p{
+    color: white;
     font-weight: bold;
     font-size: 14px;
+    background-color: #FF5840;
+    padding: 10px;
+    border-radius: 2px;
 }

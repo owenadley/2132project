@@ -86,7 +86,7 @@ if (!pg_num_rows($result)) {
           <?php
           if ($_SESSION['addSuccess']) {
             echo "<div class='successNotify'><p>Your entry has been submitted.</p></div>";
-            $_SESSION['addSuccess'] = false;
+            #$_SESSION['addSuccess'] = false;
           }
         ?>
           
