@@ -210,16 +210,16 @@ if (!pg_num_rows($result)) {
      										<label>Restauraunt</label>
      										<select name='restauraunt' required>
      										  
-
+<?php
+     										  $getRestauraunts = pg_query($conn, "SELECT RestaurauntID, Name FROM Restauraunt");
+     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
+     										    echo "<option value=''>".$row['Name']."</option>";
+     										  }
+     									?>
 
      										</select>
     										<br />
-     <?php
-     									#	  $getRestauraunts = $pg_query($conn, "SELECT Name FROM Restauraunt");
-   										  while ($row = pg_fetch_assoc($getRestauraunts)) {
-     										    #echo $row['Name'];
-     										  }
-     									?>
+     
      										<div class='action_btns'>
      												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
      										</div>
