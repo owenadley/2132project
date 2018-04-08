@@ -69,8 +69,8 @@ p.sidemenup {
 /*HOME PAGE*/
 .loggedIn {
     position: absolute;
-    right: 5px;
-    top: 2px;
+    right: 8px;
+    top: 8px;
     font-size: 14;
     font-weight: bold;
 }
