@@ -133,7 +133,12 @@ p.sidemenup {
     font-size: 14;
     font-weight: bold;
 }
-
+.logout {
+    right: 5px;
+    top: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+}
 
 
 
