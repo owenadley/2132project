@@ -68,22 +68,14 @@ p.sidemenup {
 
 /*HOME PAGE*/
 .loggedIn {
-    right: 5;
-    top: 2;
+    position: absolute;
+    right: 5px;
+    top: 2px;
     font-size: 14;
     font-weight: bold;
 }
-.container .logout {
-    right: 5px;
-    top: 2px;
-    background-color: #fff;
-    border-radius: 2px;
-    font-weight: bold;
-}
 .userStatus {
-    display: absolute;
-    top: 3px;
-    right: 5px;
+    display: relative;
 }
 
 
