@@ -1,5 +1,6 @@
 <?php
 
+    session_start();
 
 function pg_connection_string_from_database_url() {
   extract(parse_url($_ENV["postgres://xhgocwtwpvuyuh:1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d88e4kacmh5m8a
