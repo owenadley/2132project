@@ -233,3 +233,10 @@ p.sidemenup {
     		    text-align: center;
     		    padding: 2px;
 }
+.successNotify {
+    background-color: #FF5840;
+}
+.successNotify p{
+    font-weight: bold;
+    font-size: 14px;
+}

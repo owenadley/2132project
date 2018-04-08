@@ -83,6 +83,13 @@ if (!pg_num_rows($result)) {
           <p>Submit or alter information regarding Resturaunts, Menu Items and Resturaunt Raters</p>
           <br>
           
+          <?php
+          if ($_SESSION['addSuccess']) {
+            echo "<div class='successNotify'><p>Your entry has been submitted.</p></div>";
+            $_SESSION['addSuccess'] = false;
+          }
+          
+          
           <p>Submit New</p>
           <div class='row'>
             <div class='col-md-4'>
