@@ -127,7 +127,12 @@ p.sidemenup {
       width: 100%;
       left: 0;
             }  
-    
+.loggedIn {
+    right: 5;
+    top: 2;
+    font-size: 14;
+    font-weight: bold;
+}
 
 
 

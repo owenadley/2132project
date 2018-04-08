@@ -59,7 +59,7 @@ include 'createTables.php';
   <?php
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
-    echo "<div class='loggedIn'>Welcome: ".$_SESSION['userid']."</div>";
+    echo "<div class='loggedIn'>Signed is as:<br>".$_SESSION['userid']."</div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
