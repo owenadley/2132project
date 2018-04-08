@@ -152,10 +152,8 @@ p.sidemenup {
     padding: 20px;
     height: 100%;
     position: absolute;
-    top: 25%;
-    left: 25%;
-    /*right: 100px;*/
-    /*top: 100px;*/
+    right: 50px;
+    top: 100px;
     display: none;
     width: 100%;
     background-color: white;
@@ -227,7 +225,7 @@ p.sidemenup {
 .tableD {
     		    font-family: arial, sans-serif;
     		    border-collapse: collapse;
-    		    width: 60%;
+    		    width: 80%;
     
 }
 .trD {

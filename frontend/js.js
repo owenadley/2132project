@@ -173,6 +173,10 @@ function popAddRestauraunt() {
   $('#modal1').fadeIn(1000);
   $('#addEntryResturaunt').fadeIn(1000);
 }
+function popMenuItem() {
+  $('#modal1').fadeIn(1000);
+  $('#addEntryMenuItem').fadeIn(1000);
+}
 function unpop1() {
   $('#modal1').fadeOut(1000);
 }

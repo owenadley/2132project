@@ -171,31 +171,31 @@ location tables should then displayed on the screen.
             <br/>
             <table class='tableD'>
               <tr class='trD'>
-                <th>Restaurant ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>URL</th>
-                <th>Location ID</th>
-                <th>Opening Date</th>
-                <th>Manager Name</th>
-                <th>Phone Number</th>
-                <th>Street Address</th>
-                <th>Opening time</th>
-                <th>Closing time</th>
+                <th class='trD>Restaurant ID</th>
+                <th class='trD>Name</th>
+                <th class='trD>Type</th>
+                <th class='trD>URL</th>
+                <th class='trD>Location ID</th>
+                <th class='trD>Opening Date</th>
+                <th class='trD>Manager Name</th>
+                <th class='trD>Phone Number</th>
+                <th class='trD>Street Address</th>
+                <th class='trD>Opening time</th>
+                <th class='trD>Closing time</th>
               </tr>
               <?php while ($row = pg_fetch_assoc($result)): ?>
               <tr class='trD'>
-                <td><?php echo $row['RestaurantID']; ?></td>
-                <td><?php echo $row['Name']; ?></td>
-                <td><?php echo $row['Type']; ?></td>
-                <td><?php echo $row['URL']; ?></td>
-                <td><?php echo $row['LocationID']; ?></td>
-                <td><?php echo $row['firstOpenDate']; ?></td>
-                <td><?php echo $row['managerName']; ?></td>
-                <td><?php echo $row['phoneNumber']; ?></td>
-                <td><?php echo $row['streetAddress']; ?></td>
-                <td><?php echo $row['hourOpen']; ?></td>
-                <td><?php echo $row['hourClose']; ?></td>
+                <td class='trD><?php echo $row['RestaurantID']; ?></td>
+                <td class='trD><?php echo $row['Name']; ?></td>
+                <td class='trD><?php echo $row['Type']; ?></td>
+                <td class='trD><?php echo $row['URL']; ?></td>
+                <td class='trD><?php echo $row['LocationID']; ?></td>
+                <td class='trD><?php echo $row['firstOpenDate']; ?></td>
+                <td class='trD><?php echo $row['managerName']; ?></td>
+                <td class='trD><?php echo $row['phoneNumber']; ?></td>
+                <td class='trD><?php echo $row['streetAddress']; ?></td>
+                <td class='trD><?php echo $row['hourOpen']; ?></td>
+                <td class='trD><?php echo $row['hourClose']; ?></td>
               </tr>
               <?php endwhile; ?>
             </table>
