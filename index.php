@@ -60,7 +60,7 @@ include 'createTables.php';
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
     echo "<div class='loggedIn'>Signed is as:<br>".$_SESSION['userid']."</div>";
-    echo "<div class='container logout'><form method='post' action='logout.php'><input type='submit' name='logout'/></form></div>";
+    echo "<div class='container logout'><form method='post' action='logout.php'><input type='submit' value='Logout' name='logout'/></form></div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
@@ -124,7 +124,7 @@ include 'createTables.php';
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><input type='submit'><a href='#' class='btn btn_red'>Login</a></input></div>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red' value='Login'></input></div>
  										</div>
  								</form>
  
@@ -165,7 +165,7 @@ include 'createTables.php';
  
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
- 												<div class='one_half last'><input type='submit' class='btn btn_red'><a href='#' class='btn btn_red'>Register</a></input></div>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red' value='Register'></input></div>
  										</div>
  								</form>
  						</div>
@@ -797,7 +797,7 @@ while ($row = pg_fetch_assoc($result)) {
 $result = pg_query($conn, 
 "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE AND Ra.userID = Rat.userID
+WHERE Ra.userID = Rat.userID
        GROUP By Ra.userID, R.Name, Rat.Date 
        HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
        LIMIT 10
