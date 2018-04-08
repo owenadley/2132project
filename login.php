@@ -69,9 +69,9 @@ if (!$conn) {
     exit;
     }
 
-    while ($row = pg_fetch_assoc($sqlLogin)) {
+    if ($row = pg_fetch_assoc($sqlLogin)) {
     
-        $checkUserID = $row['UserID'];
+        $checkUserID = $row['userid'];
         $checkPassword = $row['password'];
         echo "here";
         echo "<br>";
@@ -83,7 +83,7 @@ if (!$conn) {
         echo "<br>";
         echo $pass;
         
-        if ($checkUserID==$userID && $checkPassword==$pass){
+        if ($checkUserID==$userID && $checkPassword==$pass) {
             $_SESSION['authorized'] = true;
             $_SESSION['success'] = 'Login Successful';
             $_SESSION['userID'] = $checkUserID;
