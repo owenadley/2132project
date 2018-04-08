@@ -1,5 +1,6 @@
 <html><body>
 <?php
+session_start();
 
 #==================== CONNECTION =========================
 # Extract connection from db URL
