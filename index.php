@@ -141,6 +141,8 @@ include 'createTables.php';
  										<label>Email Address</label>
 										<input name ='email' type='email' required/>
  										<br />
+ 										
+ 										
  
  										<label>Password</label>
 										<input name='password' type='password' required/>
