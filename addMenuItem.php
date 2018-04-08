@@ -23,29 +23,35 @@ if (!$conn) {
     
 $name = $_POST['name'];
 $type = $_POST['type'];
-$url = $_POST['url'];
+$cat = $_POST['cat'];
+$description = $_POST['description'];
+$price = $_POST['price'];
+$restauraunt = $_POST['restauraunt'];
 
 $name = pg_escape_string($conn, $name);
 $type = pg_escape_string($conn, $type);
-$url = pg_escape_string($conn, $url);
+$cat = pg_escape_string($conn, $cat);
+$description = pg_escape_string($conn, $description);
+$price = pg_escape_string($conn, $price);
+$restauraunt = pg_escape_string($conn, $restauraunt);
 
-$sqlAddResturaunt = pg_query($conn, "INSERT INTO Restaurant(RestaurantID, name, type, url) VALUES ('$url', '$name', '$type', '$url')");
+$sqlAddMenuItem= pg_query($conn, "INSERT INTO MenuItem(ItemID, name, type, category, description, price, restaurantID) VALUES ('$name.$restaurauntID', '$name', '$type', '$cat', '$description', '$price', '$restauraunt')");
 
-if (!$sqlAddResturaunt) {
+if (!$sqlAddMenuItem) {
     echo "An error occurred.\n";
     exit;
 }
 
-$sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Restaurant WHERE url='$url'");
+$sqlCheckAddMenuItem= pg_query($conn, "SELECT name FROM MenuItem WHERE ItemID='$name.$restaurauntID'");
 
-if (!$sqlCheckAddResturaunt) {
+if (!$sqlCheckAddMenuItem) {
   echo "An error occurred in reg.\n";
   exit;
 }
 
-if ($row = pg_fetch_row($sqlCheckAddResturaunt)) {
+if ($row = pg_fetch_row($sqlCheckAddMenuItem)) {
   echo "$row[name]";
-  echo "Resturaunt has been added.";
+  echo "MenuItem has been added.";
   echo "<br />\n";
   $_SESSION['addSuccess'] = true;
   header('Location: ./userResturaunts.php');
