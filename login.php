@@ -73,7 +73,7 @@ if (!$conn) {
     
         $checkUserID = $row['UserID'];
         $checkPassword = $row['password'];
-        echo "here";
+        echo "here";<br>
         echo $checkUserID;
         echo "<br>";
         echo $userID;
