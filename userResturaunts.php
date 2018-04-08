@@ -139,18 +139,25 @@ if (!pg_num_rows($result)) {
      										
      										<label>Resturaunt Type</label>
      										<select name='type' required>
-     										  <option value='blog'>Blog</option>
-     										  <option value='online'>Online</option>
-     										  <option value='critic'>Food Critic</option>
+     										  <option value='American'>American</option>
+     										  <option value='Chinese'>Chinese</option>
+     										  <option value='Fast Food'>Fast Food</option>
+     										  <option value='Greek'>Greek</option> 
+     										  <option value='Indian'>Indian</option>	  
+     										  <option value='Italian'>Italian</option>		 
+     										  <option value='Korean'>Korean</option>		   
+     										  <option value='Mediterranean'>Mediterranean</option>		  								  
+     										  <option value='Mexican'>Mexican</option>	
+     										  <option value='Sushi'>Sushi</option>		  
      										</select>
-     										<br />
+     										<br><br>
      
      										<label>Resturaunt URL</label>
     										<input name='url' type='text' required/>
     										<br />
      
      										<div class='action_btns'>
-     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Register'></input></div>
+     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
      										</div>
      								</form>
      						</div>
