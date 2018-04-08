@@ -383,6 +383,11 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
             ");
         }
     }
+    if (!$sql) {
+      echo "cannot input menuitems entries";
+    } else {
+      echo "query is valid for menuitems";
+    }
   fclose($handle);
 
 
