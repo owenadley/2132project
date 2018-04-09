@@ -331,7 +331,7 @@ or desert), list the average prices of menu items for each category.
               FROM Restaurant R
               LEFT JOIN MenuItem M ON R.restaurantID=M.restaurantID
               GROUP BY R.type, M.category 
-              ORDER BY R.type");
+              ORDER BY R.type, M.category");
               
             if (!$result) {
             echo "An error occurred.\n";

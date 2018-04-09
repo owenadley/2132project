@@ -73,7 +73,7 @@ if (!pg_num_rows($result)) {
       
     </div>
     <div class='col-md-9'>
-      <div class='core-userResturaunts.php'>
+      <div class='core-userResturaunts'>
         <h2>Browse Resturaunts</h2>
 
       <form id='filterType' role="form" method="post" action="" autocomplete="off">
