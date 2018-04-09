@@ -187,6 +187,7 @@ location tables should then displayed on the screen.
           <?php
           if ($_POST['restaurant'] != null) {
             $resturauntselect = $_POST['restaurant'];
+            $_POST['restaurant'] = null;
             
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
@@ -441,7 +442,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
               FROM Restaurant R, Location L
               WHERE L.RestaurantID = R.RestaurantID 
-              AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
+              AND R.RestaurantID NOT IN (SELECT Ra.restaurantID FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
               ");
               
             if (!$result) {
