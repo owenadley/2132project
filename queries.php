@@ -458,8 +458,8 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
-                  <td class='trD'><?php echo $row['restype']; ?></td>
                   <td class='trD'><?php echo $row['resnumber']; ?></td>
+                  <td class='trD'><?php echo $row['restype']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
