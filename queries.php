@@ -151,7 +151,34 @@ $conn = pg_connect(pg_connection_string_from_database_url());
         a : Display all the information about a user‐specified restaurant. That is, the user should select the
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
-          <?php 
+         
+          <form id='filterType' role="form" method="post" action="" autocomplete="off">
+     				<label>Select Resturaunt:</label>
+     				<select name='restaurant' required>
+     				  <option selected>
+     				  <?php 
+     				  if ($_POST['restaurant'] != null) {
+    				    echo $_POST['restaurant'];
+     				  } ?>
+    			 </option>
+    			   <?php 
+    			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
+    			   whi
+     				  <option value='American'>American</option>
+     				  <option value='Chinese'>Chinese</option>
+     				  <option value='Fast Food'>Fast Food</option>
+     				  <option value='Greek'>Greek</option>
+     				  <option value='Indian'>Indian</option>
+     				  <option value='Italian'>Italian</option>
+     				  <option value='Korean'>Korean</option>
+     				  <option value='Mediterranean'>Mediterranean</option>
+     				  <option value='Mexican'>Mexican</option>
+     				  <option value='Sushi'>Sushi</option>
+     				</select>
+     				<input type='submit'></input>
+     			</form>
+          
+          
             $resturauntselect = "Canal Ritz";
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
@@ -366,10 +393,10 @@ or desert), list the average prices of menu items for each category.
 grouped by the restaurant, the specific raters and the numeric ratings they have received.
           <?php
             $result = pg_query($conn, 
-              "SELECT Res.name AS resname, R.name AS rname, (Rating.Price + Rating.Food + Rating.Mood + Rating.Staff) AS total
-              FROM restaurant Res, Rater R
-              WHERE R.RestaurantID = Res.RestaurantID AND R.UserID = '$userID'
-              GROUP By Res.name");
+              "SELECT Res.Name AS resname, R.name AS rname, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) AS total
+              FROM restaurant Res, Rater R, Rating Rat
+              WHERE Res.RestaurantID = Rat.RestaurantID AND R.UserID = Rat.UserID
+              GROUP By Res.Name, R.name");
               
             if (!$result) {
             echo "An error occurred.\n";
