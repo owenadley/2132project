@@ -364,6 +364,36 @@ or desert), list the average prices of menu items for each category.
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2f()'></i></div>
         f : Find the total number of rating for each restaurant, for each rater. That is, the data should be
 grouped by the restaurant, the specific raters and the numeric ratings they have received.
+          <?php
+            $result = pg_query($conn, 
+              "SELECT Res.name AS resname, R.name AS rname, (Rating.Price + Rating.Food + Rating.Mood + Rating.Staff) AS total
+              FROM restaurant Res, Rater R
+              WHERE R.RestaurantID = Res.RestaurantID AND R.UserID = '$userID'
+              GROUP By Res.name");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Total</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['rname']; ?></td>
+                  <td class='trD'><?php echo $row['total']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
       </div>
       
       <div id='queryDisplay2g' class='queryDisplay'>
