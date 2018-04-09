@@ -177,9 +177,16 @@ function popAddMenuItem() {
   $('#modal2').fadeIn(1000);
   $('#addEntryMenuItem').fadeIn(1000);
 }
+function popAddMenuItem() {
+  $('#modal3').fadeIn(1000);
+  $('#addEntryRater').fadeIn(1000);
+}
 function unpop1() {
   $('#modal1').fadeOut(1000);
 }
 function unpop2() {
   $('#modal2').fadeOut(1000);
+}
+function unpop3() {
+  $('#modal3').fadeOut(1000);
 }

@@ -104,7 +104,7 @@ if (!pg_num_rows($result)) {
               </div>
             </div>
             <div class='col-md-4'>
-              <div class='selectEntry' onclick='popAddRestauraunt();'>
+              <div class='selectEntry' onclick='popAddRater();'>
                 <p class='nopad'>Rater</p>
               </div>
             </div>
@@ -231,10 +231,10 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>    
           
-          <div id='modal1' class='popupContainer' style='display:none;'>
+          <div id='modal3' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
  					  	<span class='header_title'>Add Rater</span>
- 						  <span class='modal_close' onclick='unpop1();'><i class='fa fa-times'></i></span>
+ 						  <span class='modal_close' onclick='unpop3();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
             <section class='popupBody'>
@@ -244,40 +244,21 @@ if (!pg_num_rows($result)) {
     										<input name='name' type='text' required />
      										<br />
      										
+     										<label>Email</label>
+    										<input name='email' type='text' required />
+     										<br />
+     
      										<label>Type</label>
      										<select name='type' required>
-     										  <option value='food'>Food</option>
-     										  <option value='beverage'>Beverage</option>
-     										</select>
-     										<br><br>
-     
-     										<label>Category</label>
-     										<select name='cat' required>
-     										  <option value='starter'>Starter</option>
-     										  <option value='main'>Main</option>
-     										  <option value='desert'>Desert</option>
-     										</select>
-     
-     										<label>Description</label>
-    										<input name='description' type='text' required/>
-    										<br />
-     
-     										<label>Price</label>
-    										<input name='price' type='number' required/>
-    										<br />
-     
-     										<label>Restauraunt</label>
-     										<select name='restauraunt' required>
-     										  
-<?php
-     										  $getRestauraunts = pg_query($conn, "SELECT RestaurauntID, Name FROM Restauraunt");
-     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
-     										    echo "<option value=''>".$row['Name']."</option>";
-     										  }
-     									?>
-
+     										  <option value='blog'>Blog</option>
+     										  <option value='online'>Online</option>
+     										  <option value='foodcritic'>Food Critic</option>
      										</select>
     										<br />
+     
+     										<label>Password</label>
+    										<input name='password' type='text' required />
+     										<br />
      
      										<div class='action_btns'>
      												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
