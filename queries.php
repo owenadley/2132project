@@ -931,8 +931,8 @@ the most frequently. Display this information together with their comments and t
               FROM Rater R, Rating Rat
               WHERE  ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
                                               FROM Rating Rat, Rater R 
-                                              WHERE Rat.UserID=R.UserID AND R.name = (SELECT Roo.name, (SUBSTRING (Roo.name FROM 1 FOR 4)) AS jname  FROM Rater Roo
-                                                                                      WHERE jname='John'))
+                                              WHERE Rat.UserID=R.UserID AND R.name = (SELECT Roo.name  FROM Rater Roo
+                                                                                      WHERE (SUBSTRING (Roo.name FROM 1 FOR 4))='John'))
                                           > (SELECT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS tots
                                                         FROM Rating Ra, Rater Ru WHERE Ra.UserID = Ru.UserID))
               ");

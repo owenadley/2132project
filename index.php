@@ -397,6 +397,29 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
       echo "query is valid for menuitems";
     }
   fclose($handle);
+  
+  #RatingItem
+if (($handle = fopen("/app/RatingItem.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    $sql = pg_query("INSERT INTO MenuItem (ItemID,	name,	category,	type,	description,	price, RestaurantID) VALUES
+                (
+                    '".addslashes($data[0])."',
+                    '".addslashes($data[1])."',
+                    '".addslashes($data[2])."',
+                    '".addslashes($data[3])."',
+                    '".addslashes($data[4])."',
+                    '".addslashes($data[5])."',
+                    '".addslashes($data[6])."'
+                )
+            ");
+        }
+    }
+    if (!$sql) {
+      echo "cannot input menuitems entries";
+    } else {
+      echo "query is valid for menuitems";
+    }
+  fclose($handle);
 
 
 #$insertRaterTable = pg_query($conn, 
