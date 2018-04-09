@@ -442,7 +442,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
               FROM Restaurant R, Location L
               WHERE L.RestaurantID = R.RestaurantID 
-              AND R.RestaurantID NOT IN (SELECT Ra.restaurantID FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
+              AND R.RestaurantID NOT IN (SELECT Ra.restaurantID FROM Rating Ra WHERE (Ra.Date BETWEEN '2015-01-01'  AND '2015-01-31'))
               ");
               
             if (!$result) {
