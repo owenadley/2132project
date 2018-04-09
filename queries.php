@@ -820,7 +820,7 @@ the most frequently. Display this information together with their comments and t
                                               WHERE Rat.UserID=R.UserID AND R.name = (SELECT Roo.name FROM Rater Roo
                                                                                       WHERE (SUBSTRING (Roo.name FROM 1 FOR 4))=John))
                                           > (SELECT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS total
-                                                        FROM Rating Ra WHERE Ra.UserID = Rat.UserID))
+                                                        FROM Rating Ra, Rater Ru WHERE Ra.UserID = Ru.UserID))
               ");
               
             if (!$result) {
