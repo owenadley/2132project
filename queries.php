@@ -927,7 +927,7 @@ the most frequently. Display this information together with their comments and t
         n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
         <?php
             $result = pg_query($conn, 
-              "SELECT R.name as name, R.email as email,   
+              "SELECT R.name as name, R.email as email   
               FROM Rater R, Rating Rat
               WHERE  ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
                                               FROM Rating Rat, Rater R 
