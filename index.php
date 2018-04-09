@@ -457,7 +457,7 @@ if (!$result) {
 while ($row = pg_fetch_assoc($result)) {
   echo "resturaunt: \n";
 
-  echo "Restaurant Id: $row[restaurauntid] \n";
+  echo "Restaurant Id: $row[restaurantid] \n";
   echo "Name: $row[name] \n";
   echo "Type: $row[type] \n";
   echo "URL: $row[url] \n";
