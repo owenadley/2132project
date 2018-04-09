@@ -1,8 +1,7 @@
 <?php
 session_start();
     
-header("Location: index.php");
-exit;
+
 
 function pg_connection_string_from_database_url() {
   extract(parse_url($_ENV["postgres://xhgocwtwpvuyuh:1c568d1c618b10132266a428b65cc08dcb75ea25e71697aaada2da222231dae5@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d88e4kacmh5m8a
@@ -28,6 +27,7 @@ if (!$conn) {
     $type = $_POST['type'];
     $pass = $_POST['password'];
     $repass = $_POST['repassword'];
+    $returnAddr = $_POST['returnAddr'];
 
     if ($pass == $repass){
         $name = pg_escape_string($conn, $name);
@@ -52,6 +52,8 @@ if (!$conn) {
 
         if ($row = pg_fetch_row($sqlCheckReg)) {
           echo "$row[name]";
+            header('Location: ./'.$returnAddr);
+            exit;
         
           echo "<br />\n";
         } else {

@@ -139,7 +139,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
  												<label for='send_updates'>Send me occasional email updates</label>
  										</div>
                      
-                    
+                    <input type='hidden' name='returnAddr' value='queries.php' required/>
                
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
