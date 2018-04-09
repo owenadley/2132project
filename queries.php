@@ -283,7 +283,7 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
           <?php 
             $resturauntselect = "House of Greek";
             $result = pg_query($conn, 
-              "SELECT L.managerName, L.hourOpen, M.name, R.URL, MAX(M.Price) 
+              "SELECT L.managerName, L.hourOpen, M.name, R.URL, MAX(M.Price) AS price
               FROM Restaurant R, Location L, MenuItem M 
               WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID 
                 AND M.RestaurantID = R.RestaurantID

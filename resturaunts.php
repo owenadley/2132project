@@ -110,7 +110,7 @@ if (!pg_num_rows($result)) {
 				  }
 				  
           while($row = pg_fetch_assoc($filterType)) {
-            echo "Name: $row['name'] \n";
+            echo "Name: ".$row['name']." \n ";
           }
 				} else {
 				  echo "not posted";
