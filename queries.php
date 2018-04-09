@@ -391,7 +391,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               "SELECT Res.Name AS resname, R.name AS rname, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) AS total
               FROM restaurant Res, Rater R, Rating Rat
               WHERE Res.RestaurantID = Rat.RestaurantID AND R.UserID = Rat.UserID
-              GROUP By Res.Name, R.name");
+              GROUP By Res.Name, R.name, total");
               
             if (!$result) {
             echo "An error occurred.\n";
