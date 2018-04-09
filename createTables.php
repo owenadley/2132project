@@ -112,10 +112,7 @@ else{
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
 # type (food or beverage). RestaurantID is the foreign key.
 #$drop = pg_query($conn, "DROP TABLE MenuItem");
-$drop = pg_query($conn, "DROP TABLE MenuItem CASCADE");
-if ($drop) {
-  echo "dropped";
-}
+
 $menuItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS MenuItem (
 ItemID varchar(255) PRIMARY KEY NOT NULL,
@@ -130,17 +127,20 @@ FOREIGN KEY (RestaurantID) references Restaurant
 #print "<pre>\n";
 
 if (!$menuItemTable) {
-  echo "Creating menuItemTable is not working. \n";
+  #echo "Creating menuItemTable is not working. \n";
   exit;
 }
 else{
-  echo 'MenuItem Table exists';
+  #echo 'MenuItem Table exists';
 }
 
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
 # A rater may explicitly select the menu item, and add a specific rating between 1 (low) to 5 (high)
 # and a free text comment. All menu items should be selected from a list.
-
+$drop = pg_query($conn, "DROP TABLE RatingItem CASCADE");
+if ($drop) {
+  echo "dropped";
+}
 $ratingItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS RatingItem (
 UserID varchar(255) NOT NULL,
@@ -152,11 +152,11 @@ PRIMARY KEY (UserID, Date, ItemID)
 )");
 #print "<pre>\n";
 if (!$ratingItemTable) {
-  #echo "Creating ratingItemTable is not working. \n";
+  echo "Creating ratingItemTable is not working. \n";
   exit;
 }
 else{
-  #echo 'RatingItem Table exists';
+  echo 'RatingItem Table exists';
 }
 
 #==================== / CREATE TABLES =====================

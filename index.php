@@ -400,9 +400,9 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      echo "cannot input menuitems entries";
+      #echo "cannot input menuitems entries";
     } else {
-      echo "query is valid for menuitems";
+      #echo "query is valid for menuitems";
     }
   fclose($handle);
   
@@ -421,9 +421,9 @@ if (($handle = fopen("/app/RatingItem.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      #echo "cannot input menuitems entries";
+      echo "cannot input ratingitem entries";
     } else {
-      #echo "query is valid for menuitems";
+      echo "query is valid for ratingitem";
     }
   fclose($handle);
 
@@ -464,7 +464,7 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 */
-$result = pg_query($conn, "SELECT * FROM MenuItem");
+$result = pg_query($conn, "SELECT * FROM RatingItem");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
