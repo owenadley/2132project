@@ -48,7 +48,7 @@ if (!$conn) {
             $_SESSION['userid'] = $checkUserID;
             echo $_SESSION['userid'];
             
-            header('Location: ./$returnAddr');
+            header('Location: ./'.$returnAddr);
             exit;
         }
     
