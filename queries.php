@@ -349,9 +349,9 @@ or desert), list the average prices of menu items for each category.
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
-                  <td class='trD'><?php echo $row['avgprice']; ?></td>
                   <td class='trD'><?php echo $row['resttype']; ?></td>
                   <td class='trD'><?php echo $row['foodcat']; ?></td>
+                  <td class='trD'><?php echo $row['avgprice']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
