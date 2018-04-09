@@ -223,7 +223,7 @@ screen. The menu should be displayed based on menu item categories.
                   <th class='trD'>Type</th>
                   <th class='trD'>Category</th>
                   <th class='trD'>Description</th>
-                  <th class='trD'>Price</th>
+                  <th class='trD'>Price  ($)</th>
                   <th class='trD'>Restaurant ID</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
@@ -303,7 +303,7 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
                   <th class='trD'>Manager Name</th>
                   <th class='trD'>Opening time</th>
                   <th class='trD'>Menu Item</th>
-                  <th class='trD'>Price</th>
+                  <th class='trD'>Price ($)</th>
                   <th class='trD'>URL</th>
 
                 </tr>
