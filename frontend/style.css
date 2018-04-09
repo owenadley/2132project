@@ -142,8 +142,20 @@ p.sidemenup {
       width: 100%;
       left: 0;
 }  
-
-
+span#subtext {
+    font-size: 10px;
+    color: black;
+}
+span#sub2text {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}
+input#logout {
+    border: 0px;
+    background: white;
+    text-decoration: none;
+}
 
 
 
