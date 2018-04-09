@@ -163,17 +163,11 @@ location tables should then displayed on the screen.
     			 </option>
     			   <?php 
     			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
-    			   whi
-     				  <option value='American'>American</option>
-     				  <option value='Chinese'>Chinese</option>
-     				  <option value='Fast Food'>Fast Food</option>
-     				  <option value='Greek'>Greek</option>
-     				  <option value='Indian'>Indian</option>
-     				  <option value='Italian'>Italian</option>
-     				  <option value='Korean'>Korean</option>
-     				  <option value='Mediterranean'>Mediterranean</option>
-     				  <option value='Mexican'>Mexican</option>
-     				  <option value='Sushi'>Sushi</option>
+    			   while ($row = $pg_fetch_assoc($sql)) {
+    			     echo "<option value='$row['name']'>$row['name']</option>";
+    			   }
+    			   ?>
+
      				</select>
      				<input type='submit'></input>
      			</form>
@@ -410,7 +404,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                 <tr>
                   <th class='trD'>Restaurant Name</th>
                   <th class='trD'>Rater Name</th>
-                  <th class='trD'>Total</th>
+                  <th class='trD'>Total number of rating</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
@@ -426,14 +420,44 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
       <div id='queryDisplay2g' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2g()'></i></div>
         g : Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
-food.
+        food.
+        <?php
+            $result = pg_query($conn, 
+              "SELECT Res.Name AS resname, R.name AS rname, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) AS total
+              FROM restaurant Res, Rater R, Rating Rat
+              WHERE Res.RestaurantID = Rat.RestaurantID AND R.UserID = Rat.UserID
+              GROUP By Res.Name, R.name");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Total number of rating</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['rname']; ?></td>
+                  <td class='trD'><?php echo $row['total']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
       </div> 
       
       <div id='queryDisplay2h' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2h()'></i></div>
         h : Find the names and opening dates of the restaurants that obtained Staff rating that is lower
-than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
-any rater of your choice.)
+        than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
+        any rater of your choice.)
       </div>
       
       <div id='queryDisplay2i' class='queryDisplay'>
