@@ -652,8 +652,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             echo "An error occurred.\n";
             exit;
             }
-  $arr = pg_fetch_all($result);
-  print_r($arr);
+
           ?>
           
           <br/>
@@ -814,7 +813,13 @@ the most frequently. Display this information together with their comments and t
         n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
         <?php
             $result = pg_query($conn, 
-              "SELECT R.name, R.email FROM Rater 
+              "SELECT R.name as name, R.email as email,   
+              FROM Rater R, Rating Rat, (SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
+                                        FROM Rating Rat, Rater R 
+                                        WHERE Rat.UserID=R.UserID AND R.name = (SELECT R.name FROM Rater 
+                                                                                WHERE (SUBSTRING (R.name FROM 1 FOR 4))='John')) AS one
+              WHERE R.UserID=Rat.UserID AND one.total > (SELECT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS total
+                                                        FROM Rating Ra WHERE Ra.UserID = Rat.UserID)
               ");
               
             if (!$result) {
@@ -828,13 +833,11 @@ the most frequently. Display this information together with their comments and t
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Rater Name</th>
-                  <th class='trD'>Rater Type</th>
                   <th class='trD'>Email</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['name']; ?></td>
-                  <td class='trD'><?php echo $row['type']; ?></td>
                   <td class='trD'><?php echo $row['email']; ?></td>
                 </tr>
                 <?php endwhile; ?>

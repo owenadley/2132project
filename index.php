@@ -434,8 +434,7 @@ if (!$result) {
 }
 echo "<br><br>";
 if ($row = pg_fetch_row($result)) {
-  $arr = pg_fetch_all($result);
-  print_r($arr);
+
 } else {
   echo 'No records in raters';
 }
@@ -760,6 +759,7 @@ echo " \n";
 #terms of the Food and the Mood of restaurants. Display this information together with the
 #names of the restaurant and the dates the ratings were done.
 
+#Assuming that the highest overall ratings for both means anything equal and more than 8 out of 10
 
 
 $result = pg_query($conn, 
