@@ -942,11 +942,11 @@ the most frequently. Display this information together with their comments and t
               "SELECT DISTINCT R.name as name, R.email as email, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) As total
               FROM Rater R, Rating Rat
               WHERE Rat.UserID=R.UserID 
-              GROUP By R.name, R.email
-              HAVING (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <
+              AND ((Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <
                                                                  
                ANY (SELECT (Ra.Price + Ra.Food + Ra.Mood + Ra.Staff) AS tots
-                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John')
+                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
+              GROUP By R.name, R.email
               ");
               
               
@@ -983,8 +983,8 @@ the most frequently. Display this information together with their comments and t
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.userid = Rat.userid AND Res.restaurantID=Rat.restaurantID
               AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
-                            GROUP BY Ra.restaurant_id , Ra.user_id , R.user_id HAVING  COUNT(*)  > 2 ORDER BY cnt DESC, Ra.restaurant_id) AS roo )) 
-              ORDER BY name ASC
+                            GROUP BY Rat.restaurantID, Rat.UserID , R.UserID HAVING  COUNT(*)  > 2 ORDER BY C DESC, Rat.restaurantID) AS roo) 
+              ORDER BY R.name, Res.name
               LIMIT 10;
               ");
               
