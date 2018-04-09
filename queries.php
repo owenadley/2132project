@@ -157,7 +157,7 @@ if (!$conn) {
 name of the restaurant from a list, and the information as contained in the restaurant and
 location tables should then displayed on the screen.
           <?php 
-            $resturauntselect = "Wendys";
+            $resturauntselect = "Canal Ritz";
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
             
