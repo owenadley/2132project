@@ -66,6 +66,9 @@ p.sidemenup {
     height: auto;
     width: max-content;
 }
+.slick-slide img {
+margin: 0 auto;
+}
 .featResturaunt.slick-slide {
     width: max-content;
     margin: 0 auto;
