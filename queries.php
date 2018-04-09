@@ -720,6 +720,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
               AND Rating.userID = Ra.userID
               GROUP BY R.name, Ra.name
+              ORDER BY R.name
               ");
               
             if (!$result) {
