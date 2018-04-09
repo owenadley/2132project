@@ -818,7 +818,7 @@ the most frequently. Display this information together with their comments and t
         
         <?php
             $result = pg_query($conn, 
-              "SELECT Rater.*
+              "SELECT DISTINCT Rater.*
               from Rater, Rating
               where Rater.userid = Rating.userid
               order by @(Food - Mood) desc
