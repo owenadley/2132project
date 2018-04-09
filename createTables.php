@@ -21,11 +21,11 @@ password varchar(255)
 #print "<pre>\n";
 
 if (!$raterTable) {
-  echo "Creating raterTable is not working. \n";
+  #echo "Creating raterTable is not working. \n";
   exit;
 }
 else{
-  echo 'Rater Table exists';
+  #echo 'Rater Table exists';
 }
 
 
@@ -63,10 +63,7 @@ else{
 # This relation contains general information about a restaurant and is useful in the case where a
 # restaurant chain has many locations. The type attribute contains details about the cuisine, such as
 # Italian, Indian, Middle Eastern, and so on.
-$drop = pg_query($conn, "DROP TABLE Restaurant CASCADE");
-if ($drop) { 
-  echo "dropped";
-}
+
 $restaurantTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Restaurant (
 RestaurantID varchar(255) PRIMARY KEY NOT NULL,
@@ -76,11 +73,11 @@ URL varchar(255)
 )");
 #print "<pre>\n";
 if (!$restaurantTable) {
-  echo "Creating restaurantTable is not working. \n";
+  #echo "Creating restaurantTable is not working. \n";
   exit;
 }
 else{
-  echo 'Restaurant Table exists';
+  #echo 'Restaurant Table exists';
 }
 
 # Location: (LocationID, first‐open‐date, manager‐name, phone‐number, street‐address,
@@ -88,7 +85,10 @@ else{
 # This relation contains the location‐specific data, such as the manager’s details, the phone number,
 # the address, and so on. Note that RestaurantID is the foreign key. This design assumes that the
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
-
+$drop = pg_query($conn, "DROP TABLE Location CASCADE");
+if ($drop) {
+  echo "dropped";
+}
 
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
@@ -104,11 +104,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 #print "<pre>\n";
 if (!$locationTable) {
-  #echo "Creating locationTable is not working. \n";
+  echo "Creating locationTable is not working. \n";
   exit;
 }
 else{
-  #echo 'Location Table exists';
+  echo 'Location Table exists';
 }
 
 # MenuItem(ItemID, name, type, category, category, price, …, RestaurantID)_
