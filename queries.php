@@ -945,6 +945,7 @@ the most frequently. Display this information together with their comments and t
                                                                                       
                                               (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
                                                 FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
+                                                GROUP By R.name, R.email
               ");
               
               
