@@ -943,10 +943,10 @@ the most frequently. Display this information together with their comments and t
               WHERE  ((SELECT SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) AS total
                                               FROM Rating Rat, Rater R 
                                               WHERE Rat.UserID=R.UserID 
-                                              AND ((SELECT SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) <
+                                              AND ((SELECT SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff))) <
                                                                                       
                                               (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
-                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John')))
+                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John'))))
               ");
               
               
