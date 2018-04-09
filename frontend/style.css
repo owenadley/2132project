@@ -96,7 +96,7 @@ margin: 0 auto;
 }
 .core-home-subheader {
     margin: 10px;
-    font-size: 14px;
+    font-size: 18px;
 }
 .featResturaunt {
     margin: 0 auto;
@@ -108,7 +108,10 @@ margin: 0 auto;
     font-weight: bold;
     font-size: 16px;
 }
+.featCuisineWrap {
+    margin-bottom: 10px;
 
+}
 .container {
   display: flex;
   justify-content: center;
