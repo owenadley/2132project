@@ -231,7 +231,7 @@ location tables should then displayed on the screen.
         b : Display the full menu of a specific restaurant. That is, the user should select the name of the
 restaurant from a list, and all menu items, together with their prices, should be displayed on the
 screen. The menu should be displayed based on menu item categories.
-          <?php 
+          
           
           <form id='filterType' role="form" method="post" action="" autocomplete="off">
      				<label>Select Resturaunt:</label>
@@ -589,7 +589,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         <?php
             $typeSelect = "American";
             $result = pg_query($conn, 
-              "SELECT R.name AS resname
+              "SELECT R.name AS resname, R.restaurantID resid
                FROM Restaurant R, Rating Ra
                WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
                AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
@@ -610,14 +610,12 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Restaurant Name</th>
-                  <th class='trD'>Rater Name</th>
-                  <th class='trD'>Highest Food Rating</th>
+                  <th class='trD'>Restaurant ID</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
-                  <td class='trD'><?php echo $row['raname']; ?></td>
-                  <td class='trD'><?php echo $row['max']; ?></td>
+                  <td class='trD'><?php echo $row['resid']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
