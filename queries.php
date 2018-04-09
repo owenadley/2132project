@@ -730,14 +730,12 @@ Food or the Mood of restaurants. Display this information together with the name
 restaurant and the dates the ratings were done.
         <?php
             $result = pg_query($conn, 
-              "SELECT DISTINCT  Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
+              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
               FROM Rater Ra, Restaurant R, Rating Rat
-              WHERE R.RestaurantID = Rat.restaurantID
-                    AND Ra.userID = Rat.userID
-                    AND Ra.userID = Rat.userID
-                    GROUP By Ra.userID, R.Name, Rat.Date
-                    HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
-                    LIMIT 10
+              WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
+                     GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
+                     HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
+                     LIMIT 10
               ");
               
             if (!$result) {
@@ -759,7 +757,6 @@ restaurant and the dates the ratings were done.
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['uname']; ?></td>
-                  <td class='trD'><?php echo $row['jdate']; ?></td>
                   <td class='trD'><?php echo $row['rep']; ?></td>
                   <td class='trD'><?php echo $row['resname']; ?></td>
                   <td class='trD'><?php echo $row['date']; ?></td>
