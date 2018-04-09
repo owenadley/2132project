@@ -939,14 +939,14 @@ the most frequently. Display this information together with their comments and t
               ");
               
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.name as name, R.email as email, SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) As total
+              "SELECT DISTINCT R.name as name, R.email as email, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) As total
               FROM Rater R, Rating Rat
               WHERE Rat.UserID=R.UserID 
               GROUP By R.name, R.email
-              HAVING (SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) <
+              HAVING (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <
                                                                  
-                (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
-                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
+               ANY (SELECT (Ra.Price + Ra.Food + Ra.Mood + Ra.Staff) AS tots
+                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John')
               ");
               
               
@@ -982,8 +982,8 @@ the most frequently. Display this information together with their comments and t
               "SELECT DISTINCT R.name AS name, R.type AS type, R.email AS email
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.userid = Rat.userid AND Res.restaurantID=Rat.restaurantID
-              AND ANY((SELECT MAX(Rat.Food) FROM Rating Ratt WHERE Ratt.userID=Rat.userID) - 
-                  (SELECT MIN(Rat.Food) FROM Rating Ratt WHERE Ratt.userID=Rat.userID)) 
+              AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
+                            GROUP BY Ra.restaurant_id , Ra.user_id , R.user_id HAVING  COUNT(*)  > 2 ORDER BY cnt DESC, Ra.restaurant_id) AS roo )) 
               ORDER BY name ASC
               LIMIT 10;
               ");
