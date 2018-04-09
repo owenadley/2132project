@@ -39,7 +39,7 @@ if ($_POST['restaurant'] != null) {echo "here";  ?>
   </script>
  
   <?php
-   $_POST['restaurant'] = null; 
+  # $_POST['restaurant'] = null; 
 }?>
 
 <div class='core-content'>
@@ -500,6 +500,8 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             }
           ?>
             
+            X refers to <?php echo $userIDSelect; ?>
+            
             <div class="container">
               <br/>
               <table class='tableD'>
@@ -538,7 +540,9 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             exit;
             }
           ?>
-            
+          
+          X refers to <?php echo $typeSelect; ?>
+
             <div class="container">
               <br/>
               <table class='tableD'>
