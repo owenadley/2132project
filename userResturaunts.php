@@ -269,6 +269,10 @@ if (!pg_num_rows($result)) {
  				  </div>  
           
           
+          
+          
+          
+          
         <?php } else {
           echo "You must be logged in to submit your own entries!";
         }

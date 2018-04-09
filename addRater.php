@@ -42,7 +42,7 @@ VALUES ('$userid', '$email', '$name', '$joindate', '$type', '$reputation', '$pas
 
 if (!$sqlAddMenuItem) {
     echo "An error occurred.\n";
-    echo error;
+    echo $email;
     exit;
 }
 
