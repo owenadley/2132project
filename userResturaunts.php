@@ -299,7 +299,7 @@ if (!pg_num_rows($result)) {
           
           <div id='modal5' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
- 					  	<span class='header_title'>Add Restaurant</span>
+ 					  	<span class='header_title'>Delete Menu Item</span>
  						  <span class='modal_close' onclick='unpop5();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
