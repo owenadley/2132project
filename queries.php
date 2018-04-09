@@ -897,7 +897,7 @@ the most frequently. Display this information together with their comments and t
                                                                                     ORDER BY c DESC   
                                                                                     LIMIT 1) TempT
                                                                               ON stuff.UserID=TempT.UserID
-              LEFT JOIN Rater ON Rater.UserID=TempT.UserID
+              LEFT JOIN Rater ON Rater.UserID=TempT.freq
                      
               ");
               
