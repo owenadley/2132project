@@ -545,7 +545,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             }
           ?>
           <br/>
-          Y refers to restaurant type:<?php echo $typeSelect; ?>
+          Y refers to restaurant type: <?php echo $typeSelect; ?>
 
             <div class="container">
               <br/>
