@@ -22,7 +22,7 @@ if (!$conn) {
 
 
 
-    
+    $returnAddr = $_POST['returnAddr'];
     $userID = $_POST['email'];
     $pass = $_POST['password'];
     
@@ -48,7 +48,7 @@ if (!$conn) {
             $_SESSION['userid'] = $checkUserID;
             echo $_SESSION['userid'];
             
-            header('Location: ./index.php');
+            header('Location: ./$returnAddr');
             exit;
         }
     
