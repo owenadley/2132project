@@ -296,7 +296,7 @@ location tables should then displayed on the screen.
             $_POST['restaurant'] = null;
             
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
-                                       WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
+                                       WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND R.name != 'name'");
             
             if (!$result) {
             echo "An error occurred.\n";
@@ -357,7 +357,7 @@ screen. The menu should be displayed based on menu item categories.
        				  } ?>
     			     </option>
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R WHERE R.name != 'name'");
     			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['name'];
     			     echo "<option value='$res'>$res</option>";
@@ -426,7 +426,7 @@ Thai) from a list.
        				  } ?>
     			     </option>
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R WHERE R.type != 'Type'");
     			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['type'];
     			     echo "<option value='$res'>$res</option>";
@@ -486,7 +486,7 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
     			     </option>
     			     
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R WHERE R.name != 'Name'");
     			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['name'];
     			     echo "<option value='$res'>$res</option>";
