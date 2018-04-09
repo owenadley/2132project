@@ -74,49 +74,55 @@ if (!pg_num_rows($result)) {
     </div>
     <div class='col-md-9'>
       <div class='core-userResturaunts'>
-        <h2>Browse Resturaunts</h2>
-
-      <form id='filterType' role="form" method="post" action="" autocomplete="off">
- 				<label>Sort By Type</label>
- 				<select name='type' required>
- 				  <option selected>
- 				  <?php 
- 				  if ($_POST['type'] != null) {
-				    echo $_POST['type'];
- 				  } ?>
-			 </option>
- 				  <option value='American'>American</option>
- 				  <option value='Chinese'>Chinese</option>
- 				  <option value='Fast Food'>Fast Food</option>
- 				  <option value='Greek'>Greek</option>
- 				  <option value='Indian'>Indian</option>
- 				  <option value='Italian'>Italian</option>
- 				  <option value='Korean'>Korean</option>
- 				  <option value='Mediterranean'>Mediterranean</option>
- 				  <option value='Mexican'>Mexican</option>
- 				  <option value='Sushi'>Sushi</option>
- 				</select>
- 				<input type='submit'></input>
- 			</form>
+        <h2>Browse Restaurants</h2>
+      <div class='row'>
+        <div class='col-md-6'>
+          <form id='filterType' role="form" method="post" action="" autocomplete="off">
+     				<label>Sort By Type</label>
+     				<select name='type' required>
+     				  <option selected>
+     				  <?php 
+     				  if ($_POST['type'] != null) {
+    				    echo $_POST['type'];
+     				  } ?>
+    			 </option>
+     				  <option value='American'>American</option>
+     				  <option value='Chinese'>Chinese</option>
+     				  <option value='Fast Food'>Fast Food</option>
+     				  <option value='Greek'>Greek</option>
+     				  <option value='Indian'>Indian</option>
+     				  <option value='Italian'>Italian</option>
+     				  <option value='Korean'>Korean</option>
+     				  <option value='Mediterranean'>Mediterranean</option>
+     				  <option value='Mexican'>Mexican</option>
+     				  <option value='Sushi'>Sushi</option>
+     				</select>
+     				<input type='submit'></input>
+     			</form>
 				<br />
 				
-				<?php 
-				if ($_POST['type'] != null) {
-				  $type = $_POST['type'];
-				  
-				  $filterType = pg_query($conn, "SELECT * FROM Restaurant WHERE Type='$type'");
-				  if (!$filterType) {
-				    echo "err";
-				  }
-				  
-          while($row = pg_fetch_assoc($filterType)) {
-            echo "Name: ".$row['name']." \n <br>";
-            echo "URL: ".$row['url']." \n <br><br>";
-          }
-				} else {
-				  #echo "not posted";
-				}
-				?>
+  				<?php 
+  				if ($_POST['type'] != null) {
+  				  $type = $_POST['type'];
+  				  
+  				  $filterType = pg_query($conn, "SELECT * FROM Restaurant WHERE Type='$type'");
+  				  if (!$filterType) {
+  				    echo "err";
+  				  }
+  				  
+            while($row = pg_fetch_assoc($filterType)) {
+              echo "Name: ".$row['name']." \n <br>";
+              echo "URL: ".$row['url']." \n <br><br>";
+            }
+  				} else {
+  				  #echo "not posted";
+  				}
+  				?>
+  			</div>        
+        <div class='col-md-6'>
+          
+          
+        </div>
         
       </div>
     </div>
