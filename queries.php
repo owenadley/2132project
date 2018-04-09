@@ -980,7 +980,7 @@ the most frequently. Display this information together with their comments and t
         
         <?php
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.name AS name, R.type AS type, R.email AS email
+              "SELECT R.name AS name, R.type AS type, R.email AS email, Res.Name AS resname, Rat.Price AS price, Rat.Food AS food, Rat.Mood AS mood, Rat.Staff AS staff
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.userid = Rat.userid AND Res.restaurantID=Rat.restaurantID
               AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
@@ -1001,12 +1001,22 @@ the most frequently. Display this information together with their comments and t
                   <th class='trD'>Rater Name</th>
                   <th class='trD'>Rater Type</th>
                   <th class='trD'>Email</th>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Price rating</th>
+                  <th class='trD'>Food rating</th>
+                  <th class='trD'>Mood rating</th>
+                  <th class='trD'>Staff rating</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['name']; ?></td>
                   <td class='trD'><?php echo $row['type']; ?></td>
                   <td class='trD'><?php echo $row['email']; ?></td>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['price']; ?></td>
+                  <td class='trD'><?php echo $row['food']; ?></td>
+                  <td class='trD'><?php echo $row['mood']; ?></td>
+                  <td class='trD'><?php echo $row['staff']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>

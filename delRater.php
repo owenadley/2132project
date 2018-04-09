@@ -27,20 +27,29 @@ $id = $_POST['id'];
 $email = pg_escape_string($conn, $email);
 $id = pg_escape_string($conn, $id);
 
-$sqlDelRater = pg_query($conn, "DELETE FROM Rater R WHERE R.userID='$email'");
+$checkExists = pg_query($conn, "SELECT * FROM Rater R WHERE R.userID='$id' AND R.email='$email'");
+$rows = pg_num_rows($checkExists);
 
-if (!$sqlDelRater) {
+if ($rows > 0){
+  $sqlDelRater = pg_query($conn, "DELETE FROM Rater R WHERE R.userID='$email'");
+
+  if (!$sqlDelRater) {
     echo "An error occurred.\n";
     $_SESSION['delFail'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
+    header('Location: ./userResturaunts.php');
+    exit;
+  } else {
+    echo "Rater has been deleted.";
+    echo "<br />\n";
+    $_SESSION['delSuccess'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
+  }
 } else {
-  echo "Rater has been deleted.";
-  echo "<br />\n";
-  $_SESSION['delSuccess'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
-
+    echo "An error occurred.\n";
+    $_SESSION['delFail'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
 }
 
     

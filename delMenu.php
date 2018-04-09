@@ -28,20 +28,31 @@ $name = pg_escape_string($conn, $name);
 $id = pg_escape_string($conn, $id);
 
 $id = $name . $id;
-$sqlDelMenuItem = pg_query($conn, "DELETE FROM MenuItem M WHERE M.ItemID='$id'");
+$checkExists = pg_query($conn, "SELECT * FROM MenuItem M WHERE M.name='$name' AND M.itemID='$id'");
+$rows = pg_num_rows($checkExists);
 
-if (!$sqlDelMenuItem) {
-    echo "An error occurred.\n";
-    $_SESSION['delFail'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
+if ($rows > 0) {
+  $sqlDelMenuItem = pg_query($conn, "DELETE FROM MenuItem M WHERE M.ItemID='$id'");
+  if (!$sqlDelMenuItem) {
+      echo "An error occurred.\n";
+      $_SESSION['delFail'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
+  } else {
+    echo "Menu Item has been deleted.";
+    echo "<br />\n";
+    $_SESSION['delSuccess'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
+  }
 } else {
-  echo "Menu Item has been deleted.";
-  echo "<br />\n";
-  $_SESSION['delSuccess'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
-
+      echo "An error occurred.\n";
+      $_SESSION['delFail'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
 }
+
+
+
 
     
