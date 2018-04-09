@@ -140,7 +140,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
  										</div>
                      
                     <input type='hidden' name='returnAddr' value='queries.php' required/>
-                    <?phpecho"lol";?>
+                    <?php echo"lol"; ?>
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><input type='submit' class='btn btn_red' value='Register'></input></div>
