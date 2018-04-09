@@ -83,6 +83,7 @@ if (!pg_num_rows($result)) {
  				  if ($_POST['type'] != null) {
 				    echo $type;
  				  } ?>
+ 				  
 			 </option>
  				  <option value='American'>American</option>
  				  <option value='Chinese'>Chinese</option>
