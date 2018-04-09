@@ -33,6 +33,8 @@ $sqlAddResturaunt = pg_query($conn, "INSERT INTO Restaurant(RestaurantID, name, 
 
 if (!$sqlAddResturaunt) {
     echo "An error occurred.\n";
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
     exit;
 }
 
@@ -40,6 +42,8 @@ $sqlCheckAddResturaunt = pg_query($conn, "SELECT name FROM Restaurant WHERE url=
 
 if (!$sqlCheckAddResturaunt) {
   echo "An error occurred in reg.\n";
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
   exit;
 }
 
@@ -53,6 +57,9 @@ if ($row = pg_fetch_row($sqlCheckAddResturaunt)) {
 
 } else {
   echo 'Could not complete registration';
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 }
 
 

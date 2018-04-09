@@ -201,9 +201,17 @@ if (!pg_num_rows($result)) {
             echo "<div class='successNotify'><p>Your entry has been succesfully submitted.</p></div>";
             $_SESSION['addSuccess'] = false;
           }
+          if ($_SESSION['addFail']) {
+            echo "<div class='failNotify'><p>There was an error in your entry and it was not submitted.</p></div>";
+            $_SESSION['addFail'] = false;
+          }
           if ($_SESSION['delSuccess']) {
             echo "<div class='successNotify'><p>Your entry has been succesfully deleted.</p></div>";
             $_SESSION['delSuccess'] = false;
+          }
+          if ($_SESSION['delFail']) {
+            echo "<div class='failNotify'><p>There was an error in your entry and it was not submitted.</p></div>";
+            $_SESSION['delFail'] = false;
           }
         ?>
           
@@ -459,6 +467,8 @@ if (!pg_num_rows($result)) {
      						</div>
  					  </section>
  				  </div>     
+       
+       
         <?php } else {
           echo "You must be logged in to submit your own entries!";
         }

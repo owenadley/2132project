@@ -32,7 +32,9 @@ $sqlDelMenuItem = pg_query($conn, "DELETE FROM MenuItem M WHERE M.ItemID='$id'")
 
 if (!$sqlDelMenuItem) {
     echo "An error occurred.\n";
-    exit;
+    $_SESSION['delFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 } else {
   echo "Menu Item has been deleted.";
   echo "<br />\n";

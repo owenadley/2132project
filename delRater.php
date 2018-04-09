@@ -31,7 +31,9 @@ $sqlDelRater = pg_query($conn, "DELETE FROM Rater R WHERE R.userID='$email'");
 
 if (!$sqlDelRater) {
     echo "An error occurred.\n";
-    exit;
+    $_SESSION['delFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 } else {
   echo "Rater has been deleted.";
   echo "<br />\n";

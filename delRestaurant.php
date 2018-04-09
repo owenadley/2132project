@@ -31,7 +31,9 @@ $sqlDelResturant = pg_query($conn, "DELETE FROM Restaurant R WHERE R.RestaurantI
 
 if (!$sqlDelResturant) {
     echo "An error occurred.\n";
-    exit;
+    $_SESSION['delFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 } else {
   echo "Resturaunt has been deleted.";
   echo "<br />\n";

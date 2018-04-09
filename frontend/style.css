@@ -274,6 +274,15 @@ input#logout:hover {
     color: white;
     font-weight: bold;
     font-size: 14px;
+    background-color: #1dd1a1;
+    padding: 10px 30px;
+    border-radius: 6px;
+    width: max-content;
+}
+.failNotify p{
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
     background-color: #FF5840;
     padding: 10px 30px;
     border-radius: 6px;

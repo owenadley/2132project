@@ -42,14 +42,17 @@ VALUES ('$userid', '$email', '$name', '$joindate', '$type', '$reputation', '$pas
 
 if (!$sqlAddRater) {
     echo "An error occurred.\n";
-    echo $email;
-    exit;
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 }
 
 $sqlCheckAddRater= pg_query($conn, "SELECT name FROM Rater WHERE UserID='$userid'");
 
 if (!$sqlCheckAddRater) {
   echo "An error occurred in reg.\n";
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
   exit;
 }
 
@@ -63,6 +66,9 @@ if ($row = pg_fetch_row($sqlCheckAddRater)) {
 
 } else {
   echo 'Could not complete rater';
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 }
 
 

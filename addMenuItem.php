@@ -42,14 +42,17 @@ VALUES ('$itemid', '$name', '$cat', '$type', '$description', '$price', '$restaur
 
 if (!$sqlAddMenuItem) {
     echo "An error occurred.\n";
-    echo error;
-    exit;
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 }
 
 $sqlCheckAddMenuItem= pg_query($conn, "SELECT name FROM MenuItem WHERE ItemID='$itemid'");
 
 if (!$sqlCheckAddMenuItem) {
   echo "An error occurred in reg.\n";
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
   exit;
 }
 
@@ -63,6 +66,9 @@ if ($row = pg_fetch_row($sqlCheckAddMenuItem)) {
 
 } else {
   echo 'Could not complete registration';
+    $_SESSION['addFail'] = true;
+  header('Location: ./userResturaunts.php');
+  exit;
 }
 
 
