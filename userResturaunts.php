@@ -212,7 +212,7 @@ if (!pg_num_rows($result)) {
      										  
 <?php
      										  $getRestauraunts = pg_query($conn, "SELECT * FROM Restauraunt");
-     										  if ($row = pg_fetch_assoc($getRestauraunts)) {
+     										  if ($row = pg_fetch_row($getRestauraunts)) {
   $arr = pg_fetch_all($getRestauraunts);
   print_r($arr);
      										    echo "<option value=''>".$row['name']."</option>";
