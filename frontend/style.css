@@ -64,6 +64,7 @@ p.sidemenup {
 }
 .slick-slide {
     height: auto;
+    width: min-content;
 }
 
 
