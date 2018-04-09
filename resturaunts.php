@@ -64,8 +64,14 @@
 				if ($_POST['type'] != null) {
 				  $type = $_POST['type'];
 				  $filterType = pg_query($conn, "SELECT * FROM Resturaunt WHERE type='$type'");
+				  if (!$filterType) {
+				    echo "err";
+				  }
+				  
           $arr = pg_fetch_all($filterType);
           print_r($arr);
+				} else {
+				  echo "not posted";
 				}
 				?>
         
