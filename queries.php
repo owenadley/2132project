@@ -330,7 +330,7 @@ or desert), list the average prices of menu items for each category.
               "SELECT AVG(M.Price) AS avgprice, R.type AS resttype, M.category AS foodcat  
               FROM MenuItem M, Restaurant R
               LEFT JOIN MenuItem M ON R.restaurantID=M.restaurantID
-              GROUP BY R.type, M.category ORDER BY R.type, M.category");
+              GROUP BY R.type, M.category ORDER BY R.type");
               
             if (!$result) {
             echo "An error occurred.\n";
