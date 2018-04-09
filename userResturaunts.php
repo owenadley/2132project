@@ -187,16 +187,16 @@ if (!pg_num_rows($result)) {
      										
      										<label>Type</label>
      										<select name='type' required>
-     										  <option value='food'>Food</option>
-     										  <option value='beverage'>Beverage</option>
+     										  <option value='starter'>Starter</option>
+     										  <option value='main'>Main</option>
+     										  <option value='desert'>Desert</option>
      										</select>
      										<br><br>
      
      										<label>Category</label>
      										<select name='cat' required>
-     										  <option value='starter'>Starter</option>
-     										  <option value='main'>Main</option>
-     										  <option value='desert'>Desert</option>
+     										  <option value='food'>Food</option>
+     										  <option value='beverage'>Beverage</option>
      										</select>
      										<br><br>
      										
