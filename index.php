@@ -166,7 +166,7 @@ include 'createTables.php';
  												<label for='send_updates'>Send me occasional email updates</label>
  										</div>
  
-                     <input type'hidden' value='index.php' name='returnAddr'/>
+                     <input type='hidden' value='index.php' name='returnAddr'/>
                      
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
