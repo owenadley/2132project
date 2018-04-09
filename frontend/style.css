@@ -99,8 +99,7 @@ p#core-home-subheader {
     font-size: 18px;
 }
 span#core-home-slideTitle {
- padding: 10px;
- font-size: 14px;
+
 }
 .featResturaunt {
     margin: 0 auto;
@@ -109,6 +108,8 @@ span#core-home-slideTitle {
 }
 .featResturaunt a{
     color: black;
+ padding: 10px;
+ font-size: 14px;
 }
 .featResturaunt a:hover{
     border: 0px;
