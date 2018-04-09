@@ -198,17 +198,19 @@ if (!pg_num_rows($result)) {
      										  <option value='main'>Main</option>
      										  <option value='desert'>Desert</option>
      										</select>
-     
+     										<br><br>
+     										
      										<label>Description</label>
     										<input name='description' type='text' required/>
     										<br />
      
      										<label>Price</label>
     										<input name='price' type='number' required/>
-    										<br />
+     										<br><br>
      
      										<label>Restauraunt</label>
      										<select name='restauraunt' required>
+     										<br><br>
      										  
 <?php
      										  $getRestauraunts = pg_query($conn, "SELECT * FROM Restaurant");
