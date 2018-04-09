@@ -33,7 +33,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 </head>
     
 <div class='header'>
-  <h3 id='headerTitle'>2132 Foods</h3>
+  <h3 id='headerTitle'>Welp</h3>
   
   <?php
   #echo $_SESSION['userid'];
@@ -905,7 +905,7 @@ the most frequently. Display this information together with their comments and t
             echo "An error occurred.\n";
             exit;
             }
-          ?>
+          ?> 
 
           <br/>
           Z refers to restaurant: <?php echo $resSelect; ?>

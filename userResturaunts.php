@@ -47,7 +47,7 @@ if (!pg_num_rows($result)) {
 </head>
     
 <div class='header'>
-  <h3 id='headerTitle'>2132 Foods</h3>
+  <h3 id='headerTitle'>Welp</h3>
   
   <?php
   #echo $_SESSION['userid'];

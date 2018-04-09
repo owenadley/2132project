@@ -53,7 +53,7 @@ include 'createTables.php';
 </head>
 
 <div class='header'>
-  <h3 id='headerTitle'>2132 Foods</h3>
+  <h3 id='headerTitle'>Welp</h3>
   
   
   <?php
