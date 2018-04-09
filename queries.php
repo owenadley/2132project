@@ -263,7 +263,7 @@ Thai) from a list.
               <br/>
               <table class='tableD'>
                 <tr>
-                  <th class='trD'>Manager Name/th>
+                  <th class='trD'>Manager Name</th>
                   <th class='trD'>Opening Date</th>
                   
                 </tr>
