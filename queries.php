@@ -35,15 +35,6 @@ $conn = pg_connect(pg_connection_string_from_database_url());
   <h3 id='headerTitle'>2132 Foods</h3>
 </div>
     
-<?php
-if ($_POST['restaurant'] != null) {echo " 
-  <script type='text/javascript'>
-    showQuery1a();
-  </script>";
- 
-  
-  # $_POST['restaurant'] = null; 
-}?>
 
 <div class='core-content'>
   
@@ -184,6 +175,7 @@ location tables should then displayed on the screen.
      				</select>
      				<input type='submit' onclick='showQuery1a();'></input>
      			</form>
+     			
           <?php
           if ($_POST['restaurant'] != null) {
             $resturauntselect = $_POST['restaurant'];
@@ -240,7 +232,32 @@ location tables should then displayed on the screen.
 restaurant from a list, and all menu items, together with their prices, should be displayed on the
 screen. The menu should be displayed based on menu item categories.
           <?php 
-            $resturauntselect = "Host";
+          
+          <form id='filterType' role="form" method="post" action="" autocomplete="off">
+     				<label>Select Resturaunt:</label>
+     				<select name='restaurant1' required>
+     				  <option selected>
+       				  <?php 
+       				  if ($_POST['restaurant1'] != null) {
+      				    echo $_POST['restaurant1'];
+       				  } ?>
+    			     </option>
+    			   <?php 
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   while ($row = pg_fetch_assoc($sql)) {
+    			     $res = $row['name'];
+    			     echo "<option value='$res'>$res</option>";
+    			   }
+    			   ?>
+     				</select>
+     				<input type='submit'></input>
+     			</form>
+     			
+          <?php
+          if ($_POST['restaurant1'] != null) {
+            $resturauntselect = $_POST['restaurant1'];
+            $_POST['restaurant1'] = null;
+            
             $result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R 
               WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID
               ORDER BY M.category ASC");
@@ -569,6 +586,42 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
       <div id='queryDisplay2j' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2j()'></i></div>
         j : Provide a query to determine whether Type Y restaurants are “more popular” than other restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.) Yes, this query is open to your own interpretation!
+        <?php
+            $typeSelect = "American";
+            $result = pg_query($conn, 
+              "SELECT R.name AS resname
+               FROM Restaurant R, Rating Ra
+               WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
+               AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
+               (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
+               GROUP By R.name
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+          <br/>
+          Y refers to restaurant type: <?php echo $typeSelect; ?>
+
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Highest Food Rating</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['raname']; ?></td>
+                  <td class='trD'><?php echo $row['max']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>      
       </div>
       
       
