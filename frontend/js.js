@@ -183,7 +183,7 @@ function popAddMenuItem() {
 }
 function popDelMenuItem() {
   $('#modal5').fadeIn(1000);
-  $('#addEntryMenuItem').fadeIn(1000);
+  $('#delEntryMenuItem').fadeIn(1000);
 }
 function popAddRater() {
   $('#modal3').fadeIn(1000);
