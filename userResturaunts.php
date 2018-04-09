@@ -212,13 +212,10 @@ if (!pg_num_rows($result)) {
      										  
 <?php
      										  $getRestauraunts = pg_query($conn, "SELECT * FROM Restaurant");
-     										  if ($row = pg_fetch_row($getRestauraunts)) {
-  $arr = pg_fetch_all($getRestauraunts);
-  print_r($arr);
+     										  while ($row = pg_fetch_assoc($getRestauraunts)) {
+
      										    echo "<option value='".$row['restaurantid']."'>".$row['name']."</option>";
-     										  } else {
-     										    echo "no restauraunts";
-     										  }
+     										  } 
      									?>
 
      										</select>
