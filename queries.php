@@ -312,9 +312,9 @@ Thai) from a list.
        				  } ?>
     			     </option>
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R");
     			   while ($row = pg_fetch_assoc($sql)) {
-    			     $res = $row['name'];
+    			     $res = $row['type'];
     			     echo "<option value='$res'>$res</option>";
     			   }
     			   ?>
