@@ -971,7 +971,7 @@ print_r($arr);
               "SELECT R.name AS name, R.type AS type, R.email AS email, Res.Name AS resname, Rat.Price AS price, Rat.Food AS food, Rat.Mood AS mood, Rat.Staff AS staff
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.UserID = Rat.UserID AND Res.restaurantID=Rat.restaurantID
-              AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
+              AND R.UserID = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
                             GROUP BY Rat.restaurantID, Rat.UserID , R.UserID HAVING  COUNT(*)  > 2 ORDER BY C DESC, Rat.restaurantID) AS roo) 
               ORDER BY R.name, Res.name
               ");
