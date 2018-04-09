@@ -97,14 +97,16 @@ if (!pg_num_rows($result)) {
 				<?php 
 				if ($_POST['type'] != null) {
 				  $type = $_POST['type'];
-				  echo $_POST['type'];
+				  
 				  $filterType = pg_query($conn, "SELECT * FROM Restaurant WHERE Type='$type'");
 				  if (!$filterType) {
 				    echo "err";
 				  }
 				  
-          $arr = pg_fetch_all($filterType);
-          print_r($arr);
+          while($row = pg_fetch_assoc($filterType)) {
+            echo $row['name'];
+            echo $row['url'];
+          }
 				} else {
 				  echo "not posted";
 				}
