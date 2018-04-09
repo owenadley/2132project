@@ -97,7 +97,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
  												<input id='remember' type='checkbox' />
  												<label for='remember'>Remember me on this computer</label>
  										</div>
- 
+                    <input type='hidden' name='returnAddr' value='queries.php' required/>
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><input type='submit' class='btn btn_red' value='Login'></input></div>
@@ -110,7 +110,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
  						<!-- Register Form -->
  						<div class='user_register' id='uregister'>
 								<form id='register' role="form" method="post" action="Register.php" autocomplete="off">
- 										<label>Full Name</label><input name='returnAddr' value='queries.php' required/>
+ 										<label>Full Name</label>
 										<input name='name' type='text' required />
  										<br />
  
