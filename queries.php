@@ -162,7 +162,7 @@ location tables should then displayed on the screen.
        				  } ?>
     			     </option>
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
     			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['name'];
     			     echo "<option value='$res'>$res</option>";
@@ -462,6 +462,56 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         any rater of your choice.)
         <?php
             $result = pg_query($conn, 
+              "SELECT Rest.Name AS resname, RL.firstOpenDate AS date
+              FROM Rating Rat
+              LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
+              LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
+              WHERE Rat.UserID = '$userIDSelect'
+                    AND ((Rat.Price>( SELECT AVG(Rat.Staff)
+                      FROM Rating Rat, Restaurant Rest
+                      WHERE Rat.RestaurantID=Rest.RestaurantID))
+                    OR (Rat.Mood>( SELECT AVG(Rat.Staff)
+                      FROM Rating Rat, Restaurant Rest
+                      WHERE Rat.RestaurantID=Rest.RestaurantID))
+                    OR (Rat.Food>( SELECT AVG(Rat.Staff)
+                      FROM Rating Rat, Restaurant Rest
+                      WHERE Rat.RestaurantID=Rest.RestaurantID))
+                    OR (Rat.Staff>( SELECT AVG(Rat.Staff)
+                      FROM Rating Rat, Restaurant Rest
+                      WHERE Rat.RestaurantID=Rest.RestaurantID)))
+              GROUP BY RL.firstOpenDate, Rest.name
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Opening Date</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['date']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
+        
+      </div>
+      
+      <div id='queryDisplay2i' class='queryDisplay'>
+        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2i()'></i></div>
+        i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
+        restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
+        <?php
+            $result = pg_query($conn, 
               "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
               FROM Restaurant R, Location L
               WHERE L.RestaurantID = R.RestaurantID 
@@ -491,13 +541,6 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                 <?php endwhile; ?>
               </table>
             </div>
-        
-      </div>
-      
-      <div id='queryDisplay2i' class='queryDisplay'>
-        <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2i()'></i></div>
-        i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
-        restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
       </div>
       
       <div id='queryDisplay2j' class='queryDisplay'>
