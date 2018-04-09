@@ -827,8 +827,8 @@ the most frequently. Display this information together with their comments and t
             echo "An error occurred.\n";
             exit;
             }
-          ?>
-
+          
+?>
             <div class="container">
               <br/>
               <table class='tableD'>
