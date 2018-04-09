@@ -36,6 +36,7 @@ if (!$sqlDelResturant || $rows < 1) {
     $_SESSION['delFail'] = true;
   header('Location: ./userResturaunts.php');
   exit;
+  
 } else {
   echo "Resturaunt has been deleted.";
   echo "<br />\n";
