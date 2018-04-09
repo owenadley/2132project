@@ -164,7 +164,8 @@ location tables should then displayed on the screen.
     			   <?php 
     			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
     			   while ($row = $pg_fetch_assoc($sql)) {
-    			     echo "<option value='".$row['name']."'>."$row['name']."</option>";
+    			     $res = $row['name'];
+    			     echo "<option value='$res'>$res</option>";
     			   }
     			   ?>
 
