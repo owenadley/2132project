@@ -297,30 +297,7 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>
           
-          <div id='modal5' class='popupContainer' style='display:none;'>
- 				    <header class='popupHeader'>
- 					  	<span class='header_title'>Add Restaurant</span>
- 						  <span class='modal_close' onclick='unpop5();'><i class='fa fa-times'></i></span>
- 				    </header>
- 				    
-            <section class='popupBody'>
-              <div class='addEntry' id='delEntryMenuItem'>
-    								<form id='delMenuItem' role="form" method="post" action="delMenu.php" autocomplete="off">
-     										<label>Menu Item Name</label>
-    										<input name='name' type='text' required />
-     										<br />
-     
-     										<label>Resturaunt Id</label>
-    										<input name='id' type='text' required/>
-    										<br />
-     
-     										<div class='action_btns'>
-     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
-     										</div>
-     								</form>
-     						</div>
- 					  </section>
- 				  </div>
+          
           
           
         <?php } else {

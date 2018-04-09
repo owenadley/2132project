@@ -181,6 +181,10 @@ function popAddMenuItem() {
   $('#modal2').fadeIn(1000);
   $('#addEntryMenuItem').fadeIn(1000);
 }
+function popDelMenuItem() {
+  $('#modal5').fadeIn(1000);
+  $('#addEntryMenuItem').fadeIn(1000);
+}
 function popAddRater() {
   $('#modal3').fadeIn(1000);
   $('#addEntryRater').fadeIn(1000);
@@ -196,4 +200,7 @@ function unpop3() {
 }
 function unpop4() {
   $('#modal4').fadeOut(1000);
+}
+function unpop4() {
+  $('#modal5').fadeOut(1000);
 }
