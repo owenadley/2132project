@@ -934,7 +934,7 @@ the most frequently. Display this information together with their comments and t
               WHERE R.UserID IN (SELECT UserID FROM Rating Rat WHERE
               ((Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <
                ANY (SELECT (Ra.Price + Ra.Food + Ra.Mood + Ra.Staff)
-                  FROM Rating Ra WHERE Ra.userID IN (SELECT moo.UserID FROM Rater moo WHERE moo.name='John')))
+                  FROM Rating Ra WHERE Ra.userID IN (SELECT moo.UserID FROM Rater moo WHERE moo.name='John'))))
               ");
               
               
