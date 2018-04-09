@@ -42,6 +42,7 @@
       <div class='core-userResturaunts.php'>
         <h2>Browse Resturaunts</h2>
 
+      <form id='filterType' role="form" method="post" action="" autocomplete="off">
  				<label>Sort By Type</label>
  				<select name='type' required>
  				  <option value='American'>Blog</option>
@@ -55,6 +56,8 @@
  				  <option value='Mexican'>Food Critic</option>
  				  <option value='Sushi'>Blog</option>
  				</select>
+ 				<input type='submit'></input>
+ 			</form>
 				<br />
         
       </div>
