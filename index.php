@@ -59,7 +59,7 @@ include 'createTables.php';
   <?php
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
-    echo "<div class='userStatus'><div class='loggedIn'>Signed is as:<br>".$_SESSION['userid']."<br>
+    echo "<div class='userStatus'><div class='loggedIn'><span id='subtext'>Signed is as:</span><br>".$_SESSION['userid']."<br>
     <form method='post' action='logout.php'><input type='submit' value='Logout' name='logout'/></form></div></div>";
   } else { 
     echo "  <div class='container'>

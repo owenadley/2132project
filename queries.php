@@ -330,6 +330,7 @@ or desert), list the average prices of menu items for each category.
               "SELECT AVG(M.Price) AS avgprice, R.type AS resttype, M.category AS foodcat  
               FROM Restaurant R
               LEFT JOIN MenuItem M ON R.restaurantID=M.restaurantID
+              WHERE M.restaurantID IN (SELECT Res.restaurantID FROM Restaurant Res WHERE Res.type=R.type)
               GROUP BY R.type, M.category 
               ORDER BY R.type, M.category");
               
