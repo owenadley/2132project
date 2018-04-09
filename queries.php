@@ -886,14 +886,16 @@ restaurant and the dates the ratings were done.
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
         <?php
-/*            $result = pg_query($conn, 
+            $typeSelect = "American";
+            
+            $result = pg_query($conn, 
               "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date, Comments, foo.name, foo.price
               FROM Rater Ra, Restaurant R, Rating Rat
               WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
                      GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
                      HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
                      LIMIT 10
-              ");*/
+              ");
               
             if (!$result) {
             echo "An error occurred.\n";
@@ -901,6 +903,9 @@ the most frequently. Display this information together with their comments and t
             }
           ?>
 
+          <br/>
+          Z refers to restaurant type: <?php echo $typeSelect; ?>
+          
             <div class="container">
               <br/>
               <table class='tableD'>
@@ -971,7 +976,7 @@ print_r($arr);
               "SELECT R.name AS name, R.type AS type, R.email AS email, Res.Name AS resname, Rat.Price AS price, Rat.Food AS food, Rat.Mood AS mood, Rat.Staff AS staff
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.UserID = Rat.UserID AND Res.restaurantID=Rat.restaurantID
-              AND R.UserID = ANY(SELECT boo.roo FROM (SELECT R.UserID roo, Rat.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
+              AND R.UserID = ANY(SELECT  FROM (SELECT R.UserID roo, Rat.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
                             GROUP BY Rat.restaurantID, Rat.UserID , R.UserID HAVING  COUNT(*)  > 2 ORDER BY C DESC, Rat.restaurantID) AS roo) 
               ORDER BY R.name, Res.name
               ");
