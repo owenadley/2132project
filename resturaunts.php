@@ -45,16 +45,16 @@
       <form id='filterType' role="form" method="post" action="" autocomplete="off">
  				<label>Sort By Type</label>
  				<select name='type' required>
- 				  <option value='American'>Blog</option>
- 				  <option value='Chinese'>Online</option>
- 				  <option value='Fast Food'>Food Critic</option>
- 				  <option value='Greek'>Blog</option>
- 				  <option value='Indian'>Online</option>
- 				  <option value='Italian'>Food Critic</option>
- 				  <option value='Korean'>Blog</option>
- 				  <option value='Mediterranean'>Online</option>
- 				  <option value='Mexican'>Food Critic</option>
- 				  <option value='Sushi'>Blog</option>
+ 				  <option value='American'>American</option>
+ 				  <option value='Chinese'>Chinese</option>
+ 				  <option value='Fast Food'>Fast Food</option>
+ 				  <option value='Greek'>Greek</option>
+ 				  <option value='Indian'>Indian</option>
+ 				  <option value='Italian'>Italian</option>
+ 				  <option value='Korean'>Korean</option>
+ 				  <option value='Mediterranean'>Mediterranean</option>
+ 				  <option value='Mexican'>Mexican</option>
+ 				  <option value='Sushi'>Sushi</option>
  				</select>
  				<input type='submit'></input>
  			</form>
@@ -64,9 +64,8 @@
 				if ($_POST['type'] != null) {
 				  $type = $_POST['type'];
 				  $filterType = pg_query($conn, "SELECT * FROM Resturaunt WHERE type='$type'");
-				  while ($row = pg_fetch_assoc($filterType)) {
-				    echo $row['name'];
-				  }
+          $arr = pg_fetch_all($filterType);
+          print_r($arr);
 				}
 				?>
         

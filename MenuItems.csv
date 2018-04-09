@@ -7,7 +7,7 @@ ItemID,name,type,category,description,price,RestaurantID
 J5VMZ,Samosa,Food,Starter,This is a description. ,5.00,FR65F6R5
 8LWK8,Paneer Tikka Masala,Food,Main,,15.00,FR65F6R5
 3S82C,Gulab Jamun,Food,Desert,This is a description. ,5.00,FR65F6R5
-ZBTNB,Mango shake,Beverage,,3.00,FR65F6R5
+ZBTNB,Mango shake,Beverage,Desert,,3.00,FR65F6R5
 NH596,Naan,Food,Main,,3.00,FR65F6R5
 WJBBM,Greek Salad,Food,Starter,This is a description. ,5.00,FV6566FV
 R9GJG,Falafal Sandwich,Food,Main,,9.99,FV6566FV
