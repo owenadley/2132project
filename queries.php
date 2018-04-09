@@ -266,6 +266,7 @@ screen. The menu should be displayed based on menu item categories.
             echo "An error occurred.\n";
             exit;
             }
+          }
           ?>
             
             <div class="container">
@@ -628,6 +629,49 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         k : Find the names, join‐date and reputations of the raters that give the highest overall rating, in
 terms of the Food and the Mood of restaurants. Display this information together with the
 names of the restaurant and the dates the ratings were done.
+        <?php
+            $typeSelect = "American";
+            $result = pg_query($conn, 
+              "SELECT DISTINCT  Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
+              FROM Rater Ra, Restaurant R, Rating Rat
+              WHERE R.RestaurantID = Rat.restaurantID
+                    AND Ra.userID = Rat.userID
+                    AND Ra.userID = Rat.userID
+                    GROUP By Ra.userID, R.Name, Rat.Date
+                    HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
+                    LIMIT 10
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+          <br/>
+          Y refers to restaurant type: <?php echo $typeSelect; ?>
+
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Rater join date</th>
+                  <th class='trD'>Reputation</th>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Rating date</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['uname']; ?></td>
+                  <td class='trD'><?php echo $row['jdate']; ?></td>
+                  <td class='trD'><?php echo $row['rep']; ?></td>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['date']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>      
+      
       </div>
       
       <div id='queryDisplay3l' class='queryDisplay'>
