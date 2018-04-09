@@ -68,6 +68,7 @@
 				    echo $row['name'];
 				  }
 				}
+				?>
         
       </div>
     </div>
