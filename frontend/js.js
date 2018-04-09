@@ -9,6 +9,7 @@ $('.autoplay').slick({
 
 function showQuery1a() {
   $('#queryDisplay1a').fadeIn(1000);
+  alert("here2");
 }
 function hideQuery1a() {
   $('#queryDisplay1a').fadeOut(1000);

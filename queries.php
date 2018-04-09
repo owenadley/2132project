@@ -39,6 +39,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 if ($_POST['restaurant'] != null) {echo " 
   <script type='text/javascript'>
     showQuery1a();
+    alert('here1');
   </script>";
  
   
@@ -504,7 +505,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             }
           ?>
             
-            X refers to <?php echo $userIDSelect; ?>
+            X refers to userID: <?php echo $userIDSelect; ?>
             
             <div class="container">
               <br/>
