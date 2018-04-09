@@ -156,14 +156,14 @@ location tables should then displayed on the screen.
      				<label>Select Resturaunt:</label>
      				<select name='restaurant' required>
      				  <option selected>
-     				  <?php 
-     				  if ($_POST['restaurant'] != null) {
-    				    echo $_POST['restaurant'];
-     				  } ?>
-    			 </option>
+       				  <?php 
+       				  if ($_POST['restaurant'] != null) {
+      				    echo $_POST['restaurant'];
+       				  } ?>
+    			     </option>
     			   <?php 
     			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
-    			   while ($row = $pg_fetch_assoc($sql)) {
+    			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['name'];
     			     echo "<option value='$res'>$res</option>";
     			   }
