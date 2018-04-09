@@ -427,7 +427,7 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 */
-$result = pg_query($conn, "SELECT * FROM MenuItem");
+$result = pg_query($conn, "SELECT * FROM Raters");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -437,7 +437,7 @@ if ($row = pg_fetch_row($result)) {
   $arr = pg_fetch_all($result);
   print_r($arr);
 } else {
-  echo 'No records in menuitem';
+  echo 'No records in raters';
 }
 echo "<br><br>";
 
