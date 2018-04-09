@@ -33,11 +33,13 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 </div>
     
 <?php
-if ($_POST['restaurant'] != null) {  ?>  
+if ($_POST['restaurant'] != null) {echo "here";  ?>  
   <script type="text/javascript">
     showQuery1a();
   </script>
+ 
   <?php
+   $_POST['restaurant'] = null; 
 }?>
 
 <div class='core-content'>
@@ -523,11 +525,11 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
           <?php
             $typeSelect = "American";
             $result = pg_query($conn, 
-              "SELECT R.Name As resname, Ra.name AS raname, MAX(Rating.food)
+              "SELECT R.Name As resname, Ra.name AS raname, MAX(Rating.food) AS max
               FROM Restaurant R, Rater Ra, Rating
               WHERE R.type = '$typeSelect' 
               AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
-              AND Rating.userID = '$userID'
+              AND Rating.userID = Ra.userID
               GROUP BY R.name, Ra.name
               ");
               
@@ -543,13 +545,13 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                 <tr>
                   <th class='trD'>Restaurant Name</th>
                   <th class='trD'>Rater Name</th>
-                  <th class='trD'>Restaurant Type</th>
+                  <th class='trD'>Highest Food Rating</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
                   <td class='trD'><?php echo $row['raname']; ?></td>
-                  <td class='trD'><?php echo $row['resnumber']; ?></td>
+                  <td class='trD'><?php echo $row['max']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
