@@ -59,6 +59,15 @@
  				<input type='submit'></input>
  			</form>
 				<br />
+				
+				<?php 
+				if ($_POST['type'] != null) {
+				  $type = $_POST['type'];
+				  $filterType = pg_query($conn, "SELECT * FROM Resturaunt WHERE type='$type'");
+				  while ($row = pg_fetch_assoc($filterType)) {
+				    echo $row['name'];
+				  }
+				}
         
       </div>
     </div>
