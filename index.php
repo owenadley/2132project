@@ -401,15 +401,13 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
   #RatingItem
 if (($handle = fopen("/app/RatingItem.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    $sql = pg_query("INSERT INTO MenuItem (ItemID,	name,	category,	type,	description,	price, RestaurantID) VALUES
+    $sql = pg_query("INSERT INTO RatingItem (UserID,	Date, ItemID	rating,	comment) VALUES
                 (
                     '".addslashes($data[0])."',
                     '".addslashes($data[1])."',
                     '".addslashes($data[2])."',
                     '".addslashes($data[3])."',
-                    '".addslashes($data[4])."',
-                    '".addslashes($data[5])."',
-                    '".addslashes($data[6])."'
+                    '".addslashes($data[4])."'
                 )
             ");
         }
