@@ -749,7 +749,6 @@ restaurant and the dates the ratings were done.
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Rater Name</th>
-                  <th class='trD'>Rater join date</th>
                   <th class='trD'>Reputation</th>
                   <th class='trD'>Restaurant Name</th>
                   <th class='trD'>Rating date</th>
