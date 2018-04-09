@@ -886,14 +886,14 @@ restaurant and the dates the ratings were done.
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
         <?php
-            $result = pg_query($conn, 
+/*            $result = pg_query($conn, 
               "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date, Comments, foo.name, foo.price
               FROM Rater Ra, Restaurant R, Rating Rat
               WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
                      GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
                      HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
                      LIMIT 10
-              ");
+              ");*/
               
             if (!$result) {
             echo "An error occurred.\n";
@@ -927,27 +927,14 @@ the most frequently. Display this information together with their comments and t
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery3n()'></i></div>
         n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
         <?php
-            $result = pg_query($conn, 
-              "SELECT R.name as name, R.email as email   
-              FROM Rater R, Rating Rat
-              WHERE  ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
-                                              FROM Rating Rat, Rater R 
-                                              WHERE Rat.UserID=R.UserID AND R.name = (SELECT Roo.name  FROM Rater Roo
-                                                                                      WHERE (SUBSTRING (Roo.name FROM 1 FOR 4))='John'))
-                                          > (SELECT DISTINCT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS tots
-                                                        FROM Rating Ra, Rater Ru WHERE Ra.UserID = Ru.UserID))
-              ");
               
             $result = pg_query($conn, 
               "SELECT DISTINCT R.name as name, R.email as email
               FROM Rater R, Rating Rat
               WHERE R.UserID IN (SELECT UserID FROM Rating Rat WHERE
-              
               ((Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <
-               ANY (SELECT (Ra.Price + Ra.Food + Ra.Mood + Ra.Staff) AS tots
-                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
-                  
-              GROUP By R.name, R.email
+               ANY (SELECT (Ra.Price + Ra.Food + Ra.Mood + Ra.Staff)
+                  FROM Rating Ra WHERE Ra.userID IN (SELECT moo.UserID FROM Rater moo WHERE moo.name='John')))
               ");
               
               
