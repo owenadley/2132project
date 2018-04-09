@@ -158,6 +158,7 @@ p.sidemenup {
     width: 100%;
     background-color: white;
     border: 2px solid #ff6348;
+    
 }
 .exitQuery {
     position: absolute;
@@ -222,7 +223,8 @@ p.sidemenup {
 }
 
 
-.tableD {
+.tableD {       position: absolute;
+                left: 50%;
     		    font-family: arial, sans-serif;
     		    border-collapse: collapse;
     		    width: 80%;

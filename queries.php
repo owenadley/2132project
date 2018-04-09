@@ -185,7 +185,7 @@ location tables should then displayed on the screen.
               </tr>
               <?php while ($row = pg_fetch_assoc($result)): ?>
               <tr class='trD'>
-                <td class='trD'><?php echo $row['restaurauntid']; ?></td>
+                <td class='trD'><?php echo $row['restaurantid']; ?></td>
                 <td class='trD'><?php echo $row['name']; ?></td>
                 <td class='trD'><?php echo $row['type']; ?></td>
                 <td class='trD'><?php echo $row['url']; ?></td>
