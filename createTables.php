@@ -6,6 +6,10 @@
 # an alias such as SuperSizeMe. Type refers to the type of rater (blog, online, food critic) and
 # reputation takes a value between 1 and 5. The value of this field is based on the number of people
 # who found this rater’s opinion helpful, and the default value is 1 (lowest).
+$drop = pg_query($conn, "DROP TABLE Rater CASCADE");
+if ($drop) { 
+  echo "dropped";
+}
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
@@ -20,11 +24,11 @@ password varchar(255)
 #print "<pre>\n";
 
 if (!$raterTable) {
-  #echo "Creating raterTable is not working. \n";
+  echo "Creating raterTable is not working. \n";
   exit;
 }
 else{
-  #echo 'Rater Table exists';
+  echo 'Rater Table exists';
 }
 
 
@@ -32,6 +36,7 @@ else{
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
 # comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
 # that UserID and RestaurantID are foreign keys.
+
 
 $ratingTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rating (

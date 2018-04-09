@@ -943,9 +943,9 @@ the most frequently. Display this information together with their comments and t
               WHERE Rat.UserID=R.UserID 
               GROUP By R.name, R.email
               HAVING (SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) <
-                                                                                      
-                                              (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
-                                                FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
+                                                                 
+                (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
+                  FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
               ");
               
               
