@@ -181,7 +181,7 @@ location tables should then displayed on the screen.
      			</form>
           <?php
           if ($_POST['restaurant'] != null) {
-            $resturauntselecta = $_POST['restaurant'];
+            $resturauntselect = $_POST['restaurant'];
             
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
