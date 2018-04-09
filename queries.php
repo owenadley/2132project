@@ -39,7 +39,6 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 if ($_POST['restaurant'] != null) {echo " 
   <script type='text/javascript'>
     showQuery1a();
-    alert('here1');
   </script>";
  
   
