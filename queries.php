@@ -938,15 +938,13 @@ the most frequently. Display this information together with their comments and t
               ");
               
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.name as name, R.email as email   
+              "SELECT DISTINCT R.name as name, R.email as email, SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) As total
               FROM Rater R, Rating Rat
-              WHERE  ((SELECT SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) AS total
-                                              FROM Rating Rat, Rater R 
-                                              WHERE Rat.UserID=R.UserID 
-                                              AND ((SELECT SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff))) <
+              WHERE Rat.UserID=R.UserID 
+                AND (total <
                                                                                       
                                               (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
-                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John'))))
+                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John'))
               ");
               
               
