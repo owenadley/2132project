@@ -890,8 +890,8 @@ the most frequently. Display this information together with their comments and t
             
             $result = pg_query($conn, 
               "SELECT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
-              FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT RI.UserID AS freq, COUNT(RI.UserID) AS c
-                                                                                    FROM RatingItem RI LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
+              FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT UserID AS freq, COUNT(RI.UserID) AS c
+                                                                                    FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
                                                                                     WHERE RestaurantID = 'R646F6F4'
                                                                                     GROUP BY UserID
                                                                                     ORDER BY c DESC   
@@ -946,8 +946,7 @@ the most frequently. Display this information together with their comments and t
                   FROM Rating Ra WHERE Ra.userID IN (SELECT moo.UserID FROM Rater moo WHERE moo.name='John'))))
               ");
               
-              $arr = pg_fetch_all($result);
-print_r($arr);
+
             if (!$result) {
             echo "An error occurred.\n";
             exit;
