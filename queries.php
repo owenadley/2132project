@@ -304,7 +304,7 @@ Thai) from a list.
 
           <form id='filterType' role="form" method="post" action="" autocomplete="off">
      				<label>Select Resturaunt:</label>
-     				<select name='restaurant1' required>
+     				<select name='restaurant2' required>
      				  <option selected>
        				  <?php 
        				  if ($_POST['restaurant2'] != null) {
