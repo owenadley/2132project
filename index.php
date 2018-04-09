@@ -458,7 +458,8 @@ print_r($arr);*/
 #Resturaunts and Menus
 
 #Some test entries used for queries
-/*$test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
+/*
+$test3 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('1', 'Wendys', 'American', 'www.wendys.com')");
 $test6 = pg_query($conn, "INSERT INTO restaurant (restaurantID, name, type, URL) VALUES ('2', 'Milestones', 'American', 'www.milestones.com')");
 
 $test4 = pg_query($conn, "INSERT INTO Location (locationID, firstOpenDate, managerName, phoneNumber, streetAddress, hourOpen, hourClose, RestaurantID) VALUES ('1', '2001-04-25', 'owen', '289-613-2432', '123 road', '3:40', '3:40', '1')");
@@ -484,33 +485,6 @@ echo "<br><br>";*/
 #location tables should then displayed on the screen.
 
 #user defined restraunt chosen from UI
-/*$resturauntselect = "Canal Ritz";
-
-$result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-while ($row = pg_fetch_assoc($result)) {
-  echo "resturaunt: \n";
-
-  echo "Restaurant Id: $row[restaurantid] \n";
-  echo "Name: $row[name] \n";
-  echo "Type: $row[type] \n";
-  echo "URL: $row[url] \n";
-  echo "Location ID: $row[locationid] \n";
-  echo "Open Date: $row[firstopendate] \n";  
-  echo "Manager Name: $row[managername] \n";  
-  echo "Phone Number: $row[phonenumber] \n";  
-  echo "Street Address: $row[streetaddress] \n";  
-  echo "Opens: $row[houropen] \n";  
-  echo "Closes: $row[hourclose] \n";  
-  
-  echo "<br />\n";
-}*/
-
-
 
 
 
@@ -519,30 +493,7 @@ while ($row = pg_fetch_assoc($result)) {
 #screen. The menu should be displayed based on menu item categories.
 
 #user defined restraunt chosen from UI
-/*$resturauntselect = "Host";
 
-$result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "Item Id: $row[0] \n";
-  echo "Name: $row[1] \n";
-  echo "Type: $row[2] \n";
-  echo "Category: $row[3] \n";
-  echo "Description: $row[4] \n";
-  echo "Price: $row[5] \n";  
-  echo "Resturaunt ID: $row[6] \n";  
- 
-  
-  echo "<br />\n";
-} else {
-  echo 'No records in menu items';
-}*/
 
 
 
@@ -553,25 +504,7 @@ if ($row = pg_fetch_row($result)) {
 #that the locations have opened. The user should be able to select the category (e.g. Italian or
 #Thai) from a list.
 
-/*$categoryselect = "American";
 
-$result = pg_query($conn, "SELECT L.managerName, L.firstOpenDate FROM Location L, Restaurant R WHERE R.type = '$categoryselect' AND L.restaurantID = R.RestaurantID");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "Manager: $row[0] \n";
-  echo "Open Date: $row[1] \n";
- 
-  
-  echo "<br />\n";
-} else {
-  echo 'No records in menu items';
-}*/
 
 
 
@@ -582,31 +515,7 @@ if ($row = pg_fetch_row($result)) {
 #information together with the name of manager, the opening hours, and the URL of the
 #restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
 
-/*$resturauntselect = "House of Greek";
 
-$result = pg_query($conn, 
-"SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
-FROM Restaurant R, Location L, MenuItem M 
-WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND M.RestaurantID = R.RestaurantID
-GROUP BY R.URL, L.ManagerName, L.hourOpen, M.name");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "URL: $row[0] \n";
-  echo "Manager Name: $row[1] \n";
-  echo "Open Hour: $row[2] \n";
-  echo "Menu Item: $row[3] \n";
-  echo "Price: $row[4] \n";
-  echo "<br />\n";
-} else {
-  echo 'No records in menu items';
-}
-*/
 
 
 
@@ -615,28 +524,7 @@ if ($row = pg_fetch_row($result)) {
 
 #For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 #or desert), list the average prices of menu items for each category.
-/*$typeSelect = "American";
-$categorySelect = "main";
 
-$result = pg_query($conn, 
-"SELECT AVG(M.Price) 
-FROM MenuItem M, Restaurant R
-WHERE R.type = '$typeSelect' AND M.Category = '$categorySelect'");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-if ($row = pg_fetch_row($result)) {
-  echo "resturaunt: \n";
-  
-  echo "Average Price: $row[0] \n";
-
-  echo "<br />\n";
-} else {
-  echo 'No records in menu items';
-}
-*/
 
 
 
@@ -644,23 +532,7 @@ if ($row = pg_fetch_row($result)) {
 #Ratings of Resturaunts
 #Find the total number of rating for each restaurant, for each rater. That is, the data should be
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
-/*$userID= "js";
 
-$result = pg_query($conn,
-"SELECT Re.name, COUNT(R.RestaurantID)
-FROM restaurant Re, Rating R
-WHERE R.RestaurantID = Re.RestaurantID AND R.UserID = '$userID'
-GROUP By Re.name");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo "Restaurant: $row[name] \n";
-  echo "# Of Reviews: $row[count] \n";
-}*/
 
 
 
@@ -668,130 +540,24 @@ while ($row = pg_fetch_assoc($result)) {
 
 #Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
 #food.
-/*
-$result = pg_query($conn,
-"SELECT R.Name, R.Type, L.phoneNumber
-FROM Restaurant R, Location L
-WHERE L.RestaurantID = R.RestaurantID 
-AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
-");
 
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
-  echo " $row[phoneNumber] \n";
-  echo " $row[type] \n";
-}
-
-
-  echo " \n";
-  echo " \n";
-  
-  */
 #Find the names and opening dates of the restaurants that obtained Staff rating that is lower
 #than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
 #any rater of your choice.)
-/*
-$userIDSelect = "voldy";
 
-$result = pg_query($conn, 
-"SELECT Rest.Name, RL.firstOpenDate AS date
-FROM Rating Rat
-LEFT JOIN Restaurant Rest ON Rat.RestaurantID=Rest.RestaurantID
-LEFT JOIN Location RL ON RL.RestaurantID=Rat.RestaurantID
-WHERE Rat.UserID = '$userIDSelect'
-      AND ((Rat.Price>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID))
-      OR (Rat.Mood>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID))
-      OR (Rat.Food>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID))
-      OR (Rat.Staff>( SELECT AVG(Rat.Staff)
-        FROM Rating Rat, Restaurant Rest
-        WHERE Rat.RestaurantID=Rest.RestaurantID)))
-GROUP BY RL.firstOpenDate, Rest.name");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo " $row[date] \n";
-  echo " $row[name] \n";
-}
-
-
-  echo " \n";
-  echo " \n";
-
-*/
 
 
 #List the details of the Type Y restaurants that obtained the highest Food rating. 
 #Display the restaurant name together with the name(s) of the rater(s) who gave these ratings. 
 #(Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 
-/*$typeSelect = "American";
-$userID= "js";
-
-$result = pg_query($conn,
-"SELECT R.Name As RestaurantName, Ra.name, MAX(Rating.food)
-FROM Restaurant R, Rater Ra, Rating
-WHERE R.type = '$typeSelect' 
-AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
-AND Rating.userID = '$userID'
-GROUP BY R.name, Ra.name");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
-  echo " $row[restaurantname] \n";  
-  echo " $row[max] \n";  
-}
-  echo " \n";
-  echo " \n";
-  */
 #Provide a query to determine whether Type Y restaurants are “more popular” than other
 #restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 #Yes, this query is open to your own interpretation!
 # Which way do you think we can do it: Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
 
 # names of resturaunts of type Y whos average rating is greater than the average of other types "
-/*$typeSelect = "American";
 
-$result = pg_query($conn,
-"SELECT R.name
- FROM Restaurant R, Rating Ra
- WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
- AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
- (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
- GROUP By R.name");
- 
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo " $row[name] \n";
-}
-
-echo " \n";
-echo " \n";
-  
-  */
 #Raters and their ratings
 
 #Find the names, join‐date and reputations of the raters that give the highest overall rating, in
@@ -800,157 +566,28 @@ echo " \n";
 
 #Assuming that the highest overall ratings for both means anything equal and more than 8 out of 10
 
-/*
-$result = pg_query($conn, 
-"SELECT DISTINCT  Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
-FROM Rater Ra, Restaurant R, Rating Rat
-WHERE R.RestaurantID = Rat.restaurantID
-      AND Ra.userID = Rat.userID
-      AND Ra.userID = Rat.userID
-      GROUP By Ra.userID, R.Name, Rat.Date
-      HAVING AVG(Rat.Mood + Rat.Food)/2 >= 4
-      LIMIT 10
-");
 
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo "My query \n";
-   echo " $row[uname] \n";
-   echo " $row[jdate] \n";
-   echo " $row[rep] \n";
-   echo " $row[resname] \n";
-   echo " $row[date] \n";
-}
-
-  echo " \n";
-  echo " \n";
-
-*/
 #Find the names and reputations of the raters that give the highest overall rating, in terms of the
 #Food or the Mood of restaurants. Display this information together with the names of the
 #restaurant and the dates the ratings were done.
 
 #Assuming that the highest overall ratings for each means anything equal and more than 4 out of 5
-/*
-$result = pg_query($conn, 
-"SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
-FROM Rater Ra, Restaurant R, Rating Rat
-WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
-       GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
-       HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
-       LIMIT 10
 
-");
-
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
- echo "LOOK: \n";
-   echo " $row[uname] \n";
-   echo " $row[rep] \n";
-   echo " $row[resname] \n";
-   echo " $row[date] \n";
-  
-}
-
-  echo " \n";
-  echo " \n";
-*/
 
 #Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 #the most frequently. Display this information together with their comments and the names and prices of                                         
 #the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
-/*$resturauntselect = "3 brothers";
 
-$result = pg_query($conn,
-"SELECT Res.name, Ra.name AS ratername, COUNT(*)
-FROM Rating R, Rater Ra, Restaurant Res
-WHERE R.userID = Ra.userID
-AND Res.name = '$resturauntselect'
-AND R.RestaurantID = Res.RestaurantID
-GROUP By Res.name, Ra.name
-HAVING COUNT(*) > (SELECT AVG(avcount) FROM 
-                    (SELECT COUNT(*) AS avcount 
-                    FROM Rating R, Rater Ra, Restaurant Res 
-                    WHERE R.userID = Ra.userID
-                      AND Res.name = '$resturauntselect'
-                      AND R.RestaurantID = Res.RestaurantID
-                    GROUP BY Res.name, Ra.name
-                    ) As avcounts
-                  )
-
- ");
-
-$arr = pg_fetch_all($result);
-print_r($arr);
-
-if (!$result) {
-  echo "An errr occurred.\n";
-  exit;
-}
-
-while ($row = pg_fetch_assoc($result)) {
-  echo " $row[avcounts] \n";
-  echo " $row[ratername] \n";
-  echo " $row[count] \n";
-  
-}
-
-  echo " \n";
-  echo " \n";
-*/
 
 #Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name
 #called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more 
 #than one rater with this name).
-/*
-$result = pg_query($conn,
-"SELECT Ra.name, Ra.email, AVG(R.food, R.mood, R.price, R.staff)/4
-FROM Rater Ra, Rating Rater
-WHERE R.userID = Ra.userID
-HAVING AVG(R.food, R.mood, R.price, R.staff)/4 < ( SELECT AVG(");
 
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-$arr = pg_fetch_all($result);
-print_r($arr);
-while ($row = pg_fetch_assoc($result)) {
-  echo "Restaurant: $row[name] \n";
-  echo "# Of Reviews: $row[count] \n";
-}
-  echo " \n";
 
-*/
 
-#Find the names, types and emails of the raters that provide the most diverse ratings. 
-#Display this information together with the restaurants names and the ratings. 
-#For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 
-#January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
-/*$result = pg_query($conn,
-"");
 
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-$arr = pg_fetch_all($result);
-print_r($arr);
-while ($row = pg_fetch_assoc($result)) {
-  echo "Restaurant: $row[name] \n";
-  echo "# Of Reviews: $row[count] \n";
-}
-  echo " \n";
 
-?>*/
+?>
 </body>
 </html>
