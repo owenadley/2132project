@@ -207,6 +207,7 @@ include 'createTables.php';
         
         <div class='core-home-topRated'>
           <p id='core-home-subheader'>Top Rated Resturaunts</p>
+          <hr>
           <div class="autoplay" id='slider'>
             
             <!--Script to retrieve and populate popular resturaunts on home page display-->       
@@ -236,6 +237,7 @@ include 'createTables.php';
         
         <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
+          <hr>
           <div class='core-home-typeWrap'>
             <div class='row'>
   
