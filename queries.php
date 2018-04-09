@@ -886,15 +886,24 @@ restaurant and the dates the ratings were done.
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
         <?php
-            $typeSelect = "American";
+            $resSelect = "Host";
             
             $result = pg_query($conn, 
-              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date, Comments, foo.name, foo.price
-              FROM Rater Ra, Restaurant R, Rating Rat
-              WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
-                     GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
-                     HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
-                     LIMIT 10
+              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
+              FROM Rater Ra, Restaurant R, Rating Rat, MenuItem MI, RatingItem RI, (SELECT COUNT(RI.UserID) AS c, RI.UserID AS uu
+                                                                                    FROM RatingItem RI, Restaurant R, MenuItem MI 
+                                                                                    WHERE R.name = $resSelect AND R.restaurantID = MI.restaurantID 
+                                                                                    AND MI.ItemID = RI.ItemID
+                                                                                    GROUP BY UserID
+                                                                                    ORDER BY c DESC   
+                                                                                    LIMIT 3)
+                      
+                
+              WHERE R.name = $resSelect AND R.restaurantID = MI.restaurantID 
+              AND MI.ItemID = RI.ItemID AND Ra.userID = RI.userID 
+              AND R.restaurantID = Rat.restaurantID
+              AND Ra.UserID = uu
+                     
               ");
               
             if (!$result) {
@@ -934,7 +943,7 @@ the most frequently. Display this information together with their comments and t
         <?php
               
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.name as name, R.email as email
+              "SELECT R.name as name, R.email as email
               FROM Rater R, Rating Rat
               WHERE R.UserID IN (SELECT UserID FROM Rating Rat WHERE
               ((Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) <

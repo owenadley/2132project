@@ -314,3 +314,8 @@ input.submitBrowse {
     background: none;
     padding: 8px;
 }
+input.submitBrowse:hover {
+    border: 2px solid #FF5840;
+    background: none;
+    padding: 8px;
+}
