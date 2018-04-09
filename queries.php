@@ -39,7 +39,7 @@ $conn = pg_connect(pg_connection_string_from_database_url());
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
     echo "<div class='userStatus'><div class='loggedIn'><span id='subtext'>Signed is as:</span><br><span id='sub2text'>".$_SESSION['userid']."</span><br>
-    <form method='post' action='logout.php'><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
+    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='queries.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
