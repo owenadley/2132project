@@ -249,6 +249,32 @@ screen. The menu should be displayed based on menu item categories.
         c : For each user‐specified category of restaurant, list the manager names together with the date
 that the locations have opened. The user should be able to select the category (e.g. Italian or
 Thai) from a list.
+<?php 
+            $categoryselect = "American";
+            $result = pg_query($conn, "SELECT L.managerName, L.firstOpenDate FROM Location L, Restaurant R WHERE R.type = '$categoryselect' AND L.restaurantID = R.RestaurantID");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Manager Name/th>
+                  <th class='trD'>Opening Date</th>
+                  
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['managername']; ?></td>
+                  <td class='trD'><?php echo $row['firstopendate']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
       </div>
       
       <div id='queryDisplay1d' class='queryDisplay'>

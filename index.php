@@ -481,7 +481,7 @@ while ($row = pg_fetch_assoc($result)) {
 #screen. The menu should be displayed based on menu item categories.
 
 #user defined restraunt chosen from UI
-$resturauntselect = "Wendys";
+$resturauntselect = "Host";
 
 $result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID");
 
@@ -544,7 +544,7 @@ if ($row = pg_fetch_row($result)) {
 #information together with the name of manager, the opening hours, and the URL of the
 #restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
 
-$resturauntselect = "Wendys";
+$resturauntselect = "House of Greek";
 
 $result = pg_query($conn, 
 "SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 

@@ -40,15 +40,15 @@ $sqlAddRater= pg_query($conn, "
 INSERT INTO Rater(UserID, email, name, joindate, type, reputation, password) 
 VALUES ('$userid', '$email', '$name', '$joindate', '$type', '$reputation', '$password')");
 
-if (!$sqlAddMenuItem) {
+if (!$sqlAddRater) {
     echo "An error occurred.\n";
     echo $email;
     exit;
 }
 
-$sqlCheckAddMenuItem= pg_query($conn, "SELECT name FROM MenuItem WHERE ItemID='$itemid'");
+$sqlCheckAddRater= pg_query($conn, "SELECT name FROM Rater WHERE UserID='$userid'");
 
-if (!$sqlCheckAddMenuItem) {
+if (!$sqlCheckAddRater) {
   echo "An error occurred in reg.\n";
   exit;
 }
