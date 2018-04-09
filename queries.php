@@ -641,7 +641,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         <?php
             $typeSelect = "American";
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.name AS resname, AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4
+              "SELECT DISTINCT R.name AS resname, AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 AS average
                FROM Restaurant R, Rating Ra
                WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
                AND (Ra.price + Ra.food + Ra.mood + Ra.staff) > (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff) FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
@@ -669,7 +669,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
-                  <td class='trD'><?php echo $row['resid']; ?></td>
+                  <td class='trD'><?php echo $row['average']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
