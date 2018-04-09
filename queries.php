@@ -985,7 +985,6 @@ the most frequently. Display this information together with their comments and t
               AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
                             GROUP BY Rat.restaurantID, Rat.UserID , R.UserID HAVING  COUNT(*)  > 2 ORDER BY C DESC, Rat.restaurantID) AS roo) 
               ORDER BY R.name, Res.name
-              LIMIT 10;
               ");
               
             if (!$result) {
