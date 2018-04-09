@@ -182,7 +182,7 @@ location tables should then displayed on the screen.
     			   }
     			   ?>
      				</select>
-     				<input type='submit'></input>
+     				<input type='submit' onclick='showQuery1a();'></input>
      			</form>
           <?php
           if ($_POST['restaurant'] != null) {
