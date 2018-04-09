@@ -53,16 +53,16 @@ if (!$sqlCheckAddRater) {
   exit;
 }
 
-if ($row = pg_fetch_row($sqlCheckAddMenuItem)) {
+if ($row = pg_fetch_row($sqlCheckAddRater)) {
   echo "$row[name]";
-  echo "MenuItem has been added.";
+  echo "Rater has been added.";
   echo "<br />\n";
   $_SESSION['addSuccess'] = true;
   header('Location: ./userResturaunts.php');
   exit;
 
 } else {
-  echo 'Could not complete registration';
+  echo 'Could not complete rater';
 }
 
 

@@ -225,7 +225,7 @@ screen. The menu should be displayed based on menu item categories.
                   <th class='trD'>Name</th>
                   <th class='trD'>Type</th>
                   <th class='trD'>Category</th>
-                  <th class='trD'>Description ID</th>
+                  <th class='trD'>Description</th>
                   <th class='trD'>Price</th>
                   <th class='trD'>Restaurant ID</th>
                 </tr>
@@ -282,7 +282,46 @@ Thai) from a list.
         d : Given a user‐specified restaurant, find the name of the most expensive menu item. List this
 information together with the name of manager, the opening hours, and the URL of the
 restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
-      </div>
+          <?php 
+            $resturauntselect = "House of Greek";
+            $result = pg_query($conn, 
+              "SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
+              FROM Restaurant R, Location L, MenuItem M 
+              WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND M.RestaurantID = R.RestaurantID
+              GROUP BY R.URL, L.ManagerName, L.hourOpen, M.name");
+            
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>URL</th>
+                  <th class='trD'>Manager Name</th>
+                  <th class='trD'>Opening time</th>
+                  <th class='trD'>Menu Item</th>
+                  <th class='trD'></th>
+                  <th class='trD'>Price</th>
+                  <th class='trD'>Restaurant ID</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['itemid']; ?></td>
+                  <td class='trD'><?php echo $row['name']; ?></td>
+                  <td class='trD'><?php echo $row['type']; ?></td>
+                  <td class='trD'><?php echo $row['category']; ?></td>
+                  <td class='trD'><?php echo $row['description']; ?></td>
+                  <td class='trD'><?php echo $row['price']; ?></td>
+                  <td class='trD'><?php echo $row['restaurantid']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
+        </div>
       
       <div id='queryDisplay1e' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1e()'></i></div>
