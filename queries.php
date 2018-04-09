@@ -814,12 +814,13 @@ the most frequently. Display this information together with their comments and t
         <?php
             $result = pg_query($conn, 
               "SELECT R.name as name, R.email as email,   
-              FROM Rater R, Rating Rat, (SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
-                                        FROM Rating Rat, Rater R 
-                                        WHERE Rat.UserID=R.UserID AND R.name = (SELECT R.name FROM Rater 
-                                                                                WHERE (SUBSTRING (R.name FROM 1 FOR 4))='John')) AS one
-              WHERE R.UserID=Rat.UserID AND one.total > (SELECT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS total
-                                                        FROM Rating Ra WHERE Ra.UserID = Rat.UserID)
+              FROM Rater R, Rating Rat
+              WHERE R.UserID=Rat.UserID AND ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
+                                              FROM Rating Rat, Rater R 
+                                              WHERE Rat.UserID=R.UserID AND R.name = (SELECT R.name FROM Rater 
+                                                                                      WHERE (SUBSTRING (R.name FROM 1 FOR 4))='John'))
+                                          > (SELECT (SUM(Ra.Price)+SUM(Ra.Food)+SUM(Ra.Mood)+SUM(Ra.Staff)) AS total
+                                                        FROM Rating Ra WHERE Ra.UserID = Rat.UserID))
               ");
               
             if (!$result) {
