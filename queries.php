@@ -12,12 +12,7 @@ function pg_connection_string_from_database_url() {
 # Establish connection
 $conn = pg_connect(pg_connection_string_from_database_url());
 
-if (!$conn) {
-  echo "An error occurred.\n";
-  exit;
-} else {
-    echo "connected";
-} 
+
 ?>
 
 <html><body>
@@ -326,36 +321,7 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1e()'></i></div>
         e : For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 or desert), list the average prices of menu items for each category.
-          <?php 
-            $typeSelect = "American";
-            $categorySelect = "main";
-            $result = pg_query($conn, 
-              "SELECT AVG(M.Price), R.type,  
-              FROM MenuItem M, Restaurant R
-              WHERE R.type = '$typeSelect' AND M.Category = '$categorySelect'");
-              
-            if (!$result) {
-            echo "An error occurred.\n";
-            exit;
-            }
-          ?>
-            
-            <div class="container">
-              <br/>
-              <table class='tableD'>
-                <tr>
-                  <th class='trD'>Manager Name</th>
-                  <th class='trD'>Opening Date</th>
-                  
-                </tr>
-                <?php while ($row = pg_fetch_assoc($result)): ?>
-                <tr class='trD'>
-                  <td class='trD'><?php echo $row['managername']; ?></td>
-                  <td class='trD'><?php echo $row['firstopendate']; ?></td>
-                </tr>
-                <?php endwhile; ?>
-              </table>
-            </div>
+          
       </div>
       
       
