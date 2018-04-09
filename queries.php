@@ -886,13 +886,13 @@ restaurant and the dates the ratings were done.
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
         <?php
-            $resSelect = "Host";
+            $resSelect = "Canal Ritz";
             
             $result = pg_query($conn, 
               "SELECT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
               FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT RI.UserID AS freq, COUNT(RI.UserID) AS c
                                                                                     FROM RatingItem RI LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
-                                                                                    WHERE name = '$resSelect'
+                                                                                    WHERE RestaurantID = 'R646F6F4'
                                                                                     GROUP BY UserID
                                                                                     ORDER BY c DESC   
                                                                                     LIMIT 1) TempT
@@ -908,7 +908,7 @@ the most frequently. Display this information together with their comments and t
           ?>
 
           <br/>
-          Z refers to restaurant type: <?php echo $typeSelect; ?>
+          Z refers to restaurant: <?php echo $resSelect; ?>
           
             <div class="container">
               <br/>
