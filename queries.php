@@ -171,7 +171,7 @@ location tables should then displayed on the screen.
      				</select>
      				<input type='submit'></input>
      			</form>
-          
+          <?php
           
             $resturauntselect = "Canal Ritz";
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
@@ -423,10 +423,11 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         food.
         <?php
             $result = pg_query($conn, 
-              "SELECT Res.Name AS resname, R.name AS rname, (Rat.Price + Rat.Food + Rat.Mood + Rat.Staff) AS total
-              FROM restaurant Res, Rater R, Rating Rat
-              WHERE Res.RestaurantID = Rat.RestaurantID AND R.UserID = Rat.UserID
-              GROUP By Res.Name, R.name");
+              "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
+              FROM Restaurant R, Location L
+              WHERE L.RestaurantID = R.RestaurantID 
+              AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
+              ");
               
             if (!$result) {
             echo "An error occurred.\n";
@@ -439,14 +440,14 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Restaurant Name</th>
-                  <th class='trD'>Rater Name</th>
-                  <th class='trD'>Total number of rating</th>
+                  <th class='trD'>Phone Number</th>
+                  <th class='trD'>Restaurant Type</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
-                  <td class='trD'><?php echo $row['rname']; ?></td>
-                  <td class='trD'><?php echo $row['total']; ?></td>
+                  <td class='trD'><?php echo $row['restype']; ?></td>
+                  <td class='trD'><?php echo $row['resnumber']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
@@ -458,6 +459,38 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         h : Find the names and opening dates of the restaurants that obtained Staff rating that is lower
         than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
         any rater of your choice.)
+        <?php
+            $result = pg_query($conn, 
+              "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
+              FROM Restaurant R, Location L
+              WHERE L.RestaurantID = R.RestaurantID 
+              AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Phone Number</th>
+                  <th class='trD'>Restaurant Type</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['restype']; ?></td>
+                  <td class='trD'><?php echo $row['resnumber']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
+        
       </div>
       
       <div id='queryDisplay2i' class='queryDisplay'>
