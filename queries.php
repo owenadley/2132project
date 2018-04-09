@@ -892,7 +892,7 @@ the most frequently. Display this information together with their comments and t
               "SELECT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
               FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT RI.UserID AS freq, COUNT(RI.UserID) AS c
                                                                                     FROM RatingItem RI LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
-                                                                                    WHERE R.name = '$resSelect'
+                                                                                    WHERE name = '$resSelect'
                                                                                     GROUP BY UserID
                                                                                     ORDER BY c DESC   
                                                                                     LIMIT 1) TempT
