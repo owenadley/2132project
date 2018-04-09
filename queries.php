@@ -982,7 +982,7 @@ the most frequently. Display this information together with their comments and t
               "SELECT DISTINCT R.name AS name, R.type AS type, R.email AS email
               FROM Rater R, Restaurant Res, Rating Rat
               WHERE R.userid = Rat.userid AND Res.restaurantID=Rat.restaurantID
-              AND ALL((SELECT MAX(Rat.Food) FROM Rating Ratt WHERE Ratt.userID=Rat.userID) - 
+              AND ANY((SELECT MAX(Rat.Food) FROM Rating Ratt WHERE Ratt.userID=Rat.userID) - 
                   (SELECT MIN(Rat.Food) FROM Rating Ratt WHERE Ratt.userID=Rat.userID)) 
               ORDER BY name ASC
               LIMIT 10;

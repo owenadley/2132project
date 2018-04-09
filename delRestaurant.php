@@ -30,23 +30,28 @@ $id = pg_escape_string($conn, $id);
 $checkExists = pg_query($conn, "SELECT * FROM Restaurant R WHERE R.RestaurantID - '$id' AND R.name='$name'");
 $rows = pg_num_rows($checkExists);
 
-$sqlDelResturant = pg_query($conn, "DELETE FROM Restaurant R WHERE R.RestaurantID='$id' AND R.name='$name'");
+ if ($rows > 0) {
+  $sqlDelResturant = pg_query($conn, "DELETE FROM Restaurant R WHERE R.RestaurantID='$id' AND R.name='$name'");
 
-
-
-if (!$sqlDelResturant || $rows < 1) {
-    echo "An error occurred.\n";
-    $_SESSION['delFail'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
+  if (!$sqlDelResturant) {
+      echo "An error occurred.\n";
+      $_SESSION['delFail'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
+    
+  } else {
+    echo "Resturaunt has been deleted.";
+    echo "<br />\n";
+    $_SESSION['delSuccess'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
   
+  }
 } else {
-  echo "Resturaunt has been deleted.";
-  echo "<br />\n";
-  $_SESSION['delSuccess'] = true;
-  header('Location: ./userResturaunts.php');
-  exit;
-
+      echo "An error occurred.\n";
+      $_SESSION['delFail'] = true;
+    header('Location: ./userResturaunts.php');
+    exit;
 }
 
     
