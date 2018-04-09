@@ -454,7 +454,7 @@ print_r($arr);*/
 
 
 
-#====================  ALL TEST QUERIES =====================
+#==================== / QUERIES =====================
 #Resturaunts and Menus
 
 #Some test entries used for queries
@@ -466,7 +466,7 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 */
-/*$result = pg_query($conn, "SELECT * FROM Restaurant");
+$result = pg_query($conn, "SELECT * FROM Restaurant");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -478,14 +478,14 @@ if ($row = pg_fetch_row($result)) {
 } else {
   echo 'No records in restaurant';
 }
-echo "<br><br>";*/
+echo "<br><br>";
 
 #Display all the information about a user‐specified restaurant. That is, the user should select the
 #name of the restaurant from a list, and the information as contained in the restaurant and
 #location tables should then displayed on the screen.
 
 #user defined restraunt chosen from UI
-/*$resturauntselect = "Canal Ritz";
+$resturauntselect = "Canal Ritz";
 
 $result = pg_query($conn, "SELECT * FROM restaurant R, Location L WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
 
@@ -509,7 +509,7 @@ while ($row = pg_fetch_assoc($result)) {
   echo "Closes: $row[hourclose] \n";  
   
   echo "<br />\n";
-}*/
+}
 
 
 
@@ -520,7 +520,7 @@ while ($row = pg_fetch_assoc($result)) {
 #screen. The menu should be displayed based on menu item categories.
 
 #user defined restraunt chosen from UI
-/*$resturauntselect = "Host";
+$resturauntselect = "Host";
 
 $result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID");
 
@@ -543,7 +543,7 @@ if ($row = pg_fetch_row($result)) {
   echo "<br />\n";
 } else {
   echo 'No records in menu items';
-}*/
+}
 
 
 
@@ -554,7 +554,7 @@ if ($row = pg_fetch_row($result)) {
 #that the locations have opened. The user should be able to select the category (e.g. Italian or
 #Thai) from a list.
 
-/*$categoryselect = "American";
+$categoryselect = "American";
 
 $result = pg_query($conn, "SELECT L.managerName, L.firstOpenDate FROM Location L, Restaurant R WHERE R.type = '$categoryselect' AND L.restaurantID = R.RestaurantID");
 
@@ -572,7 +572,7 @@ if ($row = pg_fetch_row($result)) {
   echo "<br />\n";
 } else {
   echo 'No records in menu items';
-}*/
+}
 
 
 
@@ -583,7 +583,7 @@ if ($row = pg_fetch_row($result)) {
 #information together with the name of manager, the opening hours, and the URL of the
 #restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
 
-/*$resturauntselect = "House of Greek";
+$resturauntselect = "House of Greek";
 
 $result = pg_query($conn, 
 "SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
@@ -606,7 +606,7 @@ if ($row = pg_fetch_row($result)) {
   echo "<br />\n";
 } else {
   echo 'No records in menu items';
-}*/
+}
 
 
 
@@ -616,7 +616,7 @@ if ($row = pg_fetch_row($result)) {
 
 #For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 #or desert), list the average prices of menu items for each category.
-/*$typeSelect = "American";
+$typeSelect = "American";
 $categorySelect = "main";
 
 $result = pg_query($conn, 
@@ -636,7 +636,7 @@ if ($row = pg_fetch_row($result)) {
   echo "<br />\n";
 } else {
   echo 'No records in menu items';
-}*/
+}
 
 
 
@@ -645,7 +645,7 @@ if ($row = pg_fetch_row($result)) {
 #Ratings of Resturaunts
 #Find the total number of rating for each restaurant, for each rater. That is, the data should be
 #grouped by the restaurant, the specific raters and the numeric ratings they have received.
-/*$userID= "js";
+$userID= "js";
 
 $result = pg_query($conn,
 "SELECT Re.name, COUNT(R.RestaurantID)
@@ -661,7 +661,7 @@ if (!$result) {
 while ($row = pg_fetch_assoc($result)) {
   echo "Restaurant: $row[name] \n";
   echo "# Of Reviews: $row[count] \n";
-}*/
+}
 
 
 
@@ -670,7 +670,7 @@ while ($row = pg_fetch_assoc($result)) {
 #Display the details of the restaurants that have not been rated in January 2015. That is, you should display the name of the restaurant together with the phone number and the type of
 #food.
 
-/*$result = pg_query($conn,
+$result = pg_query($conn,
 "SELECT R.Name, R.Type, L.phoneNumber
 FROM Restaurant R, Location L
 WHERE L.RestaurantID = R.RestaurantID 
@@ -690,14 +690,14 @@ while ($row = pg_fetch_assoc($result)) {
 
 
   echo " \n";
-  echo " \n";*/
+  echo " \n";
   
   
 #Find the names and opening dates of the restaurants that obtained Staff rating that is lower
 #than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
 #any rater of your choice.)
 
-/*$userIDSelect = "voldy";
+$userIDSelect = "voldy";
 
 $result = pg_query($conn, 
 "SELECT Rest.Name, RL.firstOpenDate AS date
@@ -731,7 +731,7 @@ while ($row = pg_fetch_assoc($result)) {
 
 
   echo " \n";
-  echo " \n";*/
+  echo " \n";
 
 
 
@@ -740,7 +740,7 @@ while ($row = pg_fetch_assoc($result)) {
 #Display the restaurant name together with the name(s) of the rater(s) who gave these ratings. 
 #(Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
 
-/*$typeSelect = "American";
+$typeSelect = "American";
 $userID= "js";
 
 $result = pg_query($conn,
@@ -762,7 +762,7 @@ while ($row = pg_fetch_assoc($result)) {
   echo " $row[max] \n";  
 }
   echo " \n";
-  echo " \n";*/
+  echo " \n";
   
 #Provide a query to determine whether Type Y restaurants are “more popular” than other
 #restaurants. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
@@ -770,7 +770,7 @@ while ($row = pg_fetch_assoc($result)) {
 # Which way do you think we can do it: Based on how many ratings they have in total? OR Based on how many good rating they have in total?  
 
 # names of resturaunts of type Y whos average rating is greater than the average of other types "
-/*$typeSelect = "American";
+$typeSelect = "American";
 
 $result = pg_query($conn,
 "SELECT R.name
@@ -790,7 +790,7 @@ while ($row = pg_fetch_assoc($result)) {
 }
 
 echo " \n";
-echo " \n";*/
+echo " \n";
   
   
 #Raters and their ratings
@@ -802,7 +802,7 @@ echo " \n";*/
 #Assuming that the highest overall ratings for both means anything equal and more than 8 out of 10
 
 
-/*$result = pg_query($conn, 
+$result = pg_query($conn, 
 "SELECT DISTINCT  Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
 WHERE R.RestaurantID = Rat.restaurantID
@@ -829,14 +829,14 @@ while ($row = pg_fetch_assoc($result)) {
 
   echo " \n";
   echo " \n";
-*/
+
 
 #Find the names and reputations of the raters that give the highest overall rating, in terms of the
 #Food or the Mood of restaurants. Display this information together with the names of the
 #restaurant and the dates the ratings were done.
 
 #Assuming that the highest overall ratings for each means anything equal and more than 4 out of 5
-/*
+
 $result = pg_query($conn, 
 "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
@@ -864,11 +864,11 @@ while ($row = pg_fetch_assoc($result)) {
   echo " \n";
   echo " \n";
 
-*/
+
 #Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 #the most frequently. Display this information together with their comments and the names and prices of                                         
 #the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
-/*$resturauntselect = "3 brothers";
+$resturauntselect = "3 brothers";
 
 $result = pg_query($conn,
 "SELECT Res.name, Ra.name AS ratername, COUNT(*)
@@ -906,12 +906,12 @@ while ($row = pg_fetch_assoc($result)) {
 
   echo " \n";
   echo " \n";
-*/
+
 #Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name
 #called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more 
 #than one rater with this name).
 
-/*$result = pg_query($conn,
+$result = pg_query($conn,
 "SELECT Ra.name, Ra.email, AVG(R.food, R.mood, R.price, R.staff)/4
 FROM Rater Ra, Rating Rater
 WHERE R.userID = Ra.userID
@@ -929,14 +929,14 @@ while ($row = pg_fetch_assoc($result)) {
 }
   echo " \n";
 
-*/
+
 
 #Find the names, types and emails of the raters that provide the most diverse ratings. 
 #Display this information together with the restaurants names and the ratings. 
 #For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 
 #January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
 
-/*$result = pg_query($conn,
+$result = pg_query($conn,
 "");
 
 if (!$result) {
@@ -951,8 +951,6 @@ while ($row = pg_fetch_assoc($result)) {
 }
   echo " \n";
 
-?>*/
-#====================  / QUERIES =====================
-
+?>
 </body>
 </html>
