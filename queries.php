@@ -208,7 +208,7 @@ location tables should then displayed on the screen.
 restaurant from a list, and all menu items, together with their prices, should be displayed on the
 screen. The menu should be displayed based on menu item categories.
           <?php 
-            $resturauntselect = "Wendys";
+            $resturauntselect = "Host";
             $result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID");
               
             if (!$result) {
@@ -231,13 +231,13 @@ screen. The menu should be displayed based on menu item categories.
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
-                  <td class='trD'><?php echo $row['ItemID']; ?></td>
+                  <td class='trD'><?php echo $row['itemid']; ?></td>
                   <td class='trD'><?php echo $row['name']; ?></td>
                   <td class='trD'><?php echo $row['type']; ?></td>
                   <td class='trD'><?php echo $row['category']; ?></td>
                   <td class='trD'><?php echo $row['description']; ?></td>
                   <td class='trD'><?php echo $row['price']; ?></td>
-                  <td class='trD'><?php echo $row['RestaurantID']; ?></td>
+                  <td class='trD'><?php echo $row['restaurantid']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>
