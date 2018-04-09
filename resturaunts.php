@@ -214,7 +214,7 @@ if (!pg_num_rows($result)) {
      				  <option value='Mexican'>Mexican</option>
      				  <option value='Sushi'>Sushi</option>
      				</select><br><br>
-     				<input type='submit'></input>
+     				<input class='submitBrowse' type='submit'></input>
      			</form>
 				<br />
 				

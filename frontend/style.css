@@ -306,3 +306,11 @@ input#logout:hover {
     border-radius: 6px;
     width: max-content;
 }
+
+
+/* BROWSE PAGE */
+input.submitBrowse {
+    border: 2px solid #FF5840;
+    background: none;
+    padding: 8px;
+}
