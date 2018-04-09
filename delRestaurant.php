@@ -27,9 +27,9 @@ $id = $_POST['id'];
 $name = pg_escape_string($conn, $name);
 $id = pg_escape_string($conn, $id);
 
-$sqlDelResturaunt = pg_query($conn, "DELETE FROM Restaurant R WHERE R.id='$id' AND R.name='$name'");
+$sqlDelResturant = pg_query($conn, "DELETE FROM Restaurant R WHERE R.RestaurantID='$id' AND R.name='$name'");
 
-if (!$sqlDelResturaunt) {
+if (!$sqlDelResturant) {
     echo "An error occurred.\n";
     exit;
 } else {
