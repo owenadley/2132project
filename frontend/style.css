@@ -111,6 +111,11 @@ span#core-home-slideTitle {
  padding: 10px;
  font-size: 14px;
 }
+.featResturaunt span{
+    color: black;
+ padding: 10px;
+ font-size: 14px;
+}
 .featResturaunt a:hover{
     border: 0px;
     text-decoration: none;

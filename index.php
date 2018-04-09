@@ -233,7 +233,7 @@ include 'createTables.php';
           
         </div>
         
-        <br><br><br><br>
+        <br><br><br>
         
         <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
