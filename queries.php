@@ -301,8 +301,32 @@ screen. The menu should be displayed based on menu item categories.
         c : For each user‐specified category of restaurant, list the manager names together with the date
 that the locations have opened. The user should be able to select the category (e.g. Italian or
 Thai) from a list.
-          <?php 
-            $categoryselect = "American";
+
+          <form id='filterType' role="form" method="post" action="" autocomplete="off">
+     				<label>Select Resturaunt:</label>
+     				<select name='restaurant1' required>
+     				  <option selected>
+       				  <?php 
+       				  if ($_POST['restaurant2'] != null) {
+      				    echo $_POST['restaurant2'];
+       				  } ?>
+    			     </option>
+    			   <?php 
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   while ($row = pg_fetch_assoc($sql)) {
+    			     $res = $row['name'];
+    			     echo "<option value='$res'>$res</option>";
+    			   }
+    			   ?>
+     				</select>
+     				<input type='submit'></input>
+     			</form>
+     			
+          <?php
+          if ($_POST['restaurant2'] != null) {
+            $categoryselect = $_POST['restaurant2'];
+            $_POST['restaurant2'] = null;
+
             $result = pg_query($conn, "SELECT L.managerName, L.firstOpenDate FROM Location L, Restaurant R 
             WHERE R.type = '$categoryselect' AND L.restaurantID = R.RestaurantID");
               
@@ -310,6 +334,7 @@ Thai) from a list.
             echo "An error occurred.\n";
             exit;
             }
+          }
           ?>
             
             <div class="container">
@@ -630,7 +655,6 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
 terms of the Food and the Mood of restaurants. Display this information together with the
 names of the restaurant and the dates the ratings were done.
         <?php
-            $typeSelect = "American";
             $result = pg_query($conn, 
               "SELECT DISTINCT  Ra.name AS uname, Ra.joindate AS jdate, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
               FROM Rater Ra, Restaurant R, Rating Rat
@@ -647,8 +671,6 @@ names of the restaurant and the dates the ratings were done.
             exit;
             }
           ?>
-          <br/>
-          Y refers to restaurant type: <?php echo $typeSelect; ?>
 
             <div class="container">
               <br/>
