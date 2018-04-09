@@ -236,16 +236,19 @@ include 'createTables.php';
         
         <div class='core-home-types'>
           <p id='core-home-subheader'>Resturaunts By Cuisine</p>
-          <div class='row'>
-          <?php
-          $result = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R WHERE R.type != 'Type'");
-          
-          while ($row = pg_fetch_assoc($result)) {
-            echo "<div class='col-md-4' style='background-image: url(img/$row[type].jpg)'>
-                    <p class='featCuisinep'>$row[type]</p>
-                  </div>";
-          }
-          ?>
+          <div class='core-home-typeWrap'>
+            <div class='row'>
+  
+            <?php
+            $result = pg_query($conn, "SELECT DISTINCT R.type FROM Restaurant R WHERE R.type != 'Type'");
+            
+            while ($row = pg_fetch_assoc($result)) {
+              echo "<div class='col-md-4' style='background-image: url(img/$row[type].jpg)'>
+                      <p class='featCuisinep'>$row[type]</p>
+                    </div>";
+            }
+            ?>
+            </div>
           </div>
         </div>
         
