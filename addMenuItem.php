@@ -35,14 +35,15 @@ $description = pg_escape_string($conn, $description);
 $price = pg_escape_string($conn, $price);
 $restauraunt = pg_escape_string($conn, $restauraunt);
 
-$sqlAddMenuItem= pg_query($conn, "INSERT INTO MenuItem(ItemID, name, category, type, description, price, restaurantID) VALUES ('$name.$restaurauntID', '$name', '$cat', '$type', '$description', '$price', '$restauraunt')");
+$itemid = $name . $restauraunt;
+$sqlAddMenuItem= pg_query($conn, "INSERT INTO MenuItem(ItemID, name, category, type, description, price, restaurantID) VALUES ('$itemid', '$name', '$cat', '$type', '$description', '$price', '$restauraunt')");
 
 if (!$sqlAddMenuItem) {
     echo "An error occurred.\n";
     exit;
 }
 
-$sqlCheckAddMenuItem= pg_query($conn, "SELECT name FROM MenuItem WHERE ItemID='$name.$restaurauntID'");
+$sqlCheckAddMenuItem= pg_query($conn, "SELECT name FROM MenuItem WHERE ItemID='$itemid'");
 
 if (!$sqlCheckAddMenuItem) {
   echo "An error occurred in reg.\n";
