@@ -27,7 +27,7 @@ $id = $_POST['id'];
 $name = pg_escape_string($conn, $name);
 $id = pg_escape_string($conn, $id);
 
-$checkExists = pg_query($conn, "SELECT * FROM Restaurant R WHERE R.RestaurantID - '$id' AND R.name='$name'");
+$checkExists = pg_query($conn, "SELECT * FROM Restaurant R WHERE R.RestaurantID='$id' AND R.name='$name'");
 $rows = pg_num_rows($checkExists);
 
  if ($rows > 0) {
