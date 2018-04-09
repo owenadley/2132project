@@ -473,8 +473,7 @@ if (!$result) {
 }
 echo "<br><br>";
 if ($row = pg_fetch_row($result)) {
- $arr =  pg_fetch_all($result);
-  print_r($arr);
+
 } else {
   echo 'No records in restaurant';
 }
