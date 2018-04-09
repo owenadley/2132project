@@ -88,6 +88,10 @@ if (!pg_num_rows($result)) {
             echo "<div class='successNotify'><p>Your entry has been submitted.</p></div>";
             $_SESSION['addSuccess'] = false;
           }
+          if ($_SESSION['delSuccess']) {
+            echo "<div class='successNotify'><p>Your entry has been deleted.</p></div>";
+            $_SESSION['delSuccess'] = false;
+          }
         ?>
           
           
