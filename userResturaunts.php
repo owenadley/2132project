@@ -322,7 +322,30 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>
           
-          
+          <div id='modal6' class='popupContainer' style='display:none;'>
+ 				    <header class='popupHeader'>
+ 					  	<span class='header_title'>Delete Menu Item</span>
+ 						  <span class='modal_close' onclick='unpop6();'><i class='fa fa-times'></i></span>
+ 				    </header>
+ 				    
+            <section class='popupBody'>
+              <div class='addEntry' id='delEntryRater'>
+    								<form id='delRater' role="form" method="post" action="delRater.php" autocomplete="off">
+     										<label>Rater Email</label>
+    										<input name='email' type='text' required />
+     										<br />
+     
+     										<label>Rater Id</label>
+    										<input name='id' type='text' required/>
+    										<br />
+     
+     										<div class='action_btns'>
+     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
+     										</div>
+     								</form>
+     						</div>
+ 					  </section>
+ 				  </div>     
         <?php } else {
           echo "You must be logged in to submit your own entries!";
         }

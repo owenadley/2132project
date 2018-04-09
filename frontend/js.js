@@ -189,6 +189,10 @@ function popAddRater() {
   $('#modal3').fadeIn(1000);
   $('#addEntryRater').fadeIn(1000);
 }
+function popDelRater() {
+  $('#modal6').fadeIn(1000);
+  $('#delEntryRater').fadeIn(1000);
+}
 function unpop1() {
   $('#modal1').fadeOut(1000);
 }
@@ -202,5 +206,8 @@ function unpop4() {
   $('#modal4').fadeOut(1000);
 }
 function unpop5() {
+  $('#modal5').fadeOut(1000);
+}
+function unpop6() {
   $('#modal5').fadeOut(1000);
 }
