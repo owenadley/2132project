@@ -801,7 +801,7 @@ while ($row = pg_fetch_assoc($result)) {
 $result = pg_query($conn, 
 "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
 FROM Rater Ra, Restaurant R, Rating Rat
-WHERE Ra.userID = Rat.userID
+WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
        GROUP By Ra.userID, R.Name, Rat.Date 
        HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
        LIMIT 10

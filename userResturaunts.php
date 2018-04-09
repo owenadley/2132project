@@ -211,7 +211,7 @@ if (!pg_num_rows($result)) {
      										<select name='restauraunt' required>
      										  
 <?php
-     										  $getRestauraunts = pg_query($conn, "SELECT * FROM Restauraunt");
+     										  $getRestauraunts = pg_query($conn, "SELECT * FROM Restaurant");
      										  if ($row = pg_fetch_row($getRestauraunts)) {
   $arr = pg_fetch_all($getRestauraunts);
   print_r($arr);
