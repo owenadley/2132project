@@ -375,9 +375,9 @@ if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      echo "cannot input rating entries";
+      #echo "cannot input rating entries";
     } else {
-      echo "query is valid for rating";
+      #echo "query is valid for rating";
     }
   fclose($handle);
 
@@ -400,9 +400,9 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      #echo "cannot input menuitems entries";
+      echo "cannot input menuitems entries";
     } else {
-      #echo "query is valid for menuitems";
+      echo "query is valid for menuitems";
     }
   fclose($handle);
   

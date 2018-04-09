@@ -33,10 +33,7 @@ else{
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
 # comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
 # that UserID and RestaurantID are foreign keys.
-$drop = pg_query($conn, "DROP TABLE Rating CASCADE");
-if ($drop) {
-  echo "dropped";
-}
+
 
 $ratingTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rating (
@@ -54,11 +51,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 #print "<pre>\n";
 if (!$ratingTable) {
-  echo "Creating ratingTable is not working. \n";
+  #echo "Creating ratingTable is not working. \n";
   exit;
 }
 else{
-  echo 'Rating Table exists';
+  #echo 'Rating Table exists';
 }
 
 
@@ -115,7 +112,10 @@ else{
 # Here we include the item name, as on the menu, the category (starter, main, desert) as well as the
 # type (food or beverage). RestaurantID is the foreign key.
 #$drop = pg_query($conn, "DROP TABLE MenuItem");
-
+$drop = pg_query($conn, "DROP TABLE MenuItem CASCADE");
+if ($drop) {
+  echo "dropped";
+}
 $menuItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS MenuItem (
 ItemID varchar(255) PRIMARY KEY NOT NULL,
@@ -130,11 +130,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 #print "<pre>\n";
 
 if (!$menuItemTable) {
-  #echo "Creating menuItemTable is not working. \n";
+  echo "Creating menuItemTable is not working. \n";
   exit;
 }
 else{
-  #echo 'MenuItem Table exists';
+  echo 'MenuItem Table exists';
 }
 
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
