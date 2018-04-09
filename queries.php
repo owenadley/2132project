@@ -769,6 +769,42 @@ restaurant and the dates the ratings were done.
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery3m()'></i></div>
         m : Find the names and reputations of the raters that rated a specific restaurant (say Restaurant Z)
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
+        <?php
+            $result = pg_query($conn, 
+              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date
+              FROM Rater Ra, Restaurant R, Rating Rat
+              WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
+                     GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
+                     HAVING (Rat.Mood >= 4) OR (Rat.Food >=4)
+                     LIMIT 10
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Reputation</th>
+                  <th class='trD'>Restaurant Name</th>
+                  <th class='trD'>Rating date</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['uname']; ?></td>
+                  <td class='trD'><?php echo $row['rep']; ?></td>
+                  <td class='trD'><?php echo $row['resname']; ?></td>
+                  <td class='trD'><?php echo $row['date']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>      
+      
       </div>
       
       <div id='queryDisplay3n' class='queryDisplay'>
@@ -779,6 +815,39 @@ the most frequently. Display this information together with their comments and t
       <div id='queryDisplay3o' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery3o()'></i></div> 
         o : Find the names, types and emails of the raters that provide the most diverse ratings. Display this information together with the restaurants names and the ratings. For example, Jane Doe may have rated the Food at the Imperial Palace restaurant as a 1 on 1 January 2015, as a 5 on 15 January 2015, and a 3 on 4 February 2015. Clearly, she changes her mind quite often.
+        
+        <?php
+            $result = pg_query($conn, 
+              "SELECT Rater.*
+              from Rater, Rating
+              where Rater.userid = Rating.userid
+              order by @(Food - Mood) desc
+              limit 10;
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Rater Type</th>
+                  <th class='trD'>Email</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['name']; ?></td>
+                  <td class='trD'><?php echo $row['type']; ?></td>
+                  <td class='trD'><?php echo $row['email']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
       </div>
     </div>
   </div>
