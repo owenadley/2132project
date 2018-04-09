@@ -41,12 +41,126 @@ if (!pg_num_rows($result)) {
   
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="frontend/style.css">  
+  <link rel="stylesheet" href="frontend/style.css"> 
+  <link rel="stylesheet" href="frontend/popup.css">
 </head>
     
 <div class='header'>
   <h3 id='headerTitle'>2132 Foods</h3>
+  
+  <?php
+  #echo $_SESSION['userid'];
+  if ($_SESSION['userid']) {
+    echo "<div class='userStatus'><div class='loggedIn'><span id='subtext'>Signed is as:</span><br><span id='sub2text'>".$_SESSION['userid']."</span><br>
+    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='queries.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
+  } else { 
+    echo "  <div class='container'>
+              <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
+            </div>";
+  }?>  
+  
 </div>
+
+<!-- LOGIN AND REGISTER POPUP -->
+   <div id='modal' class='popupContainer' style='display:none;'>
+ 				<header class='popupHeader'>
+ 						<span class='header_title'>Login</span>
+ 						<span class='modal_close' onclick='unpop();'><i class='fa fa-times'></i></span>
+ 				</header>
+ 
+ 				<section class='popupBody'>
+ 						<!-- Social Login -->
+ 						<div class='social_login'>
+ 								<div class=''>
+ 										<a href='#' class='social_box fb'>
+ 												<span class='icon'><i class='fa fa-facebook'></i></span>
+ 												<span class='icon_title'>Connect with Facebook</span>
+ 
+ 										</a>
+ 
+ 										<a href='#' class='social_box google'>
+ 												<span class='icon'><i class='fa fa-google-plus'></i></span>
+ 												<span class='icon_title'>Connect with Google</span>
+ 										</a>
+ 								</div>
+ 
+ 								<div class='centeredText'>
+ 										<span>Or use your Email address</span>
+ 								</div>
+ 
+ 								<div class='action_btns'>
+ 										<div class='one_half'><a onclick='log();' id='login_form' class='btn'>Login</a></div>
+ 										<div class='one_half last'><a onclick='reg();' id='register_form' class='btn'>Sign up</a></div>
+ 								</div>
+ 						</div>
+ 
+ 						<!-- Username & Password Login form -->
+ 						<div class='user_login' id='ulogin'>
+								<form id='login' role='form' method='post' action='login.php' autocomplete='off'>
+										<label>Email</label>
+										<input name='email' type='text' required/>
+ 										<br />
+ 
+ 										<label>Password</label>
+										<input name='password' type='password'required/>
+ 										<br />
+ 
+ 										<div class='checkbox'>
+ 												<input id='remember' type='checkbox' />
+ 												<label for='remember'>Remember me on this computer</label>
+ 										</div>
+ 
+ 										<div class='action_btns'>
+ 												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red' value='Login'></input></div>
+ 										</div>
+ 								</form>
+ 
+ 								<a href='#' class='forgot_password'>Forgot password?</a>
+ 						</div>
+ 
+ 						<!-- Register Form -->
+ 						<div class='user_register' id='uregister'>
+								<form id='register' role="form" method="post" action="Register.php" autocomplete="off">
+ 										<label>Full Name</label>
+										<input name='name' type='text' required />
+ 										<br />
+ 
+ 										<label>Email Address</label>
+										<input name ='email' type='email' required/>
+ 										<br />
+ 										
+ 										<label>Type</label>
+ 										<select name='type' required>
+ 										  <option value='blog'>Blog</option>
+ 										  <option value='online'>Online</option>
+ 										  <option value='critic'>Food Critic</option>
+ 										</select>
+ 										<br />
+ 
+ 										<label>Password</label>
+										<input name='password' type='password' required/>
+										<br />
+										
+										<label>Re-enter Password</label>
+										<input name='repassword' type='password' required/>
+ 										<br />
+ 
+ 										<div class='checkbox'>
+ 												<input id='send_updates' type='checkbox' />
+ 												<label for='send_updates'>Send me occasional email updates</label>
+ 										</div>
+ 
+                     <input type'hidden' value='index.php' name='returnAddr'/>
+                     
+ 										<div class='action_btns'>
+ 												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
+ 												<div class='one_half last'><input type='submit' class='btn btn_red' value='Register'></input></div>
+ 										</div>
+ 								</form>
+ 						</div>
+ 				</section>
+		</div>
 
 <div class='core-content'>
   
