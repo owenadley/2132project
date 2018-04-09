@@ -195,7 +195,7 @@ if (!pg_num_rows($result)) {
       <div class='row'>
         <div class='col-md-6'>
           <form id='filterType' role="form" method="post" action="" autocomplete="off">
-     				<label>Sort By Type</label>
+     				<label>Browse By Type</label><br><hr><br>
      				<select name='type' required>
      				  <option selected>
      				  <?php 
@@ -213,7 +213,7 @@ if (!pg_num_rows($result)) {
      				  <option value='Mediterranean'>Mediterranean</option>
      				  <option value='Mexican'>Mexican</option>
      				  <option value='Sushi'>Sushi</option>
-     				</select>
+     				</select><br><br>
      				<input type='submit'></input>
      			</form>
 				<br />
