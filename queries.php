@@ -982,7 +982,7 @@ the most frequently. Display this information together with their comments and t
               "SELECT DISTINCT R.*
               FROM Rater R, Rating Rat
               WHERE R.userid = Rat.userid
-              ORDER BY @(Rat.Food - Rat.Mood) ASC
+              ORDER BY (@(Rat.Food - Rat.Mood)) ASC
               LIMIT 10;
               ");
               
