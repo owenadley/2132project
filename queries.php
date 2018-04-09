@@ -185,17 +185,17 @@ location tables should then displayed on the screen.
               </tr>
               <?php while ($row = pg_fetch_assoc($result)): ?>
               <tr class='trD'>
-                <td class='trD'><?php echo $row['RestaurantID']; ?></td>
-                <td class='trD'><?php echo $row['Name']; ?></td>
-                <td class='trD'><?php echo $row['Type']; ?></td>
-                <td class='trD'><?php echo $row['URL']; ?></td>
-                <td class='trD'><?php echo $row['LocationID']; ?></td>
-                <td class='trD'><?php echo $row['firstOpenDate']; ?></td>
-                <td class='trD'><?php echo $row['managerName']; ?></td>
-                <td class='trD'><?php echo $row['phoneNumber']; ?></td>
-                <td class='trD'><?php echo $row['streetAddress']; ?></td>
-                <td class='trD'><?php echo $row['hourOpen']; ?></td>
-                <td class='trD'><?php echo $row['hourClose']; ?></td>
+                <td class='trD'><?php echo $row['restaurauntid']; ?></td>
+                <td class='trD'><?php echo $row['name']; ?></td>
+                <td class='trD'><?php echo $row['type']; ?></td>
+                <td class='trD'><?php echo $row['url']; ?></td>
+                <td class='trD'><?php echo $row['locationid']; ?></td>
+                <td class='trD'><?php echo $row['firstopendate']; ?></td>
+                <td class='trD'><?php echo $row['managername']; ?></td>
+                <td class='trD'><?php echo $row['phonenumber']; ?></td>
+                <td class='trD'><?php echo $row['streetaddress']; ?></td>
+                <td class='trD'><?php echo $row['houropen']; ?></td>
+                <td class='trD'><?php echo $row['hourclose']; ?></td>
               </tr>
               <?php endwhile; ?>
             </table>
