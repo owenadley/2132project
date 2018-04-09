@@ -137,10 +137,7 @@ else{
 # RatingItem(UserID, Date, ItemID, rating, comment, ….)
 # A rater may explicitly select the menu item, and add a specific rating between 1 (low) to 5 (high)
 # and a free text comment. All menu items should be selected from a list.
-$drop = pg_query($conn, "DROP TABLE RatingItem CASCADE");
-if ($drop) {
-  echo "dropped";
-}
+
 $ratingItemTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS RatingItem (
 UserID varchar(255) NOT NULL,
@@ -152,11 +149,11 @@ PRIMARY KEY (UserID, Date, ItemID)
 )");
 #print "<pre>\n";
 if (!$ratingItemTable) {
-  echo "Creating ratingItemTable is not working. \n";
+  #echo "Creating ratingItemTable is not working. \n";
   exit;
 }
 else{
-  echo 'RatingItem Table exists';
+  #echo 'RatingItem Table exists';
 }
 
 #==================== / CREATE TABLES =====================

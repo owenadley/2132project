@@ -421,9 +421,9 @@ if (($handle = fopen("/app/RatingItem.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      echo "cannot input ratingitem entries";
+      #echo "cannot input ratingitem entries";
     } else {
-      echo "query is valid for ratingitem";
+      #echo "query is valid for ratingitem";
     }
   fclose($handle);
 
