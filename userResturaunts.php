@@ -215,7 +215,7 @@ if (!pg_num_rows($result)) {
      										  if ($row = pg_fetch_row($getRestauraunts)) {
   $arr = pg_fetch_all($getRestauraunts);
   print_r($arr);
-     										    echo "<option value=''>".$row['name']."</option>";
+     										    echo "<option value='".$row['restaurantid']."'>".$row['name']."</option>";
      										  } else {
      										    echo "no restauraunts";
      										  }

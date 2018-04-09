@@ -814,7 +814,7 @@ if (!$result) {
 }
 
 while ($row = pg_fetch_assoc($result)) {
- echo "My query: \n";
+ echo "LOOK: \n";
    echo " $row[uname] \n";
    echo " $row[rep] \n";
    echo " $row[resname] \n";
