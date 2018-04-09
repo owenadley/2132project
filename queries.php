@@ -664,7 +664,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Restaurant Name</th>
-                  <th class='trD'>Restaurant ID</th>
+                  <th class='trD'>Average Rating</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
