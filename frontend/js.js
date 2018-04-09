@@ -177,7 +177,7 @@ function popAddMenuItem() {
   $('#modal2').fadeIn(1000);
   $('#addEntryMenuItem').fadeIn(1000);
 }
-function popAddMenuItem() {
+function popAddRater() {
   $('#modal3').fadeIn(1000);
   $('#addEntryRater').fadeIn(1000);
 }
