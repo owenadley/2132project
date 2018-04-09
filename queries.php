@@ -164,7 +164,7 @@ location tables should then displayed on the screen.
     			   <?php 
     			   $sql = pg_query($conn, "SELECT DISTINCT name FROM Restaurant");
     			   while ($row = $pg_fetch_assoc($sql)) {
-    			     echo "<option value='$row['name']'>$row['name']</option>";
+    			     echo "<option value='".$row['name']."'>."$row['name']."</option>";
     			   }
     			   ?>
 
@@ -496,7 +496,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
       <div id='queryDisplay2i' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2i()'></i></div>
         i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
-restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
+        restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
       </div>
       
       <div id='queryDisplay2j' class='queryDisplay'>
