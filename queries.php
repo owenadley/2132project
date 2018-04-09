@@ -644,9 +644,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               "SELECT R.name AS resname, R.restaurantID resid
                FROM Restaurant R, Rating Ra
                WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
-               HAVING (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
-               (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
-               GROUP By res, resid
+               AND (Ra.price + Ra.food + Ra.mood + Ra.staff) > (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff) FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
               ");
               
             if (!$result) {
@@ -656,6 +654,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
   $arr = pg_fetch_all($result);
   print_r($arr);
           ?>
+          
           <br/>
           Y refers to restaurant type: <?php echo $typeSelect; ?>
 
@@ -812,6 +811,34 @@ the most frequently. Display this information together with their comments and t
       <div id='queryDisplay3n' class='queryDisplay'>
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery3n()'></i></div>
         n : Find the names and emails of all raters who gave ratings that are lower than that of a rater with a name called John, in terms of the combined rating of Price, Food, Mood and Staff. (Note that there may be more than one rater with this name).
+        <?php
+            $result = pg_query($conn, 
+              "SELECT R.name, R.email FROM Rater 
+              ");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Rater Name</th>
+                  <th class='trD'>Rater Type</th>
+                  <th class='trD'>Email</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['name']; ?></td>
+                  <td class='trD'><?php echo $row['type']; ?></td>
+                  <td class='trD'><?php echo $row['email']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>
       </div>
       
       <div id='queryDisplay3o' class='queryDisplay'>
@@ -820,11 +847,11 @@ the most frequently. Display this information together with their comments and t
         
         <?php
             $result = pg_query($conn, 
-              "SELECT DISTINCT Rater.*
-              from Rater, Rating
-              where Rater.userid = Rating.userid
-              order by @(Food - Mood) desc
-              limit 10;
+              "SELECT DISTINCT R.*
+              FROM Rater R, Rating Rat
+              WHERE R.userid = Rat.userid
+              ORDER BY @(Rat.Food - Rat.Mood) ASC
+              LIMIT 10;
               ");
               
             if (!$result) {
