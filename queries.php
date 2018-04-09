@@ -653,6 +653,8 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             echo "An error occurred.\n";
             exit;
             }
+  $arr = pg_fetch_all($result);
+  print_r($arr);
           ?>
           <br/>
           Y refers to restaurant type: <?php echo $typeSelect; ?>
