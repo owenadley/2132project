@@ -43,7 +43,7 @@ if (!$conn) {
             exit;
         }
 
-        $sqlCheckReg = pg_query($conn, "SELECT name FROM Rater WHERE name='Owen Adley'");
+        $sqlCheckReg = pg_query($conn, "SELECT name FROM Rater WHERE userID='$email'");
     
         if (!$sqlCheckReg) {
           echo "An error occurred in reg.\n";
@@ -52,6 +52,8 @@ if (!$conn) {
 
         if ($row = pg_fetch_row($sqlCheckReg)) {
           echo "$row[name]";
+            $_SESSION['userid'] = $email;
+
             header('Location: ./'.$returnAddr);
             exit;
         
