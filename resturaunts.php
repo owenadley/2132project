@@ -191,11 +191,11 @@ if (!pg_num_rows($result)) {
     </div>
     <div class='col-md-9'>
       <div class='core-userResturaunts'>
-        <h2>Browse Restaurants</h2>
+        <h2>Browse Restaurants</h2><br>
       <div class='row'>
         <div class='col-md-6'>
           <form id='filterType' role="form" method="post" action="" autocomplete="off">
-     				<label>Browse By Type</label><br><hr><br>
+     				<label>Browse By Type</label><hr>
      				<select name='type' required>
      				  <option selected>
      				  <?php 
