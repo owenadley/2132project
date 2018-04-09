@@ -94,14 +94,25 @@ margin: 0 auto;
 .core-home-typeWrap {
     margin: 0vw 8vw;
 }
-.core-home-subheader {
+p#core-home-subheader {
     margin: 10px;
     font-size: 18px;
+}
+span#core-home-slideTitle {
+    
 }
 .featResturaunt {
     margin: 0 auto;
     text-align: center;
     width: max-content;
+}
+.featResturaunt a{
+    color: black;
+}
+.featResturaunt a:hover{
+    border: 0px;
+    text-decoration: none;
+    color: black;
 }
 .featCuisinep {
     color: white;

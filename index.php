@@ -225,7 +225,7 @@ include 'createTables.php';
               exit;
             }
             while ($row = pg_fetch_assoc($result)) {
-              echo "<div class='featResturaunt'><a href=''><img src='img/$row[type].jpg'>$row[name]</a></div>";
+              echo "<div class='featResturaunt'><a href=''><img src='img/$row[type].jpg'><span id='core-home-slideTitle'>$row[name]</span></a></div>";
             }
             ?>
 
