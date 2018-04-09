@@ -360,8 +360,33 @@ Thai) from a list.
         d : Given a user‐specified restaurant, find the name of the most expensive menu item. List this
 information together with the name of manager, the opening hours, and the URL of the
 restaurant. The user should be able to select the restaurant name (e.g. El Camino) from a list.
-          <?php 
-            $resturauntselect = "House of Greek";
+          
+          <form id='filterType' role="form" method="post" action="" autocomplete="off">
+     				<label>Select Resturaunt:</label>
+     				<select name='restaurant3' required>
+     				  <option selected>
+       				  <?php 
+       				  if ($_POST['restaurant3'] != null) {
+      				    echo $_POST['restaurant3'];
+       				  } ?>
+    			     </option>
+    			     
+    			   <?php 
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R");
+    			   while ($row = pg_fetch_assoc($sql)) {
+    			     $res = $row['name'];
+    			     echo "<option value='$res'>$res</option>";
+    			   }
+    			   ?>
+     				</select>
+     				<input type='submit'></input>
+     			</form>
+     			
+          <?php
+          if ($_POST['restaurant2'] != null) {
+            $resturauntselect = $_POST['restaurant3'];
+            $_POST['restaurant2'] = null; 
+
             $result = pg_query($conn, 
               "SELECT L.managerName, L.hourOpen, M.name, R.URL, MAX(M.Price) AS price
               FROM Restaurant R, Location L, MenuItem M 
