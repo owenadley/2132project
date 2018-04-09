@@ -325,7 +325,36 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery1e()'></i></div>
         e : For each type of restaurant (e.g. Indian or Irish) and the category of menu item (appetiser, main
 or desert), list the average prices of menu items for each category.
-          
+        <?php
+            $result = pg_query($conn, 
+              "SELECT AVG(M.Price) AS avgprice, R.type AS resttype, M.category AS foodcat  
+              FROM MenuItem M, Restaurant R
+              LEFT JOIN MenuItem M ON R.restaurantID=M.restaurantID
+              GROUP BY R.type, M.category ORDER BY R.type, M.category");
+              
+            if (!$result) {
+            echo "An error occurred.\n";
+            exit;
+            }
+          ?>
+            
+            <div class="container">
+              <br/>
+              <table class='tableD'>
+                <tr>
+                  <th class='trD'>Type of Restaurant</th>
+                  <th class='trD'>Category of Menu Item</th>
+                  <th class='trD'>Average Price ($)</th>
+                </tr>
+                <?php while ($row = pg_fetch_assoc($result)): ?>
+                <tr class='trD'>
+                  <td class='trD'><?php echo $row['avgprice']; ?></td>
+                  <td class='trD'><?php echo $row['resttype']; ?></td>
+                  <td class='trD'><?php echo $row['foodcat']; ?></td>
+                </tr>
+                <?php endwhile; ?>
+              </table>
+            </div>  
       </div>
       
       
