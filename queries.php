@@ -280,7 +280,7 @@ location tables should then displayed on the screen.
        				  } ?>
     			     </option>
     			   <?php 
-    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R WHERE R.name != 'Name");
+    			   $sql = pg_query($conn, "SELECT DISTINCT R.name FROM Restaurant R WHERE R.name != 'Name'");
     			   while ($row = pg_fetch_assoc($sql)) {
     			     $res = $row['name'];
     			     echo "<option value='$res'>$res</option>";
@@ -979,7 +979,7 @@ the most frequently. Display this information together with their comments and t
         
         <?php
             $result = pg_query($conn, 
-              "SELECT DISTINCT R.*
+              "SELECT DISTINCT R.name AS name, R.type AS type, R.email AS email
               FROM Rater R, Rating Rat
               WHERE R.userid = Rat.userid
               ORDER BY (@(Rat.Food - Rat.Mood)) ASC
