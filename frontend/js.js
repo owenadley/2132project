@@ -209,5 +209,5 @@ function unpop5() {
   $('#modal5').fadeOut(1000);
 }
 function unpop6() {
-  $('#modal5').fadeOut(1000);
+  $('#modal6').fadeOut(1000);
 }

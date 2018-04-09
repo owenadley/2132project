@@ -274,7 +274,7 @@ if (!pg_num_rows($result)) {
           
           <div id='modal4' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
- 					  	<span class='header_title'>Add Restaurant</span>
+ 					  	<span class='header_title'>Delete Restaurant</span>
  						  <span class='modal_close' onclick='unpop4();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
@@ -324,7 +324,7 @@ if (!pg_num_rows($result)) {
           
           <div id='modal6' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
- 					  	<span class='header_title'>Delete Menu Item</span>
+ 					  	<span class='header_title'>Delete Rater</span>
  						  <span class='modal_close' onclick='unpop6();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
