@@ -168,13 +168,13 @@ location tables should then displayed on the screen.
     			     echo "<option value='$res'>$res</option>";
     			   }
     			   ?>
-
      				</select>
      				<input type='submit'></input>
      			</form>
           <?php
-          
-            $resturauntselect = "Canal Ritz";
+          if ($_POST['restaurant'] != null) {
+            $resturauntselect = $_POST['restaurant'];
+            
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
             
@@ -182,6 +182,7 @@ location tables should then displayed on the screen.
             echo "An error occurred.\n";
             exit;
             }
+          }
           ?>
           
           <div class="container">
@@ -510,7 +511,8 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         <div class='queryExitIcon'><i class="fas fa-times exitQuery" onclick='hideQuery2i()'></i></div>
         i : List the details of the Type Y restaurants that obtained the highest Food rating. Display the
         restaurant name together with the name(s) of the rater(s) who gave these ratings. (Here, Type Y refers to any restaurant type of your choice, e.g. Indian or Burger.)
-        <?php
+          <?php
+            $typeSelect = "American";
             $result = pg_query($conn, 
               "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
               FROM Restaurant R, Location L
