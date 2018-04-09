@@ -887,7 +887,7 @@ restaurant and the dates the ratings were done.
 the most frequently. Display this information together with their comments and the names and prices of the menu items they discuss. (Here Restaurant Z refers to a restaurant of your own choice, e.g. Ma Cuisine).
         <?php
             $result = pg_query($conn, 
-              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date, Rat.Comments
+              "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, R.Name AS resname, Rat.Date AS date, Comments, foo.name, foo.price
               FROM Rater Ra, Restaurant R, Rating Rat
               WHERE Ra.userID = Rat.userID AND R.restaurantID = Rat.restaurantID
                      GROUP By Ra.userID, R.Name, Rat.Date, Rat.Mood, Rat.Food 
