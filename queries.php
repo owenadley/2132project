@@ -383,9 +383,9 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
      			</form>
      			
           <?php
-          if ($_POST['restaurant2'] != null) {
+          if ($_POST['restaurant3'] != null) {
             $resturauntselect = $_POST['restaurant3'];
-            $_POST['restaurant2'] = null; 
+            $_POST['restaurant3'] = null; 
 
             $result = pg_query($conn, 
               "SELECT L.managerName, L.hourOpen, M.name, R.URL, MAX(M.Price) AS price
@@ -399,6 +399,7 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
             echo "An error occurred.\n";
             exit;
             }
+          }
           ?>
             
             <div class="container">
