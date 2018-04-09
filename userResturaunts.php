@@ -53,7 +53,7 @@ if (!pg_num_rows($result)) {
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
     echo "<div class='userStatus'><div class='loggedIn'><span id='subtext'>Signed is as:</span><br><span id='sub2text'>".$_SESSION['userid']."</span><br>
-    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='queries.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
+    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='userResturaunts.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
@@ -110,7 +110,7 @@ if (!pg_num_rows($result)) {
  												<input id='remember' type='checkbox' />
  												<label for='remember'>Remember me on this computer</label>
  										</div>
-                    <input type='hidden' name='returnAddr' value='queries.php' required/>
+                    <input type='hidden' name='returnAddr' value='userResturaunts.php' required/>
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><input type='submit' class='btn btn_red' value='Login'></input></div>
@@ -152,7 +152,7 @@ if (!pg_num_rows($result)) {
  												<label for='send_updates'>Send me occasional email updates</label>
  										</div>
                      
-                    <input type='hidden' name='returnAddr' value='queries.php' required/>
+                    <input type='hidden' name='returnAddr' value='userResturaunts.php' required/>
                
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>

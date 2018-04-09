@@ -60,7 +60,7 @@ include 'createTables.php';
   #echo $_SESSION['userid'];
   if ($_SESSION['userid']) {
     echo "<div class='userStatus'><div class='loggedIn'><span id='subtext'>Signed is as:</span><br><span id='sub2text'>".$_SESSION['userid']."</span><br>
-    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='queries.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
+    <form method='post' action='logout.php'><input type='hidden' name='returnAddr' value='index.php' required/><input id='logout' type='submit' value='Logout' name='logout'/></form></div></div>";
   } else { 
     echo "  <div class='container'>
               <a class='button' id='modal_trigger' onclick='pop();'>LOGIN | REGISTER</a>
@@ -122,6 +122,8 @@ include 'createTables.php';
  												<label for='remember'>Remember me on this computer</label>
  										</div>
  
+                     <input type='hidden' name='returnAddr' value='index.php' required/>
+ 
  										<div class='action_btns'>
  												<div class='one_half'><a onclick='back();' class='btn back_btn'><i class='fa fa-angle-double-left'></i> Back</a></div>
  												<div class='one_half last'><input type='submit' class='btn btn_red' value='Login'></input></div>
@@ -157,7 +159,8 @@ include 'createTables.php';
 										<label>Re-enter Password</label>
 										<input name='repassword' type='password' required/>
  										<br />
- 
+ 						
+                    
  										<div class='checkbox'>
  												<input id='send_updates' type='checkbox' />
  												<label for='send_updates'>Send me occasional email updates</label>
