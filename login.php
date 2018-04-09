@@ -54,6 +54,9 @@ if (!$conn) {
         }
     
     
+    } else {
+            header('Location: ./'.$returnAddr);
+            exit;
     }
     
     

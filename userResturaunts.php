@@ -216,7 +216,7 @@ if (!pg_num_rows($result)) {
         ?>
           
           
-          <p>Submit New</p>
+          <p id='core-home-subheader'>Submit New</p>
           <div class='row'>
             <div class='col-md-4'>
               <div class='selectEntry' onclick='popAddRestaurant();'>
@@ -238,7 +238,7 @@ if (!pg_num_rows($result)) {
           <hr>
           <br>
           
-          <p>Delete Record</p>
+          <p id='core-home-subheader'>Delete Record</p>
           <div class='row'>
             <div class='col-md-4'>
               <div class='selectEntry' onclick='popDelRestaurant();'>
