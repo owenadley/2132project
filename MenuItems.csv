@@ -7,7 +7,7 @@ ItemID,name,type,category,description,price,RestaurantID
 J5VMZ,Samosa,Food,Starter,This is a description. ,5.00,FR65F6R5
 8LWK8,Paneer Tikka Masala,Food,Main,,15.00,FR65F6R5
 3S82C,Gulab Jamun,Food,Desert,This is a description. ,5.00,FR65F6R5
-ZBTNB,Mango shake,Beverage,,,3.00,FR65F6R5
+ZBTNB,Mango shake,Beverage,,3.00,FR65F6R5
 NH596,Naan,Food,Main,,3.00,FR65F6R5
 WJBBM,Greek Salad,Food,Starter,This is a description. ,5.00,FV6566FV
 R9GJG,Falafal Sandwich,Food,Main,,9.99,FV6566FV
@@ -17,7 +17,7 @@ EOYIG,Gyros,Food,Main,,11.99,FV6566FV
 C8BZ1,Mozzarella sticks,Food,Starter,,12.75,6V4H5G51
 H41TT,Veg pizza,Food,Main,,18.50,6V4H5G51
 GIINU,Cupcakes,Food,Desert,This is a description. ,5.50,6V4H5G51
-KSZZR,Coke,Beverage,,,1.25,6V4H5G51
+KSZZR,Coke,Beverage,Main,,1.25,6V4H5G51
 SSYQR,Calzone,Food,Main,This is a description. ,12.99,6V4H5G51
 S0MWA,Falafal Sandwich,Food,Main,,8.99,D5G8DG57
 XN6OR,Orange Juice,Beverage,,This is a description. ,2.25,D5G8DG57
