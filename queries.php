@@ -929,7 +929,7 @@ the most frequently. Display this information together with their comments and t
             $result = pg_query($conn, 
               "SELECT R.name as name, R.email as email,   
               FROM Rater R, Rating Rat
-              WHERE R.UserID=Rat.UserID AND ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
+              WHERE  ((SELECT (SUM(Rat.Price)+SUM(Rat.Food)+SUM(Rat.Mood)+SUM(Rat.Staff)) AS total
                                               FROM Rating Rat, Rater R 
                                               WHERE Rat.UserID=R.UserID AND R.name = (SELECT Roo.name, (SUBSTRING (Roo.name FROM 1 FOR 4)) AS jname  FROM Rater Roo
                                                                                       WHERE jname='John'))
