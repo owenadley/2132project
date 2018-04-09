@@ -32,6 +32,14 @@ $conn = pg_connect(pg_connection_string_from_database_url());
   <h3 id='headerTitle'>2132 Foods</h3>
 </div>
     
+<?php
+if ($_POST['restaurant'] != null) {  ?>  
+  <script type="text/javascript">
+    showQuery1a();
+  </script>
+  <?php
+}?>
+
 <div class='core-content'>
   
   <br>
@@ -173,7 +181,7 @@ location tables should then displayed on the screen.
      			</form>
           <?php
           if ($_POST['restaurant'] != null) {
-            $resturauntselect = $_POST['restaurant'];
+            $resturauntselecta = $_POST['restaurant'];
             
             $result = pg_query($conn, "SELECT * FROM restaurant R,Location L 
                                        WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID");
@@ -462,6 +470,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
         than any rating given by rater X. Order your results by the dates of the ratings. (Here, X refers to
         any rater of your choice.)
         <?php
+            $userIDSelect = "voldy";
             $result = pg_query($conn, 
               "SELECT Rest.Name AS resname, RL.firstOpenDate AS date
               FROM Rating Rat
@@ -514,10 +523,12 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
           <?php
             $typeSelect = "American";
             $result = pg_query($conn, 
-              "SELECT R.Name AS resname, R.Type AS restype, L.phoneNumber AS resnumber
-              FROM Restaurant R, Location L
-              WHERE L.RestaurantID = R.RestaurantID 
-              AND NOT EXISTS (SELECT * FROM Rating Ra WHERE (Ra.Date >= '01-01-2015'::date AND Ra.Date <= '12-31-2015'::date))
+              "SELECT R.Name As resname, Ra.name AS raname, MAX(Rating.food)
+              FROM Restaurant R, Rater Ra, Rating
+              WHERE R.type = '$typeSelect' 
+              AND Rating.food = (SELECT MAX (Rating.food) FROM Rating) 
+              AND Rating.userID = '$userID'
+              GROUP BY R.name, Ra.name
               ");
               
             if (!$result) {
@@ -531,13 +542,13 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
               <table class='tableD'>
                 <tr>
                   <th class='trD'>Restaurant Name</th>
-                  <th class='trD'>Phone Number</th>
+                  <th class='trD'>Rater Name</th>
                   <th class='trD'>Restaurant Type</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
                   <td class='trD'><?php echo $row['resname']; ?></td>
-                  <td class='trD'><?php echo $row['restype']; ?></td>
+                  <td class='trD'><?php echo $row['raname']; ?></td>
                   <td class='trD'><?php echo $row['resnumber']; ?></td>
                 </tr>
                 <?php endwhile; ?>
