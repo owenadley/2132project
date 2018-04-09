@@ -937,7 +937,8 @@ the most frequently. Display this information together with their comments and t
                   FROM Rating Ra WHERE Ra.userID IN (SELECT moo.UserID FROM Rater moo WHERE moo.name='John'))))
               ");
               
-              
+              $arr = pg_fetch_all($result);
+print_r($arr);
             if (!$result) {
             echo "An error occurred.\n";
             exit;
@@ -969,7 +970,7 @@ the most frequently. Display this information together with their comments and t
             $result = pg_query($conn, 
               "SELECT R.name AS name, R.type AS type, R.email AS email, Res.Name AS resname, Rat.Price AS price, Rat.Food AS food, Rat.Mood AS mood, Rat.Staff AS staff
               FROM Rater R, Restaurant Res, Rating Rat
-              WHERE R.userid = Rat.userid AND Res.restaurantID=Rat.restaurantID
+              WHERE R.UserID = Rat.UserID AND Res.restaurantID=Rat.restaurantID
               AND userid = ANY(SELECT roo.UserID FROM (SELECT R.UserID roo, Res.restaurantID, COUNT(*) AS C FROM Rater R, Rating Rat WHERE R.UserID = Rat.UserID
                             GROUP BY Rat.restaurantID, Rat.UserID , R.UserID HAVING  COUNT(*)  > 2 ORDER BY C DESC, Rat.restaurantID) AS roo) 
               ORDER BY R.name, Res.name
