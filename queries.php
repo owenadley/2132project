@@ -283,9 +283,11 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
           <?php 
             $resturauntselect = "House of Greek";
             $result = pg_query($conn, 
-              "SELECT R.URL, L.managerName, L.hourOpen, M.name, MAX(M.Price) 
+              "SELECT L.managerName, L.hourOpen, M.name, R.URL, MAX(M.Price) 
               FROM Restaurant R, Location L, MenuItem M 
-              WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID AND M.RestaurantID = R.RestaurantID
+              WHERE R.name = '$resturauntselect' AND L.RestaurantID = R.RestaurantID 
+                AND M.RestaurantID = R.RestaurantID
+                AND M.price >= ALL(SELECT Mm.price FROM MenuItem Mm WHERE Mm.restaurantID = R.restaurantID)
               GROUP BY R.URL, L.ManagerName, L.hourOpen, M.name");
             
             if (!$result) {
@@ -298,19 +300,21 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
               <br/>
               <table class='tableD'>
                 <tr>
-                  <th class='trD'>URL</th>
                   <th class='trD'>Manager Name</th>
                   <th class='trD'>Opening time</th>
                   <th class='trD'>Menu Item</th>
                   <th class='trD'>Price</th>
+                  <th class='trD'>URL</th>
+
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
-                  <td class='trD'><?php echo $row['url']; ?></td>
                   <td class='trD'><?php echo $row['managername']; ?></td>
                   <td class='trD'><?php echo $row['houropen']; ?></td>
                   <td class='trD'><?php echo $row['name']; ?></td>
                   <td class='trD'><?php echo $row['price']; ?></td>
+                  <td class='trD'><?php echo $row['url']; ?></td>
+
                 </tr>
                 <?php endwhile; ?>
               </table>

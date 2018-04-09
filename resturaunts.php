@@ -79,6 +79,11 @@ if (!pg_num_rows($result)) {
       <form id='filterType' role="form" method="post" action="" autocomplete="off">
  				<label>Sort By Type</label>
  				<select name='type' required>
+ 				  <option selected><?php 
+ 				  if ($_POST['type'] != null) {
+				    echo $type;
+ 				  } ?>
+			 </option>
  				  <option value='American'>American</option>
  				  <option value='Chinese'>Chinese</option>
  				  <option value='Fast Food'>Fast Food</option>
@@ -104,8 +109,7 @@ if (!pg_num_rows($result)) {
 				  }
 				  
           while($row = pg_fetch_assoc($filterType)) {
-            echo $row['name'];
-            echo $row['url'];
+            echo "Name: $row['name'] \n";
           }
 				} else {
 				  echo "not posted";
