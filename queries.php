@@ -889,8 +889,8 @@ the most frequently. Display this information together with their comments and t
             $resSelect = "Canal Ritz";
             
             $result = pg_query($conn, 
-              "SELECT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
-              FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT UserID AS freq, COUNT(RI.UserID) AS c
+              "SELECT Ra.name AS uname, Ra.reputation AS rep, comment, MI.name, MI.price
+              FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT UserID AS freq, COUNT(UserID) AS c
                                                                                     FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
                                                                                     WHERE RestaurantID = 'R646F6F4'
                                                                                     GROUP BY UserID
