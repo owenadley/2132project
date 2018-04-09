@@ -941,7 +941,7 @@ the most frequently. Display this information together with their comments and t
               "SELECT DISTINCT R.name as name, R.email as email, SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) As total
               FROM Rater R, Rating Rat
               WHERE Rat.UserID=R.UserID 
-                HAVING (total <
+                HAVING (SUM((Rat.Price)+(Rat.Food)+(Rat.Mood)+(Rat.Staff)) <
                                                                                       
                                               (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
                                                 FROM Rating Ra, Rater Ru WHERE Ru.name = 'John'))
