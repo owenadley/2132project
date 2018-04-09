@@ -351,9 +351,9 @@ if (($handle = fopen("/app/Location.csv", "r")) !== FALSE) {
     }
     
     if (!$sql) {
-      echo "cannot input location entries";
+     # echo "cannot input location entries";
     } else {
-      echo "query is valid for locations";
+      #echo "query is valid for locations";
     }
   fclose($handle);
   
@@ -373,6 +373,11 @@ if (($handle = fopen("/app/Rating.csv", "r")) !== FALSE) {
                 )
             ");
         }
+    }
+    if (!$sql) {
+      echo "cannot input rating entries";
+    } else {
+      echo "query is valid for rating";
     }
   fclose($handle);
 
@@ -395,9 +400,9 @@ if (($handle = fopen("/app/MenuItems.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      echo "cannot input menuitems entries";
+      #echo "cannot input menuitems entries";
     } else {
-      echo "query is valid for menuitems";
+      #echo "query is valid for menuitems";
     }
   fclose($handle);
   
@@ -416,9 +421,9 @@ if (($handle = fopen("/app/RatingItem.csv", "r")) !== FALSE) {
         }
     }
     if (!$sql) {
-      echo "cannot input menuitems entries";
+      #echo "cannot input menuitems entries";
     } else {
-      echo "query is valid for menuitems";
+      #echo "query is valid for menuitems";
     }
   fclose($handle);
 
@@ -459,7 +464,7 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 */
-$result = pg_query($conn, "SELECT * FROM Location");
+$result = pg_query($conn, "SELECT * FROM Rating");
 if (!$result) {
   echo "An error occurred.\n";
   exit;

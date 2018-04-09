@@ -33,7 +33,10 @@ else{
 # The Price, Food, Mood and Staff attributes may take a value between 1 (low) to 5 (high). The
 # comments field is reserved for free text and will be used, in future, for sentiment analysis. Note
 # that UserID and RestaurantID are foreign keys.
-
+$drop = pg_query($conn, "DROP TABLE Rating CASCADE");
+if ($drop) {
+  echo "dropped";
+}
 
 $ratingTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rating (
@@ -51,11 +54,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 #print "<pre>\n";
 if (!$ratingTable) {
-  #echo "Creating ratingTable is not working. \n";
+  echo "Creating ratingTable is not working. \n";
   exit;
 }
 else{
-  #echo 'Rating Table exists';
+  echo 'Rating Table exists';
 }
 
 
@@ -85,10 +88,7 @@ else{
 # This relation contains the location‐specific data, such as the manager’s details, the phone number,
 # the address, and so on. Note that RestaurantID is the foreign key. This design assumes that the
 # restaurant opens and closes at the same time every day; you may modify this design if you wish.
-$drop = pg_query($conn, "DROP TABLE Location CASCADE");
-if ($drop) {
-  echo "dropped";
-}
+
 
 $locationTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Location (
@@ -104,11 +104,11 @@ FOREIGN KEY (RestaurantID) references Restaurant
 )");
 #print "<pre>\n";
 if (!$locationTable) {
-  echo "Creating locationTable is not working. \n";
+  #echo "Creating locationTable is not working. \n";
   exit;
 }
 else{
-  echo 'Location Table exists';
+  #echo 'Location Table exists';
 }
 
 # MenuItem(ItemID, name, type, category, category, price, …, RestaurantID)_
