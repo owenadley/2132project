@@ -890,7 +890,7 @@ the most frequently. Display this information together with their comments and t
             
             $result = pg_query($conn, 
               "SELECT DISTINCT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
-              FROM Rater Ra, Restaurant R, Rating Rat, MenuItem MI, RatingItem RI, (SELECT COUNT(RI.UserID) AS c, RI.UserID AS uu
+              FROM Rater Ra, Restaurant R, Rating Rat, MenuItem MI, RatingItem RI, TempT AS (SELECT COUNT(RI.UserID) AS c, RI.UserID AS uu
                                                                                     FROM RatingItem RI, Restaurant R, MenuItem MI 
                                                                                     WHERE R.name = $resSelect AND R.restaurantID = MI.restaurantID 
                                                                                     AND MI.ItemID = RI.ItemID
@@ -902,7 +902,7 @@ the most frequently. Display this information together with their comments and t
               WHERE R.name = $resSelect AND R.restaurantID = MI.restaurantID 
               AND MI.ItemID = RI.ItemID AND Ra.userID = RI.userID 
               AND R.restaurantID = Rat.restaurantID
-              AND Ra.UserID = uu
+              AND Ra.UserID = TempT.UserID
                      
               ");
               
