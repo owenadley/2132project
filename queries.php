@@ -211,7 +211,7 @@ screen. The menu should be displayed based on menu item categories.
             $resturauntselect = "Host";
             $result = pg_query($conn, "SELECT M.* FROM MenuItem M, Restaurant R 
               WHERE R.name = '$resturauntselect' AND M.restaurantID = R.RestaurantID
-              ORDER BY m.categories ASC");
+              ORDER BY M.category ASC");
               
             if (!$result) {
             echo "An error occurred.\n";
