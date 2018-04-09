@@ -620,7 +620,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
                WHERE R.type = '$typeSelect' AND Ra.RestaurantID = R.RestaurantID
                AND (Ra.price + Ra.food + Ra.mood + Ra.staff)/4 > 
                (SELECT AVG(Ra.price + Ra.food + Ra.mood + Ra.staff)/4 FROM Rating Ra, Restaurant R WHERE R.type != '$typeSelect')
-               GROUP By R.name
+               GROUP By R.name, R.restaurantID
               ");
               
             if (!$result) {
