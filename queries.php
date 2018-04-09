@@ -304,19 +304,15 @@ restaurant. The user should be able to select the restaurant name (e.g. El Camin
                   <th class='trD'>Manager Name</th>
                   <th class='trD'>Opening time</th>
                   <th class='trD'>Menu Item</th>
-                  <th class='trD'></th>
                   <th class='trD'>Price</th>
-                  <th class='trD'>Restaurant ID</th>
                 </tr>
                 <?php while ($row = pg_fetch_assoc($result)): ?>
                 <tr class='trD'>
-                  <td class='trD'><?php echo $row['itemid']; ?></td>
+                  <td class='trD'><?php echo $row['url']; ?></td>
+                  <td class='trD'><?php echo $row['managername']; ?></td>
+                  <td class='trD'><?php echo $row['houropen']; ?></td>
                   <td class='trD'><?php echo $row['name']; ?></td>
-                  <td class='trD'><?php echo $row['type']; ?></td>
-                  <td class='trD'><?php echo $row['category']; ?></td>
-                  <td class='trD'><?php echo $row['description']; ?></td>
                   <td class='trD'><?php echo $row['price']; ?></td>
-                  <td class='trD'><?php echo $row['restaurantid']; ?></td>
                 </tr>
                 <?php endwhile; ?>
               </table>

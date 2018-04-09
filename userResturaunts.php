@@ -116,7 +116,7 @@ if (!pg_num_rows($result)) {
           <p>Delete Record</p>
           <div class='row'>
             <div class='col-md-4'>
-              <div class='selectEntry'>
+              <div class='selectEntry' onclick='popDelRestauraunt();'>
                 <p class='nopad'>Restauraunt</p>
               </div>
             </div>
@@ -268,7 +268,30 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>  
           
-          
+          <div id='modal3' class='popupContainer' style='display:none;'>
+ 				    <header class='popupHeader'>
+ 					  	<span class='header_title'>Add Restaurant</span>
+ 						  <span class='modal_close' onclick='unpop4();'><i class='fa fa-times'></i></span>
+ 				    </header>
+ 				    
+            <section class='popupBody'>
+              <div class='addEntry' id='delEntryResturaunt'>
+    								<form id='delResturaunt' role="form" method="post" action="delRestaurant.php" autocomplete="off">
+     										<label>Resturaunt Name</label>
+    										<input name='name' type='text' required />
+     										<br />
+     
+     										<label>Resturaunt ID</label>
+    										<input name='id' type='text' required/>
+    										<br />
+     
+     										<div class='action_btns'>
+     												<div class='one_half last'><input type='submit' class='btn btn_red' value='Submit'></input></div>
+     										</div>
+     								</form>
+     						</div>
+ 					  </section>
+ 				  </div>
           
           
           
