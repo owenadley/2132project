@@ -85,11 +85,11 @@ if (!pg_num_rows($result)) {
           
           <?php
           if ($_SESSION['addSuccess']) {
-            echo "<div class='successNotify'><p>Your entry has been submitted.</p></div>";
+            echo "<div class='successNotify'><p>Your entry has been succesfully submitted.</p></div>";
             $_SESSION['addSuccess'] = false;
           }
           if ($_SESSION['delSuccess']) {
-            echo "<div class='successNotify'><p>Your entry has been deleted.</p></div>";
+            echo "<div class='successNotify'><p>Your entry has been succesfully deleted.</p></div>";
             $_SESSION['delSuccess'] = false;
           }
         ?>
