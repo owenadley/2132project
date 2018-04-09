@@ -946,7 +946,7 @@ the most frequently. Display this information together with their comments and t
                                               AND total <
                                                                                       
                                               (SELECT DISTINCT SUM((Ra.Price)+(Ra.Food)+(Ra.Mood)+(Ra.Staff)) AS tots
-                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John'))
+                                                FROM Rating Ra, Rater Ru WHERE Ra.UserID = 'John')))
               ");
               
               
