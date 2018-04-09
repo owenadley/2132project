@@ -890,19 +890,14 @@ the most frequently. Display this information together with their comments and t
             
             $result = pg_query($conn, 
               "SELECT Ra.name AS uname, Ra.reputation AS rep, RI.comment, MI.name, MI.price
-              FROM Rater Ra, Restaurant R, Rating Rat, MenuItem MI, RatingItem RI, (SELECT COUNT(RI.UserID) AS c, RI.UserID AS uu
-                                                                                    FROM RatingItem RI, Restaurant R, MenuItem MI 
-                                                                                    WHERE R.name = '$resSelect' AND R.restaurantID = MI.restaurantID 
-                                                                                    AND MI.ItemID = RI.ItemID
+              FROM (SELECT * FROM RatingItem LEFT JOIN MenuItem ON RatingItem.ItemID = MenuItem.ItemID) stuff JOIN (SELECT RI.UserID AS freq, COUNT(RI.UserID) AS c
+                                                                                    FROM RatingItem RI LEFT JOIN MenuItem ON RatingItem.ItemID=MenuItem.ItemID 
+                                                                                    WHERE R.name = '$resSelect'
                                                                                     GROUP BY UserID
                                                                                     ORDER BY c DESC   
-                                                                                    LIMIT 3) TempT
-                      
-                
-              WHERE R.name = $resSelect AND R.restaurantID = MI.restaurantID 
-              AND MI.ItemID = RI.ItemID AND Ra.userID = RI.userID 
-              AND R.restaurantID = Rat.restaurantID
-              AND Ra.UserID = TempT.UserID
+                                                                                    LIMIT 1) TempT
+                                                                              ON stuff.UserID=TempT.UserID
+              LEFT JOIN Rater ON Rater.UserID=TempT.UserID
                      
               ");
               
