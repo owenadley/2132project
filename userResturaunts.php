@@ -98,7 +98,7 @@ if (!pg_num_rows($result)) {
           <p>Submit New</p>
           <div class='row'>
             <div class='col-md-4'>
-              <div class='selectEntry' onclick='popAddRestauraunt();'>
+              <div class='selectEntry' onclick='popAddRestaurant();'>
                 <p class='nopad'>Restauraunt</p>
               </div>
             </div>
@@ -120,7 +120,7 @@ if (!pg_num_rows($result)) {
           <p>Delete Record</p>
           <div class='row'>
             <div class='col-md-4'>
-              <div class='selectEntry' onclick='popDelRestauraunt();'>
+              <div class='selectEntry' onclick='popDelRestaurant();'>
                 <p class='nopad'>Restauraunt</p>
               </div>
             </div>
@@ -272,14 +272,14 @@ if (!pg_num_rows($result)) {
  					  </section>
  				  </div>  
           
-          <div id='modal3' class='popupContainer' style='display:none;'>
+          <div id='modal4' class='popupContainer' style='display:none;'>
  				    <header class='popupHeader'>
  					  	<span class='header_title'>Add Restaurant</span>
  						  <span class='modal_close' onclick='unpop4();'><i class='fa fa-times'></i></span>
  				    </header>
  				    
             <section class='popupBody'>
-              <div class='addEntry' id='delEntryResturaunt'>
+              <div class='addEntry' id='delEntryResturant'>
     								<form id='delResturaunt' role="form" method="post" action="delRestaurant.php" autocomplete="off">
      										<label>Resturaunt Name</label>
     										<input name='name' type='text' required />
