@@ -312,12 +312,7 @@ if (($handle = fopen("/app/Rater.csv", "r")) !== FALSE) {
             ");
         }
     }
-    if (!$sql) {
-      echo "cannot input rater entries";
-    } else {
-      echo "query is valid for raters";
-    }
-    
+
   fclose($handle);
 
 #Restaurants
@@ -333,6 +328,12 @@ if (($handle = fopen("/app/Restaurants.csv", "r")) !== FALSE) {
             ");
         }
     }
+    if (!$sql) {
+      echo "cannot input restaurants entries";
+    } else {
+      echo "query is valid for restaurant";
+    }
+    
   fclose($handle);
 
 #Location
@@ -456,7 +457,7 @@ $test5 = pg_query($conn, "INSERT INTO MenuItem (ItemID, name, type, category, de
 $test5 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-03-31', 4, 4, 3, 4, 'great resturaunt!', '1')");
 $test7 = pg_query($conn, "INSERT INTO Rating (userID, date, price, food, mood, staff, comments, RestaurantID) VALUES ('js', '2018-04-25', 4, 4, 3, 4, 'great resturaunt!', '2')");
 */
-$result = pg_query($conn, "SELECT * FROM Rater");
+$result = pg_query($conn, "SELECT * FROM Restaurant");
 if (!$result) {
   echo "An error occurred.\n";
   exit;
@@ -466,7 +467,7 @@ if ($row = pg_fetch_row($result)) {
   $arr = pg_fetch_all($result);
   print_r($arr);
 } else {
-  echo 'No records in raters';
+  echo 'No records in restaurant';
 }
 echo "<br><br>";
 

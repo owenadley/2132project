@@ -6,10 +6,7 @@
 # an alias such as SuperSizeMe. Type refers to the type of rater (blog, online, food critic) and
 # reputation takes a value between 1 and 5. The value of this field is based on the number of people
 # who found this rater’s opinion helpful, and the default value is 1 (lowest).
-$drop = pg_query($conn, "DROP TABLE Rater CASCADE");
-if ($drop) { 
-  echo "dropped";
-}
+
 
 $raterTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Rater (
@@ -66,7 +63,10 @@ else{
 # This relation contains general information about a restaurant and is useful in the case where a
 # restaurant chain has many locations. The type attribute contains details about the cuisine, such as
 # Italian, Indian, Middle Eastern, and so on.
-
+$drop = pg_query($conn, "DROP TABLE Restaurant CASCADE");
+if ($drop) { 
+  echo "dropped";
+}
 $restaurantTable = pg_query($conn, 
 "CREATE TABLE IF NOT EXISTS Restaurant (
 RestaurantID varchar(255) PRIMARY KEY NOT NULL,
@@ -76,11 +76,11 @@ URL varchar(255)
 )");
 #print "<pre>\n";
 if (!$restaurantTable) {
-  #echo "Creating restaurantTable is not working. \n";
+  echo "Creating restaurantTable is not working. \n";
   exit;
 }
 else{
-  #echo 'Restaurant Table exists';
+  echo 'Restaurant Table exists';
 }
 
 # Location: (LocationID, first‐open‐date, manager‐name, phone‐number, street‐address,
