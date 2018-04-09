@@ -36,12 +36,12 @@ $conn = pg_connect(pg_connection_string_from_database_url());
 </div>
     
 <?php
-if ($_POST['restaurant'] != null) {echo "here";  ?>  
+if ($_POST['restaurant'] != null) {echo "here   
   <script type="text/javascript">
     showQuery1a();
-  </script>
+  </script>";
  
-  <?php
+  
   # $_POST['restaurant'] = null; 
 }?>
 
