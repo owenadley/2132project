@@ -504,7 +504,7 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             exit;
             }
           ?>
-            
+            <br/>
             X refers to userID: <?php echo $userIDSelect; ?>
             
             <div class="container">
@@ -545,8 +545,8 @@ grouped by the restaurant, the specific raters and the numeric ratings they have
             exit;
             }
           ?>
-          
-          X refers to <?php echo $typeSelect; ?>
+          <br/>
+          Y refers to restaurant type:<?php echo $typeSelect; ?>
 
             <div class="container">
               <br/>
